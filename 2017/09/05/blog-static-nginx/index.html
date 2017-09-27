@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-    <title>ESSAY - Dark knight's Blog</title>
+    <title>使用travis-ci集成项目,自动部署博客站点 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.xtoshiba.me/essay/">
+    <link rel="canonical" href="http://blog.xtoshiba.me/2017/09/05/blog-static-nginx/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/assets/styles/bootstrap.min.css">
@@ -141,194 +141,154 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/assets/images/home-bg-2.jpg')">
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/assets/images/post-bg-js-module.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/assets/images/post-bg-js-module.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>ESSAY</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">随笔集 ,写一下感悟</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
+                        
+                        <a class="tag" href="/tags/#jekyll" title="jekyll">jekyll</a>
+                        
+                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                    <h1>使用travis-ci集成项目,自动部署博客站点</h1>
+                    
+                    
+                    <h2 class="subheading">travis集成注意点和操作步骤</h2>
+                    
+                    <span class="meta">Posted by toshiba on September 5, 2017</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
-<!--<div class="css-live-wrap">-->
-    <!--<hgroup class="percentage-pie">-->
-        <!--<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">-->
-            <!--<text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="" style="fill: #000"></text>-->
-            <!--&lt;!&ndash; Wave &ndash;&gt;-->
-            <!--<g id="wave">-->
-                <!--<path id="wave-2" fill="black" d="M 0 100 C 140.6 94.24 45.08 106.32 200 100 A 95 95 0 0 1 0 100 Z">-->
-                    <!--<animate dur="5s" repeatCount="indefinite" attributeName="d" attributeType="XML" values="M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z;-->
-														<!--M0 100 C145 100, 41 100, 200 100 A95 95 0 0 1 0 100 Z;-->
-														<!--M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z"></animate>-->
-                <!--</path>-->
-            <!--</g>-->
-        <!--</svg>-->
-    <!--</hgroup>-->
-<!--</div>-->
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-    			This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+				<h1 id="第一次搭建博客">第一次搭建博客</h1>
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+<h1 id="参考文章">参考文章</h1>
+
+<p><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
+</a>
+<a href="http://www.zhanxin.info/journal/">掌心</a>
+<a href="https://blog.ixxoo.me/">likebeta’s Blog
+</a>
+<a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a>
+<a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a>
+<a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
+</a>
+<a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a>
+<a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a>
+<a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a>
+<a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a>
+<a href=""></a></p>
 
 
-[jekyll-organization]: https://github.com/jekyll
+                <hr>
 
-    		</div>
+                
+                <!-- 多说 Share start -->
+                </style>
+                <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/2017/09/05/blog-static-nginx"
+                    data-title="使用travis-ci集成项目,自动部署博客站点"
+                    data-url="http://blog.xtoshiba.me/2017/09/05/blog-static-nginx/"
+                    data-images="http://blog.xtoshiba.me/assets/images/post-bg-js-module.jpg"
+                    data-content="第一次搭建博客
+
+参考文章
+
+48 个你需要知道的 Jekyll 使用技巧
+
+掌心
+likebeta’s Blog
+
+jekyll翻译文章
+jekyll语... | Dark knight's Blog " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div>
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/09/05/jekyll-site/" data-toggle="tooltip" data-placement="top" title="搭建jekyll 博客流程记录">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2017/09/05/blog-static-nginx"
+                        data-title="使用travis-ci集成项目,自动部署博客站点"
+                        data-url="http://blog.xtoshiba.me/2017/09/05/blog-static-nginx/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
     <!-- Sidebar Container -->
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                            
-                                <a href="/tags/#生活" title="生活" rel="1">
-                                    生活
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#OS" title="OS" rel="1">
-                                    OS
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Unix" title="Unix" rel="1">
-                                    Unix
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#Linux" title="Linux" rel="1">
-                                    Linux
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#前端开发" title="前端开发" rel="3">
-                                    前端开发
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#JavaScript" title="JavaScript" rel="5">
-                                    JavaScript
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#翻译" title="翻译" rel="1">
-                                    翻译
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#博客搭建" title="博客搭建" rel="2">
-                                    博客搭建
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#jekyll" title="jekyll" rel="1">
-                                    jekyll
-                                </a>
-                            
-                        
-                    </div>
+        				
+        			</div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img class="avatar" src="/assets/images/avatar.png" />
-                        
-                        
-                            <p>人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.zhihu.com/people/IORI20091101">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/IORI20091101">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.facebook.com/https://www.facebook.com/profile.php?id=100004675021382">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/IORI20091101">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </section>
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -347,10 +307,36 @@ You can find the source code for Jekyll at GitHub:
                     
                 </ul>
                 
-    		</div>
-        
-	</div>
-</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'huxblog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
 
 
     <!-- Footer -->

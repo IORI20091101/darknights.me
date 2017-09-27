@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-09-27T07:20:40+00:00</updated><id>/</id><entry><title type="html">搭建jekyll 博客流程记录</title><link href="/2017/09/05/jekyll-site/" rel="alternate" type="text/html" title="搭建jekyll 博客流程记录" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/jekyll-site</id><content type="html" xml:base="/2017/09/05/jekyll-site/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-09-27T13:07:01+00:00</updated><id>/</id><entry><title type="html">使用travis-ci集成项目,自动部署博客站点</title><link href="/2017/09/05/blog-static-nginx/" rel="alternate" type="text/html" title="使用travis-ci集成项目,自动部署博客站点" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/blog-static-nginx</id><content type="html" xml:base="/2017/09/05/blog-static-nginx/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
+
+&lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
+&lt;/a&gt;
+&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;
+&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
+&lt;/a&gt;
+&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;
+&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;
+&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
+&lt;/a&gt;
+&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;
+&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;
+&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;
+&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;
+&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="jekyll" /><category term="JavaScript" /><summary type="html">第一次搭建博客</summary></entry><entry><title type="html">搭建jekyll 博客流程记录</title><link href="/2017/09/05/jekyll-site/" rel="alternate" type="text/html" title="搭建jekyll 博客流程记录" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/jekyll-site</id><content type="html" xml:base="/2017/09/05/jekyll-site/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
+
+&lt;p&gt;不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://huangxuan.me/&quot;&gt;黄玄&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://mritd.me/&quot;&gt;漠然&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
+而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢，有时间请你撸串。&lt;/p&gt;
 
 &lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
 
