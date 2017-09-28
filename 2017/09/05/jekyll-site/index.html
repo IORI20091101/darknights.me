@@ -89,10 +89,6 @@
                     </li>
                     
                     <li>
-                        <a href="/archives/">ARCHIVES</a>
-                    </li>
-                    
-                    <li>
                         <a href="/essay/">ESSAY</a>
                     </li>
                     
@@ -197,54 +193,87 @@
 </blockquote>
 
 <p>我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
-而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢，有时间请你撸串。</p>
+而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。</p>
 
-<h1 id="参考文章">参考文章</h1>
+<h3 id="搭建博客的基本流程">搭建博客的基本流程</h3>
 
-<p><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
-</a>
-<a href="http://www.zhanxin.info/journal/">掌心</a>
-<a href="https://blog.ixxoo.me/">likebeta’s Blog
-</a>
-<a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a>
-<a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a>
-<a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
-</a>
-<a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a>
-<a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a>
-<a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a>
-<a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a>
-<a href=""></a></p>
+<h4 id="1安装ruby-rails">1.安装Ruby, Rails</h4>
+<p>建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。</p>
+
+<ul>
+  <li><a href="https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby">Mac OS X上安装ruby</a> 来安装</li>
+  <li>如果需要不同版本的ruby可以<a href="https://ruby-china.org/wiki/install_ruby_guide">安装 RVM</a>来进行ruby版本管理</li>
+</ul>
+
+<h4 id="2安装jekyll">2.安装jekyll</h4>
+<p>该博客使用了 <a href="https://jekyllrb.com/">Jekyll</a>, 当然好多同学可能会用 <a href="https://hexo.io/themes/">Hexo</a> 这个就是萝卜青菜了。
+如果你选择使用Jekyll请安装下面步骤安装生成:</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>~ <span class="nv">$ </span>gem install jekyll bundler
+~ <span class="nv">$ </span>jekyll new my-awesome-site
+~ <span class="nv">$ </span><span class="nb">cd </span>my-awesome-site
+~/my-awesome-site <span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+<span class="c"># =&gt; Now browse to http://localhost:4000</span>
+
+</code></pre>
+</div>
+<p>生产的项目结构类似</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>.
+├── _config.yml    //项目相关配置文件
+├── _data
+|   └── members.yml   //一些需要的数据
+├── _drafts           //草稿
+|   ├── begin-with-the-crazy-ideas.md
+|   └── on-simplicity-in-technology.md
+├── _includes         //公共的部分
+|   ├── footer.html
+|   └── header.html
+├── _layouts           //布局文件
+|   ├── default.html
+|   └── post.html
+├── _posts             //发布的文章
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+|   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass              //sass文件路径编译后生产css
+|   ├── _base.scss
+|   └── _layout.scss
+├── _site              //所有文件编译生产静态文件都存放到这里
+├── .jekyll-metadata
+└── index.html # can also be an 'index.md' with valid YAML Frontmatter
+</code></pre>
+</div>
+<p>具体还有其他目录请参考<a href="https://jekyllrb.com/docs/structure/">jekyll目录结构</a></p>
+
+<h4 id="3安装主题">3.安装主题</h4>
+<p>到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 <a href="http://jekyllthemes.org/">Jekyll 主题</a> ,当然如果在套用别人主题的时候有问题可以看一下
+<a href="http://www.jianshu.com/p/4224b8ea0ec0">Liquid语法</a>,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档</p>
+
+<p>到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。</p>
+
+<h3 id="参考文章">参考文章</h3>
+
+<blockquote>
+  <ul>
+    <li><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
+</a></li>
+    <li><a href="http://www.zhanxin.info/journal/">掌心</a></li>
+    <li><a href="https://blog.ixxoo.me/">likebeta’s Blog
+</a></li>
+    <li><a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a></li>
+    <li><a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a></li>
+    <li><a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
+</a></li>
+    <li><a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a></li>
+    <li><a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a></li>
+    <li><a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a></li>
+    <li><a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a></li>
+  </ul>
+</blockquote>
 
 
                 <hr>
 
-                
-                <!-- 多说 Share start -->
-                </style>
-                <div class="ds-share"
-                    style="text-align: right"
-                    data-thread-key="/2017/09/05/jekyll-site"
-                    data-title="搭建jekyll 博客流程记录"
-                    data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/"
-                    data-images="http://blog.xtoshiba.me/assets/images/post-bg-js-module.jpg"
-                    data-content="第一次搭建博客
 
-不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把... | Dark knight's Blog " >
-                    <div class="ds-share-inline">
-                      <ul  class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
-                    </div>
-                <hr>
-                </div>
-                <!-- 多说 Share end-->
-                
 
 
                 <ul class="pager">
@@ -261,20 +290,65 @@
                 </ul>
 
 
+                <!---->
+                <!--&lt;!&ndash; 多说评论框 start &ndash;&gt;-->
+                <!--<div class="comment">-->
+                    <!--<div class="disqus_thread"-->
+                        <!--data-thread-key="/2017/09/05/jekyll-site"-->
+                        <!--data-title="搭建jekyll 博客流程记录"-->
+                        <!--data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/" >-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; 多说评论框 end &ndash;&gt;-->
+                <!---->
+
                 
-                <!-- 多说评论框 start -->
+                <!-- disqus 评论框 start -->
                 <div class="comment">
-                    <div class="ds-thread"
-                        data-thread-key="/2017/09/05/jekyll-site"
-                        data-title="搭建jekyll 博客流程记录"
-                        data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/" >
-                    </div>
+                    <div id="disqus_thread"
+                         data-thread-key="/2017/09/05/jekyll-site"
+                         data-title="搭建jekyll 博客流程记录"
+                         data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/"></div>
+                    <script>
+
+                        /**
+                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                        /*
+                         var disqus_config = function () {
+                         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                         };
+                         */
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://iori-1.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 </div>
-                <!-- 多说评论框 end -->
+                <!-- disqus 评论框 end -->
                 
 
-                
+            </div>
 
+
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5 id="catalog">
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body">
+                        <li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li><li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li><li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>
+                    </ul>
+                </div>
             </div>
 
     <!-- Sidebar Container -->
@@ -289,6 +363,42 @@
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                        
+                            <a href="/tags/#生活" title="生活" rel="1">
+                                生活
+                            </a>
+        				
+                            <a href="/tags/#OS" title="OS" rel="1">
+                                OS
+                            </a>
+        				
+                            <a href="/tags/#Unix" title="Unix" rel="1">
+                                Unix
+                            </a>
+        				
+                            <a href="/tags/#Linux" title="Linux" rel="1">
+                                Linux
+                            </a>
+        				
+                            <a href="/tags/#前端开发" title="前端开发" rel="3">
+                                前端开发
+                            </a>
+        				
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="5">
+                                JavaScript
+                            </a>
+        				
+                            <a href="/tags/#翻译" title="翻译" rel="1">
+                                翻译
+                            </a>
+        				
+                            <a href="/tags/#博客搭建" title="博客搭建" rel="2">
+                                博客搭建
+                            </a>
+        				
+                            <a href="/tags/#jekyll" title="jekyll" rel="1">
+                                jekyll
+                            </a>
         				
         			</div>
                 </section>
@@ -318,29 +428,44 @@
 </article>
 
 
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    // dynamic User by Hux
-    var _user = 'huxblog';
 
-    // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
 </script>
-<!-- 多说公共JS代码 end -->
-
-
-
-
-
-
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '¶'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
 
@@ -398,13 +523,11 @@
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Dark Knight 2017
-                    <br>
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    Copyright &copy; Dark Knight 2017 |
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                        src="https://ghbtns.com/github-btn.html?user=IORI20091101&repo=IORI20091101.github.io&type=star&count=true" >
                     </iframe>
                 </p>
             </div>
@@ -421,7 +544,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="/assets/scripts/hux-blog.min.js"></script>
 
-<script type="text/javascript" color="0,229,238" opacity='0.5' zIndex="-2" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<!--<script type="text/javascript" color="0,229,238" opacity='0.5' zIndex="-2" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
 
 
 <script src="/assets/scripts/custom.js"></script>

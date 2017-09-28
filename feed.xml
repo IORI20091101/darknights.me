@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-09-27T13:07:01+00:00</updated><id>/</id><entry><title type="html">使用travis-ci集成项目,自动部署博客站点</title><link href="/2017/09/05/blog-static-nginx/" rel="alternate" type="text/html" title="使用travis-ci集成项目,自动部署博客站点" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/blog-static-nginx</id><content type="html" xml:base="/2017/09/05/blog-static-nginx/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-09-28T10:25:05+00:00</updated><id>/</id><entry><title type="html">使用travis-ci集成项目,自动部署博客站点</title><link href="/2017/09/05/blog-static-nginx/" rel="alternate" type="text/html" title="使用travis-ci集成项目,自动部署博客站点" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/blog-static-nginx</id><content type="html" xml:base="/2017/09/05/blog-static-nginx/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
 
 &lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
 
@@ -26,24 +26,82 @@
 &lt;/blockquote&gt;
 
 &lt;p&gt;我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
-而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢，有时间请你撸串。&lt;/p&gt;
+而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。&lt;/p&gt;
 
-&lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
+&lt;h3 id=&quot;搭建博客的基本流程&quot;&gt;搭建博客的基本流程&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
-&lt;/a&gt;
-&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;
-&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
-&lt;/a&gt;
-&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;
-&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;
-&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
-&lt;/a&gt;
-&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;
-&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;
-&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;
-&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;
-&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="JavaScript" /><summary type="html">第一次搭建博客</summary></entry><entry><title type="html">Example Post</title><link href="/2015/09/22/js-version/" rel="alternate" type="text/html" title="Example Post" /><published>2015-09-22T00:00:00+00:00</published><updated>2015-09-22T00:00:00+00:00</updated><id>/2015/09/22/js-version</id><content type="html" xml:base="/2015/09/22/js-version/">&lt;p&gt;JavaScript 有着很奇怪的命名史。&lt;/p&gt;
+&lt;h4 id=&quot;1安装ruby-rails&quot;&gt;1.安装Ruby, Rails&lt;/h4&gt;
+&lt;p&gt;建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby&quot;&gt;Mac OS X上安装ruby&lt;/a&gt; 来安装&lt;/li&gt;
+  &lt;li&gt;如果需要不同版本的ruby可以&lt;a href=&quot;https://ruby-china.org/wiki/install_ruby_guide&quot;&gt;安装 RVM&lt;/a&gt;来进行ruby版本管理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2安装jekyll&quot;&gt;2.安装jekyll&lt;/h4&gt;
+&lt;p&gt;该博客使用了 &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, 当然好多同学可能会用 &lt;a href=&quot;https://hexo.io/themes/&quot;&gt;Hexo&lt;/a&gt; 这个就是萝卜青菜了。
+如果你选择使用Jekyll请安装下面步骤安装生成:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install jekyll bundler
+~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll new my-awesome-site
+~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;my-awesome-site
+~/my-awesome-site &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;span class=&quot;c&quot;&gt;# =&amp;gt; Now browse to http://localhost:4000&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;生产的项目结构类似&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+├── _config.yml    //项目相关配置文件
+├── _data
+|   └── members.yml   //一些需要的数据
+├── _drafts           //草稿
+|   ├── begin-with-the-crazy-ideas.md
+|   └── on-simplicity-in-technology.md
+├── _includes         //公共的部分
+|   ├── footer.html
+|   └── header.html
+├── _layouts           //布局文件
+|   ├── default.html
+|   └── post.html
+├── _posts             //发布的文章
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+|   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass              //sass文件路径编译后生产css
+|   ├── _base.scss
+|   └── _layout.scss
+├── _site              //所有文件编译生产静态文件都存放到这里
+├── .jekyll-metadata
+└── index.html # can also be an 'index.md' with valid YAML Frontmatter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;具体还有其他目录请参考&lt;a href=&quot;https://jekyllrb.com/docs/structure/&quot;&gt;jekyll目录结构&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;3安装主题&quot;&gt;3.安装主题&lt;/h4&gt;
+&lt;p&gt;到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 &lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;Jekyll 主题&lt;/a&gt; ,当然如果在套用别人主题的时候有问题可以看一下
+&lt;a href=&quot;http://www.jianshu.com/p/4224b8ea0ec0&quot;&gt;Liquid语法&lt;/a&gt;,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档&lt;/p&gt;
+
+&lt;p&gt;到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
+&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
+&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
+&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="JavaScript" /><summary type="html">第一次搭建博客</summary></entry><entry><title type="html">Example Post</title><link href="/2015/09/22/js-version/" rel="alternate" type="text/html" title="Example Post" /><published>2015-09-22T00:00:00+00:00</published><updated>2015-09-22T00:00:00+00:00</updated><id>/2015/09/22/js-version</id><content type="html" xml:base="/2015/09/22/js-version/">&lt;p&gt;JavaScript 有着很奇怪的命名史。&lt;/p&gt;
 
 &lt;p&gt;1995 年，它作为网景浏览器（Netscape Navigator）的一部分首次发布，网景给这个新语言命名为 LiveScript。一年后，为了搭上当时媒体热炒 Java 的顺风车，临时改名为了 JavaScript &lt;em&gt;（当然，Java 和 JavaScript 的关系，就和雷锋和雷锋塔一样 —— 并没有什么关系）&lt;/em&gt;&lt;/p&gt;
 
