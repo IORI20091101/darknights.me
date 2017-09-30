@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
+    <meta name="description" content="Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验">
+    <meta name="keyword"  content="web,前端开发,网站设计,程序员,java,javascript,nodejs,python,Dark knight's">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
     <title>Example Post - Dark knight's Blog</title>
@@ -33,8 +33,7 @@
 
     <!--语法高亮-->
     <!--<link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" integrity="sha256-k5mFes0QrsMTUCIg7sRlizkZIhMeL4fTABLlkjQmR0s=" crossorigin="anonymous" />
 
     <!-- toshiba 自己的样式覆盖 CSS -->
     <link rel="stylesheet" href="/assets/styles/custom.css">
@@ -536,33 +535,35 @@ Android’s source code is released by Google under open source licenses, althou
             </div>
 
 
-            <!--<div class="-->
-                <!--col-lg-2 col-lg-offset-0-->
-                <!--visible-lg-block-->
-                <!--sidebar-container-->
-                <!--catalog-container">-->
-                <!--<div class="side-catalog">-->
-                    <!--&lt;!&ndash; Search Container &ndash;&gt;-->
-                    <!--<div class="hidden-xs">-->
-                        <!--<div class="input-group">-->
-                            <!--<input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">-->
-                        <!--<span class="input-group-btn">-->
-                            <!--<button class="btn  btn-default" id="search-btn" type="submit">Go</button>-->
-                        <!--</span>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<hr class="hidden-sm hidden-xs">-->
-                    <!--<h5 id="catalog">-->
-                        <!--<a class="catalog-toggle" href="#">目录</a>-->
-                    <!--</h5>-->
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <!-- Search Container -->
+                    <div class="hidden-xs">
+                        <div class="input-group">
+                            <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
+                        <span class="input-group-btn">
+                            <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
+                        </span>
+                        </div>
+                    </div>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5 id="catalog">
+                        <a class="catalog-toggle" href="#">目录</a>
+                    </h5>
+                    <div id="toc"></div>
+
                     <!--<ul class="catalog-body">-->
                         <!--<li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>-->
                         <!--<li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>-->
                         <!--<li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>-->
                     <!--</ul>-->
-                    <!---->
-                <!--</div>-->
-            <!--</div>-->
+
+                </div>
+            </div>
 
     <!-- Sidebar Container -->
             <div class="
@@ -644,8 +645,6 @@ Android’s source code is released by Google under open source licenses, althou
 
 
 
-
-
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -694,7 +693,7 @@ Android’s source code is released by Google under open source licenses, althou
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
                     
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/IORI20091101">
+                        <a target="_blank" href="https://www.zhihu.com/people/sun-dong-zhi/activities">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -704,7 +703,7 @@ Android’s source code is released by Google under open source licenses, althou
                     
                     
                     <li>
-                        <a target="_blank" href="http://weibo.com/IORI20091101">
+                        <a target="_blank" href="https://weibo.com/2407846257/profile?rightmod=1&wvr=6&mod=personinfo">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
@@ -766,7 +765,7 @@ Android’s source code is released by Google under open source licenses, althou
 
 
 <!--<script src="https://cdn.bootcss.com/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>-->
-<script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
 
 <script src="/assets/scripts/custom.js"></script>
 
@@ -782,6 +781,12 @@ Android’s source code is released by Google under open source licenses, althou
       <!--s.parentNode.insertBefore(o, s);-->
     <!--}-->
 <!--</script>-->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    });
+</script>
 
 <script type="text/javascript">
     function searchGoogle(keyWord) {
