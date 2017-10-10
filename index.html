@@ -153,11 +153,19 @@
 
 
     <!-- Page Header -->
-<header class="intro-header" style="background-image: url(' https://darknights.b0.upaiyun.com/assets/images/home-bg-bat.jpg')">
+<style type="text/css">
+    header.intro-header{
+        background-image: url(' https://darknights.b0.upaiyun.com/assets/images/home-bg-bat.jpg')
+    }
+</style>
+
+
+
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
+                <div class="site-heading"  >
                     <h1>Dark Knight</h1>
                     <!--<hr class="small">-->
                     <span class="subheading">人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。</span>
@@ -168,21 +176,22 @@
 </header>
 
 
+
+
+
 <!-- Main Content -->
 <div class="container">
-	<div class="row">
-        
+    <div class="row">
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
+        <!-- Post Container -->
+        <div class="
+                col-lg-8 col-lg-offset-2
                 col-md-8 col-md-offset-1
                 col-sm-12
                 col-xs-12
-                post-container
+                 post-container col-lg-offset-1 
             ">
-    			
+            
 <div class="post-preview">
     <a href="/2017/09/05/blog-static-nginx/">
         <h2 class="post-title">
@@ -211,7 +220,7 @@ GitHub Pages 静态博客 - 个人建站实录
 杨缘的博客参考
 poison
 jekyll官网中文
-
+使用travis-ci自动部署hexo博客
 
         </div>
     </a>
@@ -254,134 +263,147 @@ jekyll官网中文
 
 
 
-
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
+        </div>
+        <!-- Sidebar Container -->
+        
+            
+<div class="
                 col-lg-3 col-lg-offset-0
                 col-md-3 col-md-offset-0
                 col-sm-12
                 col-xs-12
                 sidebar-container
             ">
-                <!-- Search Container -->
-                <div class="hidden-xs">
-                    <div class="input-group">
-                        <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
+    <!-- Search Container -->
+    <div class="hidden-xs">
+        <div class="input-group">
+            <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
                         <span class="input-group-btn">
                             <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
                         </span>
-                    </div>
-                </div>
+        </div>
+    </div>
 
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            
-                                <a href="/tags/#博客搭建" title="博客搭建" rel="2">
-                                    博客搭建
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#JavaScript" title="JavaScript" rel="2">
-                                    JavaScript
-                                </a>
-                            
-                        
-                            
-                                <a href="/tags/#jekyll" title="jekyll" rel="1">
-                                    jekyll
-                                </a>
-                            
-                        
-                    </div>
-                </section>
-                
+    <!-- Featured Tags -->
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5><a href="/tags/">FEATURED TAGS</a></h5>
+        <div class="tags">
+            
+            
+            <a href="/tags/#博客搭建" title="博客搭建" rel="2">
+                博客搭建
+            </a>
+            
+            
+            
+            <a href="/tags/#JavaScript" title="JavaScript" rel="2">
+                JavaScript
+            </a>
+            
+            
+            
+            <a href="/tags/#jekyll" title="jekyll" rel="1">
+                jekyll
+            </a>
+            
+            
+        </div>
+    </section>
+    
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img class="avatar" src="https://darknights.b0.upaiyun.com/assets/images/avatar.png" />
-                        
-                        
-                            <p>人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.zhihu.com/people/IORI20091101">
+    <!-- Short About -->
+    <section class="visible-md visible-lg">
+        <hr><h5><a href="/about/">ABOUT ME</a></h5>
+        <div class="short-about">
+            
+            <img class="avatar" src="https://darknights.b0.upaiyun.com/assets/images/avatar.png" />
+            
+            
+            <p>人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。</p>
+            
+            <!-- SNS Link -->
+            <ul class="list-inline">
+                
+                
+                
+                <li>
+                    <a target="_blank" href="https://www.zhihu.com/people/sun-dong-zhi/activities">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa  fa-stack-1x fa-inverse">知</i>
                                     </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/IORI20091101">
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a target="_blank" href="https://weibo.com/2407846257/profile?rightmod=1&wvr=6&mod=personinfo">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
                                     </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.facebook.com/https://www.facebook.com/profile.php?id=100004675021382">
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100004675021382">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                     </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/IORI20091101">
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a target="_blank" href="https://github.com/IORI20091101">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                     </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
+                    </a>
+                </li>
                 
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://xtoshiba.me">Hux Blog</a></li>
-                    
-                        <li><a href="#">Foo</a></li>
-                    
-                        <li><a href="#">Bar</a></li>
-                    
-                        <li><a href="#">Example Friends</a></li>
-                    
-                        <li><a href="#">It helps SEO</a></li>
-                    
-                </ul>
-                
-    		</div>
+            </ul>
+        </div>
+    </section>
+    <!-- Friends Blog -->
+    
+    <hr>
+    <h5>FRIENDS</h5>
+    <ul class="list-inline">
         
-	</div>
+        <li><a href="http://xtoshiba.me">Hux Blog</a></li>
+        
+        <li><a href="#">Foo</a></li>
+        
+        <li><a href="#">Bar</a></li>
+        
+        <li><a href="#">Example Friends</a></li>
+        
+        <li><a href="#">It helps SEO</a></li>
+        
+    </ul>
+    
 </div>
+
+
+
+
+
+
+
+        
+    </div>
+</div>
+
+
+
+
+
 
 
     <!-- Footer -->
@@ -462,18 +484,12 @@ jekyll官网中文
 <script src="https://darknights.b0.upaiyun.com/assets/scripts/bootstrap.min.js"></script>
 
 
-<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/jquery.tocify.min.js"></script>-->
-
-<!-- Custom Theme JavaScript -->
-<!--<script src="/assets/scripts/hux-blog.min.js"></script>-->
-
 <!--<script type="text/javascript" color="0,229,238" opacity='0.5' zIndex="-2" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
 
 
 <!--<script src="https://cdn.bootcss.com/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>-->
 <script src="https://darknights.b0.upaiyun.com/assets/scripts/fastclick.min.js"></script>
 
-<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/jquery.toc.js"></script>-->
 
 
 
@@ -495,59 +511,6 @@ jekyll官网中文
 
 
 
-<script type="text/javascript">
-    function searchGoogle(keyWord) {
-        if(keyWord) {
-            window.open('https://www.google.com/#q=site:darknights.me+'+ keyWord);
-        }
-    }
-    $("#autocomplete").keyup(function(e) {
-        if(e.which == 13) {
-            var val = $("#autocomplete").val();
-
-            $.each(window.searchData, function(i, item) {
-                if(val == item.value || item.value.indexOf(val) > 0) {
-                    location.href = item.data;
-                }
-            });
-
-        }
-
-    });
-
-    $("#search-btn").click(function() {
-        var val = $("#autocomplete").val();
-        searchGoogle(val);
-    })
-
-    $.getJSON("/search.json", function(res) {
-        window.searchData = res.data;
-        $('input[name="q"]').autoComplete({
-            minChars: 1,
-            source: function(term, suggest){
-                term = term.toLowerCase();
-                var choices = res.data;
-                var suggestions = [];
-                for (i=0;i<choices.length;i++)
-                    if (~(choices[i].value+' '+choices[i].subtitle).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-
-                console.log(suggestions);
-                suggest(suggestions);
-            },
-            renderItem: function (item, search){
-                return '<div class="autocomplete-suggestion" data-val="'+item.value+'" data-data="'+ item.data +'"  data-search="'+search+'"> '+item.value+'</div>';
-            },
-            onSelect: function(e, term, item){
-                var $target = $(e.target),
-                    value = $target.data("val"),
-                    data = $target.data("data");
-                if(!!data) location.href= data;
-
-            }
-        });
-    })
-
-</script>
 
 <!--
      Because of the native support for backtick-style fenced code blocks
@@ -563,14 +526,6 @@ jekyll官网中文
 
 
 <!--fastClick.js -->
-<script>
-
-    //语法高亮
-    hljs.initHighlightingOnLoad();
-
-    var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-</script>
 
 
 <!-- Google Analytics -->
@@ -588,14 +543,8 @@ jekyll官网中文
 
 
 
-<!-- Baidu Tongji -->
 
 
-
-
-<!-- Image to hack wechat -->
-<!--<img src="/assets/images/icon_wechat.png" width="0" height="0" />-->
-<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
 

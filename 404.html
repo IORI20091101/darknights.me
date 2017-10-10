@@ -249,18 +249,12 @@
 <script src="https://darknights.b0.upaiyun.com/assets/scripts/bootstrap.min.js"></script>
 
 
-<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/jquery.tocify.min.js"></script>-->
-
-<!-- Custom Theme JavaScript -->
-<!--<script src="/assets/scripts/hux-blog.min.js"></script>-->
-
 <!--<script type="text/javascript" color="0,229,238" opacity='0.5' zIndex="-2" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
 
 
 <!--<script src="https://cdn.bootcss.com/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>-->
 <script src="https://darknights.b0.upaiyun.com/assets/scripts/fastclick.min.js"></script>
 
-<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/jquery.toc.js"></script>-->
 
 
 
@@ -282,59 +276,6 @@
 
 
 
-<script type="text/javascript">
-    function searchGoogle(keyWord) {
-        if(keyWord) {
-            window.open('https://www.google.com/#q=site:darknights.me+'+ keyWord);
-        }
-    }
-    $("#autocomplete").keyup(function(e) {
-        if(e.which == 13) {
-            var val = $("#autocomplete").val();
-
-            $.each(window.searchData, function(i, item) {
-                if(val == item.value || item.value.indexOf(val) > 0) {
-                    location.href = item.data;
-                }
-            });
-
-        }
-
-    });
-
-    $("#search-btn").click(function() {
-        var val = $("#autocomplete").val();
-        searchGoogle(val);
-    })
-
-    $.getJSON("/search.json", function(res) {
-        window.searchData = res.data;
-        $('input[name="q"]').autoComplete({
-            minChars: 1,
-            source: function(term, suggest){
-                term = term.toLowerCase();
-                var choices = res.data;
-                var suggestions = [];
-                for (i=0;i<choices.length;i++)
-                    if (~(choices[i].value+' '+choices[i].subtitle).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-
-                console.log(suggestions);
-                suggest(suggestions);
-            },
-            renderItem: function (item, search){
-                return '<div class="autocomplete-suggestion" data-val="'+item.value+'" data-data="'+ item.data +'"  data-search="'+search+'"> '+item.value+'</div>';
-            },
-            onSelect: function(e, term, item){
-                var $target = $(e.target),
-                    value = $target.data("val"),
-                    data = $target.data("data");
-                if(!!data) location.href= data;
-
-            }
-        });
-    })
-
-</script>
 
 <!--
      Because of the native support for backtick-style fenced code blocks
@@ -350,14 +291,6 @@
 
 
 <!--fastClick.js -->
-<script>
-
-    //语法高亮
-    hljs.initHighlightingOnLoad();
-
-    var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-</script>
 
 
 <!-- Google Analytics -->
@@ -375,14 +308,8 @@
 
 
 
-<!-- Baidu Tongji -->
 
 
-
-
-<!-- Image to hack wechat -->
-<!--<img src="/assets/images/icon_wechat.png" width="0" height="0" />-->
-<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
 

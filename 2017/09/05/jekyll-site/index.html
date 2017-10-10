@@ -152,39 +152,43 @@
 </script>
 
 
-    <!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/images/post-bg-js-module.jpg" width="0" height="0"> -->
-
-<!-- Post Header -->
+    <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
         background-image: url('https://darknights.b0.upaiyun.com/assets/images/post-bg-js-module.jpg ')
     }
 </style>
-<header class="intro-header" >
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
+
+
+
+
+
+    <header class="intro-header" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
+                            
+                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                            
+                        </div>
+                        <h1>搭建jekyll 博客流程记录</h1>
                         
-                        <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
                         
-                        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        <h2 class="subheading">如何搭建个人博客以及注意点</h2>
                         
+                        <span class="meta">Posted by toshiba on September 5, 2017</span>
                     </div>
-                    <h1>搭建jekyll 博客流程记录</h1>
-                    
-                    
-                    <h2 class="subheading">如何搭建个人博客以及注意点</h2>
-                    
-                    <span class="meta">Posted by toshiba on September 5, 2017</span>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+
+
+
 
 <!-- Post Content -->
 <article>
@@ -193,10 +197,11 @@
 
             <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
                 post-container">
-
 				<h1 id="第一次搭建博客">第一次搭建博客</h1>
 
 <p>不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:</p>
@@ -288,89 +293,146 @@
 
                 <hr>
 
-
-
-
                 <ul class="pager">
-                    
-                    
-                    <li class="next">
-                        <a href="/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
+    
+    
+    <li class="next">
+        <a href="/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">Next Post &rarr;</a>
+    </li>
+    
+</ul>
 
 
-                <!---->
 
-                
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread"
-                         data-thread-key="/2017/09/05/jekyll-site"
-                         data-title="搭建jekyll 博客流程记录"
-                         data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/"></div>
-                    <script>
 
-                        /**
-                         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-                        /*
-                         var disqus_config = function () {
-                         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                         };
-                         */
-                        (function() { // DON'T EDIT BELOW THIS LINE
-                            var d = document, s = d.createElement('script');
-                            s.src = 'https://iori-1.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
-                        })();
-                    </script>
-                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                </div>
-                <!-- disqus 评论框 end -->
-                
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread"
+         data-thread-key="/2017/09/05/jekyll-site"
+         data-title="搭建jekyll 博客流程记录"
+         data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/"></div>
+    <script>
+
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+         var disqus_config = function () {
+         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+         };
+         */
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://iori-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<!-- disqus 评论框 end -->
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+                o = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://darknights.b0.upaiyun.com/assets/scripts/anchor.min.js",function(){
+        anchors.options = {
+            visible: 'always',
+            placement: 'right',
+            icon: '¶'
+        };
+        anchors.add(".post-container h3").remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
             </div>
 
+            <!-- Sidebar Container -->
+            
 
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
+
+
+
+
+<div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
                 sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <!-- Search Container -->
-                    <div class="hidden-xs">
-                        <div class="input-group">
-                            <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
-                        <span class="input-group-btn">
-                            <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
-                        </span>
-                        </div>
-                    </div>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5 id="catalog">
-                        <a class="catalog-toggle" href="#">目录</a>
-                    </h5>
-                    <div id="toc"></div>
+            ">
+    <!-- Search Container -->
+    <div class="hidden-xs">
+        <div class="input-group">
+            <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
+            <span class="input-group-btn">
+                <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
+            </span>
+        </div>
+    </div>
+
+    <hr class="hidden-sm hidden-xs">
+    <h5 id="catalog">
+        <a class="catalog-toggle" href="#">目录</a>
+    </h5>
+    <div id="toc"></div>
 
 
-                    <!--<ul class="catalog-body">-->
-                        <!--<li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>-->
-                        <!--<li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>-->
-                        <!--<li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>-->
-                    <!--</ul>-->
+    <ul class="catalog-body">
+        <li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>
+        <li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>
+        <li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>
+    </ul>
 
-                </div>
-            </div>
 
-    <!-- Sidebar Container -->
+
+
+
+</div>
+
+
+
+
+
+
+
+            <!-- 详情底部的友情链接和标签云这里不单独抽离 -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
                 sidebar-container">
 
                 <!-- Featured Tags -->
@@ -415,47 +477,14 @@
                 </ul>
                 
             </div>
+
+
         </div>
     </div>
 </article>
 
 
 
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://darknights.b0.upaiyun.com/assets/scripts/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '¶'
-        };
-        anchors.add(".post-container h3").remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
 
 
 
@@ -537,18 +566,12 @@
 <script src="https://darknights.b0.upaiyun.com/assets/scripts/bootstrap.min.js"></script>
 
 
-<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/jquery.tocify.min.js"></script>-->
-
-<!-- Custom Theme JavaScript -->
-<!--<script src="/assets/scripts/hux-blog.min.js"></script>-->
-
 <!--<script type="text/javascript" color="0,229,238" opacity='0.5' zIndex="-2" count="100" src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
 
 
 <!--<script src="https://cdn.bootcss.com/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>-->
 <script src="https://darknights.b0.upaiyun.com/assets/scripts/fastclick.min.js"></script>
 
-<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/jquery.toc.js"></script>-->
 
 
 
@@ -570,59 +593,6 @@
 
 
 
-<script type="text/javascript">
-    function searchGoogle(keyWord) {
-        if(keyWord) {
-            window.open('https://www.google.com/#q=site:darknights.me+'+ keyWord);
-        }
-    }
-    $("#autocomplete").keyup(function(e) {
-        if(e.which == 13) {
-            var val = $("#autocomplete").val();
-
-            $.each(window.searchData, function(i, item) {
-                if(val == item.value || item.value.indexOf(val) > 0) {
-                    location.href = item.data;
-                }
-            });
-
-        }
-
-    });
-
-    $("#search-btn").click(function() {
-        var val = $("#autocomplete").val();
-        searchGoogle(val);
-    })
-
-    $.getJSON("/search.json", function(res) {
-        window.searchData = res.data;
-        $('input[name="q"]').autoComplete({
-            minChars: 1,
-            source: function(term, suggest){
-                term = term.toLowerCase();
-                var choices = res.data;
-                var suggestions = [];
-                for (i=0;i<choices.length;i++)
-                    if (~(choices[i].value+' '+choices[i].subtitle).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-
-                console.log(suggestions);
-                suggest(suggestions);
-            },
-            renderItem: function (item, search){
-                return '<div class="autocomplete-suggestion" data-val="'+item.value+'" data-data="'+ item.data +'"  data-search="'+search+'"> '+item.value+'</div>';
-            },
-            onSelect: function(e, term, item){
-                var $target = $(e.target),
-                    value = $target.data("val"),
-                    data = $target.data("data");
-                if(!!data) location.href= data;
-
-            }
-        });
-    })
-
-</script>
 
 <!--
      Because of the native support for backtick-style fenced code blocks
@@ -638,14 +608,6 @@
 
 
 <!--fastClick.js -->
-<script>
-
-    //语法高亮
-    hljs.initHighlightingOnLoad();
-
-    var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-</script>
 
 
 <!-- Google Analytics -->
@@ -663,14 +625,8 @@
 
 
 
-<!-- Baidu Tongji -->
 
 
-
-
-<!-- Image to hack wechat -->
-<!--<img src="/assets/images/icon_wechat.png" width="0" height="0" />-->
-<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
 
