@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-10-11T10:17:39+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">使用travis-ci集成项目,自动部署博客站点</title><link href="/2017/09/05/blog-static-nginx/" rel="alternate" type="text/html" title="使用travis-ci集成项目,自动部署博客站点" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/blog-static-nginx</id><content type="html" xml:base="/2017/09/05/blog-static-nginx/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-10-12T09:57:02+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode,LintCode,Hihocoder刷题指南</title><link href="/2017/10/12/interview/" rel="alternate" type="text/html" title="LeetCode,LintCode,Hihocoder刷题指南" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/2017/10/12/interview</id><content type="html" xml:base="/2017/10/12/interview/">&lt;h1 id=&quot;通过题目训练来提升自己的编程能力&quot;&gt;通过题目训练来提升自己的编程能力&lt;/h1&gt;
+
+&lt;h2 id=&quot;leetcode&quot;&gt;&lt;a href=&quot;https://leetcode.com/&quot;&gt;LeetCode&lt;/a&gt;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;LeetCode 是一个非常棒的 OJ（Online Judge）平台，收集了许多公司的面试题目。相对其他 OJ 平台而言，有着下面的几个优点：&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;题目全部来自业内大公司的真实面试&lt;/li&gt;
+    &lt;li&gt;不用处理输入输出，精力全放在解决具体问题上&lt;/li&gt;
+    &lt;li&gt;题目有丰富的讨论，可以参考别人的思路&lt;/li&gt;
+    &lt;li&gt;精确了解自己代码在所有提交代码中运行效率的排名&lt;/li&gt;
+    &lt;li&gt;支持多种主流语言：C/C++，Python, Java&lt;/li&gt;
+    &lt;li&gt;可以在线进行测试，方便调试&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.lintcode.com/zh-cn/&quot;&gt;LintCode&lt;/a&gt;
+&lt;a href=&quot;http://hihocoder.com/&quot;&gt;Hihocoder&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
+&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
+&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
+&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/&quot;&gt;适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/&quot;&gt;使用travis-ci自动部署hexo博客&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="interview" /><category term="JavaScript" /><summary type="html">通过题目训练来提升自己的编程能力</summary></entry><entry><title type="html">使用travis-ci集成项目,自动部署博客站点</title><link href="/2017/09/05/blog-static-nginx/" rel="alternate" type="text/html" title="使用travis-ci集成项目,自动部署博客站点" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/blog-static-nginx</id><content type="html" xml:base="/2017/09/05/blog-static-nginx/">&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
 
 &lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
 

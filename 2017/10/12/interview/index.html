@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>搭建jekyll 博客流程记录 - Dark knight's Blog</title>
+    <title>LeetCode,LintCode,Hihocoder刷题指南 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.xtoshiba.me/2017/09/05/jekyll-site/">
+    <link rel="canonical" href="http://blog.xtoshiba.me/2017/10/12/interview/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -170,17 +170,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
+                            <a class="tag" href="/tags/#interview" title="interview">interview</a>
                             
                             <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                             
                         </div>
-                        <h1>搭建jekyll 博客流程记录</h1>
+                        <h1>LeetCode,LintCode,Hihocoder刷题指南</h1>
                         
                         
-                        <h2 class="subheading">如何搭建个人博客以及注意点</h2>
+                        <h2 class="subheading">通过题目训练来提升自己的编程能力</h2>
                         
-                        <span class="meta">Posted by toshiba on September 5, 2017</span>
+                        <span class="meta">Posted by toshiba on October 12, 2017</span>
                     </div>
                 </div>
             </div>
@@ -202,71 +202,24 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="第一次搭建博客">第一次搭建博客</h1>
+				<h1 id="通过题目训练来提升自己的编程能力">通过题目训练来提升自己的编程能力</h1>
 
-<p>不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:</p>
+<h2 id="leetcode"><a href="https://leetcode.com/">LeetCode</a></h2>
+
 <blockquote>
+  <p>LeetCode 是一个非常棒的 OJ（Online Judge）平台，收集了许多公司的面试题目。相对其他 OJ 平台而言，有着下面的几个优点：</p>
   <ul>
-    <li><a href="http://huangxuan.me/">黄玄</a></li>
-    <li><a href="https://mritd.me/">漠然</a></li>
+    <li>题目全部来自业内大公司的真实面试</li>
+    <li>不用处理输入输出，精力全放在解决具体问题上</li>
+    <li>题目有丰富的讨论，可以参考别人的思路</li>
+    <li>精确了解自己代码在所有提交代码中运行效率的排名</li>
+    <li>支持多种主流语言：C/C++，Python, Java</li>
+    <li>可以在线进行测试，方便调试</li>
   </ul>
 </blockquote>
 
-<p>我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
-而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。</p>
-
-<h2 id="搭建博客的基本流程">搭建博客的基本流程</h2>
-
-<h3 id="1安装ruby-rails">1.安装Ruby, Rails</h3>
-<p>建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。</p>
-
-<ul>
-  <li><a href="https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby">Mac OS X上安装ruby</a> 来安装</li>
-  <li>如果需要不同版本的ruby可以<a href="https://ruby-china.org/wiki/install_ruby_guide">安装 RVM</a>来进行ruby版本管理</li>
-</ul>
-
-<h3 id="2安装jekyll">2.安装jekyll</h3>
-<p>该博客使用了 <a href="https://jekyllrb.com/">Jekyll</a>, 当然好多同学可能会用 <a href="https://hexo.io/themes/">Hexo</a> 这个就是萝卜青菜了。
-如果你选择使用Jekyll请安装下面步骤安装生成:</p>
-
-<pre><code class="language-shell">~ $ gem install jekyll bundler
-~ $ jekyll new my-awesome-site
-~ $ cd my-awesome-site
-~/my-awesome-site $ bundle exec jekyll serve
-# =&gt; Now browse to http://localhost:4000
-
-</code></pre>
-<p>生产的项目结构类似</p>
-<pre><code>.
-├── _config.yml    //项目相关配置文件
-├── _data
-|   └── members.yml   //一些需要的数据
-├── _drafts           //草稿
-|   ├── begin-with-the-crazy-ideas.md
-|   └── on-simplicity-in-technology.md
-├── _includes         //公共的部分
-|   ├── footer.html
-|   └── header.html
-├── _layouts           //布局文件
-|   ├── default.html
-|   └── post.html
-├── _posts             //发布的文章
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-|   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass              //sass文件路径编译后生产css
-|   ├── _base.scss
-|   └── _layout.scss
-├── _site              //所有文件编译生产静态文件都存放到这里
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid YAML Frontmatter
-</code></pre>
-<p>具体还有其他目录请参考<a href="https://jekyllrb.com/docs/structure/">jekyll目录结构</a></p>
-
-<h3 id="3安装主题">3.安装主题</h3>
-<p>到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 <a href="http://jekyllthemes.org/">Jekyll 主题</a> ,当然如果在套用别人主题的时候有问题可以看一下
-<a href="http://www.jianshu.com/p/4224b8ea0ec0">Liquid语法</a>,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档</p>
-
-<p>到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。</p>
+<p><a href="http://www.lintcode.com/zh-cn/">LintCode</a>
+<a href="http://hihocoder.com/">Hihocoder</a></p>
 
 <h3 id="参考文章">参考文章</h3>
 
@@ -296,10 +249,10 @@
 
                 <ul class="pager">
     
-    
-    <li class="next">
-        <a href="/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">Next Post &rarr;</a>
+    <li class="previous">
+        <a href="/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">&larr; Previous Post</a>
     </li>
+    
     
 </ul>
 
@@ -309,9 +262,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/2017/09/05/jekyll-site"
-         data-title="搭建jekyll 博客流程记录"
-         data-url="http://blog.xtoshiba.me/2017/09/05/jekyll-site/"></div>
+         data-thread-key="/2017/10/12/interview"
+         data-title="LeetCode,LintCode,Hihocoder刷题指南"
+         data-url="http://blog.xtoshiba.me/2017/10/12/interview/"></div>
     <script>
 
         /**

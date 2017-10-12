@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "LeetCode,LintCode,Hihocoder刷题指南",
+      "subtitle": "通过题目训练来提升自己的编程能力",
+      "data" : "/2017/10/12/interview/",
+      "date": "2017-10-12"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "使用travis-ci集成项目,自动部署博客站点",
       "subtitle": "travis集成注意点和操作步骤",
       "data" : "/2017/09/05/blog-static-nginx/",
