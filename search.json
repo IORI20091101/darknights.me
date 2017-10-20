@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "git的使用教程(一)",
+      "subtitle": "git的初级教程(简明指南)",
+      "data" : "/2017/10/12/git-base/",
+      "date": "2017-10-12"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "LeetCode,LintCode,Hihocoder刷题指南",
       "subtitle": "通过题目训练来提升自己的编程能力",
       "data" : "/2017/10/12/interview/",

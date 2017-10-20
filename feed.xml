@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-10-19T09:15:03+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode,LintCode,Hihocoder刷题指南</title><link href="/2017/10/12/interview/" rel="alternate" type="text/html" title="LeetCode,LintCode,Hihocoder刷题指南" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/2017/10/12/interview</id><content type="html" xml:base="/2017/10/12/interview/">&lt;h1 id=&quot;通过题目训练来提升自己的编程能力&quot;&gt;通过题目训练来提升自己的编程能力&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-10-20T09:54:58+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(一)</title><link href="/2017/10/12/git-base/" rel="alternate" type="text/html" title="git的使用教程(一)" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/2017/10/12/git-base</id><content type="html" xml:base="/2017/10/12/git-base/">&lt;h2 id=&quot;git的初级使用教程&quot;&gt;git的初级使用教程&lt;/h2&gt;
+
+&lt;p&gt;记录常用的git命令&lt;/p&gt;
+&lt;h2 id=&quot;创建新仓库&quot;&gt;创建新仓库&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;   git init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;##检出新仓库&lt;/p&gt;
+&lt;h3 id=&quot;clone本地仓库&quot;&gt;clone本地仓库&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git clone /path/to/repository
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;从远程仓库clone&quot;&gt;从远程仓库clone&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git clone username@host:/path/to/repository
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的初级使用教程</summary></entry><entry><title type="html">LeetCode,LintCode,Hihocoder刷题指南</title><link href="/2017/10/12/interview/" rel="alternate" type="text/html" title="LeetCode,LintCode,Hihocoder刷题指南" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/2017/10/12/interview</id><content type="html" xml:base="/2017/10/12/interview/">&lt;h1 id=&quot;通过题目训练来提升自己的编程能力&quot;&gt;通过题目训练来提升自己的编程能力&lt;/h1&gt;
 
 &lt;h2 id=&quot;leetcode&quot;&gt;&lt;a href=&quot;https://leetcode.com/&quot;&gt;LeetCode&lt;/a&gt;&lt;/h2&gt;
 
