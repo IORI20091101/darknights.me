@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-10-20T09:54:58+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(一)</title><link href="/2017/10/12/git-base/" rel="alternate" type="text/html" title="git的使用教程(一)" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/2017/10/12/git-base</id><content type="html" xml:base="/2017/10/12/git-base/">&lt;h2 id=&quot;git的初级使用教程&quot;&gt;git的初级使用教程&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-10-24T10:28:25+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(一)</title><link href="/git/2017/10/12/git-base/" rel="alternate" type="text/html" title="git的使用教程(一)" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/git/2017/10/12/git-base</id><content type="html" xml:base="/git/2017/10/12/git-base/">&lt;h2 id=&quot;git的初级使用教程&quot;&gt;git的初级使用教程&lt;/h2&gt;
 
-&lt;p&gt;记录常用的git命令&lt;/p&gt;
+&lt;p&gt;记录常用的git命令,方便自己查询&lt;/p&gt;
+
 &lt;h2 id=&quot;创建新仓库&quot;&gt;创建新仓库&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;   git init
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git init
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;##检出新仓库&lt;/p&gt;
@@ -11,6 +12,108 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;从远程仓库clone&quot;&gt;从远程仓库clone&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git clone username@host:/path/to/repository
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;工作流&quot;&gt;工作流&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/trees.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;添加和提交&quot;&gt;添加和提交&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git add &amp;lt;filename&amp;gt;
+    git add *
+    git add .     //添加到缓存区
+
+    git commit -m &quot;代码提交信息&quot;   //提交到本地仓库
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;推送改动&quot;&gt;推送改动&lt;/h3&gt;
+&lt;p&gt;你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以把 master 换成你想要推送的任何分支。&lt;/p&gt;
+
+&lt;p&gt;如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git remote add origin &amp;lt;server&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如此你就能够将你的改动推送到所添加的服务器上去了。&lt;/p&gt;
+
+&lt;h3 id=&quot;分支&quot;&gt;分支&lt;/h3&gt;
+&lt;p&gt;分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/branches.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;创建一个叫做“feature_x”的分支，并切换过去：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git checkout -b feature_x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;切换回主分支：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git checkout master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再把新建的分支删掉：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git branch -d feature_x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git push origin &amp;lt;branch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;更新与合并&quot;&gt;更新与合并&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git pull   //相当于 git fetch and git merge两个操作
+    git diff &amp;lt;source_branch&amp;gt; &amp;lt;target_branch&amp;gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;标签&quot;&gt;标签&lt;/h3&gt;
+&lt;p&gt;以执行如下命令创建一个叫做 1.0.0 的标签：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git	 tag 1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;log&quot;&gt;log&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git log //查看所有日志
+
+    git log --author=toshiba  //查看某人的日志
+
+    git log --pretty=oneline  //压缩后的日志每个提交只占一行
+
+    git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
+
+    git log --name-status  //查看都有哪些文件修改过了
+
+    git log --help  //更多的帮助信息
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;替换本地改动&quot;&gt;替换本地改动&lt;/h3&gt;
+&lt;p&gt;假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git checkout -- &amp;lt;filename&amp;gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
+    //已添加到暂存区的改动以及新文件都不会受到影响。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git fetch origin
+    git reset --hard origin/master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;实用小贴士&quot;&gt;实用小贴士&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    gitk           					//内建的图形化 git
+
+    git config color.ui true          //彩色的 git 输出
+
+    git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
+
+    git add -i 							//交互式添加文件到暂存区：
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
