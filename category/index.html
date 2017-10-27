@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>使用travis-ci集成项目,自动部署博客站点 - Dark knight's Blog</title>
+    <title>category - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.xtoshiba.me/2017/09/05/blog-static-nginx/">
+    <link rel="canonical" href="http://blog.xtoshiba.me/category/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -174,282 +174,263 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/post-bg-js-module.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/category.jpg ')
     }
 </style>
 
 
 
-
-
-    <header class="intro-header" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
-                            
-                            <a class="tag" href="/tags/#jekyll" title="jekyll">jekyll</a>
-                            
-                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
-                            
-                        </div>
-                        <h1>使用travis-ci集成项目,自动部署博客站点</h1>
-                        
-                        
-                        <h2 class="subheading">travis集成注意点和操作步骤</h2>
-                        
-                        <span class="meta">Posted by toshiba on September 5, 2017</span>
-                    </div>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading"  id="tag-heading"  >
+                    <h1>category</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">keep hungry keep foolish</span>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
 
 
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
 
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-1
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Container -->
+        <div class="
+                col-lg-8 col-lg-offset-2
                 col-md-8 col-md-offset-1
                 col-sm-12
                 col-xs-12
-                post-container">
-				<h1 id="第一次搭建博客">第一次搭建博客</h1>
-
-<h1 id="参考文章">参考文章</h1>
-
-<p><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
-</a>
-<a href="http://www.zhanxin.info/journal/">掌心</a>
-<a href="https://blog.ixxoo.me/">likebeta’s Blog
-</a>
-<a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a>
-<a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a>
-<a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
-</a>
-<a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a>
-<a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a>
-<a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a>
-<a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a>
-<a href="http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/">使用travis-ci自动部署hexo博客</a></p>
-
-
-                <hr>
-
-                <ul class="pager">
-    
-    <li class="previous">
-        <a href="/2017/09/05/jekyll-site/" data-toggle="tooltip" data-placement="top" title="搭建jekyll 博客流程记录">&larr; Previous Post</a>
-    </li>
-    
-    
-    <li class="next">
-        <a href="/2017/10/12/interview/" data-toggle="tooltip" data-placement="top" title="LeetCode,LintCode,Hihocoder刷题指南">Next Post &rarr;</a>
-    </li>
-    
-</ul>
-
-
-
-
-<!-- disqus 评论框 start -->
-<div class="comment">
-    <div id="disqus_thread"
-         data-thread-key="/2017/09/05/blog-static-nginx"
-         data-title="使用travis-ci集成项目,自动部署博客站点"
-         data-url="http://blog.xtoshiba.me/2017/09/05/blog-static-nginx/"></div>
-    <script>
-
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        /*
-         var disqus_config = function () {
-         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-         };
-         */
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://iori-1.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-<!-- disqus 评论框 end -->
-
-
-
-
-
-
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-        var d = document, t = 'script',
-                o = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-        o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-        s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://darknights.b0.upaiyun.com/assets/scripts/anchor.min.js",function(){
-        anchors.options = {
-            visible: 'always',
-            placement: 'right',
-            icon: '¶'
-        };
-        anchors.add(".post-container h3").remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-
-
-            </div>
-
-            <!-- Sidebar Container -->
-            
-
-
-
-
-
-<div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
+                
             ">
-    <!-- Search Container -->
-    <div class="hidden-xs">
-        <div class="input-group">
-            <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
-            <span class="input-group-btn">
-                <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
-            </span>
-        </div>
+            <!-- 标签列表 -->
+
+<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="博客搭建">
+                    <span class="tag-text">博客搭建</span>
+                </span>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-09-05">2017-09-05</time>
+    <a href="/2017/09/05/blog-static-nginx/" title="使用travis-ci集成项目,自动部署博客站点">使用travis-ci集成项目,自动部署博客站点</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/09/05/blog-static-nginx/">
+            <h2 class="post-title">
+                使用travis-ci集成项目,自动部署博客站点
+            </h2>
+            
+            <h3 class="post-subtitle">
+                travis集成注意点和操作步骤
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-09-05</p> -->
     </div>
-
-    <hr class="hidden-sm hidden-xs">
-    <h5 id="catalog">
-        <a class="catalog-toggle" href="#">目录</a>
-    </h5>
-    <div id="toc"></div>
-
-
-    <ul class="catalog-body">
-        <li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>
-        <li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>
-        <li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>
-    </ul>
-
-
-
-
-
+    <hr>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-09-05">2017-09-05</time>
+    <a href="/2017/09/05/jekyll-site/" title="搭建jekyll 博客流程记录">搭建jekyll 博客流程记录</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/09/05/jekyll-site/">
+            <h2 class="post-title">
+                搭建jekyll 博客流程记录
+            </h2>
+            
+            <h3 class="post-subtitle">
+                如何搭建个人博客以及注意点
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-09-05</p> -->
+    </div>
+    <hr>
+    
 </div>
 
+<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="JavaScript">
+                    <span class="tag-text">JavaScript</span>
+                </span>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-10-12">2017-10-12</time>
+    <a href="/2017/10/12/interview/" title="LeetCode,LintCode,Hihocoder刷题指南">LeetCode,LintCode,Hihocoder刷题指南</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/10/12/interview/">
+            <h2 class="post-title">
+                LeetCode,LintCode,Hihocoder刷题指南
+            </h2>
+            
+            <h3 class="post-subtitle">
+                通过题目训练来提升自己的编程能力
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-10-12</p> -->
+    </div>
+    <hr>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-09-05">2017-09-05</time>
+    <a href="/2017/09/05/blog-static-nginx/" title="使用travis-ci集成项目,自动部署博客站点">使用travis-ci集成项目,自动部署博客站点</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/09/05/blog-static-nginx/">
+            <h2 class="post-title">
+                使用travis-ci集成项目,自动部署博客站点
+            </h2>
+            
+            <h3 class="post-subtitle">
+                travis集成注意点和操作步骤
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-09-05</p> -->
+    </div>
+    <hr>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-09-05">2017-09-05</time>
+    <a href="/2017/09/05/jekyll-site/" title="搭建jekyll 博客流程记录">搭建jekyll 博客流程记录</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/09/05/jekyll-site/">
+            <h2 class="post-title">
+                搭建jekyll 博客流程记录
+            </h2>
+            
+            <h3 class="post-subtitle">
+                如何搭建个人博客以及注意点
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-09-05</p> -->
+    </div>
+    <hr>
+    
+</div>
 
+<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="jekyll">
+                    <span class="tag-text">jekyll</span>
+                </span>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-09-05">2017-09-05</time>
+    <a href="/2017/09/05/blog-static-nginx/" title="使用travis-ci集成项目,自动部署博客站点">使用travis-ci集成项目,自动部署博客站点</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/09/05/blog-static-nginx/">
+            <h2 class="post-title">
+                使用travis-ci集成项目,自动部署博客站点
+            </h2>
+            
+            <h3 class="post-subtitle">
+                travis集成注意点和操作步骤
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-09-05</p> -->
+    </div>
+    <hr>
+    
+</div>
 
+<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="interview">
+                    <span class="tag-text">interview</span>
+                </span>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-10-12">2017-10-12</time>
+    <a href="/2017/10/12/interview/" title="LeetCode,LintCode,Hihocoder刷题指南">LeetCode,LintCode,Hihocoder刷题指南</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/2017/10/12/interview/">
+            <h2 class="post-title">
+                LeetCode,LintCode,Hihocoder刷题指南
+            </h2>
+            
+            <h3 class="post-subtitle">
+                通过题目训练来提升自己的编程能力
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-10-12</p> -->
+    </div>
+    <hr>
+    
+</div>
 
+<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="工具">
+                    <span class="tag-text">工具</span>
+                </span>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-10-12">2017-10-12</time>
+    <a href="/git/2017/10/12/git-base/" title="git的使用教程(一)">git的使用教程(一)</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/git/2017/10/12/git-base/">
+            <h2 class="post-title">
+                git的使用教程(一)
+            </h2>
+            
+            <h3 class="post-subtitle">
+                git的初级教程(简明指南)
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-10-12</p> -->
+    </div>
+    <hr>
+    
+</div>
 
-
-
-            <!-- 详情底部的友情链接和标签云这里不单独抽离 -->
-            <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            <a href="/tags/#博客搭建" title="博客搭建" rel="2">
-                                博客搭建
-                            </a>
-        				
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="3">
-                                JavaScript
-                            </a>
-        				
-                            <a href="/tags/#jekyll" title="jekyll" rel="1">
-                                jekyll
-                            </a>
-        				
-                            <a href="/tags/#interview" title="interview" rel="1">
-                                interview
-                            </a>
-        				
-                            <a href="/tags/#工具" title="工具" rel="1">
-                                工具
-                            </a>
-        				
-                            <a href="/tags/#git" title="git" rel="1">
-                                git
-                            </a>
-        				
-        			</div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href="http://xtoshiba.me">Hux Blog</a></li>
-                    
-                        <li><a href="#">Foo</a></li>
-                    
-                        <li><a href="#">Bar</a></li>
-                    
-                        <li><a href="#">Example Friends</a></li>
-                    
-                        <li><a href="#">It helps SEO</a></li>
-                    
-                </ul>
-                
-            </div>
-
+<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="git">
+                    <span class="tag-text">git</span>
+                </span>
+    
+    <!-- <li class="listing-item">
+    <time datetime="2017-10-12">2017-10-12</time>
+    <a href="/git/2017/10/12/git-base/" title="git的使用教程(一)">git的使用教程(一)</a>
+    </li> -->
+    <div class="post-preview">
+        <a href="/git/2017/10/12/git-base/">
+            <h2 class="post-title">
+                git的使用教程(一)
+            </h2>
+            
+            <h3 class="post-subtitle">
+                git的初级教程(简明指南)
+            </h3>
+            
+        </a>
+        <!-- <p class="post-meta">2017-10-12</p> -->
+    </div>
+    <hr>
+    
+</div>
 
         </div>
+        <!-- Sidebar Container -->
+        
     </div>
-</article>
+</div>
+
 
 
 
