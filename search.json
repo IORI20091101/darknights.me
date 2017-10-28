@@ -5,7 +5,7 @@
       {
       "value" : "git的使用教程(一)",
       "subtitle": "git的初级教程(简明指南)",
-      "data" : "/git/2017/10/12/git-base/",
+      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/12/git-base/",
       "date": "2017-10-12"
       }
       
@@ -15,7 +15,7 @@
       {
       "value" : "LeetCode,LintCode,Hihocoder刷题指南",
       "subtitle": "通过题目训练来提升自己的编程能力",
-      "data" : "/2017/10/12/interview/",
+      "data" : "/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/",
       "date": "2017-10-12"
       }
       
@@ -35,7 +35,7 @@
       {
       "value" : "搭建jekyll 博客流程记录",
       "subtitle": "如何搭建个人博客以及注意点",
-      "data" : "/2017/09/05/jekyll-site/",
+      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/",
       "date": "2017-09-05"
       }
       

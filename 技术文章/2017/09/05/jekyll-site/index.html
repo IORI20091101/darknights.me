@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>git的使用教程(一) - Dark knight's Blog</title>
+    <title>搭建jekyll 博客流程记录 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.xtoshiba.me/git/2017/10/12/git-base/">
+    <link rel="canonical" href="http://blog.darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@
 
 
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body ontouchstart="" data-spy="scroll" data-target=".toc" data-offset="20">
 
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -101,12 +101,12 @@
                     <li>
                         <a href="/category">category</a>
                     </li>
-                    <li>
-                        <a href="/tags">tags</a>
-                    </li>
-                    <li>
-                        <a href="/essay">essay</a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="/tags">tags</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="/essay">essay</a>-->
+                    <!--</li>-->
                     <li>
                         <a href="/news">news</a>
                     </li>
@@ -174,7 +174,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/git2.png ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/post-bg-js-module.jpg ')
     }
 </style>
 
@@ -189,17 +189,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#工具" title="工具">工具</a>
+                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
                             
-                            <a class="tag" href="/tags/#git" title="git">git</a>
+                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
                             
                         </div>
-                        <h1>git的使用教程(一)</h1>
+                        <h1>搭建jekyll 博客流程记录</h1>
                         
                         
-                        <h2 class="subheading">git的初级教程(简明指南)</h2>
+                        <h2 class="subheading">如何搭建个人博客以及注意点</h2>
                         
-                        <span class="meta">Posted by toshiba on October 12, 2017</span>
+                        <span class="meta">Posted by toshiba on September 5, 2017</span>
                     </div>
                 </div>
             </div>
@@ -221,141 +221,105 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="git的初级使用教程">git的初级使用教程</h2>
+				<h2 id="第一次搭建博客">第一次搭建博客</h2>
 
-<p>记录常用的git命令,方便自己查询</p>
-
-<h2 id="创建新仓库">创建新仓库</h2>
-<pre><code class="language-java">    git init
-</code></pre>
-
-<p>##检出新仓库</p>
-<h3 id="clone本地仓库">clone本地仓库</h3>
-<pre><code class="language-java">    git clone /path/to/repository
-</code></pre>
-<h3 id="从远程仓库clone">从远程仓库clone</h3>
-<pre><code class="language-java">    git clone username@host:/path/to/repository
-</code></pre>
-
-<h3 id="工作流">工作流</h3>
+<p>不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:</p>
 <blockquote>
-  <p>你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。</p>
+  <ul>
+    <li><a href="http://huangxuan.me/">黄玄</a></li>
+    <li><a href="https://mritd.me/">漠然</a></li>
+  </ul>
 </blockquote>
 
-<p><img src="https://darknights.b0.upaiyun.com/assets/images/trees.png" alt="" /></p>
+<p>我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
+而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。</p>
 
-<h3 id="添加和提交">添加和提交</h3>
-<pre><code class="language-java">    git add &lt;filename&gt;
-    git add *
-    git add .     //添加到缓存区
+<h2 id="搭建博客的基本流程">搭建博客的基本流程</h2>
 
-    git commit -m "代码提交信息"   //提交到本地仓库
+<h3 id="安装ruby-rails">安装Ruby, Rails</h3>
+<p>建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。</p>
+
+<ul>
+  <li><a href="https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby">Mac OS X上安装ruby</a> 来安装</li>
+  <li>如果需要不同版本的ruby可以<a href="https://ruby-china.org/wiki/install_ruby_guide">安装 RVM</a>来进行ruby版本管理</li>
+</ul>
+
+<h3 id="安装jekyll">安装jekyll</h3>
+<p>该博客使用了 <a href="https://jekyllrb.com/">Jekyll</a>, 当然好多同学可能会用 <a href="https://hexo.io/themes/">Hexo</a> 这个就是萝卜青菜了。
+如果你选择使用Jekyll请安装下面步骤安装生成:</p>
+
+<pre><code class="language-shell">~ $ gem install jekyll bundler
+~ $ jekyll new my-awesome-site
+~ $ cd my-awesome-site
+~/my-awesome-site $ bundle exec jekyll serve
+# =&gt; Now browse to http://localhost:4000
+
 </code></pre>
-
-<h3 id="推送改动">推送改动</h3>
-<p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
-
-<pre><code class="language-java">    git push origin master
+<p>生产的项目结构类似</p>
+<pre><code>.
+├── _config.yml    //项目相关配置文件
+├── _data
+|   └── members.yml   //一些需要的数据
+├── _drafts           //草稿
+|   ├── begin-with-the-crazy-ideas.md
+|   └── on-simplicity-in-technology.md
+├── _includes         //公共的部分
+|   ├── footer.html
+|   └── header.html
+├── _layouts           //布局文件
+|   ├── default.html
+|   └── post.html
+├── _posts             //发布的文章
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+|   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass              //sass文件路径编译后生产css
+|   ├── _base.scss
+|   └── _layout.scss
+├── _site              //所有文件编译生产静态文件都存放到这里
+├── .jekyll-metadata
+└── index.html # can also be an 'index.md' with valid YAML Frontmatter
 </code></pre>
-<p>可以把 master 换成你想要推送的任何分支。</p>
+<p>具体还有其他目录请参考<a href="https://jekyllrb.com/docs/structure/">jekyll目录结构</a></p>
 
-<p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
+<h3 id="安装主题">安装主题</h3>
+<p>到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 <a href="http://jekyllthemes.org/">Jekyll 主题</a> ,当然如果在套用别人主题的时候有问题可以看一下
+<a href="http://www.jianshu.com/p/4224b8ea0ec0">Liquid语法</a>,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档</p>
 
-<pre><code class="language-java">    git remote add origin &lt;server&gt;
-</code></pre>
+<p>到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。</p>
 
-<p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
-
-<h3 id="分支">分支</h3>
-<p>分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
-<img src="https://darknights.b0.upaiyun.com/assets/images/branches.png" alt="" /></p>
-
-<p>创建一个叫做“feature_x”的分支，并切换过去：</p>
-
-<pre><code class="language-java">    git checkout -b feature_x
-</code></pre>
-
-<p>切换回主分支：</p>
-
-<pre><code class="language-java">    git checkout master
-</code></pre>
-<p>再把新建的分支删掉：</p>
-
-<pre><code class="language-java">    git branch -d feature_x
-</code></pre>
-
-<p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
-
-<pre><code class="language-java">    git push origin &lt;branch&gt;
-</code></pre>
-
-<h3 id="更新与合并">更新与合并</h3>
-
-<pre><code class="language-java">    git pull   //相当于 git fetch and git merge两个操作
-    git diff &lt;source_branch&gt; &lt;target_branch&gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
-</code></pre>
-
-<h3 id="标签">标签</h3>
-<p>以执行如下命令创建一个叫做 1.0.0 的标签：</p>
-
-<pre><code class="language-java">    git	 tag 1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
-</code></pre>
-
-<h3 id="log">log</h3>
-
-<pre><code class="language-java">    git log //查看所有日志
-
-    git log --author=toshiba  //查看某人的日志
-
-    git log --pretty=oneline  //压缩后的日志每个提交只占一行
-
-    git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
-
-    git log --name-status  //查看都有哪些文件修改过了
-
-    git log --help  //更多的帮助信息
-</code></pre>
-
-<h3 id="替换本地改动">替换本地改动</h3>
-<p>假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：</p>
-
-<pre><code class="language-java">    git checkout -- &lt;filename&gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
-    //已添加到暂存区的改动以及新文件都不会受到影响。
-</code></pre>
-<p>如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它</p>
-
-<pre><code class="language-java">    git fetch origin
-    git reset --hard origin/master
-</code></pre>
-
-<h3 id="实用小贴士">实用小贴士</h3>
-
-<pre><code class="language-java">    gitk           					//内建的图形化 git
-
-    git config color.ui true          //彩色的 git 输出
-
-    git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
-
-    git add -i 							//交互式添加文件到暂存区：
-</code></pre>
-
-<h3 id="参考文章">参考文章</h3>
+<p>参考文章</p>
 
 <blockquote>
   <ul>
-    <li><a href="http://rogerdudler.github.io/git-guide/index.zh.html">git - 简明指南</a></li>
+    <li><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
+</a></li>
+    <li><a href="http://www.zhanxin.info/journal/">掌心</a></li>
+    <li><a href="https://blog.ixxoo.me/">likebeta’s Blog
+</a></li>
+    <li><a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a></li>
+    <li><a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a></li>
+    <li><a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
+</a></li>
+    <li><a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a></li>
+    <li><a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a></li>
+    <li><a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a></li>
+    <li><a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a></li>
+    <li><a href="http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/">适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog</a></li>
+    <li><a href="http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/">使用travis-ci自动部署hexo博客</a></li>
+    <li><a href="http://t.hengwei.me/post/%E4%B8%BAjekyll%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E4%B8%8Escrollspy%E6%95%88%E6%9E%9C.html">为Jekyll博客添加目录与ScrollSpy效果</a></li>
   </ul>
 </blockquote>
+
 
 
                 <hr>
 
                 <ul class="pager">
     
-    <li class="previous">
-        <a href="/2017/10/12/interview/" data-toggle="tooltip" data-placement="top" title="LeetCode,LintCode,Hihocoder刷题指南">&larr; Previous Post</a>
-    </li>
     
+    <li class="next">
+        <a href="/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">Next Post &rarr;</a>
+    </li>
     
 </ul>
 
@@ -365,9 +329,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/git/2017/10/12/git-base"
-         data-title="git的使用教程(一)"
-         data-url="http://blog.xtoshiba.me/git/2017/10/12/git-base/"></div>
+         data-thread-key="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site"
+         data-title="搭建jekyll 博客流程记录"
+         data-url="http://blog.darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/"></div>
     <script>
 
         /**
@@ -459,17 +423,17 @@
     </div>
 
     <hr class="hidden-sm hidden-xs">
-    <h5 id="catalog">
-        <a class="catalog-toggle" href="#">目录</a>
-    </h5>
+    <!--<h5 id="catalog">-->
+        <!--<a class="catalog-toggle" href="#">目录</a>-->
+    <!--</h5>-->
     <div id="toc"></div>
 
 
-    <ul class="catalog-body">
-        <li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>
-        <li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>
-        <li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>
-    </ul>
+    <!--<ul class="catalog-body">-->
+        <!--<li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>-->
+        <!--<li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>-->
+        <!--<li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>-->
+    <!--</ul>-->
 
 
 
@@ -645,7 +609,12 @@
 
 
 
-<script src="https://darknights.b0.upaiyun.com/assets/scripts/custom.js"></script>
+<!--<script src="https://darknights.b0.upaiyun.com/assets/scripts/custom.js"></script>-->
+
+<script src="http://127.0.0.1:4000/assets/scripts/toc.js"></script>
+<script src="http://127.0.0.1:4000/assets/scripts/custom.js"></script>
+
+
 
 
 <!-- async load function -->
