@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>LeetCode,LintCode,Hihocoder刷题指南 - Dark knight's Blog</title>
+    <title>javascript的位操作 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.darknights.me/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/">
+    <link rel="canonical" href="http://blog.darknights.me/javascript/2017/11/01/bin-operate/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/post-bg-js-module.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg-bat-3.jpg ')
     }
 </style>
 
@@ -192,17 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#interview" title="interview">interview</a>
+                            <a class="tag" href="/tags/#计算机基础" title="计算机基础">计算机基础</a>
                             
-                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                             
                         </div>
-                        <h1>LeetCode,LintCode,Hihocoder刷题指南</h1>
+                        <h1>javascript的位操作</h1>
                         
                         
-                        <h2 class="subheading">通过题目训练来提升自己的编程能力</h2>
+                        <h2 class="subheading">在javascript中的位操作涉及二进制的处理</h2>
                         
-                        <span class="meta">Posted by toshiba on October 12, 2017</span>
+                        <span class="meta">Posted by toshiba on November 1, 2017</span>
                     </div>
                 </div>
             </div>
@@ -224,47 +224,161 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="通过题目训练来提升自己的编程能力">通过题目训练来提升自己的编程能力</h1>
+				<h1 id="关于javascript中的操作">关于javascript中的~操作</h1>
 
-<h2 id="leetcode"><a href="https://leetcode.com/">LeetCode</a></h2>
-
-<blockquote>
-  <p>LeetCode 是一个非常棒的 OJ（Online Judge）平台，收集了许多公司的面试题目。相对其他 OJ 平台而言，有着下面的几个优点：</p>
-  <ul>
-    <li>题目全部来自业内大公司的真实面试</li>
-    <li>不用处理输入输出，精力全放在解决具体问题上</li>
-    <li>题目有丰富的讨论，可以参考别人的思路</li>
-    <li>精确了解自己代码在所有提交代码中运行效率的排名</li>
-    <li>支持多种主流语言：C/C++，Python, Java</li>
-    <li>可以在线进行测试，方便调试</li>
-  </ul>
-</blockquote>
-
-<p><a href="http://www.lintcode.com/zh-cn/">LintCode</a>
-<a href="http://hihocoder.com/">Hihocoder</a></p>
-
-<p>参考文章</p>
+<p>参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析</p>
 
 <blockquote>
-  <ul>
-    <li><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
-</a></li>
-    <li><a href="http://www.zhanxin.info/journal/">掌心</a></li>
-    <li><a href="https://blog.ixxoo.me/">likebeta’s Blog
-</a></li>
-    <li><a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a></li>
-    <li><a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a></li>
-    <li><a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
-</a></li>
-    <li><a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a></li>
-    <li><a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a></li>
-    <li><a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a></li>
-    <li><a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a></li>
-    <li><a href="http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/">适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog</a></li>
-    <li><a href="http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/">使用travis-ci自动部署hexo博客</a></li>
-  </ul>
+  <p>!~location.href.search(‘abc’)</p>
 </blockquote>
 
+<h2 id="首先再次回顾一下js中的位运算">首先再次回顾一下js中的位运算</h2>
+<ul>
+  <li>&amp; 与</li>
+  <li>| 或</li>
+  <li>~ 非</li>
+  <li>^ 异或</li>
+  <li>&lt;&lt; 左移</li>
+  <li>&gt;&gt; 算数右移(有符号右移)</li>
+  <li>&gt;&gt;&gt; 逻辑右移(无符号右移)</li>
+</ul>
+
+<h2 id="numberprototypetostring">Number.prototype.toString</h2>
+
+<p>Number.prototype.toString方法可以讲数字转化为字符串，有一个可选的参数，用来决定将数字显示为指定的进制，下面可以查看3的二进制表示</p>
+
+<pre><code class="language-`"> 3..toString(2)
+
+ (3).toString(2)
+
+ Number(3).toString(2)   //这里如果直接 3.toString(2)是会报错的
+
+  &gt;&gt; 11
+</code></pre>
+
+<h2 id="-与">&amp; 与</h2>
+
+<blockquote>
+  <p>&amp;按位与会将操作数和被操作数的相同为进行与运算，如果都为1则为1，如果有一个为0则为0</p>
+</blockquote>
+
+<pre><code>101
+011
+---
+001
+</code></pre>
+
+<h2 id="-或">| 或</h2>
+
+<blockquote>
+  <p>按位或是相同的位置上只要有一个为1就是1，两个都为0则为0</p>
+</blockquote>
+
+<pre><code>101
+001
+---
+101
+</code></pre>
+
+<h2 id="-非">~ 非</h2>
+
+<blockquote>
+  <p>~操作符会将操作数的每一位取反，如果是1则变为0，如果是0则边为1</p>
+</blockquote>
+
+<pre><code>101
+---
+010
+</code></pre>
+
+<h2 id="-异或">^ 异或</h2>
+
+<blockquote>
+  <p>再来说说异或，这个比较有意思，异或顾名思义看看两个位是否为异——不同，两个位不同则为1，两个位相同则为0</p>
+</blockquote>
+
+<pre><code>101
+001
+---
+100
+</code></pre>
+
+<h2 id="再次分析开头的问题">再次分析开头的问题</h2>
+<p>首先关于indexOf获得的值可能有几种请求 -1,0,1 从这三种进行分析</p>
+
+<h3 id="-1">~-1</h3>
+
+<p>为了简便计算我这只取8位</p>
+
+<pre><code>10000001  //这是-1的原码 (真值的绝对值加上符号位)
+--------  //进行按位非操作后 这里会改变符号
+01111110  //得到此值为正值要获得该值得真值需要然后取反再减一 注意取反的操作不会改变符号
+--------
+00000000  //最后得到的值是0
+
+//浏览器控制台输出
+
+~-1
+0
+
+</code></pre>
+
+<h3 id="0">~0</h3>
+<pre><code>00000000  //这是0的原码 (真值的绝对值加上符号位)
+--------  //进行按位非操作后 这里会改变符号
+11111111  //得到此值该值为负值的补码 要获得该值得真值需要对补码求补即取反+1 (注意取反的操作不会改变符号)
+--------
+10000001  //最后得到的值是1
+
+//浏览器控制台输出
+
+~0
+-1
+
+</code></pre>
+
+<h3 id="1">~1</h3>
+<pre><code>00000001  //这是1的原码 (真值的绝对值加上符号位)
+--------  //进行按位非操作后 这里会改变符号
+11111110  //得到此值该值为负值的补码 要获得该值得真值需要对补码求补即取反+1 (注意取反的操作不会改变符号)
+--------
+10000010  //最后得到的值是2
+
+//浏览器控制台输出
+
+~1
+-2
+
+</code></pre>
+
+<p>因此在上面问题出现的时候</p>
+
+<pre><code>~location.href.search('abc')  //未匹配到返回 -1 这里为 ~-1  == 0 ==&gt; !0 == true;
+~location.href.search('abc')  //未匹配到返回 0 这里为 ~0  == -1 ==&gt; !-1 == false;
+~location.href.search('abc')  //未匹配到返回 1 这里为 ~1  == -2 ==&gt; !-2== false;
+
+</code></pre>
+
+<p>因此只有返回 -1时</p>
+
+<p>如果为 -1 说明未匹配到</p>
+
+<blockquote>
+  <p>!~location.href.search(‘abc’) ===&gt; true</p>
+</blockquote>
+
+<p>得证。</p>
+
+<h1 id="文章参考">文章参考</h1>
+<ul>
+  <li><a href="http://yanhaijing.com/javascript/2016/07/20/binary-in-js/">聊聊JavaScript中的二进制数</a></li>
+  <li><a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">原码, 反码, 补码 详解</a></li>
+</ul>
+
+<h1 id="延伸阅读">延伸阅读</h1>
+<ul>
+  <li><a href="http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/">每一个JavaScript开发者应该了解的浮点知识</a></li>
+</ul>
 
 
                 <hr>
@@ -272,13 +386,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">&larr; Previous Post</a>
+        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/" data-toggle="tooltip" data-placement="top" title="常用快捷键整理总结">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/12/git-base/" data-toggle="tooltip" data-placement="top" title="git的使用教程(一)">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -288,9 +398,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview"
-         data-title="LeetCode,LintCode,Hihocoder刷题指南"
-         data-url="http://blog.darknights.me/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/"></div>
+         data-thread-key="/javascript/2017/11/01/bin-operate"
+         data-title="javascript的位操作"
+         data-url="http://blog.darknights.me/javascript/2017/11/01/bin-operate/"></div>
     <script>
 
         /**

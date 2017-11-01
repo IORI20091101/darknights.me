@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "javascript的位操作",
+      "subtitle": "在javascript中的位操作涉及二进制的处理",
+      "data" : "/javascript/2017/11/01/bin-operate/",
+      "date": "2017-11-01"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "常用快捷键整理总结",
       "subtitle": "为了加快生产速度所以各种快捷键需要熟练掌握",
       "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/",
