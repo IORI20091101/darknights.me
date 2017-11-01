@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-01T08:04:34+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">javascript的位操作</title><link href="/javascript/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/javascript/2017/11/01/bin-operate</id><content type="html" xml:base="/javascript/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-01T13:19:53+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
 
 &lt;p&gt;参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析&lt;/p&gt;
 
@@ -6,7 +6,8 @@
   &lt;p&gt;!~location.href.search(‘abc’)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;首先再次回顾一下js中的位运算&quot;&gt;首先再次回顾一下js中的位运算&lt;/h2&gt;
+&lt;p&gt;首先再次回顾一下js中的位运算&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&amp;amp; 与&lt;/li&gt;
   &lt;li&gt;| 或&lt;/li&gt;
@@ -17,7 +18,7 @@
   &lt;li&gt;&amp;gt;&amp;gt;&amp;gt; 逻辑右移(无符号右移)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;numberprototypetostring&quot;&gt;Number.prototype.toString&lt;/h2&gt;
+&lt;p&gt;Number.prototype.toString&lt;/p&gt;
 
 &lt;p&gt;Number.prototype.toString方法可以讲数字转化为字符串，有一个可选的参数，用来决定将数字显示为指定的进制，下面可以查看3的二进制表示&lt;/p&gt;
 
@@ -77,10 +78,11 @@
 100
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;再次分析开头的问题&quot;&gt;再次分析开头的问题&lt;/h2&gt;
+&lt;p&gt;再次分析开头的问题&lt;/p&gt;
+
 &lt;p&gt;首先关于indexOf获得的值可能有几种请求 -1,0,1 从这三种进行分析&lt;/p&gt;
 
-&lt;h3 id=&quot;-1&quot;&gt;~-1&lt;/h3&gt;
+&lt;h2 id=&quot;-1&quot;&gt;~-1&lt;/h2&gt;
 
 &lt;p&gt;为了简便计算我这只取8位&lt;/p&gt;
 
@@ -97,7 +99,8 @@
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;0&quot;&gt;~0&lt;/h3&gt;
+&lt;h2 id=&quot;0&quot;&gt;~0&lt;/h2&gt;
+
 &lt;pre&gt;&lt;code&gt;00000000  //这是0的原码 (真值的绝对值加上符号位)
 --------  //进行按位非操作后 这里会改变符号
 11111111  //得到此值该值为负值的补码 要获得该值得真值需要对补码求补即取反+1 (注意取反的操作不会改变符号)
@@ -111,7 +114,8 @@
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;1&quot;&gt;~1&lt;/h3&gt;
+&lt;h2 id=&quot;1&quot;&gt;~1&lt;/h2&gt;
+
 &lt;pre&gt;&lt;code&gt;00000001  //这是1的原码 (真值的绝对值加上符号位)
 --------  //进行按位非操作后 这里会改变符号
 11111110  //得到此值该值为负值的补码 要获得该值得真值需要对补码求补即取反+1 (注意取反的操作不会改变符号)
@@ -152,7 +156,8 @@
 &lt;h1 id=&quot;延伸阅读&quot;&gt;延伸阅读&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/&quot;&gt;每一个JavaScript开发者应该了解的浮点知识&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">关于javascript中的~操作</summary></entry><entry><title type="html">常用快捷键整理总结</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/" rel="alternate" type="text/html" title="常用快捷键整理总结" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/">&lt;h1 id=&quot;工欲善其事必先利其器快捷键总结&quot;&gt;工欲善其事必先利其器快捷键总结&lt;/h1&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">原码, 反码, 补码 详解</title><link href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/" rel="alternate" type="text/html" title="原码, 反码, 补码 详解" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate</id><content type="html" xml:base="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/">&lt;h1 id=&quot;机器数和真值&quot;&gt;机器数和真值&lt;/h1&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jser.it/blog/2014/07/07/numbers-in-javascript/&quot;&gt;Numbers in JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">关于javascript中的~操作</summary></entry><entry><title type="html">常用快捷键整理总结</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/" rel="alternate" type="text/html" title="常用快捷键整理总结" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/">&lt;h1 id=&quot;工欲善其事必先利其器快捷键总结&quot;&gt;工欲善其事必先利其器快捷键总结&lt;/h1&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">原码, 反码, 补码 详解</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/" rel="alternate" type="text/html" title="原码, 反码, 补码 详解" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/">&lt;h1 id=&quot;机器数和真值&quot;&gt;机器数和真值&lt;/h1&gt;
 &lt;p&gt;在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.&lt;/p&gt;
 
 &lt;h2 id=&quot;机器数&quot;&gt;机器数&lt;/h2&gt;
@@ -296,7 +301,7 @@
 &lt;h1 id=&quot;延伸阅读&quot;&gt;延伸阅读&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/&quot;&gt;每一个JavaScript开发者应该了解的浮点知识&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><summary type="html">机器数和真值 在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.</summary></entry><entry><title type="html">常用的后台管理主题模板</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/" rel="alternate" type="text/html" title="常用的后台管理主题模板" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/">&lt;h2 id=&quot;常用后台管理主题推荐&quot;&gt;常用后台管理主题推荐&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础知识" /><summary type="html">机器数和真值 在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.</summary></entry><entry><title type="html">常用的后台管理主题模板</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/" rel="alternate" type="text/html" title="常用的后台管理主题模板" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/">&lt;h2 id=&quot;常用后台管理主题推荐&quot;&gt;常用后台管理主题推荐&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;jQuey: &lt;a href=&quot;http://www.bootcss.com/&quot;&gt;Bootstrap&lt;/a&gt;&lt;/li&gt;

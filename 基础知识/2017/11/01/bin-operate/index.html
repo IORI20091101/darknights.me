@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>原码, 反码, 补码 详解 - Dark knight's Blog</title>
+    <title>javascript的位操作 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/">
+    <link rel="canonical" href="http://blog.darknights.me/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg-bat-2.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg-bat-3.jpg ')
     }
 </style>
 
@@ -194,13 +194,15 @@
                             
                             <a class="tag" href="/tags/#计算机基础" title="计算机基础">计算机基础</a>
                             
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                            
                         </div>
-                        <h1>原码, 反码, 补码 详解</h1>
+                        <h1>javascript的位操作</h1>
                         
                         
-                        <h2 class="subheading">原码, 反码, 补码的基础概念和计算方法.</h2>
+                        <h2 class="subheading">在javascript中的位操作涉及二进制的处理</h2>
                         
-                        <span class="meta">Posted by toshiba on October 31, 2017</span>
+                        <span class="meta">Posted by toshiba on November 1, 2017</span>
                     </div>
                 </div>
             </div>
@@ -222,140 +224,154 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="机器数和真值">机器数和真值</h1>
-<p>在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.</p>
+				<h1 id="关于javascript中的操作">关于javascript中的~操作</h1>
 
-<h2 id="机器数">机器数</h2>
-<p>一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1.</p>
-
-<p>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。</p>
-
-<p>那么，这里的 00000011 和 10000011 就是机器数。</p>
-
-<h2 id="真值">真值</h2>
+<p>参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析</p>
 
 <blockquote>
-  <p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位1代表负，其真正数值是 -3 而不是形式值131?&gt;（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。
-例：0000 0001的真值 = +000 0001 = +1，1000 0001的真值 = –000 0001 = –1</p>
+  <p>!~location.href.search(‘abc’)</p>
 </blockquote>
 
-<h1 id="原码-反码-补码的基础概念和计算方法">原码, 反码, 补码的基础概念和计算方法</h1>
+<p>首先再次回顾一下js中的位运算</p>
 
-<p>在探求为何机器要使用补码之前, 让我们先了解原码, 反码和补码的概念.对于一个数, 计算机要使用一定的编码方式进行存储. 原码, 反码, 补码是机器存储一个具体数字的编码方式.</p>
+<ul>
+  <li>&amp; 与</li>
+  <li>| 或</li>
+  <li>~ 非</li>
+  <li>^ 异或</li>
+  <li>&lt;&lt; 左移</li>
+  <li>&gt;&gt; 算数右移(有符号右移)</li>
+  <li>&gt;&gt;&gt; 逻辑右移(无符号右移)</li>
+</ul>
 
-<h2 id="原码">原码</h2>
+<p>Number.prototype.toString</p>
 
-<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
+<p>Number.prototype.toString方法可以讲数字转化为字符串，有一个可选的参数，用来决定将数字显示为指定的进制，下面可以查看3的二进制表示</p>
+
+<pre><code class="language-`"> 3..toString(2)
+
+ (3).toString(2)
+
+ Number(3).toString(2)   //这里如果直接 3.toString(2)是会报错的
+
+  &gt;&gt; 11
+</code></pre>
+
+<h2 id="-与">&amp; 与</h2>
 
 <blockquote>
-  <p>[+1]原 = 0000 0001</p>
+  <p>&amp;按位与会将操作数和被操作数的相同为进行与运算，如果都为1则为1，如果有一个为0则为0</p>
 </blockquote>
+
+<pre><code>101
+011
+---
+001
+</code></pre>
+
+<h2 id="-或">| 或</h2>
 
 <blockquote>
-  <p>[-1]原 = 1000 0001</p>
+  <p>按位或是相同的位置上只要有一个为1就是1，两个都为0则为0</p>
 </blockquote>
 
-<p>第一位是符号位. 因为第一位是符号位, 所以8位二进制数的取值范围就是:</p>
+<pre><code>101
+001
+---
+101
+</code></pre>
+
+<h2 id="-非">~ 非</h2>
 
 <blockquote>
-  <p>[1111 1111 , 0111 1111] 即 [-127 , 127]</p>
+  <p>~操作符会将操作数的每一位取反，如果是1则变为0，如果是0则边为1</p>
 </blockquote>
 
-<p>原码是人脑最容易理解和计算的表示方式.</p>
+<pre><code>101
+---
+010
+</code></pre>
 
-<h2 id="反码">反码</h2>
-
-<p>反码的表示方法是:</p>
-
-<p>正数的反码是其本身</p>
-
-<p>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</p>
+<h2 id="-异或">^ 异或</h2>
 
 <blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反</p>
+  <p>再来说说异或，这个比较有意思，异或顾名思义看看两个位是否为异——不同，两个位不同则为1，两个位相同则为0</p>
 </blockquote>
+
+<pre><code>101
+001
+---
+100
+</code></pre>
+
+<p>再次分析开头的问题</p>
+
+<p>首先关于indexOf获得的值可能有几种请求 -1,0,1 从这三种进行分析</p>
+
+<h2 id="-1">~-1</h2>
+
+<p>为了简便计算我这只取8位</p>
+
+<pre><code>10000001  //这是-1的原码 (真值的绝对值加上符号位)
+--------  //进行按位非操作后 这里会改变符号
+01111110  //得到此值为正值要获得该值得真值需要然后取反再减一 注意取反的操作不会改变符号
+--------
+00000000  //最后得到的值是0
+
+//浏览器控制台输出
+
+~-1
+0
+
+</code></pre>
+
+<h2 id="0">~0</h2>
+
+<pre><code>00000000  //这是0的原码 (真值的绝对值加上符号位)
+--------  //进行按位非操作后 这里会改变符号
+11111111  //得到此值该值为负值的补码 要获得该值得真值需要对补码求补即取反+1 (注意取反的操作不会改变符号)
+--------
+10000001  //最后得到的值是1
+
+//浏览器控制台输出
+
+~0
+-1
+
+</code></pre>
+
+<h2 id="1">~1</h2>
+
+<pre><code>00000001  //这是1的原码 (真值的绝对值加上符号位)
+--------  //进行按位非操作后 这里会改变符号
+11111110  //得到此值该值为负值的补码 要获得该值得真值需要对补码求补即取反+1 (注意取反的操作不会改变符号)
+--------
+10000010  //最后得到的值是2
+
+//浏览器控制台输出
+
+~1
+-2
+
+</code></pre>
+
+<p>因此在上面问题出现的时候</p>
+
+<pre><code>~location.href.search('abc')  //未匹配到返回 -1 这里为 ~-1  == 0 ==&gt; !0 == true;
+~location.href.search('abc')  //未匹配到返回 0 这里为 ~0  == -1 ==&gt; !-1 == false;
+~location.href.search('abc')  //未匹配到返回 1 这里为 ~1  == -2 ==&gt; !-2== false;
+
+</code></pre>
+
+<p>因此只有返回 -1时</p>
+
+<p>如果为 -1 说明未匹配到</p>
 
 <blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反</p>
+  <p>!~location.href.search(‘abc’) ===&gt; true</p>
 </blockquote>
 
-<p>可见如果一个反码表示的是负数, 人脑无法直观的看出来它的数值. 通常要将其转换成原码再计算.</p>
-
-<h2 id="补码">补码</h2>
-
-<p>补码的表示方法是:</p>
-
-<p>正数的补码就是其本身</p>
-
-<p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
-
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
-
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
-
-<p>对于负数, 补码表示方式也是人脑无法直观看出其数值的. 通常也需要转换成原码在计算其数值.</p>
-
-<h1 id="为何要使用原码-反码和补码">为何要使用原码, 反码和补码</h1>
-
-<p>在开始深入学习前, 我的学习建议是先”死记硬背”上面的原码, 反码和补码的表示方式以及计算方法.</p>
-
-<p>现在我们知道了计算机可以有三种编码方式表示一个数. 对于正数因为三种编码方式的结果都相同:</p>
-
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
-
-<p>所以不需要过多解释. 但是对于负数:</p>
-
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
-
-<p>可见原码, 反码和补码是完全不同的. 既然原码才是被人脑直接识别并用于计算表示方式, 为何还会有反码和补码呢?</p>
-
-<p>首先, 因为人脑可以知道第一位是符号位, 在计算的时候我们会根据符号位, 选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机, 加减乘数已经是最基础的运算, 要设计的尽量简单. 计算机辨别”符号位”显然会让计算机的基础电路设计变得十分复杂! 于是人们想出了将符号位也参与运算的方法. 我们知道, 根据运算法则减去一个正数等于加上一个负数, 即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
-
-<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法. 首先来看原码:</p>
-
-<p>计算十进制的表达式: 1-1=0</p>
-
-<blockquote>
-  <p>1 - 1 = 1 + (-1) = [00000001]原 + [10000001]原 = [10000010]原 = -2</p>
-</blockquote>
-
-<p>如果用原码表示, 让符号位也参与计算, 显然对于减法来说, 结果是不正确的.这也就是为何计算机内部不使用原码表示一个数.</p>
-
-<p>为了解决原码做减法的问题, 出现了反码:</p>
-
-<p>计算十进制的表达式: 1-1=0</p>
-
-<blockquote>
-  <p>1 - 1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原= [0000 0001]反 + [1111 1110]反 = [1111 1111]反 = [1000 0000]原 = -0</p>
-</blockquote>
-
-<p>发现用反码计算减法, 结果的真值部分是正确的. 而唯一的问题其实就出现在”0”这个特殊的数值上. 虽然人们理解上+0和-0是一样的, 但是0带符号是没有任何意义的. 而且会有[0000 0000]原和[1000 0000]原两个编码表示0.</p>
-
-<p>于是补码的出现, 解决了0的符号以及两个编码的问题:</p>
-
-<blockquote>
-  <p>1-1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [0000 0001]补 + [1111 1111]补 = [0000 0000]补=[0000 0000]原</p>
-</blockquote>
-
-<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
-
-<blockquote>
-  <p>(-1) + (-127) = [1000 0001]原 + [1111 1111]原 = [1111 1111]补 + [1000 0001]补 = [1000 0000]补</p>
-</blockquote>
-
-<p>-1-127的结果应该是-128, 在用补码运算的结果中, [1000 0000]补 就是-128. 但是注意因为实际上是使用以前的-0的补码来表示-128, 所以-128并没有原码和反码表示.(对-128的补码表示[1000 0000]补算出来的原码是[0000 0000]原, 这是不正确的)</p>
-
-<p>使用补码, 不仅仅修复了0的符号以及存在两个编码的问题, 而且还能够多表示一个最低数. 这就是为什么8位二进制, 使用原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
-
-<p>因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值.</p>
+<p>得证。</p>
 
 <h1 id="文章参考">文章参考</h1>
 <ul>
@@ -366,6 +382,7 @@
 <h1 id="延伸阅读">延伸阅读</h1>
 <ul>
   <li><a href="http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/">每一个JavaScript开发者应该了解的浮点知识</a></li>
+  <li><a href="http://jser.it/blog/2014/07/07/numbers-in-javascript/">Numbers in JavaScript</a></li>
 </ul>
 
 
@@ -374,13 +391,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/" data-toggle="tooltip" data-placement="top" title="常用的后台管理主题模板">&larr; Previous Post</a>
+        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/" data-toggle="tooltip" data-placement="top" title="常用快捷键整理总结">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/" data-toggle="tooltip" data-placement="top" title="常用快捷键整理总结">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -390,9 +403,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate"
-         data-title="原码, 反码, 补码 详解"
-         data-url="http://blog.darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/"></div>
+         data-thread-key="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate"
+         data-title="javascript的位操作"
+         data-url="http://blog.darknights.me/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/"></div>
     <script>
 
         /**
@@ -528,8 +541,8 @@
                                 管理系统主题
                             </a>
         				
-                            <a href="/tags/#计算机基础" title="计算机基础" rel="2">
-                                计算机基础
+                            <a href="/tags/#基础知识" title="基础知识" rel="1">
+                                基础知识
                             </a>
         				
                             <a href="/tags/#生产工具" title="生产工具" rel="1">
@@ -538,6 +551,10 @@
         				
                             <a href="/tags/#IDE" title="IDE" rel="1">
                                 IDE
+                            </a>
+        				
+                            <a href="/tags/#计算机基础" title="计算机基础" rel="1">
+                                计算机基础
                             </a>
         				
                             <a href="/tags/#javascript" title="javascript" rel="1">
