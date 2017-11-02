@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "git的使用教程(二)",
+      "subtitle": "git的中级教程(其他常用操作)",
+      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/",
+      "date": "2017-11-02"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "javascript的位操作",
       "subtitle": "在javascript中的位操作涉及二进制的处理",
       "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/",

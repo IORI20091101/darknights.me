@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-01T13:19:53+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-02T04:19:41+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(二)</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/" rel="alternate" type="text/html" title="git的使用教程(二)" /><published>2017-11-02T00:00:00+00:00</published><updated>2017-11-02T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/">&lt;h2 id=&quot;git的中级使用教程&quot;&gt;git的中级使用教程&lt;/h2&gt;
+
+&lt;p&gt;记录常用的git命令&lt;/p&gt;
+
+&lt;p&gt;#&lt;/p&gt;
+&lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的中级使用教程</summary></entry><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
 
 &lt;p&gt;参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析&lt;/p&gt;
 
@@ -359,7 +370,7 @@
   &lt;p&gt;你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/trees.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-base/trees.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;添加和提交&quot;&gt;添加和提交&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git add &amp;lt;filename&amp;gt;
@@ -385,7 +396,7 @@
 
 &lt;h3 id=&quot;分支&quot;&gt;分支&lt;/h3&gt;
 &lt;p&gt;分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/branches.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-base/branches.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;创建一个叫做“feature_x”的分支，并切换过去：&lt;/p&gt;
 
