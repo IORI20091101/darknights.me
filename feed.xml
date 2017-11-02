@@ -1,13 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-02T04:19:41+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(二)</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/" rel="alternate" type="text/html" title="git的使用教程(二)" /><published>2017-11-02T00:00:00+00:00</published><updated>2017-11-02T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/">&lt;h2 id=&quot;git的中级使用教程&quot;&gt;git的中级使用教程&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-02T11:47:32+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(三)</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/senior/" rel="alternate" type="text/html" title="git的使用教程(三)" /><published>2017-11-02T00:00:00+00:00</published><updated>2017-11-02T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/senior</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/senior/">&lt;h2 id=&quot;git的高级使用教程&quot;&gt;git的高级使用教程&lt;/h2&gt;
 
-&lt;p&gt;记录常用的git命令&lt;/p&gt;
+&lt;p&gt;记录一些git的高级用法&lt;/p&gt;
 
-&lt;p&gt;#&lt;/p&gt;
 &lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
 
 &lt;blockquote&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot;&gt;git教程&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的高级使用教程</summary></entry><entry><title type="html">git的使用教程(二)</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/" rel="alternate" type="text/html" title="git的使用教程(二)" /><published>2017-11-02T00:00:00+00:00</published><updated>2017-11-02T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/">&lt;h2 id=&quot;git的中级使用教程&quot;&gt;git的中级使用教程&lt;/h2&gt;
+
+&lt;p&gt;记录一些使用率中等的git命令&lt;/p&gt;
+
+&lt;h3 id=&quot;设置用户名和邮箱&quot;&gt;设置用户名和邮箱&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global user.name &quot;Your Name&quot;
+$ git config --global user.email &quot;email@example.com&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;配置别名&quot;&gt;配置别名&lt;/h3&gt;
+&lt;p&gt;使用git status 太长了怎么破&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global alias.st status
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+$ git config --global alias.unstage 'reset HEAD'
+$ git config --global alias.last 'log -1'  //显示最后一次提交信息
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;还有这种操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global alias.lg &quot;log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset' --abbrev-commit&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果如下
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-medium/0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;git-reset的后悔药&quot;&gt;git reset的后悔药&lt;/h3&gt;
+&lt;p&gt;当使用  &lt;code&gt;git reset --hard xxx&lt;/code&gt; 回退到之前的版本,我又想回到最新的版本如何操作呢&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git reflog
+
+
+ea34578 HEAD@{0}: reset: moving to HEAD^
+3628164 HEAD@{1}: commit: append GPL
+ea34578 HEAD@{2}: commit: add distributed
+cb926e7 HEAD@{3}: commit (initial): wrote a readme file
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样之后又可以使用 reset –hard xxx 乘坐时光机返回了。&lt;/p&gt;
+
+&lt;h3 id=&quot;生产ssh-key&quot;&gt;生产SSH Key&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+
+//生产的公钥私钥 会放到服务器的 .ssh/authorized_keys目录下
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;本地文件夹添加远程仓库并且推送上去&quot;&gt;本地文件夹添加远程仓库并且推送上去&lt;/h3&gt;
+&lt;p&gt;基础文章已经写过这里再次复习一遍&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git remote add origin git@github.com:michaelliao/learngit.git
+
+$ git push -u origin master
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;分支管理策略--no-ff&quot;&gt;分支管理策略&lt;code&gt;--no-ff&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;通常，合并分支时，如果可能，Git会用&lt;code&gt;Fast forward模式&lt;/code&gt;，但这种模式下，删除分支后，会丢掉分支信息。&lt;/p&gt;
+
+&lt;p&gt;如果要强制禁用&lt;code&gt;Fast forward&lt;/code&gt;模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git merge --no-ff -m &quot;merge with no-ff&quot; dev
+Merge made by the 'recursive' strategy.
+ readme.txt |    1 +
+ 1 file changed, 1 insertion(+)
+
+ //其他操作一样只是合并的时候可以带上 禁用ff模式并且加上注释。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;合并后的结果如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git log --graph --pretty=oneline --abbrev-commit
+*   7825a50 merge with no-ff
+|\
+| * 6224937 add merge
+|/
+*   59bc1cb conflict fixed
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;保存工作现场&quot;&gt;保存工作现场&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ git stash
+Saved working directory and index state WIP on dev: 6224937 add merge
+HEAD is now at 6224937 add merge
+
+$ git stash list  //显示stash列表
+
+$ git stash pop   //相当于 git stash apply + git stash drop   恢复最近的一条
+
+
+$ git stash apply stash@{0} //指定要恢复的stash
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;本地分支与远程分支对应&quot;&gt;本地分支与远程分支对应&lt;/h3&gt;
+&lt;p&gt;要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是用这个命令创建本地dev分支：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git checkout -b dev origin/dev
+
+
+如果此时报错 no tracking information 需要将远程dev和本地dev分支建立链接
+
+$ git branch --set-upstream dev origin/dev
+
+//也可以选择git fetch 将远程相关的内容全拉取下来然后直接切换分支
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;配置文件&quot;&gt;配置文件&lt;/h3&gt;
+&lt;p&gt;配置Git的时候，加上–global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用
+每个仓库的Git配置文件都放在.git/config文件中&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cat .git/config
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    precomposeunicode = true
+[remote &quot;origin&quot;]
+    url = git@github.com:michaelliao/learngit.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+[alias]
+    last = log -1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd ~
+$ cat .gitconfig
+[alias]
+    co = checkout
+    ci = commit
+    br = branch
+    st = status
+[user]
+    name = Your Name
+    email = your@email.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;使用gitignore&quot;&gt;使用.gitignore&lt;/h3&gt;
+&lt;p&gt;有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被.gitignore忽略了：
+如果你确实想添加该文件，可以用-f强制添加到Git：
+或者你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用git check-ignore命令检查&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git add -f App.class
+
+$ git check-ignore -v App.class
+.gitignore:3:*.class    App.class
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot;&gt;git教程&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的中级使用教程</summary></entry><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
 
@@ -354,15 +513,15 @@
 &lt;p&gt;记录常用的git命令,方便自己查询&lt;/p&gt;
 
 &lt;h2 id=&quot;创建新仓库&quot;&gt;创建新仓库&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git init
+&lt;pre&gt;&lt;code&gt;$  git init
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;##检出新仓库&lt;/p&gt;
 &lt;h3 id=&quot;clone本地仓库&quot;&gt;clone本地仓库&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git clone /path/to/repository
+&lt;pre&gt;&lt;code&gt;$  git clone /path/to/repository
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;从远程仓库clone&quot;&gt;从远程仓库clone&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git clone username@host:/path/to/repository
+&lt;pre&gt;&lt;code&gt;$  git clone username@host:/path/to/repository
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;工作流&quot;&gt;工作流&lt;/h3&gt;
@@ -373,23 +532,32 @@
 &lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-base/trees.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;添加和提交&quot;&gt;添加和提交&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git add &amp;lt;filename&amp;gt;
-    git add *
-    git add .     //添加到缓存区
+&lt;pre&gt;&lt;code&gt;$  git add &amp;lt;filename&amp;gt;
+$  git add *
+$  git add .     //添加到缓存区
 
-    git commit -m &quot;代码提交信息&quot;   //提交到本地仓库
+$  git commit -m &quot;代码提交信息&quot;   //提交到本地仓库
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;推送改动&quot;&gt;推送改动&lt;/h3&gt;
 &lt;p&gt;你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git push origin master
+&lt;pre&gt;&lt;code&gt;$  git push origin master
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;可以把 master 换成你想要推送的任何分支。&lt;/p&gt;
 
 &lt;p&gt;如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git remote add origin &amp;lt;server&amp;gt;
+&lt;pre&gt;&lt;code&gt;$  git remote add origin &amp;lt;server&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;远程仓库&quot;&gt;远程仓库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ git remote -v //显示远程仓库信息
+
+$ git remote rm origin  //删除远程链接
+
+$ git remote set-url origin git@github.com:michaelliao/learngit.git  //更改远程仓库地址,通常用来切换ssh和https
+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;如此你就能够将你的改动推送到所添加的服务器上去了。&lt;/p&gt;
@@ -400,71 +568,100 @@
 
 &lt;p&gt;创建一个叫做“feature_x”的分支，并切换过去：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git checkout -b feature_x
+&lt;pre&gt;&lt;code&gt;$  git checkout -b feature_x
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;切换回主分支：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git checkout master
+&lt;pre&gt;&lt;code&gt;$  git checkout master
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;再把新建的分支删掉：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git branch -d feature_x
+&lt;pre&gt;&lt;code&gt;$  git branch -d feature_x //删除已经合并的分支
+$  git branch -D feature_x  //强行删除未合并的分支
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git push origin &amp;lt;branch&amp;gt;
+&lt;pre&gt;&lt;code&gt;$  git push origin &amp;lt;branch&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;更新与合并&quot;&gt;更新与合并&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git pull   //相当于 git fetch and git merge两个操作
-    git diff &amp;lt;source_branch&amp;gt; &amp;lt;target_branch&amp;gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
+&lt;pre&gt;&lt;code&gt;$  git pull   //相当于 git fetch and git merge两个操作
+$  git diff &amp;lt;source_branch&amp;gt; &amp;lt;target_branch&amp;gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;标签&quot;&gt;标签&lt;/h3&gt;
 &lt;p&gt;以执行如下命令创建一个叫做 1.0.0 的标签：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git	 tag 1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
+&lt;pre&gt;&lt;code&gt;$  git	 tag v1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
+
+$  git tag  //显示所有tag标签
+
+$  git show v1.0 //查看标签信息
+
+//打一个完整的标签 -a 制定标签的名字  -m 注释   最后的数字代表HEAD制定从哪次提交打标签
+$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 3628164
+
+
+$ git tag -d v1.0 //删除本地标签
+
+$ git push origin :refs/tags/v0.9   //删除远程标签 需要先将本地标签删除
+
+$ git push origin v1.0   //将标签推送到远程仓库
+
+
+
+$ git push origin --tags //一次性推送全部尚未推送到远程的本地标签：
+
+//使用 gpg(GnuPG)签名来打标签但是不常用
+$ git tag -s v0.2 -m &quot;signed version 0.2 released&quot; fec145a
+
+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;log&quot;&gt;log&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git log //查看所有日志
+&lt;pre&gt;&lt;code&gt;$  git log //查看所有日志
 
-    git log --author=toshiba  //查看某人的日志
+$  git log --author=toshiba  //查看某人的日志
 
-    git log --pretty=oneline  //压缩后的日志每个提交只占一行
+$  git log --pretty=oneline  //压缩后的日志每个提交只占一行
 
-    git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
+$  git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
 
-    git log --name-status  //查看都有哪些文件修改过了
+$  git log --graph --pretty=oneline --abbrev-commit
 
-    git log --help  //更多的帮助信息
+$  git log --name-status  //查看都有哪些文件修改过了
+
+$  git log --help  //更多的帮助信息
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;替换本地改动&quot;&gt;替换本地改动&lt;/h3&gt;
 &lt;p&gt;假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git checkout -- &amp;lt;filename&amp;gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
+&lt;pre&gt;&lt;code&gt;$  git checkout -- &amp;lt;filename&amp;gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
     //已添加到暂存区的改动以及新文件都不会受到影响。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    git fetch origin
-    git reset --hard origin/master
+&lt;pre&gt;&lt;code&gt;$  git fetch origin
+$  git reset --hard origin/master
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;实用小贴士&quot;&gt;实用小贴士&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    gitk           					//内建的图形化 git
+&lt;pre&gt;&lt;code&gt;$  gitk           					//内建的图形化 git
 
-    git config color.ui true          //彩色的 git 输出
+$  git config color.ui true          //彩色的 git 输出
 
-    git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
+$  git config --global color.ui true
 
-    git add -i 							//交互式添加文件到暂存区：
+$  git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
+
+$  git add -i 							//交互式添加文件到暂存区：
+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
@@ -532,91 +729,4 @@
 &lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;
 &lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;
 &lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;
-&lt;a href=&quot;http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/&quot;&gt;使用travis-ci自动部署hexo博客&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="jekyll" /><summary type="html">categories: - 技术文章</summary></entry><entry><title type="html">搭建jekyll 博客流程记录</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/" rel="alternate" type="text/html" title="搭建jekyll 博客流程记录" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/">&lt;h2 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h2&gt;
-
-&lt;p&gt;不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;http://huangxuan.me/&quot;&gt;黄玄&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://mritd.me/&quot;&gt;漠然&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
-而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。&lt;/p&gt;
-
-&lt;h2 id=&quot;搭建博客的基本流程&quot;&gt;搭建博客的基本流程&lt;/h2&gt;
-
-&lt;h3 id=&quot;安装ruby-rails&quot;&gt;安装Ruby, Rails&lt;/h3&gt;
-&lt;p&gt;建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby&quot;&gt;Mac OS X上安装ruby&lt;/a&gt; 来安装&lt;/li&gt;
-  &lt;li&gt;如果需要不同版本的ruby可以&lt;a href=&quot;https://ruby-china.org/wiki/install_ruby_guide&quot;&gt;安装 RVM&lt;/a&gt;来进行ruby版本管理&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;安装jekyll&quot;&gt;安装jekyll&lt;/h3&gt;
-&lt;p&gt;该博客使用了 &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;, 当然好多同学可能会用 &lt;a href=&quot;https://hexo.io/themes/&quot;&gt;Hexo&lt;/a&gt; 这个就是萝卜青菜了。
-如果你选择使用Jekyll请安装下面步骤安装生成:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;~ $ gem install jekyll bundler
-~ $ jekyll new my-awesome-site
-~ $ cd my-awesome-site
-~/my-awesome-site $ bundle exec jekyll serve
-# =&amp;gt; Now browse to http://localhost:4000
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;生产的项目结构类似&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;.
-├── _config.yml    //项目相关配置文件
-├── _data
-|   └── members.yml   //一些需要的数据
-├── _drafts           //草稿
-|   ├── begin-with-the-crazy-ideas.md
-|   └── on-simplicity-in-technology.md
-├── _includes         //公共的部分
-|   ├── footer.html
-|   └── header.html
-├── _layouts           //布局文件
-|   ├── default.html
-|   └── post.html
-├── _posts             //发布的文章
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-|   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass              //sass文件路径编译后生产css
-|   ├── _base.scss
-|   └── _layout.scss
-├── _site              //所有文件编译生产静态文件都存放到这里
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid YAML Frontmatter
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;具体还有其他目录请参考&lt;a href=&quot;https://jekyllrb.com/docs/structure/&quot;&gt;jekyll目录结构&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;安装主题&quot;&gt;安装主题&lt;/h3&gt;
-&lt;p&gt;到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 &lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;Jekyll 主题&lt;/a&gt; ,当然如果在套用别人主题的时候有问题可以看一下
-&lt;a href=&quot;http://www.jianshu.com/p/4224b8ea0ec0&quot;&gt;Liquid语法&lt;/a&gt;,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档&lt;/p&gt;
-
-&lt;p&gt;到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。&lt;/p&gt;
-
-&lt;p&gt;参考文章&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
-&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
-&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
-&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/&quot;&gt;适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/&quot;&gt;使用travis-ci自动部署hexo博客&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://t.hengwei.me/post/%E4%B8%BAjekyll%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E4%B8%8Escrollspy%E6%95%88%E6%9E%9C.html&quot;&gt;为Jekyll博客添加目录与ScrollSpy效果&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="JavaScript" /><summary type="html">第一次搭建博客</summary></entry></feed>
+&lt;a href=&quot;http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/&quot;&gt;使用travis-ci自动部署hexo博客&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="jekyll" /><summary type="html">categories: - 技术文章</summary></entry></feed>

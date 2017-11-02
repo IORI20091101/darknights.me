@@ -229,15 +229,15 @@
 <p>记录常用的git命令,方便自己查询</p>
 
 <h2 id="创建新仓库">创建新仓库</h2>
-<pre><code class="language-java">    git init
+<pre><code>$  git init
 </code></pre>
 
 <p>##检出新仓库</p>
 <h3 id="clone本地仓库">clone本地仓库</h3>
-<pre><code class="language-java">    git clone /path/to/repository
+<pre><code>$  git clone /path/to/repository
 </code></pre>
 <h3 id="从远程仓库clone">从远程仓库clone</h3>
-<pre><code class="language-java">    git clone username@host:/path/to/repository
+<pre><code>$  git clone username@host:/path/to/repository
 </code></pre>
 
 <h3 id="工作流">工作流</h3>
@@ -248,23 +248,32 @@
 <p><img src="https://darknights.b0.upaiyun.com/assets/images/in-post/git-base/trees.png" alt="" /></p>
 
 <h3 id="添加和提交">添加和提交</h3>
-<pre><code class="language-java">    git add &lt;filename&gt;
-    git add *
-    git add .     //添加到缓存区
+<pre><code>$  git add &lt;filename&gt;
+$  git add *
+$  git add .     //添加到缓存区
 
-    git commit -m "代码提交信息"   //提交到本地仓库
+$  git commit -m "代码提交信息"   //提交到本地仓库
 </code></pre>
 
 <h3 id="推送改动">推送改动</h3>
 <p>你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：</p>
 
-<pre><code class="language-java">    git push origin master
+<pre><code>$  git push origin master
 </code></pre>
 <p>可以把 master 换成你想要推送的任何分支。</p>
 
 <p>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：</p>
 
-<pre><code class="language-java">    git remote add origin &lt;server&gt;
+<pre><code>$  git remote add origin &lt;server&gt;
+</code></pre>
+
+<h3 id="远程仓库">远程仓库</h3>
+<pre><code>$ git remote -v //显示远程仓库信息
+
+$ git remote rm origin  //删除远程链接
+
+$ git remote set-url origin git@github.com:michaelliao/learngit.git  //更改远程仓库地址,通常用来切换ssh和https
+
 </code></pre>
 
 <p>如此你就能够将你的改动推送到所添加的服务器上去了。</p>
@@ -275,71 +284,100 @@
 
 <p>创建一个叫做“feature_x”的分支，并切换过去：</p>
 
-<pre><code class="language-java">    git checkout -b feature_x
+<pre><code>$  git checkout -b feature_x
 </code></pre>
 
 <p>切换回主分支：</p>
 
-<pre><code class="language-java">    git checkout master
+<pre><code>$  git checkout master
 </code></pre>
 <p>再把新建的分支删掉：</p>
 
-<pre><code class="language-java">    git branch -d feature_x
+<pre><code>$  git branch -d feature_x //删除已经合并的分支
+$  git branch -D feature_x  //强行删除未合并的分支
 </code></pre>
 
 <p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
 
-<pre><code class="language-java">    git push origin &lt;branch&gt;
+<pre><code>$  git push origin &lt;branch&gt;
 </code></pre>
 
 <h3 id="更新与合并">更新与合并</h3>
 
-<pre><code class="language-java">    git pull   //相当于 git fetch and git merge两个操作
-    git diff &lt;source_branch&gt; &lt;target_branch&gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
+<pre><code>$  git pull   //相当于 git fetch and git merge两个操作
+$  git diff &lt;source_branch&gt; &lt;target_branch&gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
 </code></pre>
 
 <h3 id="标签">标签</h3>
 <p>以执行如下命令创建一个叫做 1.0.0 的标签：</p>
 
-<pre><code class="language-java">    git	 tag 1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
+<pre><code>$  git	 tag v1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
+
+$  git tag  //显示所有tag标签
+
+$  git show v1.0 //查看标签信息
+
+//打一个完整的标签 -a 制定标签的名字  -m 注释   最后的数字代表HEAD制定从哪次提交打标签
+$ git tag -a v0.1 -m "version 0.1 released" 3628164
+
+
+$ git tag -d v1.0 //删除本地标签
+
+$ git push origin :refs/tags/v0.9   //删除远程标签 需要先将本地标签删除
+
+$ git push origin v1.0   //将标签推送到远程仓库
+
+
+
+$ git push origin --tags //一次性推送全部尚未推送到远程的本地标签：
+
+//使用 gpg(GnuPG)签名来打标签但是不常用
+$ git tag -s v0.2 -m "signed version 0.2 released" fec145a
+
+
 </code></pre>
 
 <h3 id="log">log</h3>
 
-<pre><code class="language-java">    git log //查看所有日志
+<pre><code>$  git log //查看所有日志
 
-    git log --author=toshiba  //查看某人的日志
+$  git log --author=toshiba  //查看某人的日志
 
-    git log --pretty=oneline  //压缩后的日志每个提交只占一行
+$  git log --pretty=oneline  //压缩后的日志每个提交只占一行
 
-    git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
+$  git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
 
-    git log --name-status  //查看都有哪些文件修改过了
+$  git log --graph --pretty=oneline --abbrev-commit
 
-    git log --help  //更多的帮助信息
+$  git log --name-status  //查看都有哪些文件修改过了
+
+$  git log --help  //更多的帮助信息
 </code></pre>
 
 <h3 id="替换本地改动">替换本地改动</h3>
 <p>假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：</p>
 
-<pre><code class="language-java">    git checkout -- &lt;filename&gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
+<pre><code>$  git checkout -- &lt;filename&gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
     //已添加到暂存区的改动以及新文件都不会受到影响。
 </code></pre>
 <p>如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它</p>
 
-<pre><code class="language-java">    git fetch origin
-    git reset --hard origin/master
+<pre><code>$  git fetch origin
+$  git reset --hard origin/master
 </code></pre>
 
 <h3 id="实用小贴士">实用小贴士</h3>
 
-<pre><code class="language-java">    gitk           					//内建的图形化 git
+<pre><code>$  gitk           					//内建的图形化 git
 
-    git config color.ui true          //彩色的 git 输出
+$  git config color.ui true          //彩色的 git 输出
 
-    git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
+$  git config --global color.ui true
 
-    git add -i 							//交互式添加文件到暂存区：
+$  git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
+
+$  git add -i 							//交互式添加文件到暂存区：
+
 </code></pre>
 
 <h3 id="参考文章">参考文章</h3>
@@ -490,11 +528,11 @@
                                 interview
                             </a>
         				
-                            <a href="/tags/#工具" title="工具" rel="2">
+                            <a href="/tags/#工具" title="工具" rel="3">
                                 工具
                             </a>
         				
-                            <a href="/tags/#git" title="git" rel="2">
+                            <a href="/tags/#git" title="git" rel="3">
                                 git
                             </a>
         				
