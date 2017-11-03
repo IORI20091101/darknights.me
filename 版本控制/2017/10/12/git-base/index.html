@@ -19,7 +19,7 @@
 
     <title>git的使用教程(一) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://blog.darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/12/git-base/">
+    <link rel="canonical" href="http://blog.darknights.me/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -284,7 +284,15 @@ $ git remote set-url origin git@github.com:michaelliao/learngit.git  //更改远
 
 <p>创建一个叫做“feature_x”的分支，并切换过去：</p>
 
-<pre><code>$  git checkout -b feature_x
+<pre><code>$ git branch 查看本地分支
+
+$ git branch -a 查看本地和本地fetch到的远程分支都显示出来
+
+$ git branch -r 查看本地fetch到的远程分支(只显示本地存储的远程分支)
+
+$ git checkout -b feature_x
+
+
 </code></pre>
 
 <p>切换回主分支：</p>
@@ -295,6 +303,10 @@ $ git remote set-url origin git@github.com:michaelliao/learngit.git  //更改远
 
 <pre><code>$  git branch -d feature_x //删除已经合并的分支
 $  git branch -D feature_x  //强行删除未合并的分支
+</code></pre>
+
+<p>重命名分支</p>
+<pre><code>$ git branch -m devel develop
 </code></pre>
 
 <p>除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：</p>
@@ -410,9 +422,9 @@ $  git add -i 							//交互式添加文件到暂存区：
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/12/git-base"
+         data-thread-key="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base"
          data-title="git的使用教程(一)"
-         data-url="http://blog.darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/12/git-base/"></div>
+         data-url="http://blog.darknights.me/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base/"></div>
     <script>
 
         /**

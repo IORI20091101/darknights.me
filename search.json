@@ -4,8 +4,8 @@
     
       {
       "value" : "git的使用教程(三)",
-      "subtitle": "git的高级教程",
-      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/senior/",
+      "subtitle": "git的高级教程以及正规开发中的工作流程",
+      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior/",
       "date": "2017-11-02"
       }
       
@@ -15,7 +15,7 @@
       {
       "value" : "git的使用教程(二)",
       "subtitle": "git的中级教程(其他常用操作)",
-      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/02/git-medium/",
+      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/git-medium/",
       "date": "2017-11-02"
       }
       
@@ -75,7 +75,7 @@
       {
       "value" : "git的使用教程(一)",
       "subtitle": "git的初级教程(简明指南)",
-      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/12/git-base/",
+      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base/",
       "date": "2017-10-12"
       }
       
