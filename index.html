@@ -229,11 +229,19 @@
 
 记录一些git的高级用法
 
-git rebase
-通常情况下建议使用rebase而非merge来拉取上游代码。这样所有的记录会被合并为一次commit,而且没有一些不重要的合并来污染提交的时间线
+回滚错误的修改
 
-git cherry-pick
-只想将远程仓库的一个特定提交合并到自己的分支中该怎么做呢？可以使用git cherry-pick 来选择给定SHA值的提交，然后将其合并到当...
+git checkout
+参考上一篇 中级教程
+
+git revert
+建议仔细阅读git-revert
+该命令只回滚了一个单独的提交，并没有移除后面的提交，并且保留了提交历史。 但是reset直接把状态回调bug之前之后所有的提交都会遗弃，这样并不安全。
+
+用法
+$ git revert &lt;commit&gt;
+
+...
         </div>
     </a>
     <p class="post-meta">

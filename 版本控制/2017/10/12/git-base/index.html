@@ -253,6 +253,8 @@ $  git add *
 $  git add .     //添加到缓存区
 
 $  git commit -m "代码提交信息"   //提交到本地仓库
+
+$ git commit -a  相当于 git add + git commit
 </code></pre>
 
 <h3 id="推送改动">推送改动</h3>
@@ -364,6 +366,18 @@ $  git log --graph --pretty=oneline --abbrev-commit
 $  git log --name-status  //查看都有哪些文件修改过了
 
 $  git log --help  //更多的帮助信息
+</code></pre>
+
+<h3 id="git-fetch">git fetch</h3>
+
+<pre><code>#拉取仓库中所有的分支。同时会从另一个仓库中下载所有需要的提交和文件。
+
+$ git fetch &lt;remote&gt;
+
+
+#和上一个命令相同，但只拉取指定的分支。
+
+$git fetch &lt;remote&gt; &lt;branch&gt;
 </code></pre>
 
 <h3 id="替换本地改动">替换本地改动</h3>
