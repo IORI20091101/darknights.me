@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-06T09:54:44+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(三)</title><link href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior/" rel="alternate" type="text/html" title="git的使用教程(三)" /><published>2017-11-02T00:00:00+00:00</published><updated>2017-11-02T00:00:00+00:00</updated><id>/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior</id><content type="html" xml:base="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior/">&lt;h2 id=&quot;git的高级使用教程&quot;&gt;git的高级使用教程&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-07T10:18:05+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">git的使用教程(三)</title><link href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior/" rel="alternate" type="text/html" title="git的使用教程(三)" /><published>2017-11-02T00:00:00+00:00</published><updated>2017-11-02T00:00:00+00:00</updated><id>/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior</id><content type="html" xml:base="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior/">&lt;h2 id=&quot;git的高级使用教程&quot;&gt;git的高级使用教程&lt;/h2&gt;
 
 &lt;p&gt;记录一些git的高级用法&lt;/p&gt;
 
@@ -136,6 +136,8 @@ git merge feat
 
 &lt;p&gt;通常情况下建议使用rebase而非merge来拉取上游代码。这样所有的记录会被合并为一次commit,而且没有一些不重要的合并来污染提交的时间线&lt;/p&gt;
 
+&lt;p&gt;总结文章&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/5.1-%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%EF%BC%9AMerge%E3%80%81Rebase-%E7%9A%84%E9%80%89%E6%8B%A9&quot;&gt;代码合并：Merge、Rebase 的选择&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;git-pull&quot;&gt;git pull&lt;/h3&gt;
 
 &lt;p&gt;在基于 Git 的协作工作流中，将上游更改合并到你的本地仓库是一个常见的工作。我们已经知道应该使用 git fetch，然后是 git merge，但是 git pull 将这两个命令合二为一。&lt;/p&gt;
@@ -149,7 +151,8 @@ $ git pull --rebase origin  //简单地将你本地的更改放到其他人已�
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;git-cherry-pick&quot;&gt;git cherry-pick&lt;/h3&gt;
-&lt;p&gt;只想将远程仓库的一个特定提交合并到自己的分支中该怎么做呢？可以使用git cherry-pick 来选择给定SHA值的提交，然后将其合并到当前分支中：&lt;/p&gt;
+&lt;p&gt;git cherry-pick 命令「复制」一个提交节点并在当前分支做一次完全一样的新提交。
+只想将远程仓库的一个特定提交合并到自己的分支中该怎么做呢？可以使用git cherry-pick 来选择给定SHA值的提交，然后将其合并到当前分支中：&lt;/p&gt;
 
 &lt;h2 id=&quot;修改tag&quot;&gt;修改tag&lt;/h2&gt;
 
