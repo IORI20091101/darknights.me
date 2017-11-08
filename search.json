@@ -3,26 +3,6 @@
   "data" : [
     
       {
-      "value" : "git的使用教程(三)",
-      "subtitle": "git的高级教程以及正规开发中的工作流程",
-      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/senior/",
-      "date": "2017-11-02"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "git的使用教程(二)",
-      "subtitle": "git的中级教程(其他常用操作)",
-      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/11/02/git-medium/",
-      "date": "2017-11-02"
-      }
-      
-        ,
-      
-    
-      {
       "value" : "javascript的位操作",
       "subtitle": "在javascript中的位操作涉及二进制的处理",
       "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/",
@@ -67,6 +47,26 @@
       "subtitle": "just fun",
       "data" : "/%E5%A8%B1%E4%B9%90/2017/10/29/entertainment/",
       "date": "2017-10-29"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "git的使用教程(三)",
+      "subtitle": "git的高级教程以及正规开发中的工作流程",
+      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/22/senior/",
+      "date": "2017-10-22"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "git的使用教程(二)",
+      "subtitle": "git的中级教程(其他常用操作)",
+      "data" : "/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/21/git-medium/",
+      "date": "2017-10-21"
       }
       
         ,
