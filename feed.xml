@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-15T06:43:03+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">SublimeText快捷键</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/" rel="alternate" type="text/html" title="SublimeText快捷键" /><published>2017-11-15T00:00:00+00:00</published><updated>2017-11-15T00:00:00+00:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/">&lt;h2 id=&quot;sublime-text-2---实用快捷键-mac-os-x&quot;&gt;Sublime Text 2 - 实用快捷键 (Mac OS X)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-15T12:18:58+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">SublimeText快捷键</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/" rel="alternate" type="text/html" title="SublimeText快捷键" /><published>2017-11-15T00:00:00+00:00</published><updated>2017-11-15T00:00:00+00:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/">&lt;h2 id=&quot;sublime-text-2---实用快捷键-mac-os-x&quot;&gt;Sublime Text 2 - 实用快捷键 (Mac OS X)&lt;/h2&gt;
 
 &lt;h3 id=&quot;打开前往&quot;&gt;打开/前往&lt;/h3&gt;
 
@@ -534,7 +534,77 @@
 &lt;p&gt;Ctrl + Shift + F = 查找所选条目在整个解决方案中的引用&lt;/p&gt;
 
 &lt;h3 id=&quot;參考文章&quot;&gt;參考文章&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://msdn.microsoft.com/zh-cn/library/dn320181.aspx&quot; alt=&quot;Visual Studio 的提示和技巧&quot; /&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://msdn.microsoft.com/zh-cn/library/dn320181.aspx&quot; alt=&quot;Visual Studio 的提示和技巧&quot; /&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">javascript的查漏补缺</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base/" rel="alternate" type="text/html" title="javascript的查漏补缺" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base/">&lt;h2 id=&quot;js-中的最大安全整数&quot;&gt;JS 中的最大安全整数&lt;/h2&gt;
+&lt;p&gt;JS中所有的数字类型存储都是&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8&quot;&gt;双精度浮点数&lt;/a&gt;浮点数并不是能够精确表示范围内的所有数的， 虽然 double 浮点型的范围看上去很大: 2.23x10^(-308) ~ 1.79x10^308。 可以表示的最大整数可以很大，但能够精确表示，使用算数运算的并没有这么大。&lt;/p&gt;
+
+&lt;p&gt;例如下面会报错&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(0.1 + 0.2)
+//output: 0.30000000000000004
+
+//在js中的最大安全整数
+Math.pow(2, 53) - 1     // 9007199254740991
+
+//在其他语言的64位环境中有符号的 安全（注意这里是指能够安全使用，进行算数运算的范围） 最大整数。
+2^63 - 1;//9223372036854775807
+
+
+//JS 的最大和最小安全值可以这样获得:
+console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
+console.log(Number.MIN_SAFE_INTEGER); //-9007199254740991
+
+
+//通过下面的例子，你会明白为什么大于这个值的运算是不安全的,这些运算都是错误的结果， 因为它们进行的都是浮点数运算会丢失精度。
+
+var x = 9223372036854775807;
+console.log(x === x + 1);// output: true
+console.log(9223372036854775807 + 1000); //output: 9223372036854776000
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;为什么是这个值&quot;&gt;为什么是这个值?&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/js-base/number.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;1 位符号位&lt;/li&gt;
+  &lt;li&gt;11 位指数位&lt;/li&gt;
+  &lt;li&gt;52 位尾数位&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用 52 位表示一个数的整数部分，那么最大可以精确表示的数应该是 2^52 - 1 才对， 就像 64 位表示整数时那样: 2^63 - 1 （去掉 1 位符号位）。 但其实浮点数在保存数字的时候做了规格化处理，以 10 进制为例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;20*10^2 =&amp;gt; 2*10^3 //小数点前只需要保留 1 位数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于二进制来说， 小数点前保留一位， 规格化后始终是 1.***, 节省了 1 bit，这个 1 并不需要保存。&lt;/p&gt;
+
+&lt;h2 id=&quot;大整数与数据库&quot;&gt;大整数与数据库&lt;/h2&gt;
+&lt;p&gt;Nodejs 越来越多的应用到后端的开发中， 不可避免的需要处理这样的溢出问题， 好在已经有很多优秀的第三方库来解决该问题：bignum、bigint。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//每种类型的第二行为无符号范围
+TYPE         BYTE   MIN            MAX
+TINYINT      1     -128            127
+                                   255
+SMALLINT     2    -32768          32767
+                                  65535
+MEDIUMINT    3    -8388608       8388607
+                                 16777215
+INT          4   -2147483648    2147483647
+                                4294967295
+BIGINT       8  -9223372036854775808    9223372036854775807
+                                       18446744073709551615
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;BIGINT 就是 64 位整数， 一旦要处理的数据量超过了 BIGINT 能存储的范围，便要考虑使用字符串保存， 坏处是数字的算数运算需要通过应用程序使用大整数库来处理，不能依赖于数据库。&lt;/p&gt;
+
+&lt;p&gt;注: 常常看到 BIGINT(5) 或者 INT(10)， 括号里的 5 或 10 只是表示展示宽度，并不影响数的精度范围和存储字节数，需要与 VARCHAR(100)或 DECIMAL(10,2)区分开&lt;/p&gt;
+
+&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://michalbe.blogspot.sg/2013/03/javascript-less-known-parts-bitwise.html&quot;&gt;JavaScript: The less known parts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002608050&quot;&gt;JS 的整型你懂了吗？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;延伸阅读&quot;&gt;延伸阅读&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/&quot;&gt;每一个JavaScript开发者应该了解的浮点知识&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jser.it/blog/2014/07/07/numbers-in-javascript/&quot;&gt;Numbers in JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">JS 中的最大安全整数 JS中所有的数字类型存储都是双精度浮点数浮点数并不是能够精确表示范围内的所有数的， 虽然 double 浮点型的范围看上去很大: 2.23x10^(-308) ~ 1.79x10^308。 可以表示的最大整数可以很大，但能够精确表示，使用算数运算的并没有这么大。</summary></entry><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
 
 &lt;p&gt;参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析&lt;/p&gt;
 
@@ -1467,202 +1537,4 @@ $ git branch --track  dev origin/dev  //该方法同上
     &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot;&gt;git教程&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的中级使用教程</summary></entry><entry><title type="html">git的使用教程(一)</title><link href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base/" rel="alternate" type="text/html" title="git的使用教程(一)" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base</id><content type="html" xml:base="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/12/git-base/">&lt;h2 id=&quot;git的初级使用教程&quot;&gt;git的初级使用教程&lt;/h2&gt;
-
-&lt;p&gt;记录常用的git命令,方便自己查询&lt;/p&gt;
-
-&lt;h2 id=&quot;创建新仓库&quot;&gt;创建新仓库&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;$  git init
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;##检出新仓库&lt;/p&gt;
-&lt;h3 id=&quot;clone本地仓库&quot;&gt;clone本地仓库&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;$  git clone /path/to/repository
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;从远程仓库clone&quot;&gt;从远程仓库clone&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;$  git clone username@host:/path/to/repository
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;工作流&quot;&gt;工作流&lt;/h3&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 工作目录，它持有实际文件；第二个是 暂存区（Index），它像个缓存区域，临时保存你的改动；最后是 HEAD，它指向你最后一次提交的结果。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-base/trees.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;添加和提交&quot;&gt;添加和提交&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;$  git add &amp;lt;filename&amp;gt;
-$  git add *
-$  git add .     //添加到缓存区
-
-$  git commit -m &quot;代码提交信息&quot;   //提交到本地仓库
-
-$ git commit -a  相当于 git add + git commit
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;推送改动&quot;&gt;推送改动&lt;/h3&gt;
-&lt;p&gt;你的改动现在已经在本地仓库的 HEAD 中了。执行如下命令以将这些改动提交到远端仓库：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git push origin master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;可以把 master 换成你想要推送的任何分支。&lt;/p&gt;
-
-&lt;p&gt;如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git remote add origin &amp;lt;server&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;远程仓库&quot;&gt;远程仓库&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;$ git remote -v //显示远程仓库信息
-
-$ git remote rm origin  //删除远程链接
-
-$ git remote set-url origin git@github.com:michaelliao/learngit.git  //更改远程仓库地址,通常用来切换ssh和https
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如此你就能够将你的改动推送到所添加的服务器上去了。&lt;/p&gt;
-
-&lt;h3 id=&quot;分支&quot;&gt;分支&lt;/h3&gt;
-&lt;p&gt;分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-base/branches.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;创建一个叫做“feature_x”的分支，并切换过去：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git branch 查看本地分支
-
-$ git branch -a 查看本地和本地fetch到的远程分支都显示出来
-
-$ git branch -r 查看本地fetch到的远程分支(只显示本地存储的远程分支)
-
-$ git checkout -b feature_x
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;切换回主分支：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git checkout master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;再把新建的分支删掉：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git branch -d feature_x //删除已经合并的分支
-$  git branch -D feature_x  //强行删除未合并的分支
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;重命名分支&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ git branch -m devel develop
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;除非你将分支推送到远端仓库，不然该分支就是 不为他人所见的：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git push origin &amp;lt;branch&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;更新与合并&quot;&gt;更新与合并&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git pull   //相当于 git fetch and git merge两个操作
-$  git diff &amp;lt;source_branch&amp;gt; &amp;lt;target_branch&amp;gt;  //如果有冲突解决完冲突可以这样查看两个分支差别
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;标签&quot;&gt;标签&lt;/h3&gt;
-&lt;p&gt;以执行如下命令创建一个叫做 1.0.0 的标签：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git	 tag v1.0.0 1b2e1d63ff //b2e1d63ff 是你想要标记的提交 ID 的前 10 位字符
-
-$  git tag  //显示所有tag标签
-
-$  git show v1.0 //查看标签信息
-
-//打一个完整的标签 -a 制定标签的名字  -m 注释   最后的数字代表HEAD制定从哪次提交打标签
-$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 3628164
-
-
-$ git tag -d v1.0 //删除本地标签
-
-$ git push origin :refs/tags/v0.9   //删除远程标签 需要先将本地标签删除
-
-$ git push origin v1.0   //将标签推送到远程仓库
-
-
-
-$ git push origin --tags //一次性推送全部尚未推送到远程的本地标签：
-
-//使用 gpg(GnuPG)签名来打标签但是不常用
-$ git tag -s v0.2 -m &quot;signed version 0.2 released&quot; fec145a
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;log&quot;&gt;log&lt;/h3&gt;
-
-&lt;p&gt;更多高级用法&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/5.3-Git-log-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95&quot;&gt;参考这里&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$  git log //查看所有日志
-
-$  git log --author=toshiba  //查看某人的日志
-
-$  git log --pretty=oneline  //压缩后的日志每个提交只占一行
-
-$  git log --graph --oneline --decorate --all  //ASCII 艺术的树形结构来展示所有的分支, 每个分支都标示了他的名字和标签
-
-$  git log --graph --pretty=oneline --abbrev-commit
-
-$  git log --name-status  //查看都有哪些文件修改过了
-
-$  git log --help  //更多的帮助信息
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;git-fetch&quot;&gt;git fetch&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;#拉取仓库中所有的分支。同时会从另一个仓库中下载所有需要的提交和文件。
-
-$ git fetch &amp;lt;remote&amp;gt;
-
-
-#和上一个命令相同，但只拉取指定的分支。
-
-$git fetch &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;替换本地改动&quot;&gt;替换本地改动&lt;/h3&gt;
-&lt;p&gt;假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git checkout -- &amp;lt;filename&amp;gt; //此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。
-    //已添加到暂存区的改动以及新文件都不会受到影响。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$  git fetch origin
-$  git reset --hard origin/master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;reset参数&quot;&gt;reset参数&lt;/h3&gt;
-&lt;p&gt;除了在当前分支上操作，你还可以通过传入这些标记来修改你的缓存区或工作目录：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;–soft – 缓存区和工作目录都不会被改变&lt;/li&gt;
-  &lt;li&gt;–mixed – 默认选项。缓存区和你指定的提交同步，但工作目录不受影响&lt;/li&gt;
-  &lt;li&gt;–hard – 缓存区和工作目录都同步到你指定的提交&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;实用小贴士&quot;&gt;实用小贴士&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;$  gitk           					//内建的图形化 git
-
-$  git config color.ui true          //彩色的 git 输出
-
-$  git config --global color.ui true
-
-$  git config format.pretty oneline  //显示历史记录时，每个提交的信息只显示一行
-
-$  git add -i 							//交互式添加文件到暂存区：
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;参考文章&quot;&gt;参考文章&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的初级使用教程</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的中级使用教程</summary></entry></feed>
