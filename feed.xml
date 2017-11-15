@@ -1,4 +1,537 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-10T10:28:31+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-15T06:41:56+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">SublimeText快捷键</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/" rel="alternate" type="text/html" title="SublimeText快捷键" /><published>2017-11-15T00:00:00+00:00</published><updated>2017-11-15T00:00:00+00:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/">&lt;h2 id=&quot;sublime-text-2---实用快捷键-mac-os-x&quot;&gt;Sublime Text 2 - 实用快捷键 (Mac OS X)&lt;/h2&gt;
+
+&lt;h3 id=&quot;打开前往&quot;&gt;打开/前往&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘T&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;前往文件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌃P&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;前往项目&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘R&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;前往 method&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧P&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;命令提示&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃G&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;前往行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃ `&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;python 控制台&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;编辑&quot;&gt;编辑&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘L&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;选择行 (重复按下将下一行加入选择)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘D&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;选择词 (重复按下时多重选择相同的词进行多重编辑)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃⇧M&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;选择括号内的内容&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧↩&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;在当前行前插入新行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘↩&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;在当前行后插入新行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃⇧K&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;删除行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘KK&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;从光标处删除至行尾&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘K⌫&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;从光标处删除至行首&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧D&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;复制(多)行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘J&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;合并(多)行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘KU&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;改为大写&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘KL&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;改为小写&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘ /&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;注释&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥ /&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;块注释&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘Y&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;恢复或重复&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧V&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;粘贴并自动缩进&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃ space&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;自动完成(重复按下选择下一个提示)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃M&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;跳转至对应的括号&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;xmlhtml&quot;&gt;XML/HTML&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧A&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;选择标签内的内容&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥ .&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;闭合当前标签&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;查找替换&quot;&gt;查找/替换&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘F&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;查找&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥F&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;替换&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥G&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;查找下一个符合当前所选的内容&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌃G&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;查找所有符合当前所选的内容进行多重编辑&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧F&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;在所有打开的文件中进行查找&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;拆分窗口标签页&quot;&gt;拆分窗口/标签页&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥1&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;单列&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥2&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;双列&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⌥5&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;网格 (4组)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃[1,2,3,4]&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;焦点移动至相应组&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌃⇧[1,2,3,4]&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;将当前文件移动至相应组&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘[1,2,3…]&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;选择相应标签页&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;书签&quot;&gt;书签&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘F2&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;添加/去除书签&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;F2&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;下一个书签&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⇧F2&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;前一个书签&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘⇧F2&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;清除书签&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;标记&quot;&gt;标记&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘K space&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;设置标记&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘KW&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;从光标位置删除至标记&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘KA&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;从光标位置选择至标记&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;⌘KG&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;清除标记&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">Sublime Text 2 - 实用快捷键 (Mac OS X)</summary></entry><entry><title type="html">IDEA快捷键</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/" rel="alternate" type="text/html" title="IDEA快捷键" /><published>2017-11-15T00:00:00+00:00</published><updated>2017-11-15T00:00:00+00:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/">&lt;h3 id=&quot;intellij-idea-for-mac-快捷键&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据官方pdf翻译：&lt;a href=&quot;https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf&quot;&gt;https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;在 IntelliJ IDEA 中有两个 Mac 版本的快捷键，一个叫做：Mac OS X，一个叫做：Mac OS X 10.5+&lt;/li&gt;
+  &lt;li&gt;目前都是用：Mac OS X 10.5+&lt;/li&gt;
+  &lt;li&gt;有两套的原因：&lt;a href=&quot;https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed&quot;&gt;https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;建议将 Mac 系统中与 IntelliJ IDEA 冲突的快捷键取消或更改，不建议改 IntelliJ IDEA 的默认快捷键。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;mac键盘符号和修饰键说明&quot;&gt;Mac键盘符号和修饰键说明&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;⌘&lt;/code&gt; Command&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⇧&lt;/code&gt; Shift&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⌥&lt;/code&gt; Option&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⌃&lt;/code&gt; Control&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;↩︎&lt;/code&gt; Return/Enter&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⌫&lt;/code&gt; Delete&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⌦&lt;/code&gt; 向前删除键（Fn+Delete）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;↑&lt;/code&gt; 上箭头&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;↓&lt;/code&gt; 下箭头&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;←&lt;/code&gt; 左箭头&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;→&lt;/code&gt; 右箭头&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⇞&lt;/code&gt; Page Up（Fn+↑）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⇟&lt;/code&gt; Page Down（Fn+↓）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Home&lt;/code&gt; Fn + ←&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;End&lt;/code&gt; Fn + →&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⇥&lt;/code&gt; 右制表符（Tab键）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⇤&lt;/code&gt; 左制表符（Shift+Tab）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;⎋&lt;/code&gt; Escape (Esc)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;一editing编辑&quot;&gt;一、Editing（编辑）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Control + Space&lt;/code&gt; 基本的代码补全（补全任何类、方法、变量）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Shift + Space&lt;/code&gt; 智能代码补全（过滤器方法列表和变量的预期类型）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + Enter&lt;/code&gt; 自动结束代码，行末自动添加分号&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + P&lt;/code&gt; 显示方法的参数信息&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + J&lt;/code&gt; 快速查看文档&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + F1&lt;/code&gt; 查看外部文档（在某些代码上会触发打开浏览器显示相关文档）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + 鼠标放在代码上&lt;/code&gt; 显示代码简要信息&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + F1&lt;/code&gt; 在错误或警告处显示具体描述信息&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + N, Control + Enter, Control + N&lt;/code&gt; 生成代码（getter、setter、构造函数、hashCode/equals,toString）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + O&lt;/code&gt; 覆盖方法（重写父类方法）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + I&lt;/code&gt; 实现方法（实现接口中的方法）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + T&lt;/code&gt; 包围代码（使用if..else, try..catch, for, synchronized等包围选中的代码）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + /&lt;/code&gt; 注释/取消注释与行注释&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + /&lt;/code&gt; 注释/取消注释与块注释&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + 方向键上&lt;/code&gt; 连续选中代码块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + 方向键下&lt;/code&gt; 减少当前选中的代码块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Shift + Q&lt;/code&gt; 显示上下文信息&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Enter&lt;/code&gt; 显示意向动作和快速修复代码&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + L&lt;/code&gt; 格式化代码&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Option + O&lt;/code&gt; 优化import&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Option + I&lt;/code&gt; 自动缩进线&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Tab / Shift + Tab&lt;/code&gt; 缩进代码 / 反缩进代码&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + X&lt;/code&gt; 剪切当前行或选定的块到剪贴板&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + C&lt;/code&gt; 复制当前行或选定的块到剪贴板&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + V&lt;/code&gt; 从剪贴板粘贴&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + V&lt;/code&gt; 从最近的缓冲区粘贴&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + D&lt;/code&gt; 复制当前行或选定的块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Delete&lt;/code&gt; 删除当前行或选定的块的行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Shift + J&lt;/code&gt; 智能的将代码拼接成一行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Enter&lt;/code&gt; 智能的拆分拼接的行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + Enter&lt;/code&gt; 开始新的一行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + U&lt;/code&gt; 大小写切换&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + ] / Command + Shift + [&lt;/code&gt; 选择直到代码块结束/开始*   &lt;code&gt;Option + Fn + Delete&lt;/code&gt; 删除到单词的末尾&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Delete&lt;/code&gt; 删除到单词的开头&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + 加号 / Command + 减号&lt;/code&gt; 展开 / 折叠代码块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + 加号&lt;/code&gt; 展开所以代码块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + 减号&lt;/code&gt; 折叠所有代码块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + W&lt;/code&gt; 关闭活动的编辑器选项卡&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;二searchreplace查询替换&quot;&gt;二、Search/Replace（查询/替换）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Double Shift&lt;/code&gt; 查询任何东西&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + F&lt;/code&gt; 文件内查找&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + G&lt;/code&gt; 查找模式下，向下查找&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + G&lt;/code&gt; 查找模式下，向上查找&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + R&lt;/code&gt; 文件内替换&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F&lt;/code&gt; 全局查找（根据路径）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + R&lt;/code&gt; 全局替换（根据路径）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + S&lt;/code&gt; 查询结构（Ultimate Edition 版专用，需要在Keymap中设置）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + M&lt;/code&gt; 替换结构（Ultimate Edition 版专用，需要在Keymap中设置）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;三usage-search使用查询&quot;&gt;三、Usage Search（使用查询）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Option + F7 / Command + F7&lt;/code&gt; 在文件中查找用法 / 在类中查找用法&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F7&lt;/code&gt; 在文件中突出显示的用法&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + F7&lt;/code&gt; 显示用法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;四compile-and-run编译和运行&quot;&gt;四、Compile and Run（编译和运行）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + F9&lt;/code&gt; 编译Project&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F9&lt;/code&gt; 编译选择的文件、包或模块&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Option + R&lt;/code&gt; 弹出 Run 的可选择菜单&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Option + D&lt;/code&gt; 弹出 Debug 的可选择菜单&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + R&lt;/code&gt; 运行&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + D&lt;/code&gt; 调试&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Shift + R, Control + Shift + D&lt;/code&gt; 从编辑器运行上下文环境配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;五debugging调试&quot;&gt;五、Debugging（调试）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;F8&lt;/code&gt; 进入下一步，如果当前行断点是一个方法，则不进入当前方法体内&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F7&lt;/code&gt; 进入下一步，如果当前行断点是一个方法，则进入当前方法体内，如果该方法体还有方法，则不会进入该内嵌的方法中&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + F7&lt;/code&gt; 智能步入，断点所在行上有多个方法调用，会弹出进入哪个方法&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + F8&lt;/code&gt; 跳出&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + F9&lt;/code&gt; 运行到光标处，如果光标前有其他断点会进入到该断点&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + F8&lt;/code&gt; 计算表达式（可以更改变量值使其生效）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + R&lt;/code&gt; 恢复程序运行，如果该断点下面代码还有断点则停在下一个断点上&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + F8&lt;/code&gt; 切换断点（若光标当前行有断点则取消断点，没有则加上断点）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F8&lt;/code&gt; 查看断点信息&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;六navigation导航&quot;&gt;六、Navigation（导航）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + O&lt;/code&gt; 查找类文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + O&lt;/code&gt; 查找所有类型文件、打开文件、打开目录，打开目录需要在输入的内容前面或后面加一个反斜杠&lt;code&gt;/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + O&lt;/code&gt; 前往指定的变量 / 方法&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + 方向键左 / Control + 方向键右&lt;/code&gt; 左右切换打开的编辑tab页&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F12&lt;/code&gt; 返回到前一个工具窗口&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Esc&lt;/code&gt; 从工具窗口进入代码文件窗口&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + Esc&lt;/code&gt; 隐藏当前或最后一个活动的窗口，且光标进入代码文件窗口&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F4&lt;/code&gt; 关闭活动run/messages/find/… tab&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + L&lt;/code&gt; 在当前文件跳转到某一行的指定处&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + E&lt;/code&gt; 显示最近打开的文件记录列表&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + 方向键左 / Option + 方向键右&lt;/code&gt; 光标跳转到当前单词 / 中文句的左 / 右侧开头位置&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + 方向键左 / Command + Option + 方向键右&lt;/code&gt; 退回 / 前进到上一个操作的地方&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + Delete&lt;/code&gt; 跳转到最后一个编辑的地方&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + F1&lt;/code&gt; 显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择(如在代码编辑窗口可以选择显示该文件的Finder)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + B / Command +  鼠标点击&lt;/code&gt; 进入光标所在的方法/变量的接口或是定义处&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + B&lt;/code&gt; 跳转到实现处，在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Space, Command + Y&lt;/code&gt; 快速打开光标所在方法、类的定义&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Shift + B&lt;/code&gt; 跳转到类型声明处&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + U&lt;/code&gt; 前往当前光标所在方法的父类的方法 / 接口定义&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + 方向键下 / Control + 方向键上&lt;/code&gt; 当前光标跳转到当前文件的前一个/后一个方法名位置&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + ] / Command + [&lt;/code&gt; 移动光标到当前所在代码的花括号开始/结束位置&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + F12&lt;/code&gt; 弹出当前文件结构层，可以在弹出的层上直接输入进行筛选（可用于搜索类中的方法）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + H&lt;/code&gt; 显示当前类的层次结构&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + H&lt;/code&gt; 显示方法层次结构&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Option + H&lt;/code&gt; 显示调用层次结构&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F2 / Shift + F2&lt;/code&gt; 跳转到下一个/上一个突出错误或警告的位置&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F4 / Command + 方向键下&lt;/code&gt; 编辑/查看代码源&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Home&lt;/code&gt; 显示到当前文件的导航条&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F3&lt;/code&gt;选中文件/文件夹/代码行，添加/取消书签&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + F3&lt;/code&gt; 选中文件/文件夹/代码行，使用助记符添加/取消书签&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + 0...Control + 9&lt;/code&gt; 定位到对应数值的书签位置&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + F3&lt;/code&gt; 显示所有书签&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;七refactoring重构&quot;&gt;七、Refactoring（重构）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;F5&lt;/code&gt; 复制文件到指定目录&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F6&lt;/code&gt; 移动文件到指定目录&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Delete&lt;/code&gt; 在文件上为安全删除文件，弹出确认框&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + F6&lt;/code&gt; 重命名文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + F6&lt;/code&gt; 更改签名&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + N&lt;/code&gt; 一致性&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + M&lt;/code&gt; 将选中的代码提取为方法&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + V&lt;/code&gt; 提取变量&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + F&lt;/code&gt; 提取字段&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + C&lt;/code&gt; 提取常量&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + P&lt;/code&gt; 提取参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;八vcslocal-history版本控制本地历史记录&quot;&gt;八、VCS/Local History（版本控制/本地历史记录）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + K&lt;/code&gt; 提交代码到版本控制器&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + T&lt;/code&gt; 从版本控制器更新代码&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Shift + C&lt;/code&gt; 查看最近的变更记录&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + C&lt;/code&gt; 快速弹出版本控制器操作面板&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;九live-templates动态代码模板&quot;&gt;九、Live Templates（动态代码模板）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + J&lt;/code&gt; 弹出模板选择窗口，将选定的代码使用动态模板包住&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + J&lt;/code&gt; 插入自定义动态代码模板&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;十general通用&quot;&gt;十、General（通用）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + 1...Command + 9&lt;/code&gt; 打开相应编号的工具窗口&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + S&lt;/code&gt; 保存所有&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + Y&lt;/code&gt; 同步、刷新&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Command + F&lt;/code&gt; 切换全屏模式&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F12&lt;/code&gt; 切换最大化编辑器&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Shift + F&lt;/code&gt; 添加到收藏夹&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Shift + I&lt;/code&gt; 检查当前文件与当前的配置文件&lt;/li&gt;
+  &lt;li&gt;Control + ` 快速切换当前的scheme（切换主题、代码样式等）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + ,&lt;/code&gt; 打开IDEA系统设置&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + ;&lt;/code&gt; 打开项目结构对话框&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Shift + Command + A&lt;/code&gt; 查找动作（可设置相关选项）&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Control + Shift + Tab&lt;/code&gt; 编辑窗口标签和工具窗口之间切换（如果在切换的过程加按上delete，则是关闭对应选中的窗口）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;十一other一些官方文档上没有体现的快捷键&quot;&gt;十一、Other（一些官方文档上没有体现的快捷键）&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift +8&lt;/code&gt; 竖编辑模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;参考文章&quot;&gt;参考文章&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">IntelliJ IDEA For Mac 快捷键</summary></entry><entry><title type="html">Visual Studio快捷键</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key/" rel="alternate" type="text/html" title="Visual Studio快捷键" /><published>2017-11-15T00:00:00+00:00</published><updated>2017-11-15T00:00:00+00:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key/">&lt;h3 id=&quot;工欲善其事必先利其器快捷键总结&quot;&gt;工欲善其事必先利其器快捷键总结&lt;/h3&gt;
+
+&lt;h3 id=&quot;项目相关的快捷键&quot;&gt;项目相关的快捷键&lt;/h3&gt;
+
+&lt;p&gt;Ctrl + Shift + B = 生成项目&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Alt + L = 显示Solution Explorer（解决方案资源管理器）&lt;/p&gt;
+
+&lt;p&gt;Shift + Alt+ C = 添加新类&lt;/p&gt;
+
+&lt;p&gt;Shift + Alt + A = 添加新项目到项目&lt;/p&gt;
+
+&lt;h3 id=&quot;编辑相关的键盘快捷键&quot;&gt;编辑相关的键盘快捷键&lt;/h3&gt;
+
+&lt;p&gt;Ctrl + Enter = 在当前行插入空行&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Shift + Enter = 在当前行下方插入空行&lt;/p&gt;
+
+&lt;p&gt;Ctrl +空格键 = 使用IntelliSense（智能感知）自动完成&lt;/p&gt;
+
+&lt;p&gt;Alt + Shift +箭头键(←,↑,↓,→) = 选择代码的自定义部分&lt;/p&gt;
+
+&lt;p&gt;Ctrl + } = 匹配大括号、括号&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Shift +} = 在匹配的括号、括号内选择文本&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Shift + S = 保存所有文件和项目&lt;/p&gt;
+
+&lt;p&gt;Ctrl + K，Ctrl + C = 注释选定行&lt;/p&gt;
+
+&lt;p&gt;Ctrl + K，Ctrl + U = 取消选定行的注释&lt;/p&gt;
+
+&lt;p&gt;Ctrl + K，Ctrl + D = 正确对齐所有代码&lt;/p&gt;
+
+&lt;p&gt;Shift + End = 从头到尾选择整行&lt;/p&gt;
+
+&lt;p&gt;Shift + Home = 从尾到头选择整行&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Delete = 删除光标右侧的所有字&lt;/p&gt;
+
+&lt;h3 id=&quot;导航相关的键盘快捷键&quot;&gt;导航相关的键盘快捷键&lt;/h3&gt;
+
+&lt;p&gt;Ctrl +Up/Down = 滚动窗口但不移动光标&lt;/p&gt;
+
+&lt;p&gt;Ctrl + - = 让光标移动到它先前的位置&lt;/p&gt;
+
+&lt;p&gt;Ctrl ++ = 让光标移动到下一个位置&lt;/p&gt;
+
+&lt;p&gt;F12 = 转到定义&lt;/p&gt;
+
+&lt;h3 id=&quot;调试相关的键盘快捷键&quot;&gt;调试相关的键盘快捷键&lt;/h3&gt;
+
+&lt;p&gt;Ctrl + Alt + P = 附加到进程&lt;/p&gt;
+
+&lt;p&gt;F10 = 调试单步执行&lt;/p&gt;
+
+&lt;p&gt;F5 = 开始调试&lt;/p&gt;
+
+&lt;p&gt;Shift + F5 = 停止调试&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Alt + Q = 添加快捷匹配&lt;/p&gt;
+
+&lt;p&gt;F9 = 设置或删除断点&lt;/p&gt;
+
+&lt;h3 id=&quot;搜索相关的键盘快捷键&quot;&gt;搜索相关的键盘快捷键&lt;/h3&gt;
+
+&lt;p&gt;Ctrl + K  Ctrl + K = 将当前行添加书签&lt;/p&gt;
+
+&lt;p&gt;Ctrl + K  Ctrl + N = 导航至下一个书签&lt;/p&gt;
+
+&lt;p&gt;Ctrl + . = 如果你键入一个类名如Collection&lt;string&gt;，且命名空间导入不正确的话，那么这个快捷方式组合将自动插入导入&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Shift + F = 在文件中查找&lt;/p&gt;
+
+&lt;p&gt;Shift  + F12 = 查找所有引用&lt;/p&gt;
+
+&lt;p&gt;Ctrl + F = 显示查找对话框&lt;/p&gt;
+
+&lt;p&gt;Ctrl + H = 显示替换对话框&lt;/p&gt;
+
+&lt;p&gt;Ctrl + G = 跳转到行号或行&lt;/p&gt;
+
+&lt;p&gt;Ctrl + Shift + F = 查找所选条目在整个解决方案中的引用&lt;/p&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
 
 &lt;p&gt;参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析&lt;/p&gt;
 
@@ -157,7 +690,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/&quot;&gt;每一个JavaScript开发者应该了解的浮点知识&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://jser.it/blog/2014/07/07/numbers-in-javascript/&quot;&gt;Numbers in JavaScript&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">关于javascript中的~操作</summary></entry><entry><title type="html">常用快捷键整理总结</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/" rel="alternate" type="text/html" title="常用快捷键整理总结" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/quick-key/">&lt;h1 id=&quot;工欲善其事必先利其器快捷键总结&quot;&gt;工欲善其事必先利其器快捷键总结&lt;/h1&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">原码, 反码, 补码 详解</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/" rel="alternate" type="text/html" title="原码, 反码, 补码 详解" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/">&lt;h1 id=&quot;机器数和真值&quot;&gt;机器数和真值&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">关于javascript中的~操作</summary></entry><entry><title type="html">原码, 反码, 补码 详解</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/" rel="alternate" type="text/html" title="原码, 反码, 补码 详解" /><published>2017-10-31T00:00:00+00:00</published><updated>2017-10-31T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/">&lt;h1 id=&quot;机器数和真值&quot;&gt;机器数和真值&lt;/h1&gt;
 &lt;p&gt;在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.&lt;/p&gt;
 
 &lt;h2 id=&quot;机器数&quot;&gt;机器数&lt;/h2&gt;
@@ -1129,63 +1662,4 @@ $  git add -i 							//交互式添加文件到暂存区：
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的初级使用教程</summary></entry><entry><title type="html">LeetCode,LintCode,Hihocoder刷题指南</title><link href="/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/" rel="alternate" type="text/html" title="LeetCode,LintCode,Hihocoder刷题指南" /><published>2017-10-12T00:00:00+00:00</published><updated>2017-10-12T00:00:00+00:00</updated><id>/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview</id><content type="html" xml:base="/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/">&lt;h1 id=&quot;通过题目训练来提升自己的编程能力&quot;&gt;通过题目训练来提升自己的编程能力&lt;/h1&gt;
-
-&lt;h2 id=&quot;leetcode&quot;&gt;&lt;a href=&quot;https://leetcode.com/&quot;&gt;LeetCode&lt;/a&gt;&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;LeetCode 是一个非常棒的 OJ（Online Judge）平台，收集了许多公司的面试题目。相对其他 OJ 平台而言，有着下面的几个优点：&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;题目全部来自业内大公司的真实面试&lt;/li&gt;
-    &lt;li&gt;不用处理输入输出，精力全放在解决具体问题上&lt;/li&gt;
-    &lt;li&gt;题目有丰富的讨论，可以参考别人的思路&lt;/li&gt;
-    &lt;li&gt;精确了解自己代码在所有提交代码中运行效率的排名&lt;/li&gt;
-    &lt;li&gt;支持多种主流语言：C/C++，Python, Java&lt;/li&gt;
-    &lt;li&gt;可以在线进行测试，方便调试&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.lintcode.com/zh-cn/&quot;&gt;LintCode&lt;/a&gt;
-&lt;a href=&quot;http://hihocoder.com/&quot;&gt;Hihocoder&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;参考文章&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
-&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
-&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
-&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/&quot;&gt;适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/&quot;&gt;使用travis-ci自动部署hexo博客&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="interview" /><category term="JavaScript" /><summary type="html">通过题目训练来提升自己的编程能力</summary></entry><entry><title type="html">使用travis-ci集成项目,自动部署博客站点</title><link href="/2017/09/05/blog-static-nginx/" rel="alternate" type="text/html" title="使用travis-ci集成项目,自动部署博客站点" /><published>2017-09-05T00:00:00+00:00</published><updated>2017-09-05T00:00:00+00:00</updated><id>/2017/09/05/blog-static-nginx</id><content type="html" xml:base="/2017/09/05/blog-static-nginx/">&lt;p&gt;categories:
-    - 技术文章&lt;/p&gt;
-
-&lt;h1 id=&quot;第一次搭建博客&quot;&gt;第一次搭建博客&lt;/h1&gt;
-
-&lt;h1 id=&quot;参考文章&quot;&gt;参考文章&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html&quot;&gt;48 个你需要知道的 Jekyll 使用技巧
-&lt;/a&gt;
-&lt;a href=&quot;http://www.zhanxin.info/journal/&quot;&gt;掌心&lt;/a&gt;
-&lt;a href=&quot;https://blog.ixxoo.me/&quot;&gt;likebeta’s Blog
-&lt;/a&gt;
-&lt;a href=&quot;http://blog.csdn.net/maoxunxing/article/details/40479753&quot;&gt;jekyll翻译文章&lt;/a&gt;
-&lt;a href=&quot;http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html&quot;&gt;jekyll语法简单笔记&lt;/a&gt;
-&lt;a href=&quot;http://alfred-sun.github.io/blog/2014/12/05/github-pages/&quot;&gt;GitHub Pages 静态博客 - 个人建站实录
-&lt;/a&gt;
-&lt;a href=&quot;http://harttle.com/2013/10/18/github-homepage-tutorial.html&quot;&gt;部署自己的博客&lt;/a&gt;
-&lt;a href=&quot;https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/&quot;&gt;杨缘的博客参考&lt;/a&gt;
-&lt;a href=&quot;http://yerl.cn/blog/use-jekyll-build-your-blog&quot;&gt;poison&lt;/a&gt;
-&lt;a href=&quot;http://jekyllcn.com/docs/plugins/&quot;&gt;jekyll官网中文&lt;/a&gt;
-&lt;a href=&quot;http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/&quot;&gt;使用travis-ci自动部署hexo博客&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="博客搭建" /><category term="jekyll" /><summary type="html">categories: - 技术文章</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的初级使用教程</summary></entry></feed>
