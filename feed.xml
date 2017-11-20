@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-16T10:10:32+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Lodash.js源码阅读分析（一）</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" rel="alternate" type="text/html" title="Lodash.js源码阅读分析（一）" /><published>2017-11-16T00:00:00+00:00</published><updated>2017-11-16T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-20T12:42:49+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Generator函数的含义和用法</title><link href="/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator/" rel="alternate" type="text/html" title="Generator函数的含义和用法" /><published>2017-11-20T00:00:00+00:00</published><updated>2017-11-20T00:00:00+00:00</updated><id>/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator</id><content type="html" xml:base="/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator/">&lt;h2 id=&quot;同步和异步&quot;&gt;同步和异步&lt;/h2&gt;
+&lt;p&gt;要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓&lt;code&gt;单线程&lt;/code&gt;，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。
+这种做法&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;好处是实现起来比较简单，执行环境相对单纯.&lt;/li&gt;
+    &lt;li&gt;坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;为了解决上面的问题javascript将语言执行分成了两种： 同步（Synchronous）和异步（Asynchronous）.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;同步模式即从上往下依次执行，等待前一个任务执行完成后在执行下一个任务，执行顺序与代码顺序是一样的。&lt;/li&gt;
+  &lt;li&gt;异步模式是每一个任务有一个或者多个回调函数，前一个任务结束后不执行下一个任务而是执行毁掉函数，后一个任务不等前一个任务结束就执行。执行顺序与代码顺序是不一致的，异步的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;异步模式的四种方法&quot;&gt;异步模式的四种方法&lt;/h2&gt;
+
+&lt;h3 id=&quot;回调函数&quot;&gt;回调函数&lt;/h3&gt;
+
+&lt;p&gt;如果有两个函数f1和f2,后者等待前者的执行结果。但是f1是一个很耗时的任务可以将f2写成f1的回调函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    function f1(callback) {
+        setTimeout(function() {
+            // f1的任务代码
+            callback();
+        },1000)
+    }
+
+    f1(f2);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;回调函数的优点是简单、容易理解和部署，缺点是不利于代码的阅读和维护，各个部分之间高度耦合（Coupling），流程会很混乱，而且每个任务只能指定一个回调函数。&lt;/p&gt;
+
+&lt;h3 id=&quot;事件监听&quot;&gt;事件监听&lt;/h3&gt;
+&lt;p&gt;采用事件驱动模式。任务的执行不取决于代码的顺序，而取决于某个事件是否发生，直接上代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    f1.on('done', f2); //f1监听'done'如果触发该事件执行f2,使用了jQuery的事件监听
+    function f1(callback) {
+        setTimeout(function() {
+            // f1的任务代码
+
+            f1.trigger('done');
+        },1000)
+    }
+
+    f1(f2);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;发布订阅&quot;&gt;发布、订阅&lt;/h3&gt;
+
+&lt;p&gt;我们假定，存在一个”信号中心”，某个任务执行完成，就向信号中心”发布”（publish）一个信号，其他任务可以向信号中心”订阅”（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Publish-subscribe_pattern&quot;&gt;“发布/订阅模式”（publish-subscribe pattern）&lt;/a&gt;，又称&lt;a href=&quot;https://en.wikipedia.org/wiki/Observer_pattern&quot;&gt;“观察者模式”（observer pattern）&lt;/a&gt;。
+这个模式有&lt;a href=&quot;https://msdn.microsoft.com/en-us/magazine/hh201955.aspx?f=255&amp;amp;MSPPError=-2147217396&quot;&gt;多种实现&lt;/a&gt;,本例子使用&lt;a href=&quot;https://gist.github.com/661855&quot;&gt;Tiny Pub/Sub&lt;/a&gt;,这是一个jQuery插件。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    jQuery.subscribe(&quot;done&quot;, f2); //首先，f2向&quot;信号中心&quot;jQuery订阅&quot;done&quot;信号。
+
+    function f1(){
+　　　　setTimeout(function () {
+　　　　　　// f1的任务代码
+　　　　　　jQuery.publish(&quot;done&quot;);
+　　　　}, 1000);
+　　}
+//jQuery.publish(&quot;done&quot;)的意思是，f1执行完成后，向&quot;信号中心&quot;jQuery发布&quot;done&quot;信号，从而引发f2的执行。
+//此外，f2完成执行后，也可以取消订阅（unsubscribe）。
+　　jQuery.unsubscribe(&quot;done&quot;, f2);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;promises&quot;&gt;Promises&lt;/h3&gt;
+&lt;p&gt;Promises对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。
+它的思想是，每一个异步任务返回一个Promise对象，该对象有一个then方法，允许指定回调函数。比如，f1的回调函数f2,可以写成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    function f1(){
+　　　　var dfd = $.Deferred();
+　　　　setTimeout(function () {
+　　　　　　// f1的任务代码
+　　　　　　dfd.resolve();
+　　　　}, 500);
+　　　　return dfd.promise;
+　　}
+
+　　f1().then(f2);
+　　f1().then(f2).then(f3);
+　　f1().then(f2).fail(f3);
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;它还有一个前面三种方法都没有的好处：如果一个任务已经完成，再添加回调函数，该回调函数会立即执行。所以，你不用担心是否错过了某个事件或信号。这种方法的缺点就是编写和理解，都相对比较难。&lt;/p&gt;
+
+&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/04/generator.html&quot;&gt;Generator 函数的含义与用法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="es6" /><category term="javascript" /><summary type="html">同步和异步 要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓单线程，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。 这种做法 好处是实现起来比较简单，执行环境相对单纯. 坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。</summary></entry><entry><title type="html">Lodash.js源码阅读分析（一）</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" rel="alternate" type="text/html" title="Lodash.js源码阅读分析（一）" /><published>2017-11-16T00:00:00+00:00</published><updated>2017-11-16T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
 &lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
@@ -982,285 +1072,4 @@ BIGINT       8  -9223372036854775808    9223372036854775807
 
 &lt;p&gt;&lt;a href=&quot;https://wall.alphacoders.com/by_collection.php?id=39&amp;amp;lang=Chinese&amp;amp;page=1&quot;&gt;壁纸&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://axhub.im/&quot;&gt;原型发布与管理工具&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="娱乐" /><summary type="html">justfun</summary></entry><entry><title type="html">git的使用教程(三)</title><link href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/22/senior/" rel="alternate" type="text/html" title="git的使用教程(三)" /><published>2017-10-22T00:00:00+00:00</published><updated>2017-10-22T00:00:00+00:00</updated><id>/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/22/senior</id><content type="html" xml:base="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/2017/10/22/senior/">&lt;h2 id=&quot;git的高级使用教程&quot;&gt;git的高级使用教程&lt;/h2&gt;
-
-&lt;p&gt;记录一些git的高级用法&lt;/p&gt;
-
-&lt;h2 id=&quot;修改tag代码&quot;&gt;修改tag代码&lt;/h2&gt;
-&lt;p&gt;在项目中我们会有这样的要求，发布了一个tag v1.0现在这个tag有bug需要修复应该如何操作呢
-tag其实是一个快照是不能修改代码的但是可以基于tag新建一个分支来修改，这样修改完毕基于新的分支再打tag即可得到修复后的tag&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ git fetch origin v1.0
-
-$ git checkout -b branch_name tag_name //这样会从 tag 创建一个分支，然后就和普通的 git 操作一样了,该分支是基于tag的而不是基于master的
-
-$ git push origin branch_name  //直接将修改好的分支推上去 或者重新打tag
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;回滚错误的修改&quot;&gt;回滚错误的修改&lt;/h2&gt;
-
-&lt;p&gt;建议仔细阅读&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/2.6-%E5%9B%9E%E6%BB%9A%E9%94%99%E8%AF%AF%E7%9A%84%E4%BF%AE%E6%94%B9#git-revert&quot;&gt;git-revert&lt;/a&gt;
-该命令只回滚了一个单独的提交，并没有移除后面的提交，并且保留了提交历史。 但是reset直接把状态回调bug之前之后所有的提交都会遗弃，这样并不安全。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git revert &amp;lt;commit&amp;gt;
-
-
-# 编辑一些跟踪的文件
-
-# 提交一份快照
-$ git commit -m &quot;Make some changes that will be undone&quot;
-
-# 撤销刚刚的提交
-$ git revert HEAD
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;确保你只对本地的修改使用 git reset，而不是公共更改。如果你需要修复一个公共提交，git revert 命令正是被设计来做这个的&lt;/p&gt;
-
-&lt;h2 id=&quot;重写项目历史&quot;&gt;重写项目历史&lt;/h2&gt;
-
-&lt;h3 id=&quot;git-commit-amend&quot;&gt;git commit –amend&lt;/h3&gt;
-&lt;p&gt;git commit –amend 命令是修复最新提交的便捷方式，如有需要请在本地使用不要修改公共历史。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ git log
-
-commit eeeab2ca5f30d70667d6d12ab71f19dd7b958d1c (HEAD -&amp;gt; master)
-Author: xxx &amp;lt;xxx@xxx.com&amp;gt;
-Date:   Mon Nov 6 15:30:43 2017 +0800
-
-    fix(测试): 测试提交
-
-    测试提交
-
-    Signed-off-by: xxx &amp;lt;xxx@xxx.com&amp;gt;
-
-
-$ git commit --amend
-
-# 该命令修改后再使用git log得到如下
-
-commit eeeab2ca5f30d70667d6d12ab71f19dd7b958d1c (HEAD -&amp;gt; master)
-Author: xxx &amp;lt;xxx@xxx.com&amp;gt;
-Date:   Mon Nov 6 15:30:43 2017 +0800
-
-    fix(测试): 测试提交sss
-
-    测试提交sss
-
-    Signed-off-by: xxx &amp;lt;xxx@xxx.com&amp;gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;git-rebase&quot;&gt;git rebase&lt;/h3&gt;
-&lt;p&gt;变基（rebase, 事实上这个名字十分诡异, 所以在大多数时候直接用英文术语）是将分支移到一个新的基提交的过程。事实上重写了你的项目历史,过程一般如下所示
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/git-senior/rebase.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;用法：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git rebase &amp;lt;base&amp;gt;
-
-# 将当前分支 rebase 到 &amp;lt;base&amp;gt;，这里可以是任何类型的提交引用（ID、分支名、标签，或是 HEAD 的相对引用）
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一个🌰&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 开始新的功能分支
-$ git checkout -b feat master
-# 编辑文件
-$ git commit -a -m &quot;Start developing a feature&quot;
-
-# 在 feature 分支开发了一半的时候，我们意识到项目中有一个安全漏洞:
-
-# 基于master分支创建一个快速修复分支
-$ git checkout -b bug master
-# 编辑文件
-$ git commit -a -m &quot;Fix security hole&quot;
-# 合并回master
-$ git checkout master
-$ git merge bug
-$ git branch -d bug
-
-# 将 hotfix 分支并回之后 master，我们有了一个分叉的项目历史。
-# 我们用 rebase 整合 feature 分支以获得线性的历史，而不是使用普通的 git merge。
-$ git checkout feat
-$ git rebase master
-
-$ git checkout master
-$ git merge feat
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;另一个🌰&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# 开始新的功能分支
-$ git checkout -b feat master
-# 编辑文件
-$ git commit -a -m &quot;Start developing a feature&quot;
-# 编辑更多文件
-$ git commit -a -m &quot;Fix something from the previous commit&quot;
-
-# 直接在 master 上添加文件
-$ git checkout master
-# 编辑文件
-$ git commit -a -m &quot;Fix security hole&quot;
-
-# 开始交互式 rebase
-$ git checkout feat
-$ git rebase -i master
-
-最后的那个命令会打开一个编辑器，包含 feat 的两个提交，和一些指示：
-
-pick 32618c4 Start developing a feature
-pick 62eed47 Fix something from the previous commit
-
-# 你可以更改每个提交前的 pick 命令来决定在 rebase 时提交移动的方式。
-# 在我们的例子中，我们只需要用 squash 命令把两个提交并在一起就可以了：
-
-pick 32618c4 Start developing a feature
-squash 62eed47 Fix something from the previous commit
-
-# 保存并关闭编辑器以开始 rebase
-# 最后，你可以执行一个快速向前的合并，来将完善的 feature 分支整合进主代码库：
-
-git checkout master
-git merge feat
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;通常情况下建议使用rebase而非merge来拉取上游代码。这样所有的记录会被合并为一次commit,而且没有一些不重要的合并来污染提交的时间线&lt;/p&gt;
-
-&lt;h3 id=&quot;本地清理&quot;&gt;本地清理&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;$ git rebase -i HEAD~3
-
-$ git rebase -i HEAD~~~ //这两条一个意思合并注释
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;参考&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/5.1-%E4%BB%A3%E7%A0%81%E5%90%88%E5%B9%B6%EF%BC%9AMerge%E3%80%81Rebase-%E7%9A%84%E9%80%89%E6%8B%A9&quot;&gt;代码合并：Merge、Rebase 的选择&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;合并分支commit&quot;&gt;合并分支commit&lt;/h3&gt;
-&lt;p&gt;当你在新的feat功能开发时可能会有各种commit最后功能完成我可能想将所有commit合成一个，这样历史会比较简洁。这是可能会使用这条命令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ git merge-base feat master  //该命令找出feat 分支开始分叉的基 返回基提交的ID，然后可以酱紫
-
-$ git rebase -i IDXXX //此时选择suqash 就可以重新写历史了 当然合并后最后一次的历史也可以使用 git commit --amend改写
-
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;git-pull&quot;&gt;git pull&lt;/h3&gt;
-
-&lt;p&gt;在基于 Git 的协作工作流中，将上游更改合并到你的本地仓库是一个常见的工作。我们已经知道应该使用 git fetch，然后是 git merge，但是 git pull 将这两个命令合二为一。&lt;/p&gt;
-
-&lt;p&gt;基于 Rebase 的 Pull&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git pull --rebase &amp;lt;remote&amp;gt;  //此命令会合并远程分支和本地分支而非使用git merge;
-
-$ git checkout master
-$ git pull --rebase origin  //简单地将你本地的更改放到其他人已经提交的更改之后。
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;reset还是checkout&quot;&gt;Reset还是Checkout&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/5.2-%E4%BB%A3%E7%A0%81%E5%9B%9E%E6%BB%9A%EF%BC%9AReset%E3%80%81Checkout%E3%80%81Revert-%E7%9A%84%E9%80%89%E6%8B%A9&quot;&gt;参考此文章&lt;/a&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;命令&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;作用域&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;常用情景&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;git reset&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;提交层面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;在私有分支上舍弃一些没有提交的更改&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;git reset&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;文件层面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;将文件从缓存区中移除&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;git checkout&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;提交层面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;切换分支或查看旧版本&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;git checkout&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;文件层面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;舍弃工作目录中的更改&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;git revert&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;提交层面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;在公共分支上回滚更改&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;git revert&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;文件层面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;（然而并没有）&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;git-cherry-pick&quot;&gt;git cherry-pick&lt;/h3&gt;
-&lt;p&gt;git cherry-pick 命令「复制」一个提交节点并在当前分支做一次完全一样的新提交。
-只想将远程仓库的一个特定提交合并到自己的分支中该怎么做呢？可以使用git cherry-pick 来选择给定SHA值的提交，然后将其合并到当前分支中：&lt;/p&gt;
-
-&lt;h2 id=&quot;常见的工作流&quot;&gt;&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/3.5-%E5%B8%B8%E8%A7%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%AF%94%E8%BE%83&quot;&gt;常见的工作流&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://mritd.me/2017/09/05/git-flow-note/&quot;&gt;参考此文章&lt;/a&gt;总结一下工具&lt;/p&gt;
-
-&lt;h3 id=&quot;git-flow工具&quot;&gt;Git flow工具&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html&quot;&gt;Git-flow&lt;/a&gt; 是一个 git 扩展集，按 Vincent Driessen 的分支模型提供高层次的库操作；使用 git-flow 工具可以以更加简单的命令完成对 Vincent Driessen 分支模型的实践&lt;/li&gt;
-  &lt;li&gt;另一个工具是 &lt;a href=&quot;https://github.com/tj/git-extras&quot;&gt;Git-extras&lt;/a&gt;，该工具没有 git-flow 那么简单化，不过其提供更加强大的命令支持&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;git-commit-message&quot;&gt;Git Commit Message&lt;/h3&gt;
-
-&lt;p&gt;我们遵循&lt;a href=&quot;https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.greljkmo14y0&quot;&gt; Angular 社区规范&lt;/a&gt;格式来提交代码&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;
-&amp;lt;BLANK LINE&amp;gt;
-&amp;lt;body&amp;gt;
-&amp;lt;BLANK LINE&amp;gt;
-&amp;lt;footer&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;type: 本次提交类型&lt;/li&gt;
-  &lt;li&gt;scope: 本次提交影响范围，一般标明影响版本号或者具体的范围如 $browser, $compile, $rootScope, ngHref, ngClick, ngView, etc…&lt;/li&gt;
-  &lt;li&gt;subject: 本次提交简短说明&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;关于 type 提交类型，有如下几种值:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;feat：新功能(feature)&lt;/li&gt;
-  &lt;li&gt;fix：修补 bug&lt;/li&gt;
-  &lt;li&gt;docs：文档(documentation)&lt;/li&gt;
-  &lt;li&gt;style： 格式(不影响代码运行的变动)&lt;/li&gt;
-  &lt;li&gt;refactor：重构(即不是新增功能，也不是修改 bug 的代码变动)&lt;/li&gt;
-  &lt;li&gt;test：增加测试&lt;/li&gt;
-  &lt;li&gt;chore：构建过程或辅助工具的变动&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;commit小工具&quot;&gt;Commit小工具&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://commitizen.github.io/cz-cli/&quot;&gt;commitizen-cli&lt;/a&gt;比较有名采用node.js编写执行&lt;code&gt;git cz&lt;/code&gt;能生成commit模板进行选择&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://cimhealth.github.io/git-toolkit/&quot;&gt;Git-toolkit&lt;/a&gt; 基于shell编写执行&lt;code&gt;git ci&lt;/code&gt;产生提交模板&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;git-钩子&quot;&gt;&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/5.4-Git-%E9%92%A9%E5%AD%90%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81&quot;&gt;Git 钩子&lt;/a&gt;&lt;/h2&gt;
-
-&lt;h2 id=&quot;git引用日志&quot;&gt;&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki/5.5-Git-%E6%8F%90%E4%BA%A4%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%95%E7%94%A8%E6%97%A5%E5%BF%97#%E5%93%88%E5%B8%8C%E5%AD%97%E4%B8%B2&quot;&gt;Git引用日志&lt;/a&gt;&lt;/h2&gt;
-
-&lt;h2 id=&quot;参考文章&quot;&gt;参考文章&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki&quot;&gt;git-recipes&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://rogerdudler.github.io/git-guide/index.zh.html&quot;&gt;git - 简明指南&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot;&gt;git教程&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/news/2016/01/12-git-advanced-commands&quot;&gt;你需要知道的12个Git高级命令&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="git" /><summary type="html">git的高级使用教程</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://axhub.im/&quot;&gt;原型发布与管理工具&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="娱乐" /><summary type="html">justfun</summary></entry></feed>

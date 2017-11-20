@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "Generator函数的含义和用法",
+      "subtitle": "ES6重点记录",
+      "data" : "/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator/",
+      "date": "2017-11-20"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "Lodash.js源码阅读分析（一）",
       "subtitle": "对于lodash的源码进行分析解读",
       "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/",
