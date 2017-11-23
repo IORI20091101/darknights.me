@@ -65,6 +65,18 @@
 <lastmod>2017-11-20T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/</loc>
+<lastmod>2017-11-23T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/23/ajax-fetch/</loc>
+<lastmod>2017-11-23T00:00:00+00:00</lastmod>
+</url>
+<url>
+<loc>/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/</loc>
+<lastmod>2017-11-23T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>/404.html</loc>
 </url>
 <url>
@@ -87,5 +99,8 @@
 </url>
 <url>
 <loc>/page2/</loc>
+</url>
+<url>
+<loc>/page3/</loc>
 </url>
 </urlset>
