@@ -15,7 +15,7 @@
       {
       "value" : "放弃ajax拥抱fetch",
       "subtitle": "fetch使用的一些注意点",
-      "data" : "/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/23/ajax-fetch/",
+      "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch/",
       "date": "2017-11-23"
       }
       
@@ -35,7 +35,7 @@
       {
       "value" : "Generator函数的含义和用法",
       "subtitle": "ES6重点记录",
-      "data" : "/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator/",
+      "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/",
       "date": "2017-11-20"
       }
       
@@ -45,7 +45,7 @@
       {
       "value" : "Lodash.js源码阅读分析（一）",
       "subtitle": "对于lodash的源码进行分析解读",
-      "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/",
+      "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/",
       "date": "2017-11-16"
       }
       
@@ -83,9 +83,9 @@
       
     
       {
-      "value" : "javascript的查漏补缺",
+      "value" : "javascript的的最大安全数",
       "subtitle": "javascript基础知识",
-      "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base/",
+      "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base-number/",
       "date": "2017-11-01"
       }
       
@@ -95,7 +95,7 @@
       {
       "value" : "javascript的位操作",
       "subtitle": "在javascript中的位操作涉及二进制的处理",
-      "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/",
+      "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/",
       "date": "2017-11-01"
       }
       
@@ -105,7 +105,7 @@
       {
       "value" : "原码, 反码, 补码 详解",
       "subtitle": "原码, 反码, 补码的基础概念和计算方法.",
-      "data" : "/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/10/31/bin-calculate/",
+      "data" : "/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/",
       "date": "2017-10-31"
       }
       

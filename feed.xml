@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-11-29T10:17:34+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">前端构建工具fit&amp;amp;webpack</title><link href="/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/" rel="alternate" type="text/html" title="前端构建工具fit&amp;webpack" /><published>2017-11-23T00:00:00+00:00</published><updated>2017-11-23T00:00:00+00:00</updated><id>/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-12-08T09:30:20+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">前端构建工具fit&amp;amp;webpack</title><link href="/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/" rel="alternate" type="text/html" title="前端构建工具fit&amp;webpack" /><published>2017-11-23T00:00:00+00:00</published><updated>2017-11-23T00:00:00+00:00</updated><id>/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
 &lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/camsong/blog/issues/2&quot;&gt;Ajax已死，fetch永生&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="webpack" /><category term="前端构建工具" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">放弃ajax拥抱fetch</title><link href="/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/23/ajax-fetch/" rel="alternate" type="text/html" title="放弃ajax拥抱fetch" /><published>2017-11-23T00:00:00+00:00</published><updated>2017-11-23T00:00:00+00:00</updated><id>/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/23/ajax-fetch</id><content type="html" xml:base="/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/23/ajax-fetch/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="webpack" /><category term="前端构建工具" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">放弃ajax拥抱fetch</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch/" rel="alternate" type="text/html" title="放弃ajax拥抱fetch" /><published>2017-11-23T00:00:00+00:00</published><updated>2017-11-23T00:00:00+00:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
 &lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/camsong/blog/issues/2&quot;&gt;Ajax已死，fetch永生&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="es6" /><category term="javascript" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">vps各种玩法</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/" rel="alternate" type="text/html" title="vps各种玩法" /><published>2017-11-23T00:00:00+00:00</published><updated>2017-11-23T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/">&lt;h2 id=&quot;vps各种玩法&quot;&gt;vps各种玩法&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="ES6学习笔记" /><category term="javascript" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">vps各种玩法</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/" rel="alternate" type="text/html" title="vps各种玩法" /><published>2017-11-23T00:00:00+00:00</published><updated>2017-11-23T00:00:00+00:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/">&lt;h2 id=&quot;vps各种玩法&quot;&gt;vps各种玩法&lt;/h2&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
@@ -21,7 +21,7 @@
   &lt;li&gt;&lt;a href=&quot;https://yepster.me/vps/&quot;&gt;一个野生互联网爱好者拿 VPS 干了些什么&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.zrj96.com/post-296.html&quot;&gt;Debian系统下Aria2+AriaNg+h5ai实现离线下载与在线播放&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.senra.me/aria2-and-plex-build-your-own-cloud-video-streaming-service/&quot;&gt;Aria2+Plex实现支持离线下载的小型私人视频云盘&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="vps" /><summary type="html">vps各种玩法</summary></entry><entry><title type="html">Generator函数的含义和用法</title><link href="/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator/" rel="alternate" type="text/html" title="Generator函数的含义和用法" /><published>2017-11-20T00:00:00+00:00</published><updated>2017-11-20T00:00:00+00:00</updated><id>/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator</id><content type="html" xml:base="/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2017/11/20/js-generator/">&lt;h2 id=&quot;同步和异步&quot;&gt;同步和异步&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="vps" /><summary type="html">vps各种玩法</summary></entry><entry><title type="html">Generator函数的含义和用法</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/" rel="alternate" type="text/html" title="Generator函数的含义和用法" /><published>2017-11-20T00:00:00+00:00</published><updated>2017-11-20T00:00:00+00:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/">&lt;h2 id=&quot;同步和异步&quot;&gt;同步和异步&lt;/h2&gt;
 &lt;p&gt;要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓&lt;code&gt;单线程&lt;/code&gt;，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。
 这种做法&lt;/p&gt;
 &lt;blockquote&gt;
@@ -111,7 +111,7 @@
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/04/generator.html&quot;&gt;Generator 函数的含义与用法&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="es6" /><category term="javascript" /><summary type="html">同步和异步 要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓单线程，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。 这种做法 好处是实现起来比较简单，执行环境相对单纯. 坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。</summary></entry><entry><title type="html">Lodash.js源码阅读分析（一）</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" rel="alternate" type="text/html" title="Lodash.js源码阅读分析（一）" /><published>2017-11-16T00:00:00+00:00</published><updated>2017-11-16T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="ES6学习笔记" /><category term="javascript" /><summary type="html">同步和异步 要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓单线程，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。 这种做法 好处是实现起来比较简单，执行环境相对单纯. 坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。</summary></entry><entry><title type="html">Lodash.js源码阅读分析（一）</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" rel="alternate" type="text/html" title="Lodash.js源码阅读分析（一）" /><published>2017-11-16T00:00:00+00:00</published><updated>2017-11-16T00:00:00+00:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
 &lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
@@ -660,7 +660,7 @@
 &lt;p&gt;Ctrl + Shift + F = 查找所选条目在整个解决方案中的引用&lt;/p&gt;
 
 &lt;h3 id=&quot;參考文章&quot;&gt;參考文章&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://msdn.microsoft.com/zh-cn/library/dn320181.aspx&quot; alt=&quot;Visual Studio 的提示和技巧&quot; /&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">javascript的查漏补缺</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base/" rel="alternate" type="text/html" title="javascript的查漏补缺" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base/">&lt;h2 id=&quot;js-中的最大安全整数&quot;&gt;JS 中的最大安全整数&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://msdn.microsoft.com/zh-cn/library/dn320181.aspx&quot; alt=&quot;Visual Studio 的提示和技巧&quot; /&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry><entry><title type="html">javascript的的最大安全数</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base-number/" rel="alternate" type="text/html" title="javascript的的最大安全数" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base-number</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/js-base-number/">&lt;h2 id=&quot;js-中的最大安全整数&quot;&gt;JS 中的最大安全整数&lt;/h2&gt;
 &lt;p&gt;JS中所有的数字类型存储都是&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8&quot;&gt;双精度浮点数&lt;/a&gt;浮点数并不是能够精确表示范围内的所有数的， 虽然 double 浮点型的范围看上去很大: 2.23x10^(-308) ~ 1.79x10^308。 可以表示的最大整数可以很大，但能够精确表示，使用算数运算的并没有这么大。&lt;/p&gt;
 
 &lt;p&gt;例如下面会报错&lt;/p&gt;
@@ -689,6 +689,7 @@ console.log(9223372036854775807 + 1000); //output: 9223372036854776000
 
 &lt;h2 id=&quot;为什么是这个值&quot;&gt;为什么是这个值?&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/js-base/number.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;1 位符号位&lt;/li&gt;
   &lt;li&gt;11 位指数位&lt;/li&gt;
@@ -696,17 +697,16 @@ console.log(9223372036854775807 + 1000); //output: 9223372036854776000
 &lt;/ul&gt;
 
 &lt;p&gt;使用 52 位表示一个数的整数部分，那么最大可以精确表示的数应该是 2^52 - 1 才对， 就像 64 位表示整数时那样: 2^63 - 1 （去掉 1 位符号位）。 但其实浮点数在保存数字的时候做了规格化处理，以 10 进制为例:&lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;20*10^2 =&amp;gt; 2*10^3 //小数点前只需要保留 1 位数
-
-对于二进制来说， 小数点前保留一位， 规格化后始终是 1.***, 节省了 1 bit，这个 1 并不需要保存。
-
-
-## 大整数与数据库
-Nodejs 越来越多的应用到后端的开发中， 不可避免的需要处理这样的溢出问题， 好在已经有很多优秀的第三方库来解决该问题：bignum、bigint。
-
-
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;//每种类型的第二行为无符号范围
+
+&lt;p&gt;对于二进制来说， 小数点前保留一位， 规格化后始终是 1.***, 节省了 1 bit，这个 1 并不需要保存。&lt;/p&gt;
+
+&lt;h2 id=&quot;大整数与数据库&quot;&gt;大整数与数据库&lt;/h2&gt;
+&lt;p&gt;Nodejs 越来越多的应用到后端的开发中， 不可避免的需要处理这样的溢出问题， 好在已经有很多优秀的第三方库来解决该问题：&lt;a href=&quot;https://github.com/justmoon/node-bignum&quot;&gt;bignum&lt;/a&gt;、bigint。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//每种类型的第二行为无符号范围
 TYPE         BYTE   MIN            MAX
 TINYINT      1     -128            127
                                    255
@@ -717,29 +717,31 @@ MEDIUMINT    3    -8388608       8388607
 INT          4   -2147483648    2147483647
                                 4294967295
 BIGINT       8  -9223372036854775808    9223372036854775807
-                                       18446744073709551615&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;BIGINT 就是 64 位整数， 一旦要处理的数据量超过了 BIGINT 能存储的范围，便要考虑使用字符串保存， 坏处是数字的算数运算需要通过应用程序使用大整数库来处理，不能依赖于数据库。
-
-注: 常常看到 BIGINT(5) 或者 INT(10)， 括号里的 5 或 10 只是表示展示宽度，并不影响数的精度范围和存储字节数，需要与 VARCHAR(100)或 DECIMAL(10,2)区分开
-
-
-
-
-## JS右移0位
-在Javascript代码有时候会看到this.length &amp;gt;&amp;gt; 0这样的类似代码，那么this.length &amp;gt;&amp;gt; 0这样的代码有什么用呢？
-* &amp;gt;&amp;gt;代表有符号右移运算符 === 算术右移
-* &amp;gt;&amp;gt;&amp;gt;在Javascript中代表无符号右移运算符 === 逻辑右移
-移位运算分为左移和右移，其中左移运算都是丢弃最高位，在右端补零。而右移预算则分为逻辑右移&amp;lt;code&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/code&amp;gt;和算术右移动&amp;lt;code&amp;gt;&amp;gt;&amp;gt;&amp;lt;/code&amp;gt;，逻辑右移在左端补零，算术右移则在左端扑最高有效位的值。
-
-&amp;lt;code&amp;gt;this.length &amp;gt;&amp;gt; 0&amp;lt;/code&amp;gt;的作用更简易的总结：
-
-* 所有非数值转换成0
-* 所有大于等于 0 数取整数部分（快速去掉小数）
-例：
+                                       18446744073709551615
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;‘hello’ » 0  // 0
-32.5 » 0  // 32
-```&lt;/p&gt;
+&lt;p&gt;BIGINT 就是 64 位整数， 一旦要处理的数据量超过了 BIGINT 能存储的范围，便要考虑使用字符串保存， 坏处是数字的算数运算需要通过应用程序使用大整数库来处理，不能依赖于数据库。&lt;/p&gt;
+
+&lt;p&gt;注: 常常看到 BIGINT(5) 或者 INT(10)， 括号里的 5 或 10 只是表示展示宽度，并不影响数的精度范围和存储字节数，需要与 VARCHAR(100)或 DECIMAL(10,2)区分开&lt;/p&gt;
+
+&lt;h2 id=&quot;js右移0位&quot;&gt;JS右移0位&lt;/h2&gt;
+&lt;p&gt;在Javascript代码有时候会看到this.length » 0这样的类似代码，那么this.length » 0这样的代码有什么用呢？&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&amp;gt;&amp;gt; 代表有符号右移运算符 === 算术右移&lt;/li&gt;
+  &lt;li&gt;&amp;gt;&amp;gt;&amp;gt; 在Javascript中代表无符号右移运算符 === 逻辑右移
+移位运算分为左移和右移，其中左移运算都是丢弃最高位，在右端补零。而右移预算则分为逻辑右移&lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;和算术右移动&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;，逻辑右移在左端补零，算术右移则在左端扑最高有效位的值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;this.length &amp;gt;&amp;gt; 0&lt;/code&gt;的作用更简易的总结：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;所有非数值转换成0&lt;/li&gt;
+  &lt;li&gt;所有大于等于 0 数取整数部分（快速去掉小数）
+例：
+    &lt;pre&gt;&lt;code&gt;'hello' &amp;gt;&amp;gt; 0  // 0
+32.5 &amp;gt;&amp;gt; 0  // 32
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
@@ -751,7 +753,7 @@ BIGINT       8  -9223372036854775808    9223372036854775807
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/&quot;&gt;每一个JavaScript开发者应该了解的浮点知识&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://jser.it/blog/2014/07/07/numbers-in-javascript/&quot;&gt;Numbers in JavaScript&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">JS 中的最大安全整数 JS中所有的数字类型存储都是双精度浮点数浮点数并不是能够精确表示范围内的所有数的， 虽然 double 浮点型的范围看上去很大: 2.23x10^(-308) ~ 1.79x10^308。 可以表示的最大整数可以很大，但能够精确表示，使用算数运算的并没有这么大。</summary></entry><entry><title type="html">javascript的位操作</title><link href="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="计算机基础" /><category term="javascript" /><summary type="html">JS 中的最大安全整数 JS中所有的数字类型存储都是双精度浮点数浮点数并不是能够精确表示范围内的所有数的， 虽然 double 浮点型的范围看上去很大: 2.23x10^(-308) ~ 1.79x10^308。 可以表示的最大整数可以很大，但能够精确表示，使用算数运算的并没有这么大。</summary></entry><entry><title type="html">javascript的位操作</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" rel="alternate" type="text/html" title="javascript的位操作" /><published>2017-11-01T00:00:00+00:00</published><updated>2017-11-01T00:00:00+00:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/">&lt;h1 id=&quot;关于javascript中的操作&quot;&gt;关于javascript中的~操作&lt;/h1&gt;
 
 &lt;p&gt;参考文章中有一道面试题,尽管文章已经有了一部分解释但是还有一些点不够明确在此在进行一次分析&lt;/p&gt;
 
