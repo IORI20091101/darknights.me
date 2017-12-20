@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "解读V8 GC",
+      "subtitle": "Node.js 应用背景与 GC 基础知识",
+      "data" : "/node.js/2017/12/20/node-gc/",
+      "date": "2017-12-20"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "前端构建工具fit&amp;webpack",
       "subtitle": "记录前端一些构建工具使用",
       "data" : "/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/",
