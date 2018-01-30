@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-12-22T10:20:48+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">除涉Android</title><link href="/android/2017/12/20/android-start/" rel="alternate" type="text/html" title="除涉Android" /><published>2017-12-20T00:00:00+00:00</published><updated>2017-12-20T00:00:00+00:00</updated><id>/android/2017/12/20/android-start</id><content type="html" xml:base="/android/2017/12/20/android-start/">&lt;h2 id=&quot;android环境安装&quot;&gt;Android环境安装&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-01-30T07:54:20+00:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Css布局研究之Flex布局总结（一）</title><link href="/css/2017/12/25/css-layout/" rel="alternate" type="text/html" title="Css布局研究之Flex布局总结（一）" /><published>2017-12-25T00:00:00+00:00</published><updated>2017-12-25T00:00:00+00:00</updated><id>/css/2017/12/25/css-layout</id><content type="html" xml:base="/css/2017/12/25/css-layout/">&lt;h2 id=&quot;flex布局&quot;&gt;Flex布局&lt;/h2&gt;
+
+&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/07/flex-examples.html&quot;&gt;Flex 布局教程：实例篇&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="Flex - Css布局" /><summary type="html">Flex布局</summary></entry><entry><title type="html">除涉Android</title><link href="/android/2017/12/20/android-start/" rel="alternate" type="text/html" title="除涉Android" /><published>2017-12-20T00:00:00+00:00</published><updated>2017-12-20T00:00:00+00:00</updated><id>/android/2017/12/20/android-start</id><content type="html" xml:base="/android/2017/12/20/android-start/">&lt;h2 id=&quot;android环境安装&quot;&gt;Android环境安装&lt;/h2&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
@@ -587,89 +592,4 @@
 &lt;h4 id=&quot;参考文章&quot;&gt;参考文章&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">IntelliJ IDEA For Mac 快捷键</summary></entry><entry><title type="html">Visual Studio快捷键</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key/" rel="alternate" type="text/html" title="Visual Studio快捷键" /><published>2017-11-15T00:00:00+00:00</published><updated>2017-11-15T00:00:00+00:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key/">&lt;h3 id=&quot;工欲善其事必先利其器快捷键总结&quot;&gt;工欲善其事必先利其器快捷键总结&lt;/h3&gt;
-
-&lt;h3 id=&quot;项目相关的快捷键&quot;&gt;项目相关的快捷键&lt;/h3&gt;
-
-&lt;p&gt;Ctrl + Shift + B = 生成项目&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Alt + L = 显示Solution Explorer（解决方案资源管理器）&lt;/p&gt;
-
-&lt;p&gt;Shift + Alt+ C = 添加新类&lt;/p&gt;
-
-&lt;p&gt;Shift + Alt + A = 添加新项目到项目&lt;/p&gt;
-
-&lt;h3 id=&quot;编辑相关的键盘快捷键&quot;&gt;编辑相关的键盘快捷键&lt;/h3&gt;
-
-&lt;p&gt;Ctrl + Enter = 在当前行插入空行&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Shift + Enter = 在当前行下方插入空行&lt;/p&gt;
-
-&lt;p&gt;Ctrl +空格键 = 使用IntelliSense（智能感知）自动完成&lt;/p&gt;
-
-&lt;p&gt;Alt + Shift +箭头键(←,↑,↓,→) = 选择代码的自定义部分&lt;/p&gt;
-
-&lt;p&gt;Ctrl + } = 匹配大括号、括号&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Shift +} = 在匹配的括号、括号内选择文本&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Shift + S = 保存所有文件和项目&lt;/p&gt;
-
-&lt;p&gt;Ctrl + K，Ctrl + C = 注释选定行&lt;/p&gt;
-
-&lt;p&gt;Ctrl + K，Ctrl + U = 取消选定行的注释&lt;/p&gt;
-
-&lt;p&gt;Ctrl + K，Ctrl + D = 正确对齐所有代码&lt;/p&gt;
-
-&lt;p&gt;Shift + End = 从头到尾选择整行&lt;/p&gt;
-
-&lt;p&gt;Shift + Home = 从尾到头选择整行&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Delete = 删除光标右侧的所有字&lt;/p&gt;
-
-&lt;h3 id=&quot;导航相关的键盘快捷键&quot;&gt;导航相关的键盘快捷键&lt;/h3&gt;
-
-&lt;p&gt;Ctrl +Up/Down = 滚动窗口但不移动光标&lt;/p&gt;
-
-&lt;p&gt;Ctrl + - = 让光标移动到它先前的位置&lt;/p&gt;
-
-&lt;p&gt;Ctrl ++ = 让光标移动到下一个位置&lt;/p&gt;
-
-&lt;p&gt;F12 = 转到定义&lt;/p&gt;
-
-&lt;h3 id=&quot;调试相关的键盘快捷键&quot;&gt;调试相关的键盘快捷键&lt;/h3&gt;
-
-&lt;p&gt;Ctrl + Alt + P = 附加到进程&lt;/p&gt;
-
-&lt;p&gt;F10 = 调试单步执行&lt;/p&gt;
-
-&lt;p&gt;F5 = 开始调试&lt;/p&gt;
-
-&lt;p&gt;Shift + F5 = 停止调试&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Alt + Q = 添加快捷匹配&lt;/p&gt;
-
-&lt;p&gt;F9 = 设置或删除断点&lt;/p&gt;
-
-&lt;h3 id=&quot;搜索相关的键盘快捷键&quot;&gt;搜索相关的键盘快捷键&lt;/h3&gt;
-
-&lt;p&gt;Ctrl + K  Ctrl + K = 将当前行添加书签&lt;/p&gt;
-
-&lt;p&gt;Ctrl + K  Ctrl + N = 导航至下一个书签&lt;/p&gt;
-
-&lt;p&gt;Ctrl + . = 如果你键入一个类名如Collection&lt;string&gt;，且命名空间导入不正确的话，那么这个快捷方式组合将自动插入导入&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Shift + F = 在文件中查找&lt;/p&gt;
-
-&lt;p&gt;Shift  + F12 = 查找所有引用&lt;/p&gt;
-
-&lt;p&gt;Ctrl + F = 显示查找对话框&lt;/p&gt;
-
-&lt;p&gt;Ctrl + H = 显示替换对话框&lt;/p&gt;
-
-&lt;p&gt;Ctrl + G = 跳转到行号或行&lt;/p&gt;
-
-&lt;p&gt;Ctrl + Shift + F = 查找所选条目在整个解决方案中的引用&lt;/p&gt;
-
-&lt;h3 id=&quot;參考文章&quot;&gt;參考文章&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://msdn.microsoft.com/zh-cn/library/dn320181.aspx&quot; alt=&quot;Visual Studio 的提示和技巧&quot; /&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">工欲善其事必先利其器快捷键总结</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="生产工具" /><category term="IDE" /><summary type="html">IntelliJ IDEA For Mac 快捷键</summary></entry></feed>
