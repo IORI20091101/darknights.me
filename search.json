@@ -3,6 +3,26 @@
   "data" : [
     
       {
+      "value" : "vim快捷键和配置",
+      "subtitle": "熟悉vim快捷键和配置欲善其事必先利其器快捷键总结",
+      "data" : "/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config/",
+      "date": "2018-03-15"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "使用electron进行桌面开发笔记",
+      "subtitle": "使用electron桌面开发问题汇总",
+      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2018/03/15/electron-develop-step1/",
+      "date": "2018-03-15"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "Css布局研究之Flex布局总结（一）",
       "subtitle": "兼容性的Flex语法总结",
       "data" : "/css/2017/12/25/css-layout/",
@@ -13,9 +33,19 @@
       
     
       {
-      "value" : "除涉Android",
+      "value" : "初涉Android",
       "subtitle": "Android环境安装",
       "data" : "/android/2017/12/20/android-start/",
+      "date": "2017-12-20"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "高性能网站建设指南",
+      "subtitle": "读书《高性能网站建设指南》总结",
+      "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2017/12/20/read-book-web/",
       "date": "2017-12-20"
       }
       
@@ -217,6 +247,16 @@
       "subtitle": "如何搭建个人博客以及注意点",
       "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/",
       "date": "2017-09-05"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "HTML学习指南（一）",
+      "subtitle": "将html内容进行归拢总结",
+      "data" : "/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/2017/03/16/html-lesson1/",
+      "date": "2017-03-16"
       }
       
     

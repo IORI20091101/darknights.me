@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>IDEA快捷键 - Dark knight's Blog</title>
+    <title>高性能网站建设指南 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2017/12/20/read-book-web/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat1.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg-bat-2.jpg ')
     }
 </style>
 
@@ -192,17 +192,15 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#生产工具" title="生产工具">生产工具</a>
-                            
-                            <a class="tag" href="/tags/#IDE" title="IDE">IDE</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                             
                         </div>
-                        <h1>IDEA快捷键</h1>
+                        <h1>高性能网站建设指南</h1>
                         
                         
-                        <h2 class="subheading">熟悉IDEA快捷键工欲善其事必先利其器快捷键总结</h2>
+                        <h2 class="subheading">读书《高性能网站建设指南》总结</h2>
                         
-                        <span class="meta">Posted by toshiba on November 15, 2017</span>
+                        <span class="meta">Posted by toshiba on December 20, 2017</span>
                     </div>
                 </div>
             </div>
@@ -224,229 +222,143 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h3 id="intellij-idea-for-mac-快捷键">IntelliJ IDEA For Mac 快捷键</h3>
+				<h1 id="高性能网站建设指南-前端工程师技能精髓">高性能网站建设指南-前端工程师技能精髓</h1>
 
+<h2 id="减少http请求">减少HTTP请求</h2>
+<p><code>性能黄金法则</code>提示了只有10%~20%响应时间花在了HTML文档上其他都用在了加载各种组件包括（图片，样式表，脚本，falsh）进行的HTTP请求上。因此改善响应时间的最简单途径就是减少组件数量，并由此减少请求数量</p>
+
+<p>可以以下通过方式</p>
+<blockquote>
+  <p>CSS Sprites</p>
+</blockquote>
+
+<blockquote>
+  <p>内联图片 data:URL</p>
+</blockquote>
+
+<blockquote>
+  <p>合并脚本和样式表</p>
+</blockquote>
+
+<p>data:URL模式首次在1995年被提议其格式如下 :<code>data:mediatype;base64,data</code>
+其他类似的模式还有
+ ftp:，file:， mailto:， smtp:， pop:， dns:， whois:， finger:， daytime:，news: ， run:
+需要注意的是内联图片不被IE支持，而且增加了文档的大小如果存在于HTML当中首次下载的文档大小会变大，鉴于此可以将内联图片放到css当中这样可以让图片可以被缓存而且这样减少了一个图片的http请求。</p>
+
+<h2 id="使用内容发布网络cdn">使用内容发布网络CDN</h2>
+<p>合理使用cdn会很大程度增加网站响应速度而且价格不贵，比如本站使用的又拍云（非广告），即使被DDOS了也花不了多少</p>
+
+<h2 id="添加expires头">添加Expires头</h2>
+<p>通过设置一个长久有效的Expires头可以使web组件被缓存。web服务器通过Expires头来告诉Web客户端它可以使用一个组件的当前副本直到制定的时间为止。
+但是由于Expires是一个特定时间，它要求服务器跟客户端始终严格同步（通常很难保证），所以需要跟Cache-Control: max-age=31500000 配合使用该项配置告诉客户端该组件过多长时间才会失效而不是到某一个时间失效。
+如果两者同时出现max-age指令会覆盖Expires头。
+比较幸运的是mod_expires Apache模块能够使用Expires头时能像max-age那样以相对的方式设置日期。使用Expire-Default指令来完成。设置如下：</p>
+<pre><code>    &lt;FilesMatch "\.(gif|jpg|js|css)$"&gt;
+        ExpiresDefault "access plus 10 years"
+    &lt;/FileMatch&gt;
+    //该指令会同时向响应中发送Expires头和Cache-Contral max-age,响应格式如下：
+    Expires: Wed, 16 Oct 2024 05:43:02 GMT
+    Cache-control: max-age=315360000
+
+</code></pre>
+<p>通过设置Expires头可以避免额外的http请求，减少一半的响应时间。</p>
+
+<p>##压缩组件
+使用gzip来压缩组件，从HTTP1.1开始Web客户端可以通过HTTP请求中的: Accept-Enconding: gzip,deflate  来表示对于压缩的支持，如果Web服务器看到请求中有这个头就会使用客户端列出来的方法中的一种来压缩响应。Web服务器通过响应中的Content-Encoding头来通知客户端 : Content-Encoding: gzip.</p>
+<blockquote>
+  <p>gzip是目前最流行和最有效的压缩方法， 另外一种deflate的方式效果略逊且不流行，因此gzip使最理想的压缩方式</p>
+</blockquote>
+
+<p>配置gzip使用的模块取决于Apache的版本</p>
 <ul>
-  <li>根据官方pdf翻译：<a href="https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf">https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf</a></li>
-  <li>在 IntelliJ IDEA 中有两个 Mac 版本的快捷键，一个叫做：Mac OS X，一个叫做：Mac OS X 10.5+</li>
-  <li>目前都是用：Mac OS X 10.5+</li>
-  <li>有两套的原因：<a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed">https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed</a>
-    <blockquote>
-      <p>建议将 Mac 系统中与 IntelliJ IDEA 冲突的快捷键取消或更改，不建议改 IntelliJ IDEA 的默认快捷键。</p>
-    </blockquote>
-  </li>
+  <li>Apache1.3使用mod_gzip</li>
+  <li>Apache2.x使用mod_deflate</li>
 </ul>
 
-<h4 id="mac键盘符号和修饰键说明">Mac键盘符号和修饰键说明</h4>
+<p>目前的状况是浏览器与服务器直接连接并没有任何问题，但是如果中间有代理服务器的话有两种情况
+情况一：Web客户端不支持gzip发送到代理服务器，代理服务器向服务器请求得到未压缩的组件，然后组件被代理服务器缓存，此后对该组件的所有请求都走缓存，组件失去了压缩的机会，即使以后的客户端支持gzip也没用了
+情况二：如何顺序相反缓存的则是gzip压缩后的组件，这样一个不支持gzip的Web浏览器无法正常解压导致组件可能失效。
+无论哪种情况都不是我们希望见到的，解决这个问题的方式是在Web服务器的响应中添加Vary头。Web服务器可以告诉代理根据一个或多个请求头来改变缓存响应，由于压缩决定基于Accept-Encoding请求头的，因此需要在服务器的Vary响应中包含Accept-Encoding.  如 Vary: Accept-Encoding
+这使得代理会缓存两个版本的内容如果有设置Accept-Encoding: gzip,deflate的返回压缩版本，没有设置的返回未压缩版本。
+还可以把在Apache设置支持和不支持gzip白名单将User-Agent加入Vary如 <code>Vary: Accept-Encoding,User-Agent</code></p>
+
+<h2 id="将样式表放在顶部">将样式表放在顶部</h2>
+<p>最好的实践是将Css放到head标签中防止FOUC（Flash Of Unstyled Content）。</p>
+<blockquote>
+  <p>和A不一样，[LINK]只能出现在文档的HEAD中，但出现的次数时任意的</p>
+</blockquote>
+
+<p>CSS放到底部会在IE导致白屏</p>
+<blockquote>
+  <ul>
+    <li>在新窗口打开时</li>
+    <li>重新加载时</li>
+    <li>作为主页时</li>
+  </ul>
+</blockquote>
+
+<h2 id="将脚本放到底部">将脚本放到底部</h2>
+<blockquote>
+  <ul>
+    <li>脚本会阻塞后面组件的下载</li>
+    <li>脚本会阻塞后面内容的呈现</li>
+  </ul>
+</blockquote>
+
+<p>所以最佳的位置就是放到页面body最底部</p>
+
+<h2 id="避免css表达式">避免CSS表达式</h2>
+<p>css表达式使用不当会导致频繁的求值导致地下的性能</p>
+<blockquote>
+  <p>可以明确的一点是不了解底层影响的情况下使用css表达式是非常危险的，所以尽量避免使用CSS表达式。</p>
+</blockquote>
+
+<h2 id="使用外部的javascript和css">使用外部的Javascript和CSS</h2>
+
+<p>组件的引入不外乎内联和外置。就纯粹而已内联要快一些但是我们还是会使用外置的css和脚本，这是因为外置的组件是会被缓存的导致以后的请求会从浏览器缓存读渲染会更快，而内联的脚本会导致html体积增大但是HTML是不会缓存的这样每次请求的html体积都会很大，造成额外的带宽消耗。</p>
 
 <ul>
-  <li><code>⌘</code> Command</li>
-  <li><code>⇧</code> Shift</li>
-  <li><code>⌥</code> Option</li>
-  <li><code>⌃</code> Control</li>
-  <li><code>↩︎</code> Return/Enter</li>
-  <li><code>⌫</code> Delete</li>
-  <li><code>⌦</code> 向前删除键（Fn+Delete）</li>
-  <li><code>↑</code> 上箭头</li>
-  <li><code>↓</code> 下箭头</li>
-  <li><code>←</code> 左箭头</li>
-  <li><code>→</code> 右箭头</li>
-  <li><code>⇞</code> Page Up（Fn+↑）</li>
-  <li><code>⇟</code> Page Down（Fn+↓）</li>
-  <li><code>Home</code> Fn + ←</li>
-  <li><code>End</code> Fn + →</li>
-  <li><code>⇥</code> 右制表符（Tab键）</li>
-  <li><code>⇤</code> 左制表符（Shift+Tab）</li>
-  <li><code>⎋</code> Escape (Esc)</li>
+  <li>加载后下载脚本可以在第一次加载内联的组件然后异步加载外部组件以便为下次加载提供便利这里使用的html是不一样的需要注意。</li>
+  <li>动态内联，使用cookie来让后台决定返回那个页面。</li>
 </ul>
 
-<h4 id="一editing编辑">一、Editing（编辑）</h4>
+<h2 id="减少dns查找">减少DNS查找</h2>
+<p>根据HTTP1.1规范，建议浏览器从每个主机名并行下载两个组件，如果一个web页面平均的将组件放到两个主机名下整体响应时间会减少一半。
+Yahoo研究表明使用两个主机名比使用1，4，10个主机名能带来更好的性能。因此建议将组件分别放到至少两个但是不超过四个与主机名下，这样不会造成过多的DNS查找，又可以为并行下载。</p>
 
-<ul>
-  <li><code>Control + Space</code> 基本的代码补全（补全任何类、方法、变量）</li>
-  <li><code>Control + Shift + Space</code> 智能代码补全（过滤器方法列表和变量的预期类型）</li>
-  <li><code>Command + Shift + Enter</code> 自动结束代码，行末自动添加分号</li>
-  <li><code>Command + P</code> 显示方法的参数信息</li>
-  <li><code>Control + J</code> 快速查看文档</li>
-  <li><code>Shift + F1</code> 查看外部文档（在某些代码上会触发打开浏览器显示相关文档）</li>
-  <li><code>Command + 鼠标放在代码上</code> 显示代码简要信息</li>
-  <li><code>Command + F1</code> 在错误或警告处显示具体描述信息</li>
-  <li><code>Command + N, Control + Enter, Control + N</code> 生成代码（getter、setter、构造函数、hashCode/equals,toString）</li>
-  <li><code>Control + O</code> 覆盖方法（重写父类方法）</li>
-  <li><code>Control + I</code> 实现方法（实现接口中的方法）</li>
-  <li><code>Command + Option + T</code> 包围代码（使用if..else, try..catch, for, synchronized等包围选中的代码）</li>
-  <li><code>Command + /</code> 注释/取消注释与行注释</li>
-  <li><code>Command + Option + /</code> 注释/取消注释与块注释</li>
-  <li><code>Option + 方向键上</code> 连续选中代码块</li>
-  <li><code>Option + 方向键下</code> 减少当前选中的代码块</li>
-  <li><code>Control + Shift + Q</code> 显示上下文信息</li>
-  <li><code>Option + Enter</code> 显示意向动作和快速修复代码</li>
-  <li><code>Command + Option + L</code> 格式化代码</li>
-  <li><code>Control + Option + O</code> 优化import</li>
-  <li><code>Control + Option + I</code> 自动缩进线</li>
-  <li><code>Tab / Shift + Tab</code> 缩进代码 / 反缩进代码</li>
-  <li><code>Command + X</code> 剪切当前行或选定的块到剪贴板</li>
-  <li><code>Command + C</code> 复制当前行或选定的块到剪贴板</li>
-  <li><code>Command + V</code> 从剪贴板粘贴</li>
-  <li><code>Command + Shift + V</code> 从最近的缓冲区粘贴</li>
-  <li><code>Command + D</code> 复制当前行或选定的块</li>
-  <li><code>Command + Delete</code> 删除当前行或选定的块的行</li>
-  <li><code>Control + Shift + J</code> 智能的将代码拼接成一行</li>
-  <li><code>Command + Enter</code> 智能的拆分拼接的行</li>
-  <li><code>Shift + Enter</code> 开始新的一行</li>
-  <li><code>Command + Shift + U</code> 大小写切换</li>
-  <li><code>Command + Shift + ] / Command + Shift + [</code> 选择直到代码块结束/开始*   <code>Option + Fn + Delete</code> 删除到单词的末尾</li>
-  <li><code>Option + Delete</code> 删除到单词的开头</li>
-  <li><code>Command + 加号 / Command + 减号</code> 展开 / 折叠代码块</li>
-  <li><code>Command + Shift + 加号</code> 展开所以代码块</li>
-  <li><code>Command + Shift + 减号</code> 折叠所有代码块</li>
-  <li><code>Command + W</code> 关闭活动的编辑器选项卡</li>
-</ul>
+<h2 id="精简javascript">精简Javascript</h2>
 
-<h4 id="二searchreplace查询替换">二、Search/Replace（查询/替换）</h4>
+<p>可以使用gulp等工具对脚本和css进行混淆，精简和压缩，服务端开启gzip，以减少文件的体积大小。</p>
 
-<ul>
-  <li><code>Double Shift</code> 查询任何东西</li>
-  <li><code>Command + F</code> 文件内查找</li>
-  <li><code>Command + G</code> 查找模式下，向下查找</li>
-  <li><code>Command + Shift + G</code> 查找模式下，向上查找</li>
-  <li><code>Command + R</code> 文件内替换</li>
-  <li><code>Command + Shift + F</code> 全局查找（根据路径）</li>
-  <li><code>Command + Shift + R</code> 全局替换（根据路径）</li>
-  <li><code>Command + Shift + S</code> 查询结构（Ultimate Edition 版专用，需要在Keymap中设置）</li>
-  <li><code>Command + Shift + M</code> 替换结构（Ultimate Edition 版专用，需要在Keymap中设置）</li>
-</ul>
+<h2 id="避免重定向">避免重定向</h2>
+<p>比如为了使用www.xxx.com 重定向到 www.xxx.com/ 这种是不推荐的，我们只需要使用服务端配置，无需重定向就能拥有如此简洁的url即可</p>
+<blockquote>
+  <p>寻找一种避免重定向的方法</p>
+</blockquote>
 
-<h4 id="三usage-search使用查询">三、Usage Search（使用查询）</h4>
+<h2 id="删除重复脚本">删除重复脚本</h2>
 
-<ul>
-  <li><code>Option + F7 / Command + F7</code> 在文件中查找用法 / 在类中查找用法</li>
-  <li><code>Command + Shift + F7</code> 在文件中突出显示的用法</li>
-  <li><code>Command + Option + F7</code> 显示用法</li>
-</ul>
+<blockquote>
+  <p>确保脚本只被包含一次</p>
+</blockquote>
 
-<h4 id="四compile-and-run编译和运行">四、Compile and Run（编译和运行）</h4>
+<p>可以添加文件MD5后缀或者时间戳来保证文件是不同的</p>
 
-<ul>
-  <li><code>Command + F9</code> 编译Project</li>
-  <li><code>Command + Shift + F9</code> 编译选择的文件、包或模块</li>
-  <li><code>Control + Option + R</code> 弹出 Run 的可选择菜单</li>
-  <li><code>Control + Option + D</code> 弹出 Debug 的可选择菜单</li>
-  <li><code>Control + R</code> 运行</li>
-  <li><code>Control + D</code> 调试</li>
-  <li><code>Control + Shift + R, Control + Shift + D</code> 从编辑器运行上下文环境配置</li>
-</ul>
+<h2 id="配置或删除etag">配置或删除ETag</h2>
+<p>ETag，一般建议移除ETag</p>
 
-<h4 id="五debugging调试">五、Debugging（调试）</h4>
+<blockquote>
+  <p>比较最新修改日期 Last-Modified
+比较实体标签 ETag</p>
+</blockquote>
 
-<ul>
-  <li><code>F8</code> 进入下一步，如果当前行断点是一个方法，则不进入当前方法体内</li>
-  <li><code>F7</code> 进入下一步，如果当前行断点是一个方法，则进入当前方法体内，如果该方法体还有方法，则不会进入该内嵌的方法中</li>
-  <li><code>Shift + F7</code> 智能步入，断点所在行上有多个方法调用，会弹出进入哪个方法</li>
-  <li><code>Shift + F8</code> 跳出</li>
-  <li><code>Option + F9</code> 运行到光标处，如果光标前有其他断点会进入到该断点</li>
-  <li><code>Option + F8</code> 计算表达式（可以更改变量值使其生效）</li>
-  <li><code>Command + Option + R</code> 恢复程序运行，如果该断点下面代码还有断点则停在下一个断点上</li>
-  <li><code>Command + F8</code> 切换断点（若光标当前行有断点则取消断点，没有则加上断点）</li>
-  <li><code>Command + Shift + F8</code> 查看断点信息</li>
-</ul>
+<h2 id="使ajax可缓存">使Ajax可缓存</h2>
+<p>真实情况ajax一般不缓存
+缓存可以缓存的ajax请求，通过修改cache-control</p>
 
-<h4 id="六navigation导航">六、Navigation（导航）</h4>
+<h2 id="析构网站的工具">析构网站的工具</h2>
+<p>YSlow</p>
 
-<ul>
-  <li><code>Command + O</code> 查找类文件</li>
-  <li><code>Command + Shift + O</code> 查找所有类型文件、打开文件、打开目录，打开目录需要在输入的内容前面或后面加一个反斜杠<code>/</code></li>
-  <li><code>Command + Option + O</code> 前往指定的变量 / 方法</li>
-  <li><code>Control + 方向键左 / Control + 方向键右</code> 左右切换打开的编辑tab页</li>
-  <li><code>F12</code> 返回到前一个工具窗口</li>
-  <li><code>Esc</code> 从工具窗口进入代码文件窗口</li>
-  <li><code>Shift + Esc</code> 隐藏当前或最后一个活动的窗口，且光标进入代码文件窗口</li>
-  <li><code>Command + Shift + F4</code> 关闭活动run/messages/find/… tab</li>
-  <li><code>Command + L</code> 在当前文件跳转到某一行的指定处</li>
-  <li><code>Command + E</code> 显示最近打开的文件记录列表</li>
-  <li><code>Option + 方向键左 / Option + 方向键右</code> 光标跳转到当前单词 / 中文句的左 / 右侧开头位置</li>
-  <li><code>Command + Option + 方向键左 / Command + Option + 方向键右</code> 退回 / 前进到上一个操作的地方</li>
-  <li><code>Command + Shift + Delete</code> 跳转到最后一个编辑的地方</li>
-  <li><code>Option + F1</code> 显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择(如在代码编辑窗口可以选择显示该文件的Finder)</li>
-  <li><code>Command + B / Command +  鼠标点击</code> 进入光标所在的方法/变量的接口或是定义处</li>
-  <li><code>Command + Option + B</code> 跳转到实现处，在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口</li>
-  <li><code>Option + Space, Command + Y</code> 快速打开光标所在方法、类的定义</li>
-  <li><code>Control + Shift + B</code> 跳转到类型声明处</li>
-  <li><code>Command + U</code> 前往当前光标所在方法的父类的方法 / 接口定义</li>
-  <li><code>Control + 方向键下 / Control + 方向键上</code> 当前光标跳转到当前文件的前一个/后一个方法名位置</li>
-  <li><code>Command + ] / Command + [</code> 移动光标到当前所在代码的花括号开始/结束位置</li>
-  <li><code>Command + F12</code> 弹出当前文件结构层，可以在弹出的层上直接输入进行筛选（可用于搜索类中的方法）</li>
-  <li><code>Control + H</code> 显示当前类的层次结构</li>
-  <li><code>Command + Shift + H</code> 显示方法层次结构</li>
-  <li><code>Control + Option + H</code> 显示调用层次结构</li>
-  <li><code>F2 / Shift + F2</code> 跳转到下一个/上一个突出错误或警告的位置</li>
-  <li><code>F4 / Command + 方向键下</code> 编辑/查看代码源</li>
-  <li><code>Option + Home</code> 显示到当前文件的导航条</li>
-  <li><code>F3</code>选中文件/文件夹/代码行，添加/取消书签</li>
-  <li><code>Option + F3</code> 选中文件/文件夹/代码行，使用助记符添加/取消书签</li>
-  <li><code>Control + 0...Control + 9</code> 定位到对应数值的书签位置</li>
-  <li><code>Command + F3</code> 显示所有书签</li>
-</ul>
-
-<h4 id="七refactoring重构">七、Refactoring（重构）</h4>
-
-<ul>
-  <li><code>F5</code> 复制文件到指定目录</li>
-  <li><code>F6</code> 移动文件到指定目录</li>
-  <li><code>Command + Delete</code> 在文件上为安全删除文件，弹出确认框</li>
-  <li><code>Shift + F6</code> 重命名文件</li>
-  <li><code>Command + F6</code> 更改签名</li>
-  <li><code>Command + Option + N</code> 一致性</li>
-  <li><code>Command + Option + M</code> 将选中的代码提取为方法</li>
-  <li><code>Command + Option + V</code> 提取变量</li>
-  <li><code>Command + Option + F</code> 提取字段</li>
-  <li><code>Command + Option + C</code> 提取常量</li>
-  <li><code>Command + Option + P</code> 提取参数</li>
-</ul>
-
-<h4 id="八vcslocal-history版本控制本地历史记录">八、VCS/Local History（版本控制/本地历史记录）</h4>
-
-<ul>
-  <li><code>Command + K</code> 提交代码到版本控制器</li>
-  <li><code>Command + T</code> 从版本控制器更新代码</li>
-  <li><code>Option + Shift + C</code> 查看最近的变更记录</li>
-  <li><code>Control + C</code> 快速弹出版本控制器操作面板</li>
-</ul>
-
-<h4 id="九live-templates动态代码模板">九、Live Templates（动态代码模板）</h4>
-
-<ul>
-  <li><code>Command + Option + J</code> 弹出模板选择窗口，将选定的代码使用动态模板包住</li>
-  <li><code>Command + J</code> 插入自定义动态代码模板</li>
-</ul>
-
-<h4 id="十general通用">十、General（通用）</h4>
-
-<ul>
-  <li><code>Command + 1...Command + 9</code> 打开相应编号的工具窗口</li>
-  <li><code>Command + S</code> 保存所有</li>
-  <li><code>Command + Option + Y</code> 同步、刷新</li>
-  <li><code>Control + Command + F</code> 切换全屏模式</li>
-  <li><code>Command + Shift + F12</code> 切换最大化编辑器</li>
-  <li><code>Option + Shift + F</code> 添加到收藏夹</li>
-  <li><code>Option + Shift + I</code> 检查当前文件与当前的配置文件</li>
-  <li>Control + ` 快速切换当前的scheme（切换主题、代码样式等）</li>
-  <li><code>Command + ,</code> 打开IDEA系统设置</li>
-  <li><code>Command + ;</code> 打开项目结构对话框</li>
-  <li><code>Shift + Command + A</code> 查找动作（可设置相关选项）</li>
-  <li><code>Control + Shift + Tab</code> 编辑窗口标签和工具窗口之间切换（如果在切换的过程加按上delete，则是关闭对应选中的窗口）</li>
-</ul>
-
-<h4 id="十一other一些官方文档上没有体现的快捷键">十一、Other（一些官方文档上没有体现的快捷键）</h4>
-
-<ul>
-  <li><code>Command + Shift +8</code> 竖编辑模式</li>
-</ul>
-
-<h4 id="参考文章">参考文章</h4>
-<ul>
-  <li><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html">IntelliJ IDEA For Mac 快捷键</a></li>
-</ul>
 
 
                 <hr>
@@ -454,12 +366,12 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/quick-key/" data-toggle="tooltip" data-placement="top" title="Visual Studio快捷键">&larr; Previous Post</a>
+        <a href="/node.js/2017/12/20/node-gc/" data-toggle="tooltip" data-placement="top" title="解读V8 GC">&larr; Previous Post</a>
     </li>
     
     
     <li class="next">
-        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/" data-toggle="tooltip" data-placement="top" title="SublimeText快捷键">Next Post &rarr;</a>
+        <a href="/android/2017/12/20/android-start/" data-toggle="tooltip" data-placement="top" title="初涉Android">Next Post &rarr;</a>
     </li>
     
 </ul>
@@ -470,9 +382,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick"
-         data-title="IDEA快捷键"
-         data-url="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2017/12/20/read-book-web"
+         data-title="高性能网站建设指南"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2017/12/20/read-book-web/"></div>
     <script>
 
         /**
