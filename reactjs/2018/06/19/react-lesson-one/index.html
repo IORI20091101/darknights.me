@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>原码, 反码, 补码 详解 - Dark knight's Blog</title>
+    <title>React初步学习 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/">
+    <link rel="canonical" href="http://darknights.me/reactjs/2018/06/19/react-lesson-one/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat2.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,15 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#计算机基础" title="计算机基础">计算机基础</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                            
+                            <a class="tag" href="/tags/#reactjs" title="reactjs">reactjs</a>
                             
                         </div>
-                        <h1>原码, 反码, 补码 详解</h1>
+                        <h1>React初步学习</h1>
                         
                         
-                        <h2 class="subheading">原码, 反码, 补码的基础概念和计算方法.</h2>
+                        <h2 class="subheading">React重点总结</h2>
                         
-                        <span class="meta">Posted by toshiba on October 31, 2017</span>
+                        <span class="meta">Posted by toshiba on June 19, 2018</span>
                     </div>
                 </div>
             </div>
@@ -222,151 +224,91 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="机器数和真值">机器数和真值</h1>
-<p>在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.</p>
+				<h1 id="react">React</h1>
+<p><a href="https://doc.react-china.org/docs/handling-events.html">react中文文档</a></p>
 
-<h2 id="机器数">机器数</h2>
-<p>一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1.</p>
+<h1 id="事件处理">事件处理</h1>
+<p>你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
+这并不是 React 的特殊行为；它是函数如何在 JavaScript 中运行的一部分。通常情况下，如果你没有在方法后面添加 () ，例如 onClick={this.handleClick}，你应该为这个方法绑定 this。</p>
 
-<p>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。</p>
+<pre><code class="language-javascript">class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
 
-<p>那么，这里的 00000011 和 10000011 就是机器数。</p>
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick1 = this.handleClick1.bind(this);
+  }
+    //推荐方法一
+  handleClick1() {
+    this.setState(prevState =&gt; ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
 
-<h2 id="真值">真值</h2>
+  //推荐方法二
+   handleClick2 = () =&gt; {
+    console.log('this is:', this);
+  }
 
+
+  render() {
+    return (
+      &lt;button onClick={this.handleClick1}&gt;
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      &lt;/button&gt;
+       &lt;button onClick={this.handleClick2}&gt;
+        Click me
+      &lt;/button&gt;
+      &lt;!-- 方法三不推荐 --&gt;
+      &lt;button onClick={(e) =&gt; this.handleClick3(e)}&gt;
+        Click me
+      &lt;/button&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;Toggle /&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+
+<h3 id="方法三不推荐的原因">方法三不推荐的原因：</h3>
 <blockquote>
-  <p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位1代表负，其真正数值是 -3 而不是形式值131?&gt;（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。
-例：0000 0001的真值 = +000 0001 = +1，1000 0001的真值 = –000 0001 = –1</p>
+  <p>使用这个语法有个问题就是每次 LoggingButton 渲染的时候都会创建一个不同的回调函数。在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些组件可能会进行额外的重新渲染。我们通常建议在构造函数中绑定或使用属性初始化器语法来避免这类性能问题。
+在render方法中使用Function.prototype.bind会在每次组件渲染时创建一个新的函数，可能会影响性能（参见下文）</p>
 </blockquote>
 
-<h1 id="原码-反码-补码的基础概念和计算方法">原码, 反码, 补码的基础概念和计算方法</h1>
+<h3 id="向事件处理程序传递参数">向事件处理程序传递参数</h3>
+<p>通常我们会为事件处理程序传递额外的参数。例如，若是 id 是你要删除那一行的 id，以下两种方式都可以向事件处理程序传递参数：</p>
 
-<p>在探求为何机器要使用补码之前, 让我们先了解原码, 反码和补码的概念.对于一个数, 计算机要使用一定的编码方式进行存储. 原码, 反码, 补码是机器存储一个具体数字的编码方式.</p>
+<pre><code class="language-javascript">&lt;button onClick={(e) =&gt; this.deleteRow(id, e)}&gt;Delete Row&lt;/button&gt;
+&lt;button onClick={this.deleteRow.bind(this, id)}&gt;Delete Row&lt;/button&gt;
 
-<h2 id="原码">原码</h2>
 
-<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
+class Popper extends React.Component{
+    constructor(){
+        super();
+        this.state = {name:'Hello world!'};
+    }
 
-<blockquote>
-  <p>[+1]原 = 0000 0001</p>
-</blockquote>
+    preventPop(name, e){    //事件对象e要放在最后
+        e.preventDefault();
+        alert(name);
+    }
 
-<blockquote>
-  <p>[-1]原 = 1000 0001</p>
-</blockquote>
-
-<p>第一位是符号位. 因为第一位是符号位, 所以8位二进制数的取值范围就是:</p>
-
-<blockquote>
-  <p>[1111 1111 , 0111 1111] 即 [-127 , 127]</p>
-</blockquote>
-
-<p>原码是人脑最容易理解和计算的表示方式.</p>
-
-<h2 id="反码">反码</h2>
-
-<p>反码的表示方法是:</p>
-
-<p>正数的反码是其本身</p>
-
-<p>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</p>
-
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反</p>
-</blockquote>
-
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反</p>
-</blockquote>
-
-<p>可见如果一个反码表示的是负数, 人脑无法直观的看出来它的数值. 通常要将其转换成原码再计算.</p>
-
-<h2 id="补码">补码</h2>
-
-<p>补码的表示方法是:</p>
-
-<p>正数的补码就是其本身</p>
-
-<p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
-
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
-
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
-
-<p>对于负数, 补码表示方式也是人脑无法直观看出其数值的. 通常也需要转换成原码在计算其数值.</p>
-
-<h1 id="为何要使用原码-反码和补码">为何要使用原码, 反码和补码</h1>
-
-<p>在开始深入学习前, 我的学习建议是先”死记硬背”上面的原码, 反码和补码的表示方式以及计算方法.</p>
-
-<p>现在我们知道了计算机可以有三种编码方式表示一个数. 对于正数因为三种编码方式的结果都相同:</p>
-
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
-
-<p>所以不需要过多解释. 但是对于负数:</p>
-
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
-
-<p>可见原码, 反码和补码是完全不同的. 既然原码才是被人脑直接识别并用于计算表示方式, 为何还会有反码和补码呢?</p>
-
-<p>首先, 因为人脑可以知道第一位是符号位, 在计算的时候我们会根据符号位, 选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机, 加减乘数已经是最基础的运算, 要设计的尽量简单. 计算机辨别”符号位”显然会让计算机的基础电路设计变得十分复杂! 于是人们想出了将符号位也参与运算的方法. 我们知道, 根据运算法则减去一个正数等于加上一个负数, 即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
-
-<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法. 首先来看原码:</p>
-
-<p>计算十进制的表达式: 1-1=0</p>
-
-<blockquote>
-  <p>1 - 1 = 1 + (-1) = [00000001]原 + [10000001]原 = [10000010]原 = -2</p>
-</blockquote>
-
-<p>如果用原码表示, 让符号位也参与计算, 显然对于减法来说, 结果是不正确的.这也就是为何计算机内部不使用原码表示一个数.</p>
-
-<p>为了解决原码做减法的问题, 出现了反码:</p>
-
-<p>计算十进制的表达式: 1-1=0</p>
-
-<blockquote>
-  <p>1 - 1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原= [0000 0001]反 + [1111 1110]反 = [1111 1111]反 = [1000 0000]原 = -0</p>
-</blockquote>
-
-<p>发现用反码计算减法, 结果的真值部分是正确的. 而唯一的问题其实就出现在”0”这个特殊的数值上. 虽然人们理解上+0和-0是一样的, 但是0带符号是没有任何意义的. 而且会有[0000 0000]原和[1000 0000]原两个编码表示0.</p>
-
-<p>于是补码的出现, 解决了0的符号以及两个编码的问题:</p>
-
-<blockquote>
-  <p>1-1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [0000 0001]补 + [1111 1111]补 = [0000 0000]补=[0000 0000]原</p>
-</blockquote>
-
-<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
-
-<blockquote>
-  <p>(-1) + (-127) = [1000 0001]原 + [1111 1111]原 = [1111 1111]补 + [1000 0001]补 = [1000 0000]补</p>
-</blockquote>
-
-<p>-1-127的结果应该是-128, 在用补码运算的结果中, [1000 0000]补 就是-128. 但是注意因为实际上是使用以前的-0的补码来表示-128, 所以-128并没有原码和反码表示.(对-128的补码表示[1000 0000]补算出来的原码是[0000 0000]原, 这是不正确的)</p>
-
-<p>使用补码, 不仅仅修复了0的符号以及存在两个编码的问题, 而且还能够多表示一个最低数. 这就是为什么8位二进制, 使用原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
-
-<p>因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值.</p>
-
-<h1 id="文章参考">文章参考</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2016/07/20/binary-in-js/">聊聊JavaScript中的二进制数</a></li>
-  <li><a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">原码, 反码, 补码 详解</a></li>
-</ul>
-
-<h1 id="延伸阅读">延伸阅读</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/">每一个JavaScript开发者应该了解的浮点知识</a></li>
-</ul>
+    render(){
+        return (
+            &lt;div&gt;
+                &lt;p&gt;hello&lt;/p&gt;
+                {/* Pass params via bind() method. */}
+                &lt;a href="https://reactjs.org" onClick={this.preventPop.bind(this,this.state.name)}&gt;Click&lt;/a&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
 
 
                 <hr>
@@ -374,12 +316,12 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/" data-toggle="tooltip" data-placement="top" title="常用的后台管理主题模板">&larr; Previous Post</a>
+        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config/" data-toggle="tooltip" data-placement="top" title="vim快捷键和配置">&larr; Previous Post</a>
     </li>
     
     
     <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" data-toggle="tooltip" data-placement="top" title="javascript的位操作">Next Post &rarr;</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript">Next Post &rarr;</a>
     </li>
     
 </ul>
@@ -390,9 +332,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate"
-         data-title="原码, 反码, 补码 详解"
-         data-url="http://darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/"></div>
+         data-thread-key="/reactjs/2018/06/19/react-lesson-one"
+         data-title="React初步学习"
+         data-url="http://darknights.me/reactjs/2018/06/19/react-lesson-one/"></div>
     <script>
 
         /**

@@ -1,4 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-05-03T20:07:30+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">vim快捷键和配置</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config/" rel="alternate" type="text/html" title="vim快捷键和配置" /><published>2018-03-15T00:00:00+08:00</published><updated>2018-03-15T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config/">&lt;h3 id=&quot;vim快捷键和配置&quot;&gt;vim快捷键和配置&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-19T20:53:30+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/" rel="alternate" type="text/html" title="Effective JavaScript" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/">&lt;h2 id=&quot;第一条了解你使用的javascript版本&quot;&gt;第一条，了解你使用的JavaScript版本&lt;/h2&gt;
+
+&lt;p&gt;由于不同的浏览器，对于JS的实现不同，我们必须精心编写代码保证他们在所有浏览器下工作如一。否则你可能面临这样的困境–应用程序在你自己的计算机上运行良好，但是部署到不同的环境时却无法运行。
+例如，const关键字在支持非标准特性的JavaScript引擎上测试时运行良好，但是当将它部署到不识别const关键字的web浏览器上就会出现语法错误。
+为此，ES5引入了一种版本控制的考量&lt;code&gt;严格模式&lt;/code&gt;。此特性允许你选择在受限制的JavaScript版本中禁止使用一些JavaScript语言中问题较多或者易于出错的特性。
+由于其语法设计向后兼容，因此即使在那些没有实现严格模式检查的环境中仍然可以执行严格代码（strict code）&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;use strict&quot;;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><summary type="html">第一条，了解你使用的JavaScript版本</summary></entry><entry><title type="html">React初步学习</title><link href="/reactjs/2018/06/19/react-lesson-one/" rel="alternate" type="text/html" title="React初步学习" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/reactjs/2018/06/19/react-lesson-one</id><content type="html" xml:base="/reactjs/2018/06/19/react-lesson-one/">&lt;h1 id=&quot;react&quot;&gt;React&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://doc.react-china.org/docs/handling-events.html&quot;&gt;react中文文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;事件处理&quot;&gt;事件处理&lt;/h1&gt;
+&lt;p&gt;你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
+这并不是 React 的特殊行为；它是函数如何在 JavaScript 中运行的一部分。通常情况下，如果你没有在方法后面添加 () ，例如 onClick={this.handleClick}，你应该为这个方法绑定 this。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick1 = this.handleClick1.bind(this);
+  }
+    //推荐方法一
+  handleClick1() {
+    this.setState(prevState =&amp;gt; ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  //推荐方法二
+   handleClick2 = () =&amp;gt; {
+    console.log('this is:', this);
+  }
+
+
+  render() {
+    return (
+      &amp;lt;button onClick={this.handleClick1}&amp;gt;
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      &amp;lt;/button&amp;gt;
+       &amp;lt;button onClick={this.handleClick2}&amp;gt;
+        Click me
+      &amp;lt;/button&amp;gt;
+      &amp;lt;!-- 方法三不推荐 --&amp;gt;
+      &amp;lt;button onClick={(e) =&amp;gt; this.handleClick3(e)}&amp;gt;
+        Click me
+      &amp;lt;/button&amp;gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &amp;lt;Toggle /&amp;gt;,
+  document.getElementById('root')
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;方法三不推荐的原因&quot;&gt;方法三不推荐的原因：&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;使用这个语法有个问题就是每次 LoggingButton 渲染的时候都会创建一个不同的回调函数。在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些组件可能会进行额外的重新渲染。我们通常建议在构造函数中绑定或使用属性初始化器语法来避免这类性能问题。
+在render方法中使用Function.prototype.bind会在每次组件渲染时创建一个新的函数，可能会影响性能（参见下文）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;向事件处理程序传递参数&quot;&gt;向事件处理程序传递参数&lt;/h3&gt;
+&lt;p&gt;通常我们会为事件处理程序传递额外的参数。例如，若是 id 是你要删除那一行的 id，以下两种方式都可以向事件处理程序传递参数：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&amp;lt;button onClick={(e) =&amp;gt; this.deleteRow(id, e)}&amp;gt;Delete Row&amp;lt;/button&amp;gt;
+&amp;lt;button onClick={this.deleteRow.bind(this, id)}&amp;gt;Delete Row&amp;lt;/button&amp;gt;
+
+
+class Popper extends React.Component{
+    constructor(){
+        super();
+        this.state = {name:'Hello world!'};
+    }
+
+    preventPop(name, e){    //事件对象e要放在最后
+        e.preventDefault();
+        alert(name);
+    }
+
+    render(){
+        return (
+            &amp;lt;div&amp;gt;
+                &amp;lt;p&amp;gt;hello&amp;lt;/p&amp;gt;
+                {/* Pass params via bind() method. */}
+                &amp;lt;a href=&quot;https://reactjs.org&quot; onClick={this.preventPop.bind(this,this.state.name)}&amp;gt;Click&amp;lt;/a&amp;gt;
+            &amp;lt;/div&amp;gt;
+        );
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="reactjs" /><summary type="html">React react中文文档</summary></entry><entry><title type="html">vim快捷键和配置</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config/" rel="alternate" type="text/html" title="vim快捷键和配置" /><published>2018-03-15T00:00:00+08:00</published><updated>2018-03-15T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2018/03/15/vim-config/">&lt;h3 id=&quot;vim快捷键和配置&quot;&gt;vim快捷键和配置&lt;/h3&gt;
 
 &lt;h4 id=&quot;参考文章&quot;&gt;参考文章&lt;/h4&gt;
 &lt;ul&gt;
@@ -173,105 +264,4 @@ Yahoo研究表明使用两个主机名比使用1，4，10个主机名能带来�
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/camsong/blog/issues/2&quot;&gt;Ajax已死，fetch永生&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="ES6学习笔记" /><category term="javascript" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">vps各种玩法</title><link href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/" rel="alternate" type="text/html" title="vps各种玩法" /><published>2017-11-23T00:00:00+08:00</published><updated>2017-11-23T00:00:00+08:00</updated><id>/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func</id><content type="html" xml:base="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/11/23/vps-func/">&lt;h2 id=&quot;vps各种玩法&quot;&gt;vps各种玩法&lt;/h2&gt;
-
-&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jecvay.com/2015/01/learning-vps-3.html&quot;&gt;vps各种玩法&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.lichanglin.cn/%E5%88%A9%E7%94%A8vps%E6%90%AD%E5%BB%BABT%E7%A6%BB%E7%BA%BF%E4%B8%8B%E8%BD%BD/&quot;&gt;利用vps搭建BT离线下载&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://t.du9l.com/2011/02/post2/&quot;&gt;在Linux VPS上下载BT的配置方法&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://xubiji.com/11658.html&quot;&gt;Cloud Torrent 安装教程 – 支持BT种子、磁力链接远程离线下载&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://yepster.me/vps/&quot;&gt;一个野生互联网爱好者拿 VPS 干了些什么&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.zrj96.com/post-296.html&quot;&gt;Debian系统下Aria2+AriaNg+h5ai实现离线下载与在线播放&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.senra.me/aria2-and-plex-build-your-own-cloud-video-streaming-service/&quot;&gt;Aria2+Plex实现支持离线下载的小型私人视频云盘&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="vps" /><summary type="html">vps各种玩法</summary></entry><entry><title type="html">Generator函数的含义和用法</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/" rel="alternate" type="text/html" title="Generator函数的含义和用法" /><published>2017-11-20T00:00:00+08:00</published><updated>2017-11-20T00:00:00+08:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/">&lt;h2 id=&quot;同步和异步&quot;&gt;同步和异步&lt;/h2&gt;
-&lt;p&gt;要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓&lt;code&gt;单线程&lt;/code&gt;，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。
-这种做法&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;好处是实现起来比较简单，执行环境相对单纯.&lt;/li&gt;
-    &lt;li&gt;坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;为了解决上面的问题javascript将语言执行分成了两种： 同步（Synchronous）和异步（Asynchronous）.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;同步模式即从上往下依次执行，等待前一个任务执行完成后在执行下一个任务，执行顺序与代码顺序是一样的。&lt;/li&gt;
-  &lt;li&gt;异步模式是每一个任务有一个或者多个回调函数，前一个任务结束后不执行下一个任务而是执行毁掉函数，后一个任务不等前一个任务结束就执行。执行顺序与代码顺序是不一致的，异步的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;异步模式的四种方法&quot;&gt;异步模式的四种方法&lt;/h2&gt;
-
-&lt;h3 id=&quot;回调函数&quot;&gt;回调函数&lt;/h3&gt;
-
-&lt;p&gt;如果有两个函数f1和f2,后者等待前者的执行结果。但是f1是一个很耗时的任务可以将f2写成f1的回调函数&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    function f1(callback) {
-        setTimeout(function() {
-            // f1的任务代码
-            callback();
-        },1000)
-    }
-
-    f1(f2);
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;回调函数的优点是简单、容易理解和部署，缺点是不利于代码的阅读和维护，各个部分之间高度耦合（Coupling），流程会很混乱，而且每个任务只能指定一个回调函数。&lt;/p&gt;
-
-&lt;h3 id=&quot;事件监听&quot;&gt;事件监听&lt;/h3&gt;
-&lt;p&gt;采用事件驱动模式。任务的执行不取决于代码的顺序，而取决于某个事件是否发生，直接上代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    f1.on('done', f2); //f1监听'done'如果触发该事件执行f2,使用了jQuery的事件监听
-    function f1(callback) {
-        setTimeout(function() {
-            // f1的任务代码
-
-            f1.trigger('done');
-        },1000)
-    }
-
-    f1(f2);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;发布订阅&quot;&gt;发布、订阅&lt;/h3&gt;
-
-&lt;p&gt;我们假定，存在一个”信号中心”，某个任务执行完成，就向信号中心”发布”（publish）一个信号，其他任务可以向信号中心”订阅”（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做
-&lt;a href=&quot;http://en.wikipedia.org/wiki/Publish-subscribe_pattern&quot;&gt;“发布/订阅模式”（publish-subscribe pattern）&lt;/a&gt;，又称&lt;a href=&quot;https://en.wikipedia.org/wiki/Observer_pattern&quot;&gt;“观察者模式”（observer pattern）&lt;/a&gt;。
-这个模式有&lt;a href=&quot;https://msdn.microsoft.com/en-us/magazine/hh201955.aspx?f=255&amp;amp;MSPPError=-2147217396&quot;&gt;多种实现&lt;/a&gt;,本例子使用&lt;a href=&quot;https://gist.github.com/661855&quot;&gt;Tiny Pub/Sub&lt;/a&gt;,这是一个jQuery插件。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    jQuery.subscribe(&quot;done&quot;, f2); //首先，f2向&quot;信号中心&quot;jQuery订阅&quot;done&quot;信号。
-
-    function f1(){
-　　　　setTimeout(function () {
-　　　　　　// f1的任务代码
-　　　　　　jQuery.publish(&quot;done&quot;);
-　　　　}, 1000);
-　　}
-//jQuery.publish(&quot;done&quot;)的意思是，f1执行完成后，向&quot;信号中心&quot;jQuery发布&quot;done&quot;信号，从而引发f2的执行。
-//此外，f2完成执行后，也可以取消订阅（unsubscribe）。
-　　jQuery.unsubscribe(&quot;done&quot;, f2);
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;promises&quot;&gt;Promises&lt;/h3&gt;
-&lt;p&gt;Promises对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。
-它的思想是，每一个异步任务返回一个Promise对象，该对象有一个then方法，允许指定回调函数。比如，f1的回调函数f2,可以写成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    function f1(){
-　　　　var dfd = $.Deferred();
-　　　　setTimeout(function () {
-　　　　　　// f1的任务代码
-　　　　　　dfd.resolve();
-　　　　}, 500);
-　　　　return dfd.promise;
-　　}
-
-　　f1().then(f2);
-　　f1().then(f2).then(f3);
-　　f1().then(f2).fail(f3);
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;它还有一个前面三种方法都没有的好处：如果一个任务已经完成，再添加回调函数，该回调函数会立即执行。所以，你不用担心是否错过了某个事件或信号。这种方法的缺点就是编写和理解，都相对比较难。&lt;/p&gt;
-
-&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/04/generator.html&quot;&gt;Generator 函数的含义与用法&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="ES6学习笔记" /><category term="javascript" /><summary type="html">同步和异步 要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓单线程，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。 这种做法 好处是实现起来比较简单，执行环境相对单纯. 坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="ES6学习笔记" /><category term="javascript" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry></feed>

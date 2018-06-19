@@ -215,6 +215,75 @@
             ">
             
 <div class="post-preview">
+    <a href="/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/">
+        <h2 class="post-title">
+            LeetCode,LintCode,Hihocoder刷题指南
+        </h2>
+        
+        <h3 class="post-subtitle">
+            通过题目训练来提升自己的编程能力
+        </h3>
+        
+        <div class="post-content-preview">
+            通过题目训练来提升自己的编程能力
+
+LeetCode
+
+
+  LeetCode 是一个非常棒的 OJ（Online Judge）平台，收集了许多公司的面试题目。相对其他 OJ 平台而言，有着下面的几个优点：
+  
+    题目全部来自业内大公司的真实面试
+    不用处理输入输出，精力全放在解决具体问题上
+    题目有丰富的讨论，可以参考别人的思路
+    精确了解自己代码在所有提交代码中...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2017-10-12
+    </p>
+    <!--<p class="post-meta"></p>October 12, 2017-->
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/blog-static-nginx/">
+        <h2 class="post-title">
+            使用travis-ci集成项目,自动部署博客站点
+        </h2>
+        
+        <h3 class="post-subtitle">
+            travis集成注意点和操作步骤
+        </h3>
+        
+        <div class="post-content-preview">
+            第一次搭建博客
+
+参考文章
+
+
+  48 个你需要知道的 Jekyll 使用技巧
+  掌心
+  likebeta’s Blog
+  jekyll翻译文章
+  jekyll语法简单笔记
+  GitHub Pages 静态博客 - 个人建站实录
+  部署自己的博客
+  杨缘的博客参考
+  poison
+  jekyll官网中文
+  使用travis-ci自动部署hexo博客
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2017-09-05
+    </p>
+    <!--<p class="post-meta"></p>September 5, 2017-->
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/">
         <h2 class="post-title">
             搭建jekyll 博客流程记录
@@ -380,7 +449,7 @@
             
             
             
-            <a href="/tags/#javascript" title="javascript" rel="8">
+            <a href="/tags/#javascript" title="javascript" rel="10">
                 javascript
             </a>
             
@@ -454,6 +523,12 @@
             
             <a href="/tags/#Vim" title="Vim" rel="1">
                 Vim
+            </a>
+            
+            
+            
+            <a href="/tags/#reactjs" title="reactjs" rel="1">
+                reactjs
             </a>
             
             
@@ -708,7 +783,74 @@
 
 
 
-
+<script>
+        (function(window,document,undefined){
+            var hearts = [];
+            window.requestAnimationFrame = (function(){
+                    return window.requestAnimationFrame ||
+                               window.webkitRequestAnimationFrame ||
+                               window.mozRequestAnimationFrame ||
+                               window.oRequestAnimationFrame ||
+                               window.msRequestAnimationFrame ||
+                               function (callback){
+                                       setTimeout(callback,1000/60);
+                               }
+            })();
+            init();
+            function init(){
+                    css(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+                    attachEvent();
+                    gameloop();
+            }
+            function gameloop(){
+                    for(var i=0;i<hearts.length;i++){
+                        if(hearts[i].alpha <=0){
+                                document.body.removeChild(hearts[i].el);
+                                hearts.splice(i,1);
+                                continue;
+                        }
+                        hearts[i].y--;
+                        hearts[i].scale += 0.004;
+                        hearts[i].alpha -= 0.013;
+                        hearts[i].el.style.cssText = "left:"+hearts[i].x+"px;top:"+hearts[i].y+"px;opacity:"+hearts[i].alpha+";transform:scale("+hearts[i].scale+","+hearts[i].scale+") rotate(45deg);background:"+hearts[i].color+";z-index:99999";
+                }
+                requestAnimationFrame(gameloop);
+            }
+            function attachEvent(){
+                    var old = typeof window.onclick==="function" && window.onclick;
+                    window.onclick = function(event){
+                            old && old();
+                            createHeart(event);
+                    }
+            }
+            function createHeart(event){
+                var d = document.createElement("div");
+                d.className = "heart";
+                hearts.push({
+                        el : d,
+                        x : event.clientX - 5,
+                        y : event.clientY - 5,
+                        scale : 1,
+                        alpha : 1,
+                        color : randomColor()
+                });
+                document.body.appendChild(d);
+        }
+        function css(css){
+                var style = document.createElement("style");
+                    style.type="text/css";
+                    try{
+                        style.appendChild(document.createTextNode(css));
+                    }catch(ex){
+                        style.styleSheet.cssText = css;
+                    }
+                    document.getElementsByTagName('head')[0].appendChild(style);
+        }
+            function randomColor(){
+                    return "rgb("+(~~(Math.random()*255))+","+(~~(Math.random()*255))+","+(~~(Math.random()*255))+")";
+            }
+    })(window,document);
+</script>
 
 
 </body>
