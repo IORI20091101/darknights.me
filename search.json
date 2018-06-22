@@ -3,8 +3,28 @@
   "data" : [
     
       {
-      "value" : "Effective JavaScript",
-      "subtitle": "编写高质量JavaScript代码的68个有效的方法",
+      "value" : "Effective JavaScript (三)",
+      "subtitle": "当心隐式的强制转换",
+      "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/",
+      "date": "2018-06-22"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "Effective JavaScript (二)",
+      "subtitle": "理解JavaScript的浮点数",
+      "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/",
+      "date": "2018-06-21"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "Effective JavaScript(一)",
+      "subtitle": "了解你使用的JavaScript版本",
       "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/",
       "date": "2018-06-19"
       }

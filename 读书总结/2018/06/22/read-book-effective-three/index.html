@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>SublimeText快捷键 - Dark knight's Blog</title>
+    <title>Effective JavaScript (三) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat1.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,17 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#生产工具" title="生产工具">生产工具</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                             
-                            <a class="tag" href="/tags/#IDE" title="IDE">IDE</a>
+                            <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>SublimeText快捷键</h1>
+                        <h1>Effective JavaScript (三)</h1>
                         
                         
-                        <h2 class="subheading">SublimeText快捷键总结工欲善其事必先利其器快捷键总结</h2>
+                        <h2 class="subheading">当心隐式的强制转换</h2>
                         
-                        <span class="meta">Posted by toshiba on November 15, 2017</span>
+                        <span class="meta">Posted by toshiba on June 22, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,236 +224,82 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="sublime-text-2---实用快捷键-mac-os-x">Sublime Text 2 - 实用快捷键 (Mac OS X)</h2>
+				<h2 id="当心隐式的强制转换">当心隐式的强制转换</h2>
 
-<h3 id="打开前往">打开/前往</h3>
+<p>JavaScript对类型的错误出奇宽容,算数运算符 - 、*、%、/都会把参数转为数字。然而 + 会根据参数来决定
+位运算符不仅会将操作数转换为数字，而且还会将操作数转换为32位整数(表示数字的子集)。这些运算符包括算术运算符(~ 、&amp; 、^ 、| 、«、»、»&gt;)</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘T</em></td>
-      <td>前往文件</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌃P</em></td>
-      <td>前往项目</td>
-    </tr>
-    <tr>
-      <td><em>⌘R</em></td>
-      <td>前往 method</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧P</em></td>
-      <td>命令提示</td>
-    </tr>
-    <tr>
-      <td><em>⌃G</em></td>
-      <td>前往行</td>
-    </tr>
-    <tr>
-      <td><em>⌃ `</em></td>
-      <td>python 控制台</td>
-    </tr>
-  </tbody>
-</table>
+<pre><code class="language-javascript">  3 + true; // 4
+  2 + 3;    // 5
+  "2" + 3;  // 23
+  "17" * 3; // 51
+  "8" | "1" // 9
+</code></pre>
 
-<h3 id="编辑">编辑</h3>
+<h2 id="注意nan">注意NaN</h2>
+<p>NaN不等于其自身，所以测试一个值是否是NaN是行不通的 ，标准库里面的isNaN也是不可靠的，因为它也带有隐式的强制转换，尝试将参数转为数字</p>
+<pre><code class="language-javascript">  var x = NaN;
+  x === NaN;  // false
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘L</em></td>
-      <td>选择行 (重复按下将下一行加入选择)</td>
-    </tr>
-    <tr>
-      <td><em>⌘D</em></td>
-      <td>选择词 (重复按下时多重选择相同的词进行多重编辑)</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧M</em></td>
-      <td>选择括号内的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧↩</em></td>
-      <td>在当前行前插入新行</td>
-    </tr>
-    <tr>
-      <td><em>⌘↩</em></td>
-      <td>在当前行后插入新行</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧K</em></td>
-      <td>删除行</td>
-    </tr>
-    <tr>
-      <td><em>⌘KK</em></td>
-      <td>从光标处删除至行尾</td>
-    </tr>
-    <tr>
-      <td><em>⌘K⌫</em></td>
-      <td>从光标处删除至行首</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧D</em></td>
-      <td>复制(多)行</td>
-    </tr>
-    <tr>
-      <td><em>⌘J</em></td>
-      <td>合并(多)行</td>
-    </tr>
-    <tr>
-      <td><em>⌘KU</em></td>
-      <td>改为大写</td>
-    </tr>
-    <tr>
-      <td><em>⌘KL</em></td>
-      <td>改为小写</td>
-    </tr>
-    <tr>
-      <td><em>⌘ /</em></td>
-      <td>注释</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥ /</em></td>
-      <td>块注释</td>
-    </tr>
-    <tr>
-      <td><em>⌘Y</em></td>
-      <td>恢复或重复</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧V</em></td>
-      <td>粘贴并自动缩进</td>
-    </tr>
-    <tr>
-      <td><em>⌃ space</em></td>
-      <td>自动完成(重复按下选择下一个提示)</td>
-    </tr>
-    <tr>
-      <td><em>⌃M</em></td>
-      <td>跳转至对应的括号</td>
-    </tr>
-  </tbody>
-</table>
+  isNaN(NaN); // true
 
-<h3 id="xmlhtml">XML/HTML</h3>
+  // 由于隐式的类型转换所以以下 都会返回true
+  isNaN("foo");
+  isNaN(undefined);
+  isNaN({});
+  isNaN({ valueOf: "foo" });
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘⇧A</em></td>
-      <td>选择标签内的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥ .</em></td>
-      <td>闭合当前标签</td>
-    </tr>
-  </tbody>
-</table>
+  // 由于NaN是不等于其自身的，所以真正正确判断一个参数是否是NaN的方法是判断是否等于自身
+  function isReallyNaN(x) {
+    return x !== x;
+  }
 
-<h3 id="查找替换">查找/替换</h3>
+</code></pre>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘F</em></td>
-      <td>查找</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥F</em></td>
-      <td>替换</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥G</em></td>
-      <td>查找下一个符合当前所选的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌃G</em></td>
-      <td>查找所有符合当前所选的内容进行多重编辑</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧F</em></td>
-      <td>在所有打开的文件中进行查找</td>
-    </tr>
-  </tbody>
-</table>
+<h2 id="对象的隐式转换">对象的隐式转换</h2>
+<pre><code class="language-javascript">  // 对象转换成字符串
+  "the Math object: " + Math; // "the Math object: [object Math]"
+  "the JSON object: " + JSON; // "the JSON object: [object JSON]"
 
-<h3 id="拆分窗口标签页">拆分窗口/标签页</h3>
+  // 对象转换成数字， 对象可以通过valueOf 方法转为数字,你可以控制对象的类型转换
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘⌥1</em></td>
-      <td>单列</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥2</em></td>
-      <td>双列</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥5</em></td>
-      <td>网格 (4组)</td>
-    </tr>
-    <tr>
-      <td><em>⌃[1,2,3,4]</em></td>
-      <td>焦点移动至相应组</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧[1,2,3,4]</em></td>
-      <td>将当前文件移动至相应组</td>
-    </tr>
-    <tr>
-      <td><em>⌘[1,2,3…]</em></td>
-      <td>选择相应标签页</td>
-    </tr>
-  </tbody>
-</table>
+  // 这里讲调用对象的toString 进行拼接
+  "J" + { toString: function() { return "S"; } };  // "JS"
 
-<h3 id="书签">书签</h3>
+  // 通过valueOf将对象转为数字
+  2 * { valueOf: function() { return 3; } };       // 6
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘F2</em></td>
-      <td>添加/去除书签</td>
-    </tr>
-    <tr>
-      <td><em>F2</em></td>
-      <td>下一个书签</td>
-    </tr>
-    <tr>
-      <td><em>⇧F2</em></td>
-      <td>前一个书签</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧F2</em></td>
-      <td>清除书签</td>
-    </tr>
-  </tbody>
-</table>
+</code></pre>
 
-<h3 id="标记">标记</h3>
+<p>如果一个对象同时有toString 和valueOf方法 ，运算符 + 应该调用哪个方法呢，JavaScript通过盲目的选择valueOf方法而不是toString方法来解决这种含糊的情况，这就意味着如果有人打算对一个对象执行字符串连接操作，那么产生的行为会出乎意料</p>
+<pre><code class="language-javascript">  var obj = {
+    toString: function() {
+      return "[object MyObject]";
+    },
+    valueOf: function() {
+      return 17;
+    }
+  }
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘K space</em></td>
-      <td>设置标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KW</em></td>
-      <td>从光标位置删除至标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KA</em></td>
-      <td>从光标位置选择至标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KG</em></td>
-      <td>清除标记</td>
-    </tr>
-  </tbody>
-</table>
+  "object: " + obj; // "object: 17";
+</code></pre>
+<blockquote>
+  <p>这里例子说明，valueOf方法才真正是为那些代表数值的对象(如 Number对象)而设计的。对于这些对象toString 和valueOf方法应返回一致的结果。一般情况下，字符串的强制转换远比数字转换更常见、更有用。 最好避免使用valueOf方法，除非对象的确是一个数字的抽象，并且obj.toString()能产生一个obj.valueOf() 的字符串表示。</p>
+</blockquote>
+
+<h2 id="真值运算">真值运算</h2>
+<p>if、||、&amp;&amp;等运算符逻辑上需要布尔值作为操作参数，但实际上可以接受任何值。JavaScript会按照简单的隐式强制转换规则将值解释为布尔值。</p>
+
+<p>false, 0, -0,””, NaN,null, undefined 外的所有值会转换为false， 其他所有值都为真值。</p>
+
+<p>因为数字0和字符串”“会转换为false,因此通过隐式转换来判断一个值是否已经定义是不准确的需要通过判断，应该通过以下方式来进行判断</p>
+
+<pre><code class="language-javascript">  if(typeof x === 'undefined') {}
+  if(x === undefined) {}
+</code></pre>
+
+<h2 id="原始类型由于封装对象">原始类型由于封装对象</h2>
+<p>除了对象之外，JavaScript有5个原始值类型： 布尔值，数字，字符串，null, undefined</p>
 
 
 
@@ -462,13 +308,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/" data-toggle="tooltip" data-placement="top" title="IDEA快捷键">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (二)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" data-toggle="tooltip" data-placement="top" title="Lodash.js源码阅读分析（一）">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -478,9 +320,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick"
-         data-title="SublimeText快捷键"
-         data-url="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three"
+         data-title="Effective JavaScript (三)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/"></div>
     <script>
 
         /**

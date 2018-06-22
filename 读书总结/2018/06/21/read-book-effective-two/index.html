@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>SublimeText快捷键 - Dark knight's Blog</title>
+    <title>Effective JavaScript (二) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat1.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,17 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#生产工具" title="生产工具">生产工具</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                             
-                            <a class="tag" href="/tags/#IDE" title="IDE">IDE</a>
+                            <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>SublimeText快捷键</h1>
+                        <h1>Effective JavaScript (二)</h1>
                         
                         
-                        <h2 class="subheading">SublimeText快捷键总结工欲善其事必先利其器快捷键总结</h2>
+                        <h2 class="subheading">理解JavaScript的浮点数</h2>
                         
-                        <span class="meta">Posted by toshiba on November 15, 2017</span>
+                        <span class="meta">Posted by toshiba on June 21, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,236 +224,48 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="sublime-text-2---实用快捷键-mac-os-x">Sublime Text 2 - 实用快捷键 (Mac OS X)</h2>
+				<h2 id="理解javascript的浮点数">理解JavaScript的浮点数</h2>
 
-<h3 id="打开前往">打开/前往</h3>
+<p>大多数编程语言都有多种数据类型，但是Javascript 却只有一种。使用 <code>typeof</code> 运算符查看无论是 ，整数还是浮点数JavaScript都简单的返回一个结果</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘T</em></td>
-      <td>前往文件</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌃P</em></td>
-      <td>前往项目</td>
-    </tr>
-    <tr>
-      <td><em>⌘R</em></td>
-      <td>前往 method</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧P</em></td>
-      <td>命令提示</td>
-    </tr>
-    <tr>
-      <td><em>⌃G</em></td>
-      <td>前往行</td>
-    </tr>
-    <tr>
-      <td><em>⌃ `</em></td>
-      <td>python 控制台</td>
-    </tr>
-  </tbody>
-</table>
+<pre><code class="language-javascript"> typeof 17; // number
+ typeof 98.6; // number
+ typeof -2.1; // number
+</code></pre>
 
-<h3 id="编辑">编辑</h3>
+<p>事实上JavaScript中所有的数字都是双精度浮点数。</p>
+<blockquote>
+  <p>这是由IEEE 745标准定制的64位编码数字 —即 “doubles”； JavaScript使用双精度浮点数来完美的表达高到53位精度的整数，-2^53次方到2^53次方的所有整数都是有效的双精度浮点数。因此尽管JavaScript中缺少明显的整数类型，但是完全可以进行整数运算。</p>
+</blockquote>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘L</em></td>
-      <td>选择行 (重复按下将下一行加入选择)</td>
-    </tr>
-    <tr>
-      <td><em>⌘D</em></td>
-      <td>选择词 (重复按下时多重选择相同的词进行多重编辑)</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧M</em></td>
-      <td>选择括号内的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧↩</em></td>
-      <td>在当前行前插入新行</td>
-    </tr>
-    <tr>
-      <td><em>⌘↩</em></td>
-      <td>在当前行后插入新行</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧K</em></td>
-      <td>删除行</td>
-    </tr>
-    <tr>
-      <td><em>⌘KK</em></td>
-      <td>从光标处删除至行尾</td>
-    </tr>
-    <tr>
-      <td><em>⌘K⌫</em></td>
-      <td>从光标处删除至行首</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧D</em></td>
-      <td>复制(多)行</td>
-    </tr>
-    <tr>
-      <td><em>⌘J</em></td>
-      <td>合并(多)行</td>
-    </tr>
-    <tr>
-      <td><em>⌘KU</em></td>
-      <td>改为大写</td>
-    </tr>
-    <tr>
-      <td><em>⌘KL</em></td>
-      <td>改为小写</td>
-    </tr>
-    <tr>
-      <td><em>⌘ /</em></td>
-      <td>注释</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥ /</em></td>
-      <td>块注释</td>
-    </tr>
-    <tr>
-      <td><em>⌘Y</em></td>
-      <td>恢复或重复</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧V</em></td>
-      <td>粘贴并自动缩进</td>
-    </tr>
-    <tr>
-      <td><em>⌃ space</em></td>
-      <td>自动完成(重复按下选择下一个提示)</td>
-    </tr>
-    <tr>
-      <td><em>⌃M</em></td>
-      <td>跳转至对应的括号</td>
-    </tr>
-  </tbody>
-</table>
+<p>位运算比较特殊JavaScript不会直接将操作数作为浮点数进行运算，而是会将其隐式的转换为32位整数后进行运算。以按位或为例：</p>
+<pre><code class="language-JavaScript">  8 | 1
 
-<h3 id="xmlhtml">XML/HTML</h3>
+  00000000000000000000000000001000
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘⇧A</em></td>
-      <td>选择标签内的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥ .</em></td>
-      <td>闭合当前标签</td>
-    </tr>
-  </tbody>
-</table>
+  00000000000000000000000000000001
 
-<h3 id="查找替换">查找/替换</h3>
+  00000000000000000000000000001001
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘F</em></td>
-      <td>查找</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥F</em></td>
-      <td>替换</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥G</em></td>
-      <td>查找下一个符合当前所选的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌃G</em></td>
-      <td>查找所有符合当前所选的内容进行多重编辑</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧F</em></td>
-      <td>在所有打开的文件中进行查找</td>
-    </tr>
-  </tbody>
-</table>
+</code></pre>
+<p>将8 和1分别转为32位的二进制序列然后进行运算， 所有的位运算符的工作方式是相同的。他们先将操作数转换为整数，然后使用整数位模式进行运算，最后将结果转换为标准的JavaScript浮点数。</p>
 
-<h3 id="拆分窗口标签页">拆分窗口/标签页</h3>
+<blockquote>
+  <p>浮点数的运算需要时刻保持警惕，因为它们出了明的不精确，甚至一些看起来最简单的算术运算都会产生不正确的结果</p>
+</blockquote>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘⌥1</em></td>
-      <td>单列</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥2</em></td>
-      <td>双列</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥5</em></td>
-      <td>网格 (4组)</td>
-    </tr>
-    <tr>
-      <td><em>⌃[1,2,3,4]</em></td>
-      <td>焦点移动至相应组</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧[1,2,3,4]</em></td>
-      <td>将当前文件移动至相应组</td>
-    </tr>
-    <tr>
-      <td><em>⌘[1,2,3…]</em></td>
-      <td>选择相应标签页</td>
-    </tr>
-  </tbody>
-</table>
+<pre><code class="language-javascript"> 0.1 + 0.2;  // 0.30000000000000004
+ // 实数满足结合律 即实数 x, y, z 总是满足 (x + y) + z = x + (y + z); 但是对于浮点数来说却不总是这样
 
-<h3 id="书签">书签</h3>
+  (0.1 + 0.2) + 0.3  // 0.6000000000000001
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘F2</em></td>
-      <td>添加/去除书签</td>
-    </tr>
-    <tr>
-      <td><em>F2</em></td>
-      <td>下一个书签</td>
-    </tr>
-    <tr>
-      <td><em>⇧F2</em></td>
-      <td>前一个书签</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧F2</em></td>
-      <td>清除书签</td>
-    </tr>
-  </tbody>
-</table>
+  0.1 + (0.2 + 0.3) // 0.6
 
-<h3 id="标记">标记</h3>
+</code></pre>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘K space</em></td>
-      <td>设置标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KW</em></td>
-      <td>从光标位置删除至标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KA</em></td>
-      <td>从光标位置选择至标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KG</em></td>
-      <td>清除标记</td>
-    </tr>
-  </tbody>
-</table>
+<blockquote>
+  <p>浮点数权衡了精度和性能。当我们关心精度时，要小心浮点数的局限性。一个有效的解决方法是尽可能采用整数值运算，因为整数在表示时不需要舍入。只需要担心范围符合 -2^53 到 2^53的整数</p>
+</blockquote>
 
 
 
@@ -462,12 +274,12 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/" data-toggle="tooltip" data-placement="top" title="IDEA快捷键">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript(一)">&larr; Previous Post</a>
     </li>
     
     
     <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" data-toggle="tooltip" data-placement="top" title="Lodash.js源码阅读分析（一）">Next Post &rarr;</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (三)">Next Post &rarr;</a>
     </li>
     
 </ul>
@@ -478,9 +290,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick"
-         data-title="SublimeText快捷键"
-         data-url="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two"
+         data-title="Effective JavaScript (二)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/"></div>
     <script>
 
         /**

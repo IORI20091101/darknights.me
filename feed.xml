@@ -1,11 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-19T20:53:30+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/" rel="alternate" type="text/html" title="Effective JavaScript" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/">&lt;h2 id=&quot;第一条了解你使用的javascript版本&quot;&gt;第一条，了解你使用的JavaScript版本&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-22T18:15:36+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (三)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" rel="alternate" type="text/html" title="Effective JavaScript (三)" /><published>2018-06-22T00:00:00+08:00</published><updated>2018-06-22T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/">&lt;h2 id=&quot;当心隐式的强制转换&quot;&gt;当心隐式的强制转换&lt;/h2&gt;
+
+&lt;p&gt;JavaScript对类型的错误出奇宽容,算数运算符 - 、*、%、/都会把参数转为数字。然而 + 会根据参数来决定
+位运算符不仅会将操作数转换为数字，而且还会将操作数转换为32位整数(表示数字的子集)。这些运算符包括算术运算符(~ 、&amp;amp; 、^ 、| 、«、»、»&amp;gt;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  3 + true; // 4
+  2 + 3;    // 5
+  &quot;2&quot; + 3;  // 23
+  &quot;17&quot; * 3; // 51
+  &quot;8&quot; | &quot;1&quot; // 9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;注意nan&quot;&gt;注意NaN&lt;/h2&gt;
+&lt;p&gt;NaN不等于其自身，所以测试一个值是否是NaN是行不通的 ，标准库里面的isNaN也是不可靠的，因为它也带有隐式的强制转换，尝试将参数转为数字&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  var x = NaN;
+  x === NaN;  // false
+
+  isNaN(NaN); // true
+
+  // 由于隐式的类型转换所以以下 都会返回true
+  isNaN(&quot;foo&quot;);
+  isNaN(undefined);
+  isNaN({});
+  isNaN({ valueOf: &quot;foo&quot; });
+
+  // 由于NaN是不等于其自身的，所以真正正确判断一个参数是否是NaN的方法是判断是否等于自身
+  function isReallyNaN(x) {
+    return x !== x;
+  }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;对象的隐式转换&quot;&gt;对象的隐式转换&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  // 对象转换成字符串
+  &quot;the Math object: &quot; + Math; // &quot;the Math object: [object Math]&quot;
+  &quot;the JSON object: &quot; + JSON; // &quot;the JSON object: [object JSON]&quot;
+
+  // 对象转换成数字， 对象可以通过valueOf 方法转为数字,你可以控制对象的类型转换
+
+  // 这里讲调用对象的toString 进行拼接
+  &quot;J&quot; + { toString: function() { return &quot;S&quot;; } };  // &quot;JS&quot;
+
+  // 通过valueOf将对象转为数字
+  2 * { valueOf: function() { return 3; } };       // 6
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果一个对象同时有toString 和valueOf方法 ，运算符 + 应该调用哪个方法呢，JavaScript通过盲目的选择valueOf方法而不是toString方法来解决这种含糊的情况，这就意味着如果有人打算对一个对象执行字符串连接操作，那么产生的行为会出乎意料&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  var obj = {
+    toString: function() {
+      return &quot;[object MyObject]&quot;;
+    },
+    valueOf: function() {
+      return 17;
+    }
+  }
+
+  &quot;object: &quot; + obj; // &quot;object: 17&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;这里例子说明，valueOf方法才真正是为那些代表数值的对象(如 Number对象)而设计的。对于这些对象toString 和valueOf方法应返回一致的结果。一般情况下，字符串的强制转换远比数字转换更常见、更有用。 最好避免使用valueOf方法，除非对象的确是一个数字的抽象，并且obj.toString()能产生一个obj.valueOf() 的字符串表示。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;真值运算&quot;&gt;真值运算&lt;/h2&gt;
+&lt;p&gt;if、||、&amp;amp;&amp;amp;等运算符逻辑上需要布尔值作为操作参数，但实际上可以接受任何值。JavaScript会按照简单的隐式强制转换规则将值解释为布尔值。&lt;/p&gt;
+
+&lt;p&gt;false, 0, -0,””, NaN,null, undefined 外的所有值会转换为false， 其他所有值都为真值。&lt;/p&gt;
+
+&lt;p&gt;因为数字0和字符串”“会转换为false,因此通过隐式转换来判断一个值是否已经定义是不准确的需要通过判断，应该通过以下方式来进行判断&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  if(typeof x === 'undefined') {}
+  if(x === undefined) {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;原始类型由于封装对象&quot;&gt;原始类型由于封装对象&lt;/h2&gt;
+&lt;p&gt;除了对象之外，JavaScript有5个原始值类型： 布尔值，数字，字符串，null, undefined&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">当心隐式的强制转换</summary></entry><entry><title type="html">Effective JavaScript (二)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/" rel="alternate" type="text/html" title="Effective JavaScript (二)" /><published>2018-06-21T00:00:00+08:00</published><updated>2018-06-21T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/">&lt;h2 id=&quot;理解javascript的浮点数&quot;&gt;理解JavaScript的浮点数&lt;/h2&gt;
+
+&lt;p&gt;大多数编程语言都有多种数据类型，但是Javascript 却只有一种。使用 &lt;code&gt;typeof&lt;/code&gt; 运算符查看无论是 ，整数还是浮点数JavaScript都简单的返回一个结果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt; typeof 17; // number
+ typeof 98.6; // number
+ typeof -2.1; // number
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;事实上JavaScript中所有的数字都是双精度浮点数。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;这是由IEEE 745标准定制的64位编码数字 —即 “doubles”； JavaScript使用双精度浮点数来完美的表达高到53位精度的整数，-2^53次方到2^53次方的所有整数都是有效的双精度浮点数。因此尽管JavaScript中缺少明显的整数类型，但是完全可以进行整数运算。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;位运算比较特殊JavaScript不会直接将操作数作为浮点数进行运算，而是会将其隐式的转换为32位整数后进行运算。以按位或为例：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;  8 | 1
+
+  00000000000000000000000000001000
+
+  00000000000000000000000000000001
+
+  00000000000000000000000000001001
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将8 和1分别转为32位的二进制序列然后进行运算， 所有的位运算符的工作方式是相同的。他们先将操作数转换为整数，然后使用整数位模式进行运算，最后将结果转换为标准的JavaScript浮点数。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;浮点数的运算需要时刻保持警惕，因为它们出了明的不精确，甚至一些看起来最简单的算术运算都会产生不正确的结果&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt; 0.1 + 0.2;  // 0.30000000000000004
+ // 实数满足结合律 即实数 x, y, z 总是满足 (x + y) + z = x + (y + z); 但是对于浮点数来说却不总是这样
+
+  (0.1 + 0.2) + 0.3  // 0.6000000000000001
+
+  0.1 + (0.2 + 0.3) // 0.6
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;浮点数权衡了精度和性能。当我们关心精度时，要小心浮点数的局限性。一个有效的解决方法是尽可能采用整数值运算，因为整数在表示时不需要舍入。只需要担心范围符合 -2^53 到 2^53的整数&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解JavaScript的浮点数</summary></entry><entry><title type="html">Effective JavaScript(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/" rel="alternate" type="text/html" title="Effective JavaScript(一)" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/19/read-book-effective-one/">&lt;h2 id=&quot;了解你使用的javascript版本&quot;&gt;了解你使用的JavaScript版本&lt;/h2&gt;
 
 &lt;p&gt;由于不同的浏览器，对于JS的实现不同，我们必须精心编写代码保证他们在所有浏览器下工作如一。否则你可能面临这样的困境–应用程序在你自己的计算机上运行良好，但是部署到不同的环境时却无法运行。
 例如，const关键字在支持非标准特性的JavaScript引擎上测试时运行良好，但是当将它部署到不识别const关键字的web浏览器上就会出现语法错误。
 为此，ES5引入了一种版本控制的考量&lt;code&gt;严格模式&lt;/code&gt;。此特性允许你选择在受限制的JavaScript版本中禁止使用一些JavaScript语言中问题较多或者易于出错的特性。
 由于其语法设计向后兼容，因此即使在那些没有实现严格模式检查的环境中仍然可以执行严格代码（strict code）&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;use strict&quot;;
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><summary type="html">第一条，了解你使用的JavaScript版本</summary></entry><entry><title type="html">React初步学习</title><link href="/reactjs/2018/06/19/react-lesson-one/" rel="alternate" type="text/html" title="React初步学习" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/reactjs/2018/06/19/react-lesson-one</id><content type="html" xml:base="/reactjs/2018/06/19/react-lesson-one/">&lt;h1 id=&quot;react&quot;&gt;React&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;该指令只有定义到脚本或函数的顶部才能生效。需要注意的是脚本连接时可能会将非严格模式脚本运行到严格模式下如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;use strict&quot;;
+function f() {}
+
+// no strict-mode
+function g() {
+  var arguments = [];
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种情况会报错，为了解决这个问题，我们通常会使用 立即调用的函数表达式(IIFE Immediately Invoked Function Expression) 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;(function(){
+  &quot;use strict&quot;;
+  function f() {}
+})();
+
+(function(){
+  function g() {
+    var arguments = [];
+  }
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;编写文件使其在两种模式下行为一致&quot;&gt;编写文件使其在两种模式下行为一致&lt;/h2&gt;
+&lt;p&gt;想要编写一个库来获得最大的兼容性最简单的方法就是在严格模式下编写代码，并显示的将代码内容包裹在本地启用了严格模式的函数中，这种类似前面所说的 将库文件包裹到一个立即调用的函数表达式中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt; (function(){
+  &quot;use strict&quot;
+  function g() {
+    var arguments = [];
+  }
+})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;为了达到更普遍的兼容性建议在严格模式下编写代码。&lt;/code&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">了解你使用的JavaScript版本</summary></entry><entry><title type="html">React初步学习</title><link href="/reactjs/2018/06/19/react-lesson-one/" rel="alternate" type="text/html" title="React初步学习" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/reactjs/2018/06/19/react-lesson-one</id><content type="html" xml:base="/reactjs/2018/06/19/react-lesson-one/">&lt;h1 id=&quot;react&quot;&gt;React&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://doc.react-china.org/docs/handling-events.html&quot;&gt;react中文文档&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;事件处理&quot;&gt;事件处理&lt;/h1&gt;
@@ -245,23 +397,11 @@ Yahoo研究表明使用两个主机名比使用1，4，10个主机名能带来�
 缓存可以缓存的ajax请求，通过修改cache-control&lt;/p&gt;
 
 &lt;h2 id=&quot;析构网站的工具&quot;&gt;析构网站的工具&lt;/h2&gt;
-&lt;p&gt;YSlow&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><summary type="html">高性能网站建设指南-前端工程师技能精髓</summary></entry><entry><title type="html">解读V8 GC</title><link href="/node.js/2017/12/20/node-gc/" rel="alternate" type="text/html" title="解读V8 GC" /><published>2017-12-20T00:00:00+08:00</published><updated>2017-12-20T00:00:00+08:00</updated><id>/node.js/2017/12/20/node-gc</id><content type="html" xml:base="/node.js/2017/12/20/node-gc/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
+&lt;p&gt;YSlow&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">高性能网站建设指南-前端工程师技能精髓</summary></entry><entry><title type="html">解读V8 GC</title><link href="/node.js/2017/12/20/node-gc/" rel="alternate" type="text/html" title="解读V8 GC" /><published>2017-12-20T00:00:00+08:00</published><updated>2017-12-20T00:00:00+08:00</updated><id>/node.js/2017/12/20/node-gc</id><content type="html" xml:base="/node.js/2017/12/20/node-gc/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
 &lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://alinode.aliyun.com/blog/37&quot;&gt;Node.js 应用背景与 GC 基础知识&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://v8project.blogspot.co.uk/&quot;&gt;V8 JavaScript Engine&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="Node.js" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">前端构建工具fit&amp;amp;webpack</title><link href="/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/" rel="alternate" type="text/html" title="前端构建工具fit&amp;webpack" /><published>2017-11-23T00:00:00+08:00</published><updated>2017-11-23T00:00:00+08:00</updated><id>/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
-&lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
-
-&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/camsong/blog/issues/2&quot;&gt;Ajax已死，fetch永生&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="webpack" /><category term="前端构建工具" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry><entry><title type="html">放弃ajax拥抱fetch</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch/" rel="alternate" type="text/html" title="放弃ajax拥抱fetch" /><published>2017-11-23T00:00:00+08:00</published><updated>2017-11-23T00:00:00+08:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
-&lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
-
-&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/camsong/blog/issues/2&quot;&gt;Ajax已死，fetch永生&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="ES6学习笔记" /><category term="javascript" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="Node.js" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry></feed>
