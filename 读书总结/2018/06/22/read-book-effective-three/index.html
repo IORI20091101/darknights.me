@@ -298,8 +298,49 @@
   if(x === undefined) {}
 </code></pre>
 
-<h2 id="原始类型由于封装对象">原始类型由于封装对象</h2>
-<p>除了对象之外，JavaScript有5个原始值类型： 布尔值，数字，字符串，null, undefined</p>
+<h2 id="原始类型优于封装对象">原始类型优于封装对象</h2>
+<p>除了对象之外，JavaScript有5个原始值类型： 布尔值，数字，字符串，null, undefined;
+以String为例</p>
+
+<pre><code class="language-javascript">  var s = new String('hello');
+
+  s + "world";  // "hello world"
+
+  s[4]          // "o"
+
+  typeof "hello" // "string"
+
+  typeof s        // "Object"
+
+  // 每个string都是一个单独的对象其总等于自身，对于非严格相等运算符，结果相同
+  var s1 = new String("hello");
+
+  var s2 = new String("hello");
+
+  s1 === s2; // false
+
+  s1 == s2 // false
+</code></pre>
+
+<p>这些封装的行为并不十分正确所以<code>用处不大</code> ， 其存在的理由是他们的使用方法。例如
+隐式封装后会有一个奇怪的结果，你可以对原始类型的值设置属性，但是对其没有丝毫影响.
+每次隐式的封装都会产生一个新的String对象 <code>"hello"</code> 每次写这个相当于声明了一个新的对象，更新第一个对象的someProperty不会对第二个对象产生影响</p>
+
+<pre><code class="language-javascript">"hello".toUpperCase();  // HELLO
+
+
+
+  "hello".someProperty = 17;
+
+  "hello".someProperty; // undefined
+
+</code></pre>
+
+<h2 id="避免对混合类型使用运算符">避免对混合类型使用==运算符</h2>
+
+<pre><code class="language-javascript">  "1.0e0" == { valueOf: function() { return true} }
+
+</code></pre>
 
 
 

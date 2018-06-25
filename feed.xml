@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-22T18:15:36+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (三)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" rel="alternate" type="text/html" title="Effective JavaScript (三)" /><published>2018-06-22T00:00:00+08:00</published><updated>2018-06-22T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/">&lt;h2 id=&quot;当心隐式的强制转换&quot;&gt;当心隐式的强制转换&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-25T20:43:18+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (三)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" rel="alternate" type="text/html" title="Effective JavaScript (三)" /><published>2018-06-22T00:00:00+08:00</published><updated>2018-06-22T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/">&lt;h2 id=&quot;当心隐式的强制转换&quot;&gt;当心隐式的强制转换&lt;/h2&gt;
 
 &lt;p&gt;JavaScript对类型的错误出奇宽容,算数运算符 - 、*、%、/都会把参数转为数字。然而 + 会根据参数来决定
 位运算符不仅会将操作数转换为数字，而且还会将操作数转换为32位整数(表示数字的子集)。这些运算符包括算术运算符(~ 、&amp;amp; 、^ 、| 、«、»、»&amp;gt;)&lt;/p&gt;
@@ -72,8 +72,49 @@
   if(x === undefined) {}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;原始类型由于封装对象&quot;&gt;原始类型由于封装对象&lt;/h2&gt;
-&lt;p&gt;除了对象之外，JavaScript有5个原始值类型： 布尔值，数字，字符串，null, undefined&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">当心隐式的强制转换</summary></entry><entry><title type="html">Effective JavaScript (二)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/" rel="alternate" type="text/html" title="Effective JavaScript (二)" /><published>2018-06-21T00:00:00+08:00</published><updated>2018-06-21T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/">&lt;h2 id=&quot;理解javascript的浮点数&quot;&gt;理解JavaScript的浮点数&lt;/h2&gt;
+&lt;h2 id=&quot;原始类型优于封装对象&quot;&gt;原始类型优于封装对象&lt;/h2&gt;
+&lt;p&gt;除了对象之外，JavaScript有5个原始值类型： 布尔值，数字，字符串，null, undefined;
+以String为例&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  var s = new String('hello');
+
+  s + &quot;world&quot;;  // &quot;hello world&quot;
+
+  s[4]          // &quot;o&quot;
+
+  typeof &quot;hello&quot; // &quot;string&quot;
+
+  typeof s        // &quot;Object&quot;
+
+  // 每个string都是一个单独的对象其总等于自身，对于非严格相等运算符，结果相同
+  var s1 = new String(&quot;hello&quot;);
+
+  var s2 = new String(&quot;hello&quot;);
+
+  s1 === s2; // false
+
+  s1 == s2 // false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这些封装的行为并不十分正确所以&lt;code&gt;用处不大&lt;/code&gt; ， 其存在的理由是他们的使用方法。例如
+隐式封装后会有一个奇怪的结果，你可以对原始类型的值设置属性，但是对其没有丝毫影响.
+每次隐式的封装都会产生一个新的String对象 &lt;code&gt;&quot;hello&quot;&lt;/code&gt; 每次写这个相当于声明了一个新的对象，更新第一个对象的someProperty不会对第二个对象产生影响&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;hello&quot;.toUpperCase();  // HELLO
+
+
+
+  &quot;hello&quot;.someProperty = 17;
+
+  &quot;hello&quot;.someProperty; // undefined
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;避免对混合类型使用运算符&quot;&gt;避免对混合类型使用==运算符&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  &quot;1.0e0&quot; == { valueOf: function() { return true} }
+
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">当心隐式的强制转换</summary></entry><entry><title type="html">Effective JavaScript (二)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/" rel="alternate" type="text/html" title="Effective JavaScript (二)" /><published>2018-06-21T00:00:00+08:00</published><updated>2018-06-21T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/21/read-book-effective-two/">&lt;h2 id=&quot;理解javascript的浮点数&quot;&gt;理解JavaScript的浮点数&lt;/h2&gt;
 
 &lt;p&gt;大多数编程语言都有多种数据类型，但是Javascript 却只有一种。使用 &lt;code&gt;typeof&lt;/code&gt; 运算符查看无论是 ，整数还是浮点数JavaScript都简单的返回一个结果&lt;/p&gt;
 
