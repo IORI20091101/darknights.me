@@ -338,9 +338,88 @@
 
 <h2 id="避免对混合类型使用运算符">避免对混合类型使用==运算符</h2>
 
-<pre><code class="language-javascript">  "1.0e0" == { valueOf: function() { return true} }
+<p>下面的表达式的值其实是true， 对于看似无关的值使用==实际是相等的。</p>
+<pre><code class="language-javascript">  "1.0e0" == { valueOf: function() { return true } }    // true
+
+  // 理由如下
+  Number("1.0e0")   // 转换为数字 1
+
+  // 对象调用 valueOf方法返回true， 再转换为数字，得到1
+
+  // 所以结果相等
 
 </code></pre>
+
+<p>我们可以使用隐式的强制转换做一些事情，但是仍然推荐使用严格模式进行比较。</p>
+
+<p>例子一, 这个例子使用了隐式的类型转换，跟数字进行比较会将字符串转为数字，从而得到正确的结果</p>
+<pre><code class="language-javascript">  var today = new Date();
+
+  if(form.month.value == (today.getMonth() + 1) &amp;&amp;
+    form.day.value == today.getDate()) {
+    // happy birthday
+  }
+
+</code></pre>
+
+<p>例子二， 这个例子使用了显示的 Number，或者一元运算符 + 将字符串转为数字, 从而清晰的向大家表达了代码到底在做什么样的转换， 不要求读者记住这些转换</p>
+<pre><code class="language-javascript">  var today = new Date();
+
+  if(+form.month.value == (today.getMonth() + 1) &amp;&amp;
+   +form.day.value == today.getDate()) {
+    // happy birthday
+  }
+
+</code></pre>
+
+<p>例子三， 一个更好的例子 使用严格相等运算， 这个过程没有涉及任何转换，读者读起来更加清晰，否则读者需要记住这些强制转换来解读代码的行为</p>
+<pre><code class="language-javascript">  var today = new Date();
+
+  if(+form.month.value === (today.getMonth() + 1) &amp;&amp;
+    +form.day.value === today.getDate()) {
+    // happy birthday
+  }
+
+</code></pre>
+
+<h2 id="-运算符强制转换规则">== 运算符强制转换规则</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数类型1</th>
+      <th style="text-align: right">参数类型2</th>
+      <th style="text-align: center">参数类型3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>null</td>
+      <td style="text-align: right">undefined</td>
+      <td style="text-align: center">不转换，总是返回true</td>
+    </tr>
+    <tr>
+      <td>null或undefined</td>
+      <td style="text-align: right">其他任何非null或undefined的类型</td>
+      <td style="text-align: center">不转换，总是返回false</td>
+    </tr>
+    <tr>
+      <td>原始类型的值：string, number,boolean</td>
+      <td style="text-align: right">Date对象</td>
+      <td style="text-align: center">将原始类型转换为数字，将Date对象转换为原始类型（优先尝试toString方法，再尝试valueOf方法）</td>
+    </tr>
+    <tr>
+      <td>原始类型的值：string, number,boolean</td>
+      <td style="text-align: right">非Date对象</td>
+      <td style="text-align: center">将原始类型转换为数字，将非Date对象转换为原始类型（优先尝试valueOf方法，再尝试toString方法）</td>
+    </tr>
+    <tr>
+      <td>原始类型的值：string, number,boolean</td>
+      <td style="text-align: right">原始类型的值：string, number,boolean</td>
+      <td style="text-align: center">将原始类型转换为数字</td>
+    </tr>
+  </tbody>
+</table>
 
 
 
