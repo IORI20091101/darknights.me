@@ -1,4 +1,189 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-26T15:46:05+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (三)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" rel="alternate" type="text/html" title="Effective JavaScript (三)" /><published>2018-06-22T00:00:00+08:00</published><updated>2018-06-22T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/">&lt;h2 id=&quot;当心隐式的强制转换&quot;&gt;当心隐式的强制转换&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-06-27T15:16:05+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
+
+&lt;p&gt;JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  function Point(x, y) {
+    this.x = x || 0
+    this.y = y || 0
+  }
+
+  Point.prototype.isOrigin = function() {
+    return this.x === 0 &amp;amp;&amp;amp; this.y === 0
+  }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这段没有分号的代码能够工作依赖于JavaScript的&lt;code&gt;自动分号插入技术(automatic semicolon insertion)&lt;/code&gt;, 它是一种程序解析技术。它能够推断出上下文省略的分号，然后有效的将分号自动插入到程序中。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;像隐式的强制转换一样，分号插入也有其陷阱，你根本不能避免学习其规则， 即使你从来不省略分号，受分号插入的影响，JavaScript语法也有一些额外的限制。一旦学会分号插入机制，你会从删除不必要的分号的痛苦中解脱出来&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;规则一&quot;&gt;规则一&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;分号仅在 } 标记之前、一个或多个换行之后和程序输入的结尾被插入。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+  //合法省略分号
+  function square(x) {
+    var n = +x
+    return n * n
+  }
+
+  function area(r) { r = +r; return Math.PI * r * r }
+
+  function add1(x) { return x + 1 }
+
+  // 不合法
+  function area(r) { r = +r return Math.PI * r * r }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;规则二&quot;&gt;规则二&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;分号进在随后的输入标记不能被解析时插入
+换句话说分号插入是一种错误矫正机制。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascipt&quot;&gt;  a = b
+  (f()); // 这个例子会被解析为 a = b(f()); 所以不会插入分号，因为能够正确解析
+
+  a = b
+  f();   // 这个例子会被解析为 a = b f(); 解析有误，所以会插入分号
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;有5个明确有问题的字符需要密切注意&quot;&gt;有5个明确有问题的字符需要密切注意&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;(、[、+、-和/&lt;/strong&gt;， 每一个字符都能作为一个表达式运算符或一条语句的前缀， 这依赖于具体上下文。，如果下一行以这五个有问题的字符串之一来时，则不会自动插入分号。向上面的例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a = b
+  [&quot;r&quot;, &quot;g&quot;, &quot;b&quot;].forEach(function(key) {
+    background[key] = foreground[key] / 2;
+  });
+  // 这看起来像两条语句但是使用了&amp;lt;code&amp;gt;[&amp;lt;/code&amp;gt;，所以被解析为一条语句
+  // 这里例子看起来有点奇怪，但是，JavaScript允许逗号分隔表达式。
+  // 逗号分隔表达式从左至右依次执行，并返回最后一个表达式的值。
+  a = b[&quot;r&quot;, &quot;g&quot;, &quot;b&quot;].forEach(function(key) {
+    background[key] = foreground[key] / 2;
+  });
+
+  // /通常作为正则表达式的开始
+  /Error/i.test(str) &amp;amp;&amp;amp; fail();
+
+  //这种情况会被解析到一行不会插入分号
+  a = b
+  /Error/i.test(str) &amp;amp;&amp;amp; fail();
+
+  a = b/Error/i.test(str) &amp;amp;&amp;amp; fail();  //  / 解析为除法运算符
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;又一个例子,这是一个完全正确的例子，因为会自动插入分号&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a = b
+  var x
+  (f())
+
+  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
+  var x
+  a = b
+  (f())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一个不幸的结果就是，你总是需要注意省略的分号， 并且检查接下来的一行开始的标记是否会禁用自动插入分号。所以你可以采用在&lt;strong&gt;(、[、+、-和/&lt;/strong&gt;，字符的开始前置一个额外的分号语句&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a = b
+  var x
+  ;(f())
+
+  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
+  var x
+  a = b
+  ;(f())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;还有一个常用的情况就是脚本连接的情况&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  // file1.js
+  (function() {
+
+  })()
+
+  // file2.js
+  (function() {
+
+  })()
+
+  // 当文件连接到一起时
+  (function() {
+
+  })()
+  (function() {
+
+  })()
+
+  // 被视为一条单一的语句，等价于：
+
+  (function() {
+
+  })()(function() {
+
+  })();
+
+  // 所以如果文件最开始的语句以这5个字符开始，你应该防御性的给每个前缀一个额外的分号
+
+  // file1.js
+  ;(function() {
+
+  })()
+
+  // file2.js
+  ;(function() {
+
+  })()
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;最安全的选择就是防御性的增加分号&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;你可能认为 “我从来不省略分号，我会没事的。” 事实并不是这样。也有一些情况，尽管不会出现解析错误，但是也会强制性的插入分号，
+这是所谓的JavaScript的语法限制式（restricted production），它不允许两个字符之间存在换行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  return {};    // 返回一个对象
+
+  return  // 这段代码被解析为
+  {};
+
+  return;
+  {}
+  ;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;类似的JavaScript的语法限制产生式包括： return, throw, break, continue, 后置自增或自减运算符。
+在&lt;code&gt;return, throw, break, continue, ++, --&lt;/code&gt;,参数之前决不能出现换行&lt;/p&gt;
+
+&lt;p&gt;关于自增和自减运算符 是为了避免以下代码出现的歧义，&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a
+  ++
+  b
+  // ++既可以作为前置也可以作为后置，但是后置根据语法限制式,不允许a++之间存在换行 所以上面代码解析为
+
+  a; ++b;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;第三条也是最后一条规则&quot;&gt;第三条也是最后一条规则&lt;/h2&gt;
+&lt;p&gt;分号不会作为分隔符在for循环空语句头部被自动插入，换言之，for头部里面的&lt;code&gt;;&lt;/code&gt;不能省略，必须显示的包含分号&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  // 下面代码会解析错误
+  for(var i = 0, total = 1 // parse error
+      i &amp;lt; n
+      i++) {
+    total *= i
+  }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同样的 &lt;code&gt;while&lt;/code&gt;，也是需要显示分号的情况&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  function infiniteLoop() { while(true) }  // parse error
+
+  function infiniteLoop() { while(true); }
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">了解分号插入的局限性</summary></entry><entry><title type="html">Effective JavaScript (三)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" rel="alternate" type="text/html" title="Effective JavaScript (三)" /><published>2018-06-22T00:00:00+08:00</published><updated>2018-06-22T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/">&lt;h2 id=&quot;当心隐式的强制转换&quot;&gt;当心隐式的强制转换&lt;/h2&gt;
 
 &lt;p&gt;JavaScript对类型的错误出奇宽容,算数运算符 - 、*、%、/都会把参数转为数字。然而 + 会根据参数来决定
 位运算符不仅会将操作数转换为数字，而且还会将操作数转换为32位整数(表示数字的子集)。这些运算符包括算术运算符(~ 、&amp;amp; 、^ 、| 、«、»、»&amp;gt;)&lt;/p&gt;
@@ -517,11 +702,4 @@ Yahoo研究表明使用两个主机名比使用1，4，10个主机名能带来�
 缓存可以缓存的ajax请求，通过修改cache-control&lt;/p&gt;
 
 &lt;h2 id=&quot;析构网站的工具&quot;&gt;析构网站的工具&lt;/h2&gt;
-&lt;p&gt;YSlow&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">高性能网站建设指南-前端工程师技能精髓</summary></entry><entry><title type="html">解读V8 GC</title><link href="/node.js/2017/12/20/node-gc/" rel="alternate" type="text/html" title="解读V8 GC" /><published>2017-12-20T00:00:00+08:00</published><updated>2017-12-20T00:00:00+08:00</updated><id>/node.js/2017/12/20/node-gc</id><content type="html" xml:base="/node.js/2017/12/20/node-gc/">&lt;h2 id=&quot;lodashjs源码阅读分析一&quot;&gt;Lodash.js源码阅读分析（一）&lt;/h2&gt;
-&lt;p&gt;通过详细阅读lodash的源码，学习代码风格同时补充基础。&lt;/p&gt;
-
-&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://alinode.aliyun.com/blog/37&quot;&gt;Node.js 应用背景与 GC 基础知识&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://v8project.blogspot.co.uk/&quot;&gt;V8 JavaScript Engine&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="Node.js" /><summary type="html">Lodash.js源码阅读分析（一） 通过详细阅读lodash的源码，学习代码风格同时补充基础。</summary></entry></feed>
+&lt;p&gt;YSlow&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">高性能网站建设指南-前端工程师技能精髓</summary></entry></feed>

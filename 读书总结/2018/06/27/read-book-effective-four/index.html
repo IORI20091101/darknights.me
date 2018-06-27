@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>使用travis-ci集成项目,自动部署博客站点 - Dark knight's Blog</title>
+    <title>Effective JavaScript (四) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/blog-static-nginx/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat33.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,17 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                             
-                            <a class="tag" href="/tags/#jekyll" title="jekyll">jekyll</a>
+                            <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>使用travis-ci集成项目,自动部署博客站点</h1>
+                        <h1>Effective JavaScript (四)</h1>
                         
                         
-                        <h2 class="subheading">travis集成注意点和操作步骤</h2>
+                        <h2 class="subheading">了解分号插入的局限性</h2>
                         
-                        <span class="meta">Posted by toshiba on September 5, 2017</span>
+                        <span class="meta">Posted by toshiba on June 27, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,23 +224,193 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="第一次搭建博客">第一次搭建博客</h1>
+				<h2 id="了解分号插入的局限性">了解分号插入的局限性</h2>
 
-<h1 id="参考文章">参考文章</h1>
+<p>JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。</p>
+<pre><code class="language-javascript">  function Point(x, y) {
+    this.x = x || 0
+    this.y = y || 0
+  }
 
-<ul>
-  <li><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧</a></li>
-  <li><a href="http://www.zhanxin.info/journal/">掌心</a></li>
-  <li><a href="https://blog.ixxoo.me/">likebeta’s Blog</a></li>
-  <li><a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a></li>
-  <li><a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a></li>
-  <li><a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录</a></li>
-  <li><a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a></li>
-  <li><a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a></li>
-  <li><a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a></li>
-  <li><a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a></li>
-  <li><a href="http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/">使用travis-ci自动部署hexo博客</a></li>
-</ul>
+  Point.prototype.isOrigin = function() {
+    return this.x === 0 &amp;&amp; this.y === 0
+  }
+
+</code></pre>
+<p>这段没有分号的代码能够工作依赖于JavaScript的<code>自动分号插入技术(automatic semicolon insertion)</code>, 它是一种程序解析技术。它能够推断出上下文省略的分号，然后有效的将分号自动插入到程序中。</p>
+
+<blockquote>
+  <p>像隐式的强制转换一样，分号插入也有其陷阱，你根本不能避免学习其规则， 即使你从来不省略分号，受分号插入的影响，JavaScript语法也有一些额外的限制。一旦学会分号插入机制，你会从删除不必要的分号的痛苦中解脱出来</p>
+</blockquote>
+
+<h2 id="规则一">规则一</h2>
+<blockquote>
+  <p>分号仅在 } 标记之前、一个或多个换行之后和程序输入的结尾被插入。</p>
+</blockquote>
+
+<pre><code class="language-javascript">
+  //合法省略分号
+  function square(x) {
+    var n = +x
+    return n * n
+  }
+
+  function area(r) { r = +r; return Math.PI * r * r }
+
+  function add1(x) { return x + 1 }
+
+  // 不合法
+  function area(r) { r = +r return Math.PI * r * r }
+
+</code></pre>
+
+<h2 id="规则二">规则二</h2>
+
+<blockquote>
+  <p>分号进在随后的输入标记不能被解析时插入
+换句话说分号插入是一种错误矫正机制。</p>
+</blockquote>
+
+<pre><code class="language-javascipt">  a = b
+  (f()); // 这个例子会被解析为 a = b(f()); 所以不会插入分号，因为能够正确解析
+
+  a = b
+  f();   // 这个例子会被解析为 a = b f(); 解析有误，所以会插入分号
+</code></pre>
+
+<h2 id="有5个明确有问题的字符需要密切注意">有5个明确有问题的字符需要密切注意</h2>
+<p><strong>(、[、+、-和/</strong>， 每一个字符都能作为一个表达式运算符或一条语句的前缀， 这依赖于具体上下文。，如果下一行以这五个有问题的字符串之一来时，则不会自动插入分号。向上面的例子</p>
+
+<pre><code class="language-javascript">  a = b
+  ["r", "g", "b"].forEach(function(key) {
+    background[key] = foreground[key] / 2;
+  });
+  // 这看起来像两条语句但是使用了&lt;code&gt;[&lt;/code&gt;，所以被解析为一条语句
+  // 这里例子看起来有点奇怪，但是，JavaScript允许逗号分隔表达式。
+  // 逗号分隔表达式从左至右依次执行，并返回最后一个表达式的值。
+  a = b["r", "g", "b"].forEach(function(key) {
+    background[key] = foreground[key] / 2;
+  });
+
+  // /通常作为正则表达式的开始
+  /Error/i.test(str) &amp;&amp; fail();
+
+  //这种情况会被解析到一行不会插入分号
+  a = b
+  /Error/i.test(str) &amp;&amp; fail();
+
+  a = b/Error/i.test(str) &amp;&amp; fail();  //  / 解析为除法运算符
+
+
+</code></pre>
+
+<p>又一个例子,这是一个完全正确的例子，因为会自动插入分号</p>
+<pre><code class="language-javascript">  a = b
+  var x
+  (f())
+
+  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
+  var x
+  a = b
+  (f())
+</code></pre>
+<p>一个不幸的结果就是，你总是需要注意省略的分号， 并且检查接下来的一行开始的标记是否会禁用自动插入分号。所以你可以采用在<strong>(、[、+、-和/</strong>，字符的开始前置一个额外的分号语句</p>
+<pre><code class="language-javascript">  a = b
+  var x
+  ;(f())
+
+  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
+  var x
+  a = b
+  ;(f())
+</code></pre>
+
+<p>还有一个常用的情况就是脚本连接的情况</p>
+<pre><code class="language-javascript">  // file1.js
+  (function() {
+
+  })()
+
+  // file2.js
+  (function() {
+
+  })()
+
+  // 当文件连接到一起时
+  (function() {
+
+  })()
+  (function() {
+
+  })()
+
+  // 被视为一条单一的语句，等价于：
+
+  (function() {
+
+  })()(function() {
+
+  })();
+
+  // 所以如果文件最开始的语句以这5个字符开始，你应该防御性的给每个前缀一个额外的分号
+
+  // file1.js
+  ;(function() {
+
+  })()
+
+  // file2.js
+  ;(function() {
+
+  })()
+
+</code></pre>
+<blockquote>
+  <p>最安全的选择就是防御性的增加分号</p>
+</blockquote>
+
+<p>你可能认为 “我从来不省略分号，我会没事的。” 事实并不是这样。也有一些情况，尽管不会出现解析错误，但是也会强制性的插入分号，
+这是所谓的JavaScript的语法限制式（restricted production），它不允许两个字符之间存在换行。</p>
+
+<pre><code class="language-javascript">  return {};    // 返回一个对象
+
+  return  // 这段代码被解析为
+  {};
+
+  return;
+  {}
+  ;
+</code></pre>
+
+<p>类似的JavaScript的语法限制产生式包括： return, throw, break, continue, 后置自增或自减运算符。
+在<code>return, throw, break, continue, ++, --</code>,参数之前决不能出现换行</p>
+
+<p>关于自增和自减运算符 是为了避免以下代码出现的歧义，</p>
+<pre><code class="language-javascript">  a
+  ++
+  b
+  // ++既可以作为前置也可以作为后置，但是后置根据语法限制式,不允许a++之间存在换行 所以上面代码解析为
+
+  a; ++b;
+
+</code></pre>
+
+<h2 id="第三条也是最后一条规则">第三条也是最后一条规则</h2>
+<p>分号不会作为分隔符在for循环空语句头部被自动插入，换言之，for头部里面的<code>;</code>不能省略，必须显示的包含分号</p>
+<pre><code>  // 下面代码会解析错误
+  for(var i = 0, total = 1 // parse error
+      i &lt; n
+      i++) {
+    total *= i
+  }
+
+</code></pre>
+<p>同样的 <code>while</code>，也是需要显示分号的情况</p>
+<pre><code>  function infiniteLoop() { while(true) }  // parse error
+
+  function infiniteLoop() { while(true); }
+</code></pre>
+
 
 
                 <hr>
@@ -248,13 +418,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/" data-toggle="tooltip" data-placement="top" title="搭建jekyll 博客流程记录">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/22/read-book-effective-three/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (三)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E5%B7%A5%E4%BD%9C%E9%9D%A2%E8%AF%95/2017/10/12/interview/" data-toggle="tooltip" data-placement="top" title="LeetCode,LintCode,Hihocoder刷题指南">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -264,9 +430,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/blog-static-nginx"
-         data-title="使用travis-ci集成项目,自动部署博客站点"
-         data-url="http://darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/blog-static-nginx/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four"
+         data-title="Effective JavaScript (四)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/"></div>
     <script>
 
         /**
