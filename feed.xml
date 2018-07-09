@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-06T17:42:06+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-09T20:57:51+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
 
 &lt;p&gt;JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  function Point(x, y) {
@@ -285,9 +285,7 @@
 隐式封装后会有一个奇怪的结果，你可以对原始类型的值设置属性，但是对其没有丝毫影响.
 每次隐式的封装都会产生一个新的String对象 &lt;code&gt;&quot;hello&quot;&lt;/code&gt; 每次写这个相当于声明了一个新的对象，更新第一个对象的someProperty不会对第二个对象产生影响&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;hello&quot;.toUpperCase();  // HELLO
-
-
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  &quot;hello&quot;.toUpperCase();  // HELLO
 
   &quot;hello&quot;.someProperty = 17;
 
@@ -383,6 +381,149 @@
 &lt;h2 id=&quot;由一张图片引发的思考&quot;&gt;由一张图片引发的思考&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/read-book-effective/js-convert.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;这几个例子很好的验证了上面的隐式类型转换&quot;&gt;这几个例子很好的验证了上面的隐式类型转换&lt;/h2&gt;
+&lt;p&gt;首先我们要知道一些前提&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;加法运算符会触发三种类型转换， 将值转为原始类型值， 转换为数字， 转换为字符串， 正好对应引擎内部的三种抽象操作， ToPrimitive(), ToNumber(),ToString()， 一旦得到原始类型的值直接开始进行运算&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;javascript 中的Object, 如果调用valueOf方法默认返回对象本身， 所以无论是{}，还是 []使用valueOf方法都会返回对象本身，得不到原始类型的值。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;toprimitive&quot;&gt;ToPrimitive&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果输入的值已经是个原始值,则直接返回它.&lt;/li&gt;
+  &lt;li&gt;否则,如果输入的值是一个对象.则调用该对象的valueOf()方法.如果valueOf()方法的返回值是一个原始值,则返回这个原始值.&lt;/li&gt;
+  &lt;li&gt;否则,调用这个对象的toString()方法.如果toString()方法的返回值是一个原始值,则返回这个原始值.&lt;/li&gt;
+  &lt;li&gt;否则,抛出TypeError异常.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tonumber&quot;&gt;ToNumber&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;参数&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;结果&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;NaN&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;null&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;+0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;布尔值&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;true被转换为1,false转换为+0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;数字&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;无需转换&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;字符串&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;由字符串解析为数字.例如,”324”被转换为324&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;tostring&quot;&gt;ToString&lt;/h2&gt;
+&lt;p&gt;| 参数        | 结果   |
+| ——–   | —–:  |
+| undefined     | “undefined” |
+| null        |   “null”   |
+| 布尔值       | true被转换为”true”,false转换为”false” |
+| 数字       |   数字作为字符串,比如. “1.765”  |
+| 字符串       |   无需转换   |&lt;/p&gt;
+
+&lt;p&gt;举个栗子&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  var obj = {
+    valueOf: function() {
+      return {}
+    },
+    toString: function() {
+      return {}
+    }
+  }
+
+  Number(obj);
+  obj + obj;  // TypeError: Cannot convert object to primitive value
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;value1--value2&quot;&gt;value1 + value2&lt;/h2&gt;
+&lt;p&gt;这个表达式的计算过程是这样的：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;第一步 将两个操作数转为原始类型的值  Date先调用toString()方法， 非Date先调用 valueOf()&lt;/li&gt;
+  &lt;li&gt;第二步 如果其中任意一个是字符串，则将另一个也转为字符串，让后返回两个字符串相加后的结果&lt;/li&gt;
+  &lt;li&gt;第三步， 否则将值都转为数字类型然后相加&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;图片例子分析&quot;&gt;图片例子分析&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+  [] + [] // &quot;&quot;
+
+  首先转原始类型值先调用valueOf方法在调用toString方法，js对象的valueOf()返回对象本身，
+  所以调用 toString() 返回的空字符串&quot;&quot;
+
+
+  [] + {} // &quot;[object Object]&quot;
+
+  首先转原始类型的值，[] 直接转成字符串，按照+运算符规则，其中任意一个字符串，
+  则另一个也转为字符串 String({}) =&amp;gt; '[object Object]' 得到最终结果
+
+
+
+
+  {} + {} // &quot;[object Object][object Object]&quot;  or &quot;NaN&quot;
+
+  这个比较特殊JavaScript引擎将第一个{}解释成了一个空的代码块并且忽略了它，
+   NaN其实是后面的表达式 +{}的计算结果
+   这里的+ 是一元运算符作用是将操作数转为数字 和Number()函数完全一样。 如 +“36.5” =&amp;gt; 36.5
+
+  转换过程如下
+  +{}
+  Number({}.toString()） // 因为{}.valueOf() 返回对象本身不是原始值
+  Number(&quot;[object Object]&quot;)
+  最终结果 NaN
+
+  Firefox和Chrome(和Node.js一样使用V8引擎)的解析结果不同.下面的输入会被解析成一个表达式,结果更符合我们的预料
+
+  {} + {} // &quot;[object Object][object Object]&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;为什么第一个{}会被解析成代码块呢?原因是,整个输入被解析成了一个语句,如果一个语句是以左大括号开始的,则这对大括号会被解析成一个代码块.所以,你也可以通过强制把输入解析成一个表达式来修复这样的计算结果:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  ({} + {})
+  '[object Object][object Object]'
+
+  同理
+  console.log({} + {})
+  '[object Object][object Object]'
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;经过上面的分析过程再来看&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  {} + []  //第一个{}被当成空代码块被忽略
+  +[]      // 转数字
+  Number(&quot;&quot;)      //  空字符串转为0
+  最终结果
+  0
+
+  ({} + [])  // &quot;[object Object]&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;参考文章&lt;/p&gt;
 &lt;blockquote&gt;
