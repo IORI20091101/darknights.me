@@ -509,6 +509,29 @@
   <li>第三步， 否则将值都转为数字类型然后相加</li>
 </ul>
 
+<pre><code>  '5' + 1 // '51'
+  '5' + true // "5true"
+  '5' + false // "5false"
+  '5' + {} // "5[object Object]"
+  '5' + [] // "5"
+  '5' + function (){} // "5function (){}"
+  '5' + undefined // "5undefined"
+  '5' + null // "5null"
+
+</code></pre>
+<p>除了加法运算符（+）有可能把运算子转为字符串，其他运算符都会把运算子自动转成数值</p>
+<pre><code>  '5' - '2' // 3
+  '5' * '2' // 10
+  true - 1  // 0
+  false - 1 // -1
+  '1' - 1   // 0
+  '5' * []    // 0
+  false / '5' // 0
+  'abc' - 1   // NaN
+  null + 1 // 1
+  undefined + 1 // NaN
+</code></pre>
+
 <h2 id="图片例子分析">图片例子分析</h2>
 <pre><code class="language-javascript">
   [] + [] // ""

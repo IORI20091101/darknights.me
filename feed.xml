@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-09T20:57:51+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-10T11:07:32+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
 
 &lt;p&gt;JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  function Point(x, y) {
@@ -467,6 +467,29 @@
   &lt;li&gt;第二步 如果其中任意一个是字符串，则将另一个也转为字符串，让后返回两个字符串相加后的结果&lt;/li&gt;
   &lt;li&gt;第三步， 否则将值都转为数字类型然后相加&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;  '5' + 1 // '51'
+  '5' + true // &quot;5true&quot;
+  '5' + false // &quot;5false&quot;
+  '5' + {} // &quot;5[object Object]&quot;
+  '5' + [] // &quot;5&quot;
+  '5' + function (){} // &quot;5function (){}&quot;
+  '5' + undefined // &quot;5undefined&quot;
+  '5' + null // &quot;5null&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;除了加法运算符（+）有可能把运算子转为字符串，其他运算符都会把运算子自动转成数值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  '5' - '2' // 3
+  '5' * '2' // 10
+  true - 1  // 0
+  false - 1 // -1
+  '1' - 1   // 0
+  '5' * []    // 0
+  false / '5' // 0
+  'abc' - 1   // NaN
+  null + 1 // 1
+  undefined + 1 // NaN
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;图片例子分析&quot;&gt;图片例子分析&lt;/h2&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
