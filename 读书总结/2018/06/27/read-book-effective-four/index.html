@@ -265,13 +265,12 @@
 </code></pre>
 
 <h2 id="规则二">规则二</h2>
-
 <blockquote>
-  <p>分号进在随后的输入标记不能被解析时插入
-换句话说分号插入是一种错误矫正机制。</p>
+  <p>分号进在随后的输入标记不能被解析时插入 , 换句话说分号插入是一种错误矫正机制。</p>
 </blockquote>
 
-<pre><code class="language-javascipt">  a = b
+<pre><code class="language-javascript">
+  a = b
   (f()); // 这个例子会被解析为 a = b(f()); 所以不会插入分号，因为能够正确解析
 
   a = b
@@ -319,7 +318,7 @@
   var x
   ;(f())
 
-  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
+
   var x
   a = b
   ;(f())

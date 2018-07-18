@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-10T11:07:32+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-07-18T10:55:18+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
 
 &lt;p&gt;JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  function Point(x, y) {
@@ -39,13 +39,12 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;规则二&quot;&gt;规则二&lt;/h2&gt;
-
 &lt;blockquote&gt;
-  &lt;p&gt;分号进在随后的输入标记不能被解析时插入
-换句话说分号插入是一种错误矫正机制。&lt;/p&gt;
+  &lt;p&gt;分号进在随后的输入标记不能被解析时插入 , 换句话说分号插入是一种错误矫正机制。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-javascipt&quot;&gt;  a = b
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+  a = b
   (f()); // 这个例子会被解析为 a = b(f()); 所以不会插入分号，因为能够正确解析
 
   a = b
@@ -93,7 +92,7 @@
   var x
   ;(f())
 
-  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
+
   var x
   a = b
   ;(f())
@@ -436,13 +435,37 @@
 &lt;/table&gt;
 
 &lt;h2 id=&quot;tostring&quot;&gt;ToString&lt;/h2&gt;
-&lt;p&gt;| 参数        | 结果   |
-| ——–   | —–:  |
-| undefined     | “undefined” |
-| null        |   “null”   |
-| 布尔值       | true被转换为”true”,false转换为”false” |
-| 数字       |   数字作为字符串,比如. “1.765”  |
-| 字符串       |   无需转换   |&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;参数&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;结果&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;“undefined”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;null&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;“null”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;布尔值&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;true被转换为”true”,false转换为”false”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;数字&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;数字作为字符串,比如. “1.765”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;字符串&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;无需转换&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;p&gt;举个栗子&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  var obj = {
@@ -583,7 +606,7 @@
 &lt;p&gt;将8 和1分别转为32位的二进制序列然后进行运算， 所有的位运算符的工作方式是相同的。他们先将操作数转换为整数，然后使用整数位模式进行运算，最后将结果转换为标准的JavaScript浮点数。&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;浮点数的运算需要时刻保持警惕，因为它们出了明的不精确，甚至一些看起来最简单的算术运算都会产生不正确的结果&lt;/p&gt;
+  &lt;p&gt;浮点数的运算需要时刻保持警惕，因为它们出了名的不精确，甚至一些看起来最简单的算术运算都会产生不正确的结果&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt; 0.1 + 0.2;  // 0.30000000000000004
