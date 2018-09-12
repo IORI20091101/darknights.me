@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>原码, 反码, 补码 详解 - Dark knight's Blog</title>
+    <title>Effective JavaScript (五) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat2.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,15 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#计算机基础" title="计算机基础">计算机基础</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                            
+                            <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>原码, 反码, 补码 详解</h1>
+                        <h1>Effective JavaScript (五)</h1>
                         
                         
-                        <h2 class="subheading">原码, 反码, 补码的基础概念和计算方法.</h2>
+                        <h2 class="subheading">理解变量提升</h2>
                         
-                        <span class="meta">Posted by toshiba on October 31, 2017</span>
+                        <span class="meta">Posted by toshiba on September 11, 2018</span>
                     </div>
                 </div>
             </div>
@@ -222,151 +224,252 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="机器数和真值">机器数和真值</h1>
-<p>在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.</p>
+				<h2 id="理解变量提升">理解变量提升</h2>
 
-<h2 id="机器数">机器数</h2>
-<p>一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1.</p>
+<p>try…catch 语句将补货的异常绑定到一个变量，该变量的作用域只是catch语句块。</p>
+<pre><code class="language-javascript">
+  function test() {
+    var x = "var", result = [];
+    result.push(x);
 
-<p>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。</p>
+    try {
+      throw "exception";
+    } catch(x) {
+      x = "catch";
+    }
 
-<p>那么，这里的 00000011 和 10000011 就是机器数。</p>
+    result.push(x);
 
-<h2 id="真值">真值</h2>
+    return result;
+  }
 
-<blockquote>
-  <p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位1代表负，其真正数值是 -3 而不是形式值131?&gt;（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。
-例：0000 0001的真值 = +000 0001 = +1，1000 0001的真值 = –000 0001 = –1</p>
-</blockquote>
+  test(); // ["var", "var"]
+  
 
-<h1 id="原码-反码-补码的基础概念和计算方法">原码, 反码, 补码的基础概念和计算方法</h1>
+</code></pre>
 
-<p>在探求为何机器要使用补码之前, 让我们先了解原码, 反码和补码的概念.对于一个数, 计算机要使用一定的编码方式进行存储. 原码, 反码, 补码是机器存储一个具体数字的编码方式.</p>
+<h2 id="使用立即调用函数iife创建局部作用域">使用立即调用函数IIFE创建局部作用域</h2>
+<pre><code class="language-javascript">
+function wrapElements(a) {
+  var result = [], i, n;
+  for(i = 0, n = a.length; i &lt; n; i++) {
+    result[i] = function() { return a[i] }
+  }
 
-<h2 id="原码">原码</h2>
+  return result;
+}
 
-<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
+var wrapped = wrapElements([10, 20, 30, 40, 50]);
 
-<blockquote>
-  <p>[+1]原 = 0000 0001</p>
-</blockquote>
+var f = wrapped[0];
 
-<blockquote>
-  <p>[-1]原 = 1000 0001</p>
-</blockquote>
+f();  // ? 输出结果 undefined
 
-<p>第一位是符号位. 因为第一位是符号位, 所以8位二进制数的取值范围就是:</p>
 
-<blockquote>
-  <p>[1111 1111 , 0111 1111] 即 [-127 , 127]</p>
-</blockquote>
+// 更具有欺骗性的例子
+function wrapElements(a) {
+  var result = [];
+  for(var i = 0, n = a.length; i &lt; n; i++) {
+    result[i] = function() { return a[i] }
+  }
 
-<p>原码是人脑最容易理解和计算的表示方式.</p>
+  return result;
+}
 
-<h2 id="反码">反码</h2>
+var wrapped = wrapElements([10, 20, 30, 40, 50]);
 
-<p>反码的表示方法是:</p>
+var f = wrapped[0];
 
-<p>正数的反码是其本身</p>
 
-<p>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</p>
+f();  // ? 输出结果 undefined
 
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反</p>
-</blockquote>
 
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反</p>
-</blockquote>
+// 为了避免这种问题需要用一个立即调用的函数创建一个局部作用域
 
-<p>可见如果一个反码表示的是负数, 人脑无法直观的看出来它的数值. 通常要将其转换成原码再计算.</p>
+(function() {
+  var j = i;
+  result[j] = function() { return a[j]; }
+})();
 
-<h2 id="补码">补码</h2>
+// or
 
-<p>补码的表示方法是:</p>
+(function(j) {
+  result[j] = function() { return a[j]; }
+})(i);
 
-<p>正数的补码就是其本身</p>
 
-<p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
+</code></pre>
 
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
+<h2 id="当心命名函数表达式笨拙的作用域">当心命名函数表达式笨拙的作用域</h2>
 
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
+<pre><code>function double(x) { return x * 2; }
 
-<p>对于负数, 补码表示方式也是人脑无法直观看出其数值的. 通常也需要转换成原码在计算其数值.</p>
+这里既可以是一个函数声明，也可以是一个命名函数表达式
 
-<h1 id="为何要使用原码-反码和补码">为何要使用原码, 反码和补码</h1>
+var f = function(x) { return x * 2; }
 
-<p>在开始深入学习前, 我的学习建议是先”死记硬背”上面的原码, 反码和补码的表示方式以及计算方法.</p>
+var f = function double(x) { return x * 2 }
 
-<p>现在我们知道了计算机可以有三种编码方式表示一个数. 对于正数因为三种编码方式的结果都相同:</p>
+根据ECMAScript规范， 此语句将该函数绑定到变量f，而不是变量double。
 
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
+匿名和命名函数表但是的官方区别在于后者会绑定到其函数名相同的变量上，该变量将作为该函数内的一个局部变量。（只能在函数内部调用）可以用来写递归函数表达式
 
-<p>所以不需要过多解释. 但是对于负数:</p>
-
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
-
-<p>可见原码, 反码和补码是完全不同的. 既然原码才是被人脑直接识别并用于计算表示方式, 为何还会有反码和补码呢?</p>
-
-<p>首先, 因为人脑可以知道第一位是符号位, 在计算的时候我们会根据符号位, 选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机, 加减乘数已经是最基础的运算, 要设计的尽量简单. 计算机辨别”符号位”显然会让计算机的基础电路设计变得十分复杂! 于是人们想出了将符号位也参与运算的方法. 我们知道, 根据运算法则减去一个正数等于加上一个负数, 即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
-
-<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法. 首先来看原码:</p>
-
-<p>计算十进制的表达式: 1-1=0</p>
+</code></pre>
 
 <blockquote>
-  <p>1 - 1 = 1 + (-1) = [00000001]原 + [10000001]原 = [10000010]原 = -2</p>
+  <p>命名函数表达式是作用域和兼容性问题臭名昭著的来源，这归结于ECMAScript规范的历史中很不幸的错误以及流行的JavaScript引擎中的Bug. 规范的错误在ES3中就已经存在，JavaScript引擎被要求将命名函数表达式的作用域表示为一个对象，这有点像with，该作用域对象也继承了Object.prototype的属性，这意味着仅仅是给函数表达式命名也会将Object.prototype中的所有属性引入到作用域中。</p>
 </blockquote>
 
-<p>如果用原码表示, 让符号位也参与计算, 显然对于减法来说, 结果是不正确的.这也就是为何计算机内部不使用原码表示一个数.</p>
+<pre><code>var constructor = function() { return null; }
 
-<p>为了解决原码做减法的问题, 出现了反码:</p>
+var f = function f() {
+  return constructor();
+}
 
-<p>计算十进制的表达式: 1-1=0</p>
+f();  // 结果 {} (in ES3 环境中)。这里错误的使用了Object.prototype.constructor (Object的构造函数)
+</code></pre>
+
+<p>幸运的ES5修正了这个问题，但是有些JavaScript仍然使用过时的对象作用域，还有些更不符合标准的对于匿名函数的表达式也使用对象的作用域。</p>
+
+<pre><code>var constructor = function() { return null; }
+
+var f = function () {
+  return constructor();
+}
+
+f();  // 结果 {} (在更不标准的环境中)。本来这里应该正确解析不使用对象的作用域但是不标准的环境导致匿名函数表达式仍然使用对象作用域
+
+</code></pre>
 
 <blockquote>
-  <p>1 - 1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原= [0000 0001]反 + [1111 1110]反 = [1111 1111]反 = [1000 0000]原 = -0</p>
+  <p>最好的做法就是避免任何时候在Object.prototype中添加属性，以及避免使用与标准Object.prototype属性同名的局部变量</p>
 </blockquote>
 
-<p>发现用反码计算减法, 结果的真值部分是正确的. 而唯一的问题其实就出现在”0”这个特殊的数值上. 虽然人们理解上+0和-0是一样的, 但是0带符号是没有任何意义的. 而且会有[0000 0000]原和[1000 0000]原两个编码表示0.</p>
+<p>在流行的JavaScript的引擎中的另一个缺陷是函数命名表达式的声明进行提升。</p>
 
-<p>于是补码的出现, 解决了0的符号以及两个编码的问题:</p>
+<pre><code>var f = g() { returen 17; }
+g(); // 17 (在非标准的环境中会返回17，标准环境会报错 g is not defined)
+
+我们应该怎样做
+var f = function g() { return 17; }
+var g = null;
+
+</code></pre>
 
 <blockquote>
-  <p>1-1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [0000 0001]补 + [1111 1111]补 = [0000 0000]补=[0000 0000]原</p>
+  <p>由于命名函数表达式会导致很多问题，所以不值得使用</p>
 </blockquote>
 
-<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
+<h2 id="当心局部块函数声明笨拙的作用域">当心局部块函数声明笨拙的作用域</h2>
 
+<p>比较有迷惑性的一个例子</p>
+<pre><code class="language-javascript">
+function f() { return "global"; }
+
+function test(x) {
+  function f() { return "local"; }
+
+  var result = [];
+  if(x) {
+    result.push(f());
+  }
+
+  result.push(f());
+  return result;
+}
+
+// 返回结果
+test(true); // ["local", "local"]
+test(false); // ["local"]
+
+</code></pre>
+
+<p>当函数f放到局部块里将有什么不同呢，首先要记住一点
+ <code>JavaScript没有块级作用域</code></p>
+<pre><code class="language-javascript">
+function f() { return "global"; }
+
+function test(x) {
+
+  var result = [];
+  if(x) {
+    function f() { return "local"; }
+    result.push(f());
+  }
+console.log(f);
+  result.push(f());
+  return result;
+}
+
+// 返回结果
+test(true); // ["local", "local"]
+test(false); // 有些平台显示["local"] 有些平台返回： f is not a function
+
+你可能认为 第一个结果为["local", "global"], 第二个结果为 ["global"], 但是有一点需要记住 JavaScript没有块级作用域
+这里根据平台的实现不同结果会不一样,代码很难理解，还会导致性能降低。 
+
+</code></pre>
+<p><code> 对此官方指定函数声明只能出现在其他函数或者程序的最外层。</code></p>
+
+<p>编写可移植的函数最好方式是始终避免将函数声明置于局部块或者子语句中，如果想写嵌套函数声明应该将它置于父函数的最外层。如果要根据条件判断选择函数，最好的方法是使用var声明和函数表达式来实现。例子如下：</p>
+<pre><code>function f() { return "global"; }
+
+function test(x) {
+
+  var g = f, result = [];
+  if(x) {
+    g = function() { return "local"; }
+    result.push(g());
+  }
+  result.push(g());
+  return result;
+}
+
+这样消除内部变量作用域的神秘性，结果很明确，函数可移植。
+</code></pre>
+<h2 id="避免使用eval创建局部变量">避免使用eval创建局部变量</h2>
+
+<p>使用eval的例子</p>
+<pre><code class="language-javascript">var y = "global";
+function test(x) {
+  if(x) {
+    eval("var y = 'local';");
+  }
+  return y;
+}
+
+test(true); // "local";
+test(false); // "global"
+
+var y = "global";
+function test(src) {
+  if(x) {
+    eval(src);
+  }
+  return y;
+}
+
+test("var y = 'local';"); // "local";
+test("var z = 'local';"); // "global"
+这段代码很脆弱，也很不安全，它赋予了外部调用者能改变test函数内部作用域的能力。ES5严格模式将eval函数运行在一个嵌套的作用域中防止这种污染
+
+</code></pre>
 <blockquote>
-  <p>(-1) + (-127) = [1000 0001]原 + [1111 1111]原 = [1111 1111]补 + [1000 0001]补 = [1000 0000]补</p>
+  <p>保证eval函数不影响外部作用域的一个简单的方法是一个明确的嵌套作用域中运行它</p>
 </blockquote>
 
-<p>-1-127的结果应该是-128, 在用补码运算的结果中, [1000 0000]补 就是-128. 但是注意因为实际上是使用以前的-0的补码来表示-128, 所以-128并没有原码和反码表示.(对-128的补码表示[1000 0000]补算出来的原码是[0000 0000]原, 这是不正确的)</p>
+<pre><code>var y = "global";
+function test(src) {
+  if(x) {
+    (function() { eval(src); })();
+  }
+  return y;
+}
 
-<p>使用补码, 不仅仅修复了0的符号以及存在两个编码的问题, 而且还能够多表示一个最低数. 这就是为什么8位二进制, 使用原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
+</code></pre>
 
-<p>因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值.</p>
+<h2 id="间接调用eval函数由于直接调用">间接调用eval函数由于直接调用</h2>
 
-<h1 id="文章参考">文章参考</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2016/07/20/binary-in-js/">聊聊JavaScript中的二进制数</a></li>
-  <li><a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">原码, 反码, 补码 详解</a></li>
-</ul>
-
-<h1 id="延伸阅读">延伸阅读</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/">每一个JavaScript开发者应该了解的浮点知识</a></li>
-</ul>
 
 
                 <hr>
@@ -374,13 +477,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/" data-toggle="tooltip" data-placement="top" title="常用的后台管理主题模板">&larr; Previous Post</a>
+        <a href="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/" data-toggle="tooltip" data-placement="top" title="理解rem布局 (五)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" data-toggle="tooltip" data-placement="top" title="javascript的位操作">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -390,9 +489,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate"
-         data-title="原码, 反码, 补码 详解"
-         data-url="http://darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five"
+         data-title="Effective JavaScript (五)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/"></div>
     <script>
 
         /**
