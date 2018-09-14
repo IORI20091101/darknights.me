@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-14T18:15:29+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (六)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/" rel="alternate" type="text/html" title="Effective JavaScript (六)" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/">&lt;h2 id=&quot;函数调用&quot;&gt;函数调用&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-14T18:21:17+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (六)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/" rel="alternate" type="text/html" title="Effective JavaScript (六)" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/">&lt;h2 id=&quot;函数调用&quot;&gt;函数调用&lt;/h2&gt;
 &lt;p&gt;理解函数调用， 方法调用，构造函数调用之间的不同。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
@@ -96,7 +96,9 @@ function average() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;可变参数的函数提供了灵活的接口，不同的调用者可以使用不同数量的参数来调用它们，但是它们自身也失去了一点便利。如果使用者要使用数组的参数则只能使用 apply。 
-好的经验是&lt;/p&gt;
+apply方法会降低可读性而且经常导致性能损失&lt;/p&gt;
+
+&lt;p&gt;好的经验是&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;如果提供了一个便利的可变参数的函数，最好也提供一个需要显示指定数组的固定元数的版本。这样可以编写一个轻量级的封装，并委托固定元数的版本来实现可变参数的函数&lt;/p&gt;
