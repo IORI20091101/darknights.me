@@ -1,4 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-12T12:45:29+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (五)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/" rel="alternate" type="text/html" title="Effective JavaScript (五)" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/">&lt;h2 id=&quot;理解变量提升&quot;&gt;理解变量提升&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-14T18:15:29+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (六)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/" rel="alternate" type="text/html" title="Effective JavaScript (六)" /><published>2018-09-14T00:00:00+08:00</published><updated>2018-09-14T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/">&lt;h2 id=&quot;函数调用&quot;&gt;函数调用&lt;/h2&gt;
+&lt;p&gt;理解函数调用， 方法调用，构造函数调用之间的不同。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+最简单的函数调用
+function hello(username) {
+	return &quot;hello, &quot; + username;
+}
+
+hello(&quot;Keyser soze&quot;);
+
+方法调用
+var obj = {
+	hello: function() {
+		return &quot;hello, &quot; + this.username;
+	},
+	username: &quot;Hans, Gruber&quot;;
+}
+
+obj.hello(); // hello, Hans, Gruber
+
+
+// 在函数调用过程中由调用表达式自身来确定this变量的绑定。 
+  
+构造函数调用
+
+function User(name, pass) {
+	this.name = name;
+	this.pass = pass;
+}  
+
+var u = new User(&quot;sketcon&quot;, &quot;123456&quot;);
+
+与函数调用和方法调用不同的是，构造函数调用将一个全新的对象作为this变量的值，并隐式的返回这个对象作为调用结果。
+构造函数的主要职责是初始化这个新对象。
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;熟练掌握高阶函数&quot;&gt;熟练掌握高阶函数&lt;/h2&gt;
+&lt;p&gt;高阶函数无非就是将函数作为参数或返回值的函数。将函数作为参数通常称为回调函数。&lt;/p&gt;
+
+&lt;h2 id=&quot;使用call方法自定义接收者来调用方法&quot;&gt;使用call方法自定义接收者来调用方法&lt;/h2&gt;
+&lt;p&gt;通常情况下，函数或方法的接接收者（即绑定到特殊关键字this的值）是由调用者的语法决定的。但是有时我需要自定义一个接收者，幸运的是函数有一个内置的方法call来自定义接收者。可以通过函数对象的call方法来调用自身。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f.call(obj, arg1, arg2, arg3);
+
+f(arg1, arg2, arg3);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不同的是第一个参数提供了一个显示的接收者对象。&lt;/p&gt;
+
+&lt;h2 id=&quot;使用apply方法通过不同数量的参数调用函数&quot;&gt;使用apply方法通过不同数量的参数调用函数&lt;/h2&gt;
+
+&lt;p&gt;这里理解有误区，接受一个数组的参数，但是方法调用时将参数依次传入方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;average 函数是一个称为可变参数或可变元的函数（函数的元市值其期望的参数个数）
+
+average(1, 2, 3);
+
+average(1);
+
+average(1, 2, 3, 7, 9);
+
+可变参数的版本更加简洁，优雅。
+
+
+averageOfArray([1, 2, 3]);
+
+averageOfArray([1]);
+
+averageOfArray([1, 2, 3, 7, 9]);
+
+
+// 本来average 只接受可变参数，假设我有这样一个数字数组， average函数中没有this引用，所以简单的传null就可以。
+var scores = getAllScores();
+average.call(null, scores)  
+传入一个数组，调用时这样 average(scores[0], scores[1], scores[2])
+
+
+
+
+
+使用apply方法指定一个可计算的参数数组来调用可变参数的函数。
+使用apply方法的第一个参数给可变参数的方法提供一个接收者。
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;使用arguments创建可变参数的函数&quot;&gt;使用arguments创建可变参数的函数&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;参数可变函数的实现
+function average() {
+	for(var i = 0, sum = 0, n = argumants.length; i &amp;lt; n; i++) {
+		sum += arguments[i];
+	}
+
+	return sum / n;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可变参数的函数提供了灵活的接口，不同的调用者可以使用不同数量的参数来调用它们，但是它们自身也失去了一点便利。如果使用者要使用数组的参数则只能使用 apply。 
+好的经验是&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果提供了一个便利的可变参数的函数，最好也提供一个需要显示指定数组的固定元数的版本。这样可以编写一个轻量级的封装，并委托固定元数的版本来实现可变参数的函数&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;比较拗口，代码比较直观如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+固定元数的版本实现 用来作为数组参数的调用
+function averageOfArray(a) {
+	for(var i = 0, sum = 0, n = a.length; i &amp;lt; n; i++) {
+		sum += a[i];
+	}
+
+	return sum / n;
+}
+
+averageOfArray([1, 2, 3]);
+
+
+参数可变函数的实现可以通过调用 固定元数版本来实现
+function average() {
+	// averageOfArray本来就支持数组 所以无论average传入数组还是啥
+	return averageOfArray(arguments);
+}
+
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">函数调用 理解函数调用， 方法调用，构造函数调用之间的不同。</summary></entry><entry><title type="html">Effective JavaScript (五)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/" rel="alternate" type="text/html" title="Effective JavaScript (五)" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/">&lt;h2 id=&quot;理解变量提升&quot;&gt;理解变量提升&lt;/h2&gt;
 
 &lt;p&gt;try…catch 语句将补货的异常绑定到一个变量，该变量的作用域只是catch语句块。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
@@ -311,6 +440,19 @@ g(); // 17 (在非标准的环境中，标准环境会报错 g is not defined)
 我们应该怎样做
 var f = function g() { return 17; }
 var g = null;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;方法调用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var username=&quot;test&quot;;
+
+function hello() {
+	&quot;use strict&quot;;
+	return &quot;hello, &quot; + this.username;
+}
+
+hello(); &quot;hello, undefined&quot;
 
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="JAVASCRIPT" /><summary type="html">使用立即调用函数IIFE创建局部作用域 ```javascript</summary></entry><entry><title type="html">HTML面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" rel="alternate" type="text/html" title="HTML面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="HTML" /><summary type="html">HTML</summary></entry><entry><title type="html">CSS面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/" rel="alternate" type="text/html" title="CSS面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/">&lt;h2 id=&quot;css&quot;&gt;CSS&lt;/h2&gt;
 
@@ -1033,88 +1175,4 @@ function g() {
 })();
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;code&gt;为了达到更普遍的兼容性建议在严格模式下编写代码。&lt;/code&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">了解你使用的JavaScript版本</summary></entry><entry><title type="html">React初步学习</title><link href="/reactjs/2018/06/19/react-lesson-one/" rel="alternate" type="text/html" title="React初步学习" /><published>2018-06-19T00:00:00+08:00</published><updated>2018-06-19T00:00:00+08:00</updated><id>/reactjs/2018/06/19/react-lesson-one</id><content type="html" xml:base="/reactjs/2018/06/19/react-lesson-one/">&lt;h1 id=&quot;react&quot;&gt;React&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://doc.react-china.org/docs/handling-events.html&quot;&gt;react中文文档&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;事件处理&quot;&gt;事件处理&lt;/h1&gt;
-&lt;p&gt;你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
-这并不是 React 的特殊行为；它是函数如何在 JavaScript 中运行的一部分。通常情况下，如果你没有在方法后面添加 () ，例如 onClick={this.handleClick}，你应该为这个方法绑定 this。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;class Toggle extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {isToggleOn: true};
-
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick1 = this.handleClick1.bind(this);
-  }
-    //推荐方法一
-  handleClick1() {
-    this.setState(prevState =&amp;gt; ({
-      isToggleOn: !prevState.isToggleOn
-    }));
-  }
-
-  //推荐方法二
-   handleClick2 = () =&amp;gt; {
-    console.log('this is:', this);
-  }
-
-
-  render() {
-    return (
-      &amp;lt;button onClick={this.handleClick1}&amp;gt;
-        {this.state.isToggleOn ? 'ON' : 'OFF'}
-      &amp;lt;/button&amp;gt;
-       &amp;lt;button onClick={this.handleClick2}&amp;gt;
-        Click me
-      &amp;lt;/button&amp;gt;
-      &amp;lt;!-- 方法三不推荐 --&amp;gt;
-      &amp;lt;button onClick={(e) =&amp;gt; this.handleClick3(e)}&amp;gt;
-        Click me
-      &amp;lt;/button&amp;gt;
-    );
-  }
-}
-
-ReactDOM.render(
-  &amp;lt;Toggle /&amp;gt;,
-  document.getElementById('root')
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;方法三不推荐的原因&quot;&gt;方法三不推荐的原因：&lt;/h3&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;使用这个语法有个问题就是每次 LoggingButton 渲染的时候都会创建一个不同的回调函数。在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些组件可能会进行额外的重新渲染。我们通常建议在构造函数中绑定或使用属性初始化器语法来避免这类性能问题。
-在render方法中使用Function.prototype.bind会在每次组件渲染时创建一个新的函数，可能会影响性能（参见下文）&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;向事件处理程序传递参数&quot;&gt;向事件处理程序传递参数&lt;/h3&gt;
-&lt;p&gt;通常我们会为事件处理程序传递额外的参数。例如，若是 id 是你要删除那一行的 id，以下两种方式都可以向事件处理程序传递参数：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&amp;lt;button onClick={(e) =&amp;gt; this.deleteRow(id, e)}&amp;gt;Delete Row&amp;lt;/button&amp;gt;
-&amp;lt;button onClick={this.deleteRow.bind(this, id)}&amp;gt;Delete Row&amp;lt;/button&amp;gt;
-
-
-class Popper extends React.Component{
-    constructor(){
-        super();
-        this.state = {name:'Hello world!'};
-    }
-
-    preventPop(name, e){    //事件对象e要放在最后
-        e.preventDefault();
-        alert(name);
-    }
-
-    render(){
-        return (
-            &amp;lt;div&amp;gt;
-                &amp;lt;p&amp;gt;hello&amp;lt;/p&amp;gt;
-                {/* Pass params via bind() method. */}
-                &amp;lt;a href=&quot;https://reactjs.org&quot; onClick={this.preventPop.bind(this,this.state.name)}&amp;gt;Click&amp;lt;/a&amp;gt;
-            &amp;lt;/div&amp;gt;
-        );
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="reactjs" /><summary type="html">React react中文文档</summary></entry></feed>
+&lt;p&gt;&lt;code&gt;为了达到更普遍的兼容性建议在严格模式下编写代码。&lt;/code&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">了解你使用的JavaScript版本</summary></entry></feed>
