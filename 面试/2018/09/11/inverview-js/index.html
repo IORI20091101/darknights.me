@@ -306,6 +306,14 @@ source.forEach(buffer.add);  // error: entries is undefined
 
 </code></pre>
 
+<p>什么时候函数柯里化？柯里化的作用</p>
+
+<ul>
+  <li>延迟计算</li>
+  <li>参数复用， 当在多次调用同一个函数，并且传递的参数绝大多数相同，那么该函数可能是一个很好的柯里化候选</li>
+  <li>动态创建函数， 这可以是在部分计算出结果后，在此基础上动态生成新的函数处理后面的业务，这样省略了计算</li>
+</ul>
+
 <p>函数柯里化 一道有难度的面试题,完成plus函数 满足通过所有的测试条件</p>
 
 <pre><code>
@@ -349,7 +357,7 @@ describe('闭包应用',function(){
     
     
     <li class="next">
-        <a href="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/" data-toggle="tooltip" data-placement="top" title="理解rem布局 (五)">Next Post &rarr;</a>
+        <a href="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/" data-toggle="tooltip" data-placement="top" title="理解rem布局">Next Post &rarr;</a>
     </li>
     
 </ul>

@@ -221,13 +221,19 @@
         </h2>
         
         <h3 class="post-subtitle">
-            对象和原形
+            对象和原型
         </h3>
         
         <div class="post-content-preview">
             理解prototype,getPrototypeOf 和__proto__之间的不同
 
+function User(name, passwordHash) {
+	this.name = name;
+	this.passwordHash = passwordHash;
+}
 
+User.prototype.toString = function() {
+	return "[User " + th...
         </div>
     </a>
     <p class="post-meta">
@@ -342,7 +348,7 @@ try…catch 语句将补货的异常绑定到一个变量，该变量的作用�
 <div class="post-preview">
     <a href="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/">
         <h2 class="post-title">
-            理解rem布局 (五)
+            理解rem布局
         </h2>
         
         <h3 class="post-subtitle">
