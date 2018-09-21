@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-20T16:30:39+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (七)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" rel="alternate" type="text/html" title="Effective JavaScript (七)" /><published>2018-09-19T00:00:00+08:00</published><updated>2018-09-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">&lt;h2 id=&quot;理解prototypegetprototypeof-和__proto__之间的不同&quot;&gt;理解prototype,getPrototypeOf 和__proto__之间的不同&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-21T18:11:45+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (七)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" rel="alternate" type="text/html" title="Effective JavaScript (七)" /><published>2018-09-19T00:00:00+08:00</published><updated>2018-09-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">&lt;h2 id=&quot;理解prototypegetprototypeof-和__proto__之间的不同&quot;&gt;理解prototype,getPrototypeOf 和__proto__之间的不同&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
 	this.name = name;
@@ -100,7 +100,110 @@ y instanceof User // true
 
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种方式不管怎样调用构造函数都会返回一个继承了User.prototype的实例对象。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解prototype,getPrototypeOf 和__proto__之间的不同</summary></entry><entry><title type="html">函数柯里化</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying/" rel="alternate" type="text/html" title="函数柯里化" /><published>2018-09-17T00:00:00+08:00</published><updated>2018-09-17T00:00:00+08:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying/">&lt;h2 id=&quot;js-函数柯里化&quot;&gt;JS 函数柯里化&lt;/h2&gt;
+&lt;p&gt;这种方式不管怎样调用构造函数都会返回一个继承了User.prototype的实例对象。	
+这种模式的缺点是有一次额外的函数调用，ES5有一种更奇异的调用方式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function User(name, pass) {
+	var self = this instanceof User
+		? this
+		: Obejct.create(User.prototype);
+
+	self.name = name;
+	self.pass = pass;
+	return self;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种方式只有在ES5中才可以使用，对于不支持的环境，我们可以制造一个兼容性的版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 这里只实现了单参数版本的Object.create
+if(typeof Object.creat === 'undefined') {
+	Object.create = function(prototype) {
+		function C() {}
+		C.prototype = prototype;
+		return new C();
+	}
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;在原型中存储方法&quot;&gt;在原型中存储方法&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;将方法存储到实例对象中将创建该函数的多个副本，因为每个实例对象都有一份副本&lt;/li&gt;
+  &lt;li&gt;将方法存储于原型中优于存储在实例对象中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;使用闭包存储私有变量&quot;&gt;使用闭包存储私有变量&lt;/h2&gt;
+&lt;p&gt;闭包将数据存储到封闭的变量中而不提供对这些变量的直接访问，获取闭包内容结构的唯一方式是该函数显示的提供获取它的途径。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;对象和闭包剧哟相反的策略，对象的属性会被自动暴露出去，然而闭包中的变量会被自动隐藏起来。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们可以利用这一特性在对象中存储真正的私有数据。不是将数据作为对象属性来存储而是在构造函数中以变量的方式来存储它，并将对象的方法转为引用这些变量的闭包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
+	this.toString = function() {
+		return &quot;[User &quot; + name +&quot;]&quot;;
+	}
+	this.checkPassword = function(password) {
+		return hash(password) === passwordHash;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里name和passwordHash并不是以this的属性存储的，读取不到this.name 和this.passwordHash， User不包含任何实例属性。
+该模式有一个缺点为了让构造函数的变量 在使用它们的方法的作用域中，这些方法必须置于实例对象中。 因此违背了上一条&lt;code&gt;在原型中存储方法&lt;/code&gt;
+但是为了那些看中保障信息隐藏的情形来说，这点额外代价是值得的&lt;/p&gt;
+
+&lt;h2 id=&quot;在子类的构造函数中调用父类的构造函数&quot;&gt;在子类的构造函数中调用父类的构造函数&lt;/h2&gt;
+&lt;p&gt;如果正确构建父子级关系的对象&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Actor(scene, x, y) {
+	this.scene = scene;
+	this.x = x;
+	this.y = y;
+	scene.register(this);
+}
+
+Actor.prototype.moveTo = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.scene.draw();
+}
+
+Actor.prototype.exit = function() {
+	this.scene.unregister(this);
+	this.scene.draw();
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果我们要创建一个Actor的一个子类， 名字为SpaceShip怎么办&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function SpaceShip(scene, x, y) {
+	Actor.call(this, scene, x, y);  
+	// 这里SpaceShip的实例对象作为方法的接收者，会将Actor的实例属性加到SpaceShip的实例上，从而继承了Actor的实例属性
+
+	this.points = {};
+}
+
+Actor.prototype.moveTo = function(x, y) {
+	this.x = x;
+	this.y = y;
+	this.scene.draw();
+}
+
+Actor.prototype.exit = function() {
+	this.scene.unregister(this);
+	this.scene.draw();
+}
+
+如何继承Actor的prototype中的方法呢，我们可以使用之前提到过的ES5下的 
+Object.create(非ES5需要自己实现Object.create)
+
+SpaceShip.prototype = Object.create(Actor.prototype);
+
+这样就很好的实现了继承
+
+
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解prototype,getPrototypeOf 和__proto__之间的不同</summary></entry><entry><title type="html">函数柯里化</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying/" rel="alternate" type="text/html" title="函数柯里化" /><published>2018-09-17T00:00:00+08:00</published><updated>2018-09-17T00:00:00+08:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying/">&lt;h2 id=&quot;js-函数柯里化&quot;&gt;JS 函数柯里化&lt;/h2&gt;
 &lt;p&gt;什么是函数柯里化？ 柯里化通常也称部分求值，其含义是给函数分步传递参数。&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;curry 的概念很简单：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。&lt;/p&gt;
