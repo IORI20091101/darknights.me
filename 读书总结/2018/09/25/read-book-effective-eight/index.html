@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>Effective JavaScript (六) - Dark knight's Blog</title>
+    <title>Effective JavaScript (八) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -197,12 +197,12 @@
                             <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>Effective JavaScript (六)</h1>
+                        <h1>Effective JavaScript (八)</h1>
                         
                         
-                        <h2 class="subheading">使用函数</h2>
+                        <h2 class="subheading">数组和字典</h2>
                         
-                        <span class="meta">Posted by toshiba on September 14, 2018</span>
+                        <span class="meta">Posted by toshiba on September 25, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,352 +224,714 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="函数调用">函数调用</h2>
-<p>理解函数调用， 方法调用，构造函数调用之间的不同。</p>
+				<h2 id="使用object的直接实例构造轻量级的字典">使用Object的直接实例构造轻量级的字典</h2>
 
-<pre><code class="language-javascript">
-最简单的函数调用
-function hello(username) {
-	return "hello, " + username;
+<pre><code>var dict = { alice: 34, bob: 24, chris: 62 };
+
+var people = [];
+
+for(var name in dict) {
+	people.push(name + ": " + dict[name]);
 }
 
-hello("Keyser soze");
-
-方法调用
-var obj = {
-	hello: function() {
-		return "hello, " + this.username;
-	},
-	username: "Hans, Gruber";
-}
-
-obj.hello(); // hello, Hans, Gruber
-
-
-// 在函数调用过程中由调用表达式自身来确定this变量的绑定。 
-  
-构造函数调用
-
-function User(name, pass) {
-	this.name = name;
-	this.pass = pass;
-}  
-
-var u = new User("sketcon", "123456");
-
-与函数调用和方法调用不同的是，构造函数调用将一个全新的对象作为this变量的值，并隐式的返回这个对象作为调用结果。
-构造函数的主要职责是初始化这个新对象。
-
+people; // ["alice: 34", "bob: 24", "chris: 62"];
 
 </code></pre>
 
-<h2 id="熟练掌握高阶函数">熟练掌握高阶函数</h2>
-<p>高阶函数无非就是将函数作为参数或返回值的函数。将函数作为参数通常称为回调函数。</p>
-
-<h2 id="使用call方法自定义接收者来调用方法">使用call方法自定义接收者来调用方法</h2>
-<p>通常情况下，函数或方法的接接收者（即绑定到特殊关键字this的值）是由调用者的语法决定的。但是有时我需要自定义一个接收者，幸运的是函数有一个内置的方法call来自定义接收者。可以通过函数对象的call方法来调用自身。</p>
-<pre><code>f.call(obj, arg1, arg2, arg3);
-
-f(arg1, arg2, arg3);
-</code></pre>
-<p>不同的是第一个参数提供了一个显示的接收者对象。</p>
-
-<h2 id="使用apply方法通过不同数量的参数调用函数">使用apply方法通过不同数量的参数调用函数</h2>
-
-<p>这里理解有误区，接受一个数组的参数，但是方法调用时将参数依次传入方法</p>
-
-<pre><code>average 函数是一个称为可变参数或可变元的函数（函数的元市值其期望的参数个数）
-
-average(1, 2, 3);
-
-average(1);
-
-average(1, 2, 3, 7, 9);
-
-可变参数的版本更加简洁，优雅。
-
-
-averageOfArray([1, 2, 3]);
-
-averageOfArray([1]);
-
-averageOfArray([1, 2, 3, 7, 9]);
-
-
-// 本来average 只接受可变参数，假设我有这样一个数字数组， average函数中没有this引用，所以简单的传null就可以。
-var scores = getAllScores();
-average.apply(null, scores)  
-传入一个数组，调用时这样 average(scores[0], scores[1], scores[2])
-
-
-
-
-
-使用apply方法指定一个可计算的参数数组来调用可变参数的函数。
-使用apply方法的第一个参数给可变参数的方法提供一个接收者。
-
-</code></pre>
-
-<h2 id="使用arguments创建可变参数的函数">使用arguments创建可变参数的函数</h2>
-
-<pre><code>参数可变函数的实现
-function average() {
-	for(var i = 0, sum = 0, n = argumants.length; i &lt; n; i++) {
-		sum += arguments[i];
-	}
-
-	return sum / n;
-}
-</code></pre>
-<p>可变参数的函数提供了灵活的接口，不同的调用者可以使用不同数量的参数来调用它们，但是它们自身也失去了一点便利。如果使用者要使用数组的参数则只能使用 apply。 
-apply方法会降低可读性而且经常导致性能损失</p>
-
-<p>好的经验是</p>
-
-<blockquote>
-  <p>如果提供了一个便利的可变参数的函数，最好也提供一个需要显示指定数组的固定元数的版本。这样可以编写一个轻量级的封装，并委托固定元数的版本来实现可变参数的函数</p>
-</blockquote>
-
-<p>比较拗口，代码比较直观如下：</p>
-
+<p>我们创建一个自定义的字典类会怎样呢</p>
 <pre><code>
-固定元数的版本实现 用来作为数组参数的调用
-function averageOfArray(a) {
-	for(var i = 0, sum = 0, n = a.length; i &lt; n; i++) {
-		sum += a[i];
+function NaiveDict() {}
+
+NaiveDict.prototype.count = function() {
+	var i = 0;
+	for(var name in this) {
+		i++;
 	}
 
-	return sum / n;
-}
+	return i;
+};
 
-averageOfArray([1, 2, 3]);
+NaiveDict.prototype.toString = function() {
+	return "[object NaiveDict]";
+};
 
+var dict = new NaiveDict();
 
-参数可变函数的实现可以通过调用 固定元数版本来实现
-function average() {
-	// averageOfArray本来就支持数组 所以无论average传入数组还是啥
-	return averageOfArray(arguments);
-}
+dict.alice = 34;
+dict.bob = 24;
+dict.chris = 62;
 
-
-
-</code></pre>
-
-<h2 id="永远不要修改arguments对象">永远不要修改arguments对象</h2>
-<p>不要修改arguments对象，并且将arguments对象复制到一个真正的数组中再进行调整。</p>
-
-<pre><code>var obj = {
-	add: function(x, y) { return x + y; }
-}
-
-function callMethod(obj, method) {
-	var shift = [].shift;
-	shift.call(arguments);
-	shift.call(arguments);
-
-	return obj[method].apply(obj, arguments);
-}
-
-callMethod(obj, "add", 17, 25);  // cannot read property "apply" of undefined   17[25]
-
-这里的arguments 对象并不是函数参数的副本，所有命名参数都是arguments对象中对应索引的别名。
-
-</code></pre>
-<p>永远不要修改arguments对象是更为安全的，通过一开始复制参数中的元素到一个真正的数组的方式，很容易避免修改arguments对象。</p>
-<pre><code>var args = [].slice.call(argumants);
-
-slice会复制整个数组，其结果是一个真正的标准Array类型实例。
-
-function callMethod(obj, method) {
-	var args = [].slice.call(arguments, 2);
-	return obj[method].apply(obj, args);
-}
-
-callMethod(obj, "add", 17, 25);
-</code></pre>
-
-<h2 id="使用变量保存arguments的引用">使用变量保存arguments的引用</h2>
-
-<pre><code>// 实现一个迭代器
-
-
-function values() {
-	var i = 0, n = arguments.length;
-	return {
-		hasNext: function() {
-			return i &lt; n;
-		},
-		next: function() {
-			if(i &gt;= n) {
-				throw new Error("end of iteration");
-			}
-			return arguments[i++]; // wrong arguments;
-		}
-	}
-}
-
-var it = values(1, 2, 3, 5, 78);
-
-it.next(); //undefined
-
-it.next(); //undefined
-
-it.next(); //undefined
-
-每次调用next的时候，next方法内部会存在一个arguments这里可能我们关心的只是values的arguments, 所以正确的方法是将values的arguments保存下来
-
-function values() {
-	var i = 0, n = arguments.length, arg = arguments;
-	return {
-		hasNext: function() {
-			return i &lt; n;
-		},
-		next: function() {
-			if(i &gt;= n) {
-				throw new Error("end of iteration");
-			}
-			return arg[i++];
-		}
-	}
-}
+dict.count(); // 5
 
 </code></pre>
 
-<h2 id="使用bind方法提取具有确定接收者的方法">使用bind方法提取具有确定接收者的方法</h2>
+<p>这样有一个问题，count会枚举出所有的属性包括了toString 和count,而不仅仅是我们需要的值。</p>
 
-<pre><code>var buffer = {
-	entries: [],
-	add: function(s) {
-		this.entries.push(s);
-	},
-	concat: function() {
-		return this.entries.join("");
-	}
-}
+<pre><code>var dict = new Array();
 
-var source = ["867", "-", "5309"];
-
-source.forEach(buffer.add);  // error: entries is undefined
-
+dict.alice = 34;
+dict.bob = 24;
+dict.chris = 62;
 
 </code></pre>
-<p>buffer.add 方法的接收者并不是buffer对象，函数的接收者取决于它是如何被调用，
-不过我们并没有调用它，而是把它传给了forEach方法
-而我们并不知道forEach在哪里调用了它，事实上forEach方法的实现使用全局对象作为默认的接收者。由于全局对象没有entries属性所以这段代码抛出了一个错误。
-幸运的是forEach允许调用者提供一个可选的参数作为回调函数的接收者，所以我们可以很轻松的修复该例子。</p>
-
-<p>方法一</p>
-<pre><code>var source = ["867", "-", "5309"];
-
-source.forEach(buffer.add, buffer); 
-
-
-</code></pre>
-
-<p>并非所有的高阶函数都会为使用者提供其毁掉函数的接收者。如果forEach不接受额外的接收者参数怎么办</p>
-
-<p>方法二</p>
-<pre><code>source.forEach(function(s) {
-	buffer.add(s);
-});
-
-bujjer.join();
-
-</code></pre>
-
-<p>创建一个函数用来实现绑定其接收者到一个指定的对象是非常常见的，因此ES5标准库直接支持这种模式，函数对象的bind方法需要一个接收者对象，并产生一个以该接收者对象的方法调用的方式调用原来的函数的封装函数。</p>
-
-<p>方法三</p>
-
-<pre><code>var source = ["867", "-", "5309"];
-
-source.forEach(buffer.add.bind(buffer)); 
-
-
-buffer.add.bind(buffer) 创建了一个新函数而不是修改了bufffer.add函数 该函数将接收者绑定到了buffer对象，而原有函数的接收者保持不变
-
-buffer.add === buffer.add.bind(buffer);  // false;
-</code></pre>
-
-<h2 id="使用bind实现函数柯里化">使用bind实现函数柯里化</h2>
-<p>函数对象的bind方法除了具有降方法绑定到接收者的用途外，它还有更多功能。</p>
-
-<pre><code>function simpleURL(protocol, domain, path) {
-	return protocol + "://" + domain + "/" + path;
-}
-
-var urls = paths.map(function(path) {
-	return simpleURL("http", siteDomain, path);
-});
-
-
-</code></pre>
-<p>传给simpleURL的前两个参数是固定的， 只有第三个参数在变化，我们可以通过调用simpleURL函数的bind方法来自动构造该匿名函数</p>
-<pre><code>var urls = path.map(simpleURL.bind(null, "http", siteDomain));
-</code></pre>
-<p>对simpleURL.bind的调用产生了一个委托到simpleURL的新函数，bind的第一个参数提供了接收者的值， 由于simpleURL.bind不需要引用this，所以可以使用任何值。使用null和undefined是习惯用法。 simpleURL.bind的其余参数和提供给你新函数的所有参数共同组成了传递给simpleURL的参数。</p>
-
+<p>这样也会有问题，代码对原型污染很脆弱，应用程序的其他库有可能会打猴子补丁，比如</p>
 <blockquote>
-  <p>将函数与其参数的一个子集绑定的技术称为函数柯里化。</p>
+  <p>原型污染是指当枚举字典的条目时，原型对象中的一些属性可能会导致出现一些不期望的属性。</p>
 </blockquote>
 
-<h2 id="不要信赖函数对象的tostring方法">不要信赖函数对象的toString方法</h2>
+<pre><code>Array.prototype.first = function() {
+	return this[0];
+}
 
-<p>JavaScript有一个非凡的特性， 即将其源代码重现为字符串的能力</p>
-<pre><code>(function(x) { 
-	return x + 1 
-}).toString();
+Array.prototype.last = function() {
+	return this[1];
+}
 
-// "function (x) {\n return x + 1; \n}"
+var names = [];
+for(var name in dict) {
+	names.push(name);
+}
+
+names; ["alice", "bob", "chris", "first", "last"]
+
 </code></pre>
-
-<p>ECMAScript标准对于函数对象的toString方法的返回结果并没有任何要求。这意味着不同的JavaScript引擎将产生不同的结果，甚至产生的字符串跟函数并不相关。</p>
-
-<pre><code>(function(x) { 
-	return x + 1 
-}).bind(16).toString();
-
-// "function (x) {\n [native code] \n}"
-</code></pre>
-<p>由于bind函数通常是由其他语言实现的通常c++，宿主提供一个编译后的函数，在此环境下通常没有源代码可展示。</p>
-
-<p>还有一点就是 toString方法生成的源代码并不展示闭包中保存的和内部变量引用相关的值</p>
-<pre><code>(function(x) {
-	return function(y) {
-		return x + y;
-	}	
-})(42).toString();
-
-// "function(y) {\n return x + y; \n }"
-</code></pre>
-
-<blockquote>
-  <p>总而言之，应该避免使用函数对象的toString方法</p>
-</blockquote>
-
-<h2 id="避免使用非标准的栈检查属性">避免使用非标准的栈检查属性</h2>
+<p>使用使用 <code>new Object() </code>可能会面临同样的问题，但是使用 <code>{}</code>的方式会更好, 虽然不能保证对于原型污染时安全的，任何人仍然能增加属性到Object.prototype，但是风险可以降低到仅仅局限于Object.prototype</p>
 
 <ul>
-  <li>arguments.callee 指向使用该arguments对象被调用的函数</li>
-  <li>arguments.caller 指向调用该arugments对象的函数（该arguments对象调用函数的函数）</li>
+  <li>坚持使用Object的直接实例原则可以使for…in循环摆脱原型污染的影响</li>
+  <li>使用对象字面量构建轻量级字典</li>
 </ul>
 
-<p>出于安全考虑大多环境移除了arguments.caller,因此它是不可靠的</p>
+<h2 id="使用null原型以防止原型污染">使用null原型以防止原型污染</h2>
 
-<p>许多JavaScript环境提供了一个相似的函数对象属性—非标准但是普遍适用的caller属性。 它指向函数最近的调用者</p>
-<pre><code>function revealCaller() {
-	return revealCaller.caller;
+<p>防止原型污染的最简单的方式之一就是一开始就不使用原型。但是ES5发布之前并没有一个标准的方式创建一个空原型的新对象。你可能会这样做</p>
+<pre><code>function C() { }
+
+C.prototype = null;
+
+var o = new C();
+
+Object.getPrototypeOf(o) === null; // false
+Object.getPrototypeOf(o) === Object.prototype // true
+
+
+// ES5之后应该这样做
+var x = Object.create(null);
+
+Object.getPrototypeOf(o) === null; // true
+
+在不支持Object.create的JavaScript环境中特殊对象__proto__提供了对对象内部原型链的读写访问
+
+var x = { __proto__: null };
+
+x instanceof Object;  // false;
+
+</code></pre>
+<p>第二种貌似更方便，但是有了Object.create函数后，Object.create是更值得推荐的方式。</p>
+
+<ul>
+  <li>在ES5中要使用Object.create(null)创建自由原型的空对象是不太容易被污染的。</li>
+  <li>在一些老环境中考虑使用{ <strong>proto</strong>: null }， 但是它既不是标准的也不是可移植的还有可能在未来被删除</li>
+  <li>绝对不要使用__proto__作为字典中的key</li>
+</ul>
+
+<h2 id="使用hasownproperty方法避免原型污染">使用hasOwnProperty方法避免原型污染</h2>
+<p>JavaScript的对象操作总是以继承的方式工作，即使一个空的对象字面量也继承了Object.prototype的大量属性</p>
+<pre><code>var dict = {}
+"alice" in dict; //false;
+"bob" in dict; //false;
+"chris" in dict; //false;
+
+// toString 和valueOf方法继承自Object.prototype
+"toString" in dict; //false;  
+"valueOf" in dict; //false;
+</code></pre>
+<p>幸运的是Object.hasOwnProperty方法可以用来判断属性是否继承自原型对象。</p>
+<pre><code>dict.hasOwnProperty("alice");     // false
+dict.hasOwnProperty("toString");  // false
+dict.hasOwnProperty("valueOf");   // false
+</code></pre>
+<p>不幸的是我们没有完全解决问题，当调用dict.hasOwnProperty时，我们请求调查对象的hasOwnProperty方法，通常情况下，该方法会简单的继承自Object.property对象，然而如果字典中存储一个同名的条目时，那么原型中的hasOwnProperty方法不能再被捕获到。</p>
+
+<pre><code>dict.hasOwnProperty = 10;
+
+dict.hasOwnProperty("alice");
+// error dict.hasOwnProperty is not a function
+</code></pre>
+<p>这是有可能的,最安全的方式就是</p>
+
+<pre><code>var hasOwn = Object.prototype.hasOwnProperty;
+或者
+var hasOwn = {}.hasOwnProperty;
+
+hasOwn.call(dict, "alice");
+</code></pre>
+<p>不管起接收者的hasOwnProperty方法是否被覆盖，该方法都能工作。</p>
+
+<p>我们开始创建一个字典类 版本一</p>
+<pre><code>function Dict(elements) {
+	this.elements = elements || {};
 }
 
-function start() {
-	return revealCaller();
+Dict.prototype.has = function(key) {
+	return {}.hasOwnProperty.call(this.elements, key);
 }
 
-start() === start;  // true
+Dict.prototype.get = function(key) {
+	return this.has(key) ? this.elements[key] : undefined;
+}
+
+Dict.prototype.set = function(key, val) {
+	this.elements[key] = val;
+}
+
+Dict.prototype.remove = function(key) {
+	delete this.elements[key];
+}
+
+var dict = new Dict({
+	alice: 34,
+	bob: 24,
+	chris: 62
+});
+
+dict.has("alice");    // true
+dict.get("bob");      // 24
+dict.has("valueOf")   //false
+
+</code></pre>
+<p>在一些JavaScript的环境中，特殊的属性名__proto__可能导致自身的污染问题__proto__属性只是简单的继承Object.prototype,所以我们的例子会有一个问题</p>
+<pre><code>var dict = new Dict();
+dict.has("__proto__"); // ?
+
+</code></pre>
+<p>这段代码在不同的环境下可能会有不同的结果，所以为了达到最大的可移植性和安全性，便有了下面更复杂但是更安全的实现
+这里检测到__proto__的可以 重新设置一个新属性作为实例对象的一个属性，随对象而在但是不会去设置对象的__proto__</p>
+<pre><code>function Dict(elements) {
+	this.elements = elements || {};
+	this.hasSpecialProto = false;
+	this.specialProto = undefined;
+}
+
+Dict.prototype.has = function(key) {
+	if(key === "__proto__") { 
+		return this.hasSpecialProto;
+	}
+	return {}.hasOwnProperty.call(this.elements, key);
+}
+
+Dict.prototype.get = function(key) {
+	if(key === "__proto__") { 
+		return this.specialProto;
+	}
+	return this.has(key) ? this.elements[key] : undefined;
+}
+
+Dict.prototype.set = function(key, val) {
+	if(key === "__proto__") {
+		this.hasSpecialProto = true;
+
+		this.specialProto = val;
+	} else {
+		this.elements[key] = val;	
+	}
+	
+}
+
+Dict.prototype.remove = function(key) {
+	if(key === "__proto__") {
+		this.hasSpecialProto = false;
+		this.sepcialProto = undefined;
+	} else {
+		delete this.elements[key];	
+	}
+	
+}
+
+var dict = new Dict({
+	alice: 34,
+	bob: 24,
+	chris: 62
+});
+
+dict.has("alice");    // true
+dict.get("bob");      // 24
+dict.has("valueOf")   //false
+
+</code></pre>
+
+<h2 id="使用数组而不要使用字典来存储有序集合">使用数组而不要使用字典来存储有序集合</h2>
+<p>JavaScript对象是一个无序集合,ECMAScript标准并未规定属性存储的任何特定顺序，甚至对于枚举对象也未涉及。这将会导致一个问题，<code>for...in</code>循环会挑选一个特定顺序来枚举对象属性.比如</p>
+<pre><code>function report(highScores) {
+	var result = "";
+	var i = 1;
+	for(var name in highScores) {
+		result += i + " . " + name + " : " + highScores[name] + '\n';
+
+		i++;
+	}
+
+	return result;
+}
+
+report([{
+		name: "Hank",
+		points: 1110100
+	},{
+		name: "Steve",
+		points: 1064500
+	},{
+		name: "Billy",
+		points: 1052000
+	}]);
+
+由于不同的环境选择不同的顺序来存储和枚举对象属性，所以这个函数得到顺序混乱的“最高分”报表
+</code></pre>
+<p>请记住你的程序是否以来对象枚举的顺序并不总是显而易见的，如果没有在多个JavaScript环境中测试过你的程序，你甚至可能不回注意到程序的行为因为一个for…in循环的确切顺序而被改变，对于上面的例子需要使用数组,那么它完全可以工作在任何JavaScript环境中</p>
+
+<pre><code>function report(highScores) {
+	var result = "";
+	var i = 1;
+	for(var i = 0, n = highScores.length; i &lt; n; i++) {
+		var score = hightScores[i];
+		result += (i + 1) + " . " + score.name + " : " + score.points + '\n';
+
+		i++;
+	}
+
+	return result;
+}
+
+report([{
+		name: "Hank",
+		points: 1110100
+	},{
+		name: "Steve",
+		points: 1064500
+	},{
+		name: "Billy",
+		points: 1052000
+	}]);
+
+</code></pre>
+
+<p>一个微妙的顺序以来的典型例子是浮点运算， 假设一个对象使用<code>for...in</code> 如下</p>
+<pre><code>var ratings = {
+	"Good will Hunting": 0.8,
+	"Mystic River": 0.7,
+	"21": 0.6,
+	"Doubt": 0.9
+};
+
+var total = 0, count = 0;
+for(var key in. ratings) {
+	total += ratings[key];
+	count++;
+}
+
+total /= count;
+
+total; //?
+
+</code></pre>
+<p>事实证明，流行的JavaScrtip环境实际上使用不同的顺序执行这个循环。</p>
+<pre><code>一些环境这样计算
+
+(0.8 + 0.7 + 0.6 + 0.9) / 4  // 0.75
+
+还有一些环境先枚举潜在的数组索引，21恰好是一个可行的数组索引，它首先被枚举，导致如下结果
+
+(0.6 + 0.8 + 0.7 + 0.9) / 4  // 0.7499999999999999
+
+
+更好的表示方法是使用整数值
+
+(8 + 7 + 6 + 9) / 4/ 10.  //0.75
+
+(6 + 8 + 7  + 9) / 4/ 10.  //0.75
+
+</code></pre>
+<p>通常当执行<code>for...in</code> 循环时应当时刻小心，确保操作行为与顺序无关。</p>
+
+<h2 id="绝不要在objectprototype中增加可枚举属性">绝不要在Object.prototype中增加可枚举属性</h2>
+<p><code>for...in</code>非常便利，然而它很容易受到原型污染的影响。目前为止<code>for...in</code>最常见的用法是枚举字典中的元素。这暗示着如果想允许对字典对象使用<code>for...in</code>循环，那么不要在共享的Object.prototype中增加可枚举的属性。</p>
+<pre><code>Object.prototype.allKeys = function() {
+	var result = [];
+	for(var key in this) {
+		result.push(key);
+	}
+
+	return result;
+}
+
+({a: 1, b: 2, c: 3}).allKeys(); // ["allkeys", "a", "b", "c"]  该方法污染了自身
+
+更友好的做法是将allkeys定义为一个函数而不是方法，虽然着稍微有点不方便
+
+function allKeys(obj) {
+	var result = [];
+	for(var key in obj) {
+		result.push(key);
+	}
+
+	return result;
+}
+
+
+
+</code></pre>
+<p>如果你确实想在Object.prototype中增加属性， ES5提供了一个更加友好的机制Object.defineProperty</p>
+<blockquote>
+  <p><code>Object.defineProperty</code>方法可以定义一个对象的属性并制定该属性的元数据。例如，我们可以用与之前完全一样的方法定义上面的属性而通过设置其可枚举属性为false使其在<code>for...in</code>循环中不可见。</p>
+</blockquote>
+
+<pre><code>Object.defineProperty(Object.prototype, "allKeys", {
+	value: function() {
+		var result = [];
+		for(var key in this) {
+			result.push(key);
+		}
+		return result;
+	},
+	writable: true,
+	enumerable: false,
+	configurable: true
+});
+</code></pre>
+
+<p>它不会污染其他所有<code>Object</code>实例的所有<code>for...in</code>循环。每当你需要增加一个不应该出现在<code>for...in</code>循环中出现的属性时，Object.defineProperty便是你的选择</p>
+
+<h2 id="避免在枚举期间修改对象">避免在枚举期间修改对象</h2>
+<pre><code>function Member(name) {
+	this.name = name;
+	this.friends = [];
+}
+
+var a = new Member("Alice"),
+	b = new Member("Bob"),
+	c = new Member("Carol"),
+	d = new Member("Dieter"),
+	e = new Member("Eli"),
+	f = new Member("Fatima");
+
+a.friends.push(b);
+b.friends.push(c);
+c.friends.push(e);
+d.friends.push(b);
+e.friends.push(d,f);
+
+如果我们写了一个方法 在for...in的时候操作对象比如，删除或添加， 在许多JavaScript环境中这段代码根本不能工作。
+
 </code></pre>
 <blockquote>
-  <p>ES5的严格模式禁止使用arguments.caller 和arguments.callee ，因为它们不具备良好的可移植性， 非标准的函数对象caller属性应该避免使用，因为在包含全部栈信息方面，它是不可靠的。</p>
+  <p>ECMAScript规定了，如果被枚举的对象在枚举期间添加了新的属性，那么在枚举期间并不能保证新添加的属性能够被访问。</p>
 </blockquote>
+
+<p>这个隐式的规范的实际后果是： 如果我们修改了被枚举的对象则不能保证<code>for...in</code>循环行为的可预见性。</p>
+
+<p>我们可以新建一个WorkSet类来追踪当前集合中元素的数量</p>
+<pre><code>function WorkSet() {
+	this.entries = new Dict();
+	this.count = 0;
+}
+
+WorkSet.prototype.isEmpty = function() {
+	return this.count === 0;
+}
+
+WorkSet.prototype.add = function(key, val) {
+	if(this.entries.has(key)) {
+		return;
+	}
+
+	this.entries.set(key, val);
+	this.count++;
+}
+
+WorkSet.prototype.get = function(key) {
+	return this.entries.get(key);
+}
+
+WorkSet.prototype.remove = function(key) {
+	if(!this.entries.had(key)) {
+		return;
+	}
+
+	this.entries.remove(key);
+	this.count--;
+}
+
+WorkSet.prototype.pick = function() {
+	return this.entries.pick();
+}
+
+//这里同时需要给Dict类增加一个pick方法
+
+Dick.prototype.pick = function() {
+	for(var key in this.elements) {
+		if(this.has(key)) {
+			return key;
+		}
+	}
+
+	throw new Error("empty dictionary");
+}
+
+// 现在我们可以实现一个inNetwork的方法
+到最后发现这段代码没什么卵用
+Member.prototype.inNetwork = function(other) {
+	var visited = {};
+	var workset = new WorkSet();
+	workset.add(this.name, this);
+
+	while(!workset.isEmpty()) {
+		var name = = workset.pick();
+		var member = workset.get(name);
+		workset.remove(name);
+		if(name in visited) {
+			continue;
+		}
+
+		visited[name] = member;
+
+		if(member === other) {
+			return true;
+		}
+
+		member.friends.forEach(function(friend) {
+			workset.add(friend.name, friend);
+		})
+	}
+
+	return false;
+}
+
+</code></pre>
+
+<p>以上pick方法是一个不确定性的例子， 不确定性指的是一个操作不能保证使用语言的语意产生一个单一的可预见的结果。这个不确定性来源于这样一个事实，for…in循环可能在不同的JavaScript环境中选择不同的枚举顺序。
+基于这些原因，考虑使用一个确定的工作集算法替代方案是值得的。集工作列表算法Work-list.</p>
+
+<ul>
+  <li>使用for…in循环枚举一个对象属性时，确保不要修改该对象</li>
+  <li>当迭代一个对象时，如果该对象的内容可能会在循环期间被改变，应该使用while循环或经典的for循环代替for…in循环</li>
+  <li>为了在不断变化的数据结构中能够预测枚举，考虑使用一个有序的数据结构，例如数组，而不要使用字典对象</li>
+</ul>
+
+<h2 id="数组迭代优先使用for循环而不是forin">数组迭代优先使用<code>for</code>循环而不是<code>for...in</code></h2>
+
+<p>看下面代码mean的输出值时多少？</p>
+<pre><code>var scores = [98, 74, 85, 77, 93, 100, 89];
+
+var total = 0;
+
+for(score in scores) {
+	total += score;
+}
+
+var mean = total / socres.length;
+
+ mean; // ?  17636.571428571428
+
+
+ 请记住即使是数组的索引属性，对象属性的key始终是字符串
+
+ total = 0 + "0" + "1" + "2" + "3" + "4" + "5" + "6";
+
+ total = "00123456";
+
+
+</code></pre>
+<p>迭代数组内容的正确方式是使用传统的for循环, 建议存储数组长度到一个局部变量中</p>
+<pre><code>var scores = [98, 74, 85, 77, 93, 100, 89];
+var total = 0;
+
+for(var i = 0, n = scores.length; i &lt; n; i++) {
+	total += socres[i];
+}
+
+var mean = toal / scores.length;
+
+mean; // 88
+
+</code></pre>
+
+<h2 id="迭代方法由于循环">迭代方法由于循环</h2>
+<p>一些常见的for循环错误</p>
+<pre><code>for(var i = 0; i &lt;= n; i++) {...}. // 获取最后一项错误
+
+for(var i = 1; i &lt; n; i++) {...}. // 丢失第一项
+
+for(var i = n; i &gt;= 0 ; i--) {...}. // 获取起始值错误
+
+for(var i = n - 1; i &gt; 0 ; i--) {...}. // 丢失最后一项
+
+</code></pre>
+<p>我们面对这样一个事实，搞清楚终止条件是一个累赘。
+幸运的是ES5提供了一些便利的方法。Array.prototype.forEach是其中最简单的一个。例如：</p>
+<pre><code>for(var i = 0, n = players.length; i &lt; n; i++) {
+	players[i].score++;
+}
+可以用下面代码替换
+players.forEach(function(p) {
+	p.socre++;
+})	
+
+</code></pre>
+<p>这段代码不仅更简单可读而且消除了终止条件和任何数组索引。</p>
+
+<p>另一个例子是对数组进行操作后建立一个新的数组我们可以这样实现</p>
+<pre><code>var trimmed = [];
+for(var i = 0, n = input.lenght; i &lt; n; i++) {
+	trimmed.push(input[i].trim());
+}
+
+我们同样可以使用forEach来实现
+
+var trimmed = [];
+input.forEach(function(s) {
+	trimmed.push(s.trim());
+});
+
+
+因为这是一个十分普遍的操作，所以ES5提供了一个更简单优雅的实现Array.prototype.map
+
+var trimmed = input.map(function(s) {
+	return s.trim();	
+})
+
+
+</code></pre>
+
+<p>另外一种常见的模式是计算一个新的数组，该数组只包含现有数组的一部分元素.<code>Array.prototype.filter</code>使其变得简单</p>
+
+<pre><code>
+listings.filter(function(listing) {
+	return listing.price &gt;= min &amp;&amp; listing.price &lt;= max;
+});
+
+</code></pre>
+<p>这些都是ES5的默认方法，我们当然可以实现自己的方法，比如我们需要这样一个模式，提取满足谓词的数组的前几个元素</p>
+<pre><code>function takeWhile(a, pred) {
+	var result = [];
+	for(var i = 0, n = a.length; i &lt; n; i++) {
+		if(!pred(a[i], i)) {
+			break;
+		}
+		result[i] = a[i];
+	}
+
+	return result;
+}
+
+var prefix = taleWhile([1, 2, 4, 8, 16, 32], function(n) {
+	return n &lt; 10;
+});
+
+// [1, 2, 4, 8]
+
+
+</code></pre>
+<p>请注意我们将索引i赋值给了pred, 我们可以选择使用或忽略该索引。事实上标准库中的所有迭代方法包括(forEach, map, filter)都将数组索引传递给了用户自定义函数。</p>
+
+<p>我们也可以将takeWhile加入到Array.prototype中参考猴子补丁的影响</p>
+<pre><code>Array.prototype.takeWhile = function(pred) {
+	var result = [];
+	for(var i = 0, n = this.length; i &lt; n; i++) {
+		if(!pred(this[i], i)) {
+			break;
+		}
+
+		result[i] = this[i];
+	}
+
+	return result;
+}
+
+var prefix = [1, 2, 4, 8, 16, 32].takeWhile(function(n) {
+	return n &lt; 10;
+})
+
+</code></pre>
+
+<blockquote>
+  <p>循环只有一点优于迭代函数，那就是前者有控制流操作，如break 和continue。</p>
+</blockquote>
+
+<p>举例来说</p>
+<pre><code>function takeWhile(a, pred) {
+	var result = [];
+	a.forEach(function(x, i) {
+		if(!pred(x)) {
+			// ?
+		}
+		result[i] = x;
+	});
+
+	return result;
+}
+
+我们可以使用一个内部异常来提前终止该循环，但是这既尴尬又效率低下
+
+function takeWhile(a, pred) {
+	var result = [];
+	var earlyExit = [];
+	try {
+		a.forEach(function(x, i) {
+			if(!pred(x)) {
+				throw earlyExit;
+			}
+
+			result[i] = x;
+		});
+	} catch(e) {
+		if(e !== earlyExit) {
+			throw e;
+		}
+	}
+
+	return result;
+}
+
+</code></pre>
+
+<p>ES5的数组方法some和every可以用于提前终止循环。</p>
+
+<pre><code>[1, 10, 100].some(function(x) {.return x &gt; 5; });  // true
+[1, 10, 100].some(function(x) {.return x &lt; 0; });  // false
+
+[1, 10, 100].every(function(x) {.return x &gt; 0; });  // true
+[1, 10, 100].every(function(x) {.return x &lt; 3; });  // true
+
+</code></pre>
+
+<p>利用这一点我们可以重新实现takeWhile方法</p>
+
+<pre><code>
+function takeWhile(a, pred) {
+	var result = [];
+
+	a.every(function(x, i) {
+		if(!pred(x)) {
+			return false; // break
+		}
+
+		result[i] = x;
+		return true;  // continue
+	});
+
+	return result;
+}
+
+</code></pre>
+
+<ul>
+  <li>使用迭代方法 forEach 和map替换for循环使得代码更可读，并且避免了重复循环控制逻辑</li>
+  <li>使用自定义的迭代函数来抽象未被标准库支持的常见循环模式</li>
+  <li>在需要提前终止循环的情况下， 仍然推荐使用传统的循环。另外，some和every方法也可用于提前退出</li>
+</ul>
+
+<h2 id="在类数组对象上服用通用的数组方法">在类数组对象上服用通用的数组方法</h2>
+<p><code>Array.prototype</code>中的标准方法被设计成其他对象可复用的方法，即使这些对象并没有继承Array,一个很好的例子 函数的arguments对象，它并没有继承Array.prototype</p>
 
 
                 <hr>
@@ -577,13 +939,9 @@ start() === start;  // true
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (五)">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (七)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying/" data-toggle="tooltip" data-placement="top" title="函数柯里化">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -593,9 +951,9 @@ start() === start;  // true
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six"
-         data-title="Effective JavaScript (六)"
-         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/14/read-book-effective-six/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight"
+         data-title="Effective JavaScript (八)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/"></div>
     <script>
 
         /**
@@ -739,7 +1097,7 @@ start() === start;  // true
                                 计算机基础
                             </a>
         				
-                            <a href="/tags/#javascript" title="javascript" rel="17">
+                            <a href="/tags/#javascript" title="javascript" rel="18">
                                 javascript
                             </a>
         				
@@ -775,7 +1133,7 @@ start() === start;  // true
                                 Node.js
                             </a>
         				
-                            <a href="/tags/#读书总结" title="读书总结" rel="8">
+                            <a href="/tags/#读书总结" title="读书总结" rel="9">
                                 读书总结
                             </a>
         				
