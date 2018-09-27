@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-26T18:20:38+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (八)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" rel="alternate" type="text/html" title="Effective JavaScript (八)" /><published>2018-09-25T00:00:00+08:00</published><updated>2018-09-25T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">&lt;h2 id=&quot;使用object的直接实例构造轻量级的字典&quot;&gt;使用Object的直接实例构造轻量级的字典&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-27T15:42:19+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (八)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" rel="alternate" type="text/html" title="Effective JavaScript (八)" /><published>2018-09-25T00:00:00+08:00</published><updated>2018-09-25T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">&lt;h2 id=&quot;使用object的直接实例构造轻量级的字典&quot;&gt;使用Object的直接实例构造轻量级的字典&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;var dict = { alice: 34, bob: 24, chris: 62 };
 
@@ -704,8 +704,102 @@ function takeWhile(a, pred) {
   &lt;li&gt;在需要提前终止循环的情况下， 仍然推荐使用传统的循环。另外，some和every方法也可用于提前退出&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;在类数组对象上服用通用的数组方法&quot;&gt;在类数组对象上服用通用的数组方法&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Array.prototype&lt;/code&gt;中的标准方法被设计成其他对象可复用的方法，即使这些对象并没有继承Array,一个很好的例子 函数的arguments对象，它并没有继承Array.prototype&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry><entry><title type="html">Effective JavaScript (七)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" rel="alternate" type="text/html" title="Effective JavaScript (七)" /><published>2018-09-19T00:00:00+08:00</published><updated>2018-09-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">&lt;h2 id=&quot;理解prototypegetprototypeof-和__proto__之间的不同&quot;&gt;理解prototype,getPrototypeOf 和__proto__之间的不同&lt;/h2&gt;
+&lt;h2 id=&quot;在类数组对象上复用通用的数组方法&quot;&gt;在类数组对象上复用通用的数组方法&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.prototype&lt;/code&gt;中的标准方法被设计成其他对象可复用的方法，即使这些对象并没有继承Array,一个很好的例子 函数的arguments对象，它并没有继承Array.prototype，因此我们不能简单的调用arguments.forEach方法来遍历每一个参数。取而代之我们提取forEach方法对象的引用并使用其call方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 同样也可先转化为一个数组 var args = [].slice.call(arguments);
+
+function highlight() {
+	[].forEach.call(arguments, function(widget) {
+		widget.setBackground(&quot;yellow&quot;);
+	})
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如何使一个对象“看起来像数组”，数组对象的基本契约总共有两个简单规则&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;具有一个范围在0-2^32-1的整型length属性。&lt;/li&gt;
+  &lt;li&gt;length属性大于该对象的最大索引。索引的范围是0-2^32-2的整数，它的字符串表示就是该对象的一个key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var arrayLike = {0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot;, length: 3}
+var result = Array.prototype.map.call(arrayLike, function(s) {
+	return s.toUpperCase();
+});
+
+// [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;字符串也表现为不可变的数组，因为它们是可索引的， 并且其长度也可以通过length属性获取。因此，Array.prototype中的方法操作字符串不回修改原始数组。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var result = Array.prototype.map.call(&quot;abc&quot;, function(s) {
+	return s.toUpperCase();	
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于使用Array.prototype中的方法，在增加或删除索引属性的时候它们都会强制的更新length属性。所有的Array.prototype方法在类数组中可以通用。&lt;/p&gt;
+
+&lt;p&gt;只有一个Array方法不是通用的那就是数组连接方法concat。该方法可以由任意的类数组调用但是它会检查其参数的[[Class]]属性，如果是一个真实的数组才会连接，如果不是例子如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function nameColum() {
+	return [&quot;Names&quot;].concat(arguments);
+}
+
+namesColumn(&quot;Alice&quot;,&quot;Bob&quot;, &quot;Chris&quot;);
+
+
+// [&quot;Names&quot;, {.0: &quot;Alice&quot;, 1: &quot;Bob&quot;, 2: &quot;Chris&quot; }]
+
+这种时候我们可以使用数组转换的方法
+function nameColum() {
+	return [&quot;Names&quot;].concat([].slice.call(arguments));
+}
+
+namesColumn(&quot;Alice&quot;,&quot;Bob&quot;, &quot;Chris&quot;);
+
+// [&quot;Names&quot;, &quot;Alice&quot;,&quot;Bob&quot;, &quot;Chris&quot;]
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;数组字面量优于数组构造函数&quot;&gt;数组字面量优于数组构造函数&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;var a = [1, 2, 3, 4, 5];
+
+也可以使用数组构造函数来替代
+
+var a = new Array(1, 2, 3, 4, 5);
+
+
+有这样几个问题
+首先要保证没有人重新包装过Array变量
+function f(Array) {
+	return new Array(1, 2, 3, 4, 5);
+}
+
+f(String);  //  new String(1)
+
+其次要确保没人修改过全局Array变量
+
+Array = String;
+new Array(1, 2, 3, 4, 5); // new String(1)
+
+
+
+还有一个问题 
+
+[&quot;hello&quot;] 和 new Array(&quot;hello&quot;) 行为虽然一致
+
+但是
+
+[17] 和 new Array(17) 行为完全不同了
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用数组字面量替代数组构造函数&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry><entry><title type="html">Effective JavaScript (七)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" rel="alternate" type="text/html" title="Effective JavaScript (七)" /><published>2018-09-19T00:00:00+08:00</published><updated>2018-09-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">&lt;h2 id=&quot;理解prototypegetprototypeof-和__proto__之间的不同&quot;&gt;理解prototype,getPrototypeOf 和__proto__之间的不同&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
 	this.name = name;
