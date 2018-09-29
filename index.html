@@ -215,6 +215,70 @@
             ">
             
 <div class="post-preview">
+    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">
+        <h2 class="post-title">
+            Effective JavaScript (十)
+        </h2>
+        
+        <h3 class="post-subtitle">
+            并发
+        </h3>
+        
+        <div class="post-content-preview">
+            并发
+
+JavaScript被设计成一种嵌入式的脚本语言。它不是以单独的应用程序运行，而是作为大型应用程序环境下的脚本运行。典型的例子当然是Web浏览器。
+JavaScript中编写响应多个并发事件的程序的方法非常人性化，而且强大，因为它使用了一个简单的执行模型(有时称为事件队列和事件循环并发)和被称为异步的API.
+奇怪的是，到目前为止，ECMAScript标准从来没有关于并发的说明。我们...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2018-09-28
+    </p>
+    <!--<p class="post-meta"></p>September 28, 2018-->
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/">
+        <h2 class="post-title">
+            Effective JavaScript (九)
+        </h2>
+        
+        <h3 class="post-subtitle">
+            库和API设计
+        </h3>
+        
+        <div class="post-content-preview">
+            保持一致的约定
+
+将undefined当作没有值
+undefined很特殊，每当JavaScritp无法提供具体的值时，就产生undefined。为赋值的初始值即为undefiend
+
+var x;
+x // undefined;
+
+var obj = {};
+obj.x; //undefined
+
+
+function f() {
+	return ;
+}
+
+function g() {}
+
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2018-09-28
+    </p>
+    <!--<p class="post-meta"></p>September 28, 2018-->
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">
         <h2 class="post-title">
             Effective JavaScript (八)
@@ -405,60 +469,6 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/">
-        <h2 class="post-title">
-            JAVASCRIPT面试题
-        </h2>
-        
-        <h3 class="post-subtitle">
-            一些好的javascript面试题总结
-        </h3>
-        
-        <div class="post-content-preview">
-            使用立即调用函数IIFE创建局部作用域
-
-function wrapElements(a) {
-	var result = [], i, n;
-	for(i = 0, n = a.length; i &lt; n; i++) {
-		result[i] = function() { return a[i] }
-	}
-
-	return result;
-}
-
-var wrapped = wrap...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-09-11
-    </p>
-    <!--<p class="post-meta"></p>September 11, 2018-->
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">
-        <h2 class="post-title">
-            HTML面试题
-        </h2>
-        
-        <h3 class="post-subtitle">
-            一些常见HTML面试题总结
-        </h3>
-        
-        <div class="post-content-preview">
-            HTML
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-09-11
-    </p>
-    <!--<p class="post-meta"></p>September 11, 2018-->
-</div>
-<hr>
-
 
 
 
@@ -566,7 +576,7 @@ var wrapped = wrap...
             
             
             
-            <a href="/tags/#javascript" title="javascript" rel="18">
+            <a href="/tags/#javascript" title="javascript" rel="20">
                 javascript
             </a>
             
@@ -620,7 +630,7 @@ var wrapped = wrap...
             
             
             
-            <a href="/tags/#读书总结" title="读书总结" rel="9">
+            <a href="/tags/#读书总结" title="读书总结" rel="11">
                 读书总结
             </a>
             

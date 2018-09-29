@@ -390,6 +390,41 @@ mean; // ?
 
 </code></pre>
 
+<h3 id="javascript位操作符的诀窍">JavaScript位操作符的诀窍</h3>
+<pre><code>无符号右移自动转换成数字
+"" &gt;&gt;&gt; 0.  // 0
+"sdsd" &gt;&gt;&gt; 0   // 0
+
+NaN &gt;&gt;&gt; 0 // 0
+
+undefined &gt;&gt;&gt; 0  // 0
+ 
+null &gt;&gt;&gt; 0 // 0
+
+[] &gt;&gt;&gt; 0  // 0
+
+"70" &gt;&gt;&gt; 0 // 70
+
+{} &gt;&gt;&gt; 0. // Uncaught SyntaxError: Unexpected token &gt;&gt;&gt;
+
+～操作自动转换数字
+负数转正数减一， 整数转负数减一， 其他-1
+
+~"sdsd" // -1
+~"0"    //-1
+~0     //-1
+~NaN    //-1
+~null    //-1
+~undefined    //-1
+~[]    //-1
+~{}    //-1
+~"sdsd"    //-1
+~"45sdsd"    //-1
+~"-1" // 0
+~"1" // -2
+
+
+</code></pre>
 
 
                 <hr>
@@ -559,7 +594,7 @@ mean; // ?
                                 计算机基础
                             </a>
         				
-                            <a href="/tags/#javascript" title="javascript" rel="18">
+                            <a href="/tags/#javascript" title="javascript" rel="20">
                                 javascript
                             </a>
         				
@@ -595,7 +630,7 @@ mean; // ?
                                 Node.js
                             </a>
         				
-                            <a href="/tags/#读书总结" title="读书总结" rel="9">
+                            <a href="/tags/#读书总结" title="读书总结" rel="11">
                                 读书总结
                             </a>
         				

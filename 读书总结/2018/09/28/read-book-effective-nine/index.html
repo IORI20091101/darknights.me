@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>搭建jekyll 博客流程记录 - Dark knight's Blog</title>
+    <title>Effective JavaScript (九) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat34.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,17 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
+                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                             
-                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                            <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>搭建jekyll 博客流程记录</h1>
+                        <h1>Effective JavaScript (九)</h1>
                         
                         
-                        <h2 class="subheading">如何搭建个人博客以及注意点</h2>
+                        <h2 class="subheading">库和API设计</h2>
                         
-                        <span class="meta">Posted by toshiba on September 5, 2017</span>
+                        <span class="meta">Posted by toshiba on September 28, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,95 +224,335 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="第一次搭建博客">第一次搭建博客</h2>
+				<h2 id="保持一致的约定">保持一致的约定</h2>
 
-<p>不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:</p>
-<blockquote>
-  <ul>
-    <li><a href="http://huangxuan.me/">黄玄</a></li>
-    <li><a href="https://mritd.me/">漠然</a></li>
-  </ul>
-</blockquote>
+<h2 id="将undefined当作没有值">将undefined当作没有值</h2>
+<p>undefined很特殊，每当JavaScritp无法提供具体的值时，就产生undefined。为赋值的初始值即为undefiend</p>
 
-<p>我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
-而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。</p>
+<pre><code>var x;
+x // undefined;
 
-<h2 id="搭建博客的基本流程">搭建博客的基本流程</h2>
+var obj = {};
+obj.x; //undefined
 
-<h3 id="安装ruby-rails">安装Ruby, Rails</h3>
-<p>建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。</p>
+
+function f() {
+	return ;
+}
+
+function g() {}
+
+
+f();  //undefined
+f();  //undefined
+
+function f(x) {
+	return x;
+}
+f(); // undefined
+
+</code></pre>
+
+<p>例如一个Web服务器可以接受一个可选的饿主机名称</p>
+<pre><code>var s1 = new Server(80, "example.com");
+
+var s2 = new Server(80); //defaults to "localhost"
+
+我们可以通过判断arguments.length来实现Server构造函数
+
+function Server(port, hostname) {
+	if(arguments.length &lt; 2) {
+		hostname = "localhost";
+	}
+
+	hostname = String(hostname);
+}
+
+这种情况如果第二个值是undefined的话可能会使用undefined，这并不是我们想要的所以我们最好判断undefined
+
+function Server(port, hostname) {
+	if(hostname === undefined) {
+		hostname = "localhost";
+	}
+
+	host = String(hostname);
+}
+
+
+另一种合理的方式是测试hostname是否为真
+
+function Server(port, hostname) {
+	hostname = String(hostname || "localhost");
+	// ...
+}
+</code></pre>
+
+<p>但是最后一种的真值检测并不总是安全的，如果一个函数允许接受0(或NaN，虽然不常见)为可接受的参数,则不应该使用真值测试</p>
+
+<p>比如</p>
+<pre><code>
+
+function Element(width, height) {
+	this.width = width || 320;
+	this.height = height || 240;
+	// ...
+}
+var c1 = new Element(0, 0); 
+c1.width; // 320
+c1.height; // 240
+
+
+这种情况我们需要更详细的测试来测试undefined
+function Element(width, height) {
+	this.width = width === undefined ? 320 : width;
+	this.height = height === undefined ? 240 : height;
+
+	// ...
+}
+
+var c1 = new Element(0, 0);
+c1.width; // 0
+c1.height; // 0
+
+var c2 = new Element();
+c2.width; // 320
+c2.height; // 240
+
+</code></pre>
+
+<h2 id="接受关键字参数的选项对象">接受关键字参数的选项对象</h2>
+<p>保持参数顺序的一致约定对于帮助程序员记住每个参数在函数调用中的意义是很重要的，参数较少时它是适用的。但是参数过多后根本不可扩展</p>
+<pre><code>var alert = new Alert(100, 75, 300, 200,
+		"Error", message,
+		"blue", "white", "black",
+		"error", true
+	);
+
+</code></pre>
+<p>一个函数起初很简单，但是过一段时间，随着库功能的扩展，该函数的签名便会获得越来越多的参数。</p>
+
+<p>幸运的是，JavaScrtip提供了一个简单、轻量的惯用法： 选项对象(options object).</p>
+
+<pre><code>var alert = new Alert({
+	x: 100, y: 75,
+	width: 300, height: 200,
+	title: "Error", message: message,
+	titleColor: "blue", bgColor: "white", textColor: "black",
+	icon: "error", modal: true	
+});
+
+</code></pre>
+<p>这个虽然烦琐，但明显更易于阅读，每个参数都是自我描述(self-documenting)的。</p>
+
+<pre><code>function Alert(parent, message, opts) {
+	opts = opts || {};
+
+	this.width = opts.width === undefined ? 320 : opts.width;
+	this.height = opts.width === undefined ? 240 : opts.height;
+	this.title = otps.title || "Alert";
+
+}
+
+基于 extend 的另一种实现
+
+function extend(target, source) {
+	if(source) {
+		for(var key in source) {
+			var val = source[key];
+
+			if(typeof val !== "undefined") {
+				target[key] = val;
+			}
+		}
+	}
+
+	return target;
+}
+
+
+
+function Alert(parent, message, opts) {
+	opts = extend({
+		width: 320,
+		height: 240
+	});
+
+	opts = extend({
+		title: "Alert"	
+	}, opts);
+
+	this.width = opts.width;
+	this.height = opts.height;
+	this.title = opts.title;
+
+}
+
+
+进一步简化
+
+
+unction Alert(parent, message, opts) {
+	opts = extend({
+		width: 320,
+		height: 240
+	});
+
+	opts = extend({
+		title: "Alert"	
+	}, opts);
+
+	extend(this, opts);
+}
+
+
+</code></pre>
+
+<h2 id="区分数组对象和类数组对象">区分数组对象和类数组对象</h2>
+
+<p>使用instanceof的不完美选择</p>
+<pre><code>StringSet.prototype.add = function(x) {
+	if(typeof x === 'String') {
+		// xxx
+	} else if(x instanceof Array) { //有局限性
+		// xxx
+	} else {
+		// xxx
+	}
+}
+
+
+</code></pre>
+
+<p>instanceof 操作符测试一个对象是否继承自Array.prototype。 在一些允许多个全局对象的环境中可能会有标准的Array构造函数和原型对象的多份副本。在浏览器中有这种情况，每个frame会有标准库的一份单独副本，当跨frame通信时，一个frame中的数组不会继承自另一个frame的Array.prototype.出于这个原因，ES5中引入了<code>Array.isArray</code>函数， 其用于测试一个值是否是数组，而不管原型继承。ESMAScript标准中， 该函数测试对象内部[[Class]]属性值是否是Array。它比<code>instanceof</code>更加可靠。
+所以有这个更健壮的实现。</p>
+<pre><code>StringSet.prototype.add = function(x) {
+	if(typeof x  === 'String') {
+
+	} else if(Array.isArray(x)) {
+
+	} else {
+
+	}
+}
+
+
+</code></pre>
+<p>对于不支持ES5的环境中我们可以自己实现一个测试方法</p>
+
+<pre><code>var toString = Object.prototype.toString;
+
+function isArray(x) {
+	return toString(x) === '[object Array]';
+}
+
+
+// 转为真实数组
+你不能传入arguments对象并期待它被视为数组，
+最好还是自己转化一下
+[].slice.call(arguments);
+
+
+
+</code></pre>
+
+<p><code>Object.prototype.toString</code>函数使用对象内部<code>[[Class]]</code>属性创建结果字符串，所以比<code>instance of</code>操作符更可靠。</p>
+
+<h2 id="避免过度的强制转换">避免过度的强制转换</h2>
+
+<p>我们创建一个BitVector的构造函数guard, 这里有一个思路可以用来做检测用。</p>
+<pre><code>function BitVector(x) {
+	// 链式调用
+	uint32.or(arrayLike).guard(x);
+}
+
+
+var guard = {
+	guard: function(x) {
+		if(!this.test(x)) {
+			throw new TypeError("expected " + this);
+		}
+	}
+}
+
+var uint32 = Object.create(guard);
+
+uint32.toString = function() {
+	return "uint32";
+}
+
+
+var arrayLike = Object.create(guard);
+
+arrayLike.test = function(x) {
+	return typeof x === "object" &amp;&amp; x &amp;&amp; uint32.test(x.length);
+}
+
+arrayLike.toString = function() {
+	return "array-like object";
+}
+
+
+guard.or = function(other) {
+	var result = Object.create(guard);
+
+	var self = this;
+	result.test = function(x) {
+		return self.test(x) || other.text(x);
+	};
+
+	var description = this + " or " + other;
+
+	result.toString = function() {
+		return description;
+	};
+
+	return result;
+
+}
+
+
+</code></pre>
+
+<h2 id="支持方法链">支持方法链</h2>
+
+<pre><code>function escapeBasicHTML(str) {
+	return str.replace(/&amp;/g, "&amp;amp;")
+			  .replace(/&lt;/g, "&amp;lt;")
+			  .replace(/&gt;/g, "&amp;gt;")
+			  .replace(/"/g, "&amp;quot;")
+			  .replace(/'/g, "&amp;apos;");
+}
+
+这种比下面的方法更加简洁
+
+function escapeBasicHTML(str) {
+	var str2 = str.replace(/&amp;/g, "&amp;amp;");
+	var str3 = str2.replace(/&lt;/g, "&amp;lt;");
+	var str4 = str3.replace(/&gt;/g, "&amp;gt;");
+	var str5 = str4.replace(/"/g, "&amp;quot;");
+	var str6 = str5..replace(/'/g, "&amp;apos;");
+
+	return str6;
+}
+
+
+var users = records.map(function(record) {
+		return record.username;
+	})
+	.filter(function(username) {
+		return !!username;
+	})
+	.map(function(username) {
+		return username.toLowerCase();
+	});
+
+</code></pre>
 
 <ul>
-  <li><a href="https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby">Mac OS X上安装ruby</a> 来安装</li>
-  <li>如果需要不同版本的ruby可以<a href="https://ruby-china.org/wiki/install_ruby_guide">安装 RVM</a>来进行ruby版本管理</li>
+  <li>使用方法链来连接无状态的操作</li>
+  <li>通过无状态的方法中返回新对象来支持方法链</li>
+  <li>通过在有状态的方法中返回this来支持方法链</li>
 </ul>
-
-<h3 id="安装jekyll">安装jekyll</h3>
-<p>该博客使用了 <a href="https://jekyllrb.com/">Jekyll</a>, 当然好多同学可能会用 <a href="https://hexo.io/themes/">Hexo</a> 这个就是萝卜青菜了。
-如果你选择使用Jekyll请安装下面步骤安装生成:</p>
-
-<pre><code class="language-shell">~ $ gem install jekyll bundler
-~ $ jekyll new my-awesome-site
-~ $ cd my-awesome-site
-~/my-awesome-site $ bundle exec jekyll serve
-# =&gt; Now browse to http://localhost:4000
-
-</code></pre>
-<p>生产的项目结构类似</p>
-<pre><code>.
-├── _config.yml    //项目相关配置文件
-├── _data
-|   └── members.yml   //一些需要的数据
-├── _drafts           //草稿
-|   ├── begin-with-the-crazy-ideas.md
-|   └── on-simplicity-in-technology.md
-├── _includes         //公共的部分
-|   ├── footer.html
-|   └── header.html
-├── _layouts           //布局文件
-|   ├── default.html
-|   └── post.html
-├── _posts             //发布的文章
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-|   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass              //sass文件路径编译后生产css
-|   ├── _base.scss
-|   └── _layout.scss
-├── _site              //所有文件编译生产静态文件都存放到这里
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid YAML Frontmatter
-</code></pre>
-<p>具体还有其他目录请参考<a href="https://jekyllrb.com/docs/structure/">jekyll目录结构</a></p>
-
-<h3 id="安装主题">安装主题</h3>
-<p>到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 <a href="http://jekyllthemes.org/">Jekyll 主题</a> ,当然如果在套用别人主题的时候有问题可以看一下
-<a href="http://www.jianshu.com/p/4224b8ea0ec0">Liquid语法</a>,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档</p>
-
-<p>到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。</p>
-
-<p>参考文章</p>
-
-<blockquote>
-  <ul>
-    <li><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
-</a></li>
-    <li><a href="http://www.zhanxin.info/journal/">掌心</a></li>
-    <li><a href="https://blog.ixxoo.me/">likebeta’s Blog
-</a></li>
-    <li><a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a></li>
-    <li><a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a></li>
-    <li><a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
-</a></li>
-    <li><a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a></li>
-    <li><a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a></li>
-    <li><a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a></li>
-    <li><a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a></li>
-    <li><a href="http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/">适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog</a></li>
-    <li><a href="http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/">使用travis-ci自动部署hexo博客</a></li>
-    <li><a href="http://t.hengwei.me/post/%E4%B8%BAjekyll%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E4%B8%8Escrollspy%E6%95%88%E6%9E%9C.html">为Jekyll博客添加目录与ScrollSpy效果</a></li>
-  </ul>
-</blockquote>
-
 
 
                 <hr>
@@ -320,12 +560,12 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/2017/03/16/html-lesson1/" data-toggle="tooltip" data-placement="top" title="HTML学习指南（一）">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (八)">&larr; Previous Post</a>
     </li>
     
     
     <li class="next">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">Next Post &rarr;</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (十)">Next Post &rarr;</a>
     </li>
     
 </ul>
@@ -336,9 +576,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site"
-         data-title="搭建jekyll 博客流程记录"
-         data-url="http://darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine"
+         data-title="Effective JavaScript (九)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/"></div>
     <script>
 
         /**

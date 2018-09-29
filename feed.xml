@@ -1,4 +1,847 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-27T15:42:19+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (八)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" rel="alternate" type="text/html" title="Effective JavaScript (八)" /><published>2018-09-25T00:00:00+08:00</published><updated>2018-09-25T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">&lt;h2 id=&quot;使用object的直接实例构造轻量级的字典&quot;&gt;使用Object的直接实例构造轻量级的字典&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-29T18:05:26+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
+
+&lt;p&gt;JavaScript被设计成一种嵌入式的脚本语言。它不是以单独的应用程序运行，而是作为大型应用程序环境下的脚本运行。典型的例子当然是Web浏览器。
+JavaScript中编写响应多个并发事件的程序的方法非常人性化，而且强大，因为它使用了一个简单的执行模型(有时称为事件队列和事件循环并发)和被称为异步的API.
+奇怪的是，到目前为止，ECMAScript标准从来没有关于并发的说明。我们讨论的都是“约定成俗”的JavaScript特性，并不是官方标准。然而，绝大多数JavaScript的环境都使用相同的并发策略，未来标准的版本很有可能会基于广泛实现的执行模型来标准化。不管标准如何定义，使用事件和异步API是JavaScript编程的基础部分。&lt;/p&gt;
+
+&lt;h2 id=&quot;不要阻塞io事件队列&quot;&gt;不要阻塞I/O事件队列&lt;/h2&gt;
+
+&lt;p&gt;JavaScript程序是建立在事件之上的。输入可能来自各种各样的外部源，用户的交互操作，输入的网络数据或定时警报，我们通常会写这样的代码来等待某个特定的输入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var text = downloadSync(&quot;http://example.com/file.txt&quot;);
+
+console.log(text);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样的函数通常被称为同步函数或阻塞函数， 程序会停止工作，等待它的输入。这个例子是等的网络下载文件的结果。&lt;/p&gt;
+
+&lt;p&gt;在JavaScript中，大多数的I/O操作都提供了异步的或非阻塞的API, 程序提供一个回到函数，一旦输入完成就可以被系统调用， 而不是将程序阻塞在等待结果的线程上。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dowanloadAsync(&quot;http://example.com/file.txt&quot;, function(text) {
+	console.log(text);
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;JavaScript并发的一个重要规则是绝不要在应用程序事件队列中使用阻塞I/O的API。对于Web应用程序的交互性，同步的I/O会导致灾难性的结果，在操作完成之前一直会阻塞用户于页面的交互。&lt;/p&gt;
+
+&lt;p&gt;Web平台提供了Workder的API，使得产生大量的并行计算称为可能。不同于传统的线程执行Workders在一个完全隔离的状态下进行，没有获取全局作用域或应用程序主线程Web页面内容的能力。因此它不回妨碍主事件队列中运行的代码的执行。在一个Worker中使用XMLHttpRequest同步的变种很少出问题。下载操作的确会阻塞Worker继续运行，但这并不会组织要么的渲染或事件队列中的事件响应。&lt;/p&gt;
+
+&lt;h2 id=&quot;在异步序列中使用嵌套或命名的回调函数&quot;&gt;在异步序列中使用嵌套或命名的回调函数&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;db.lookupAsync(&quot;url&quot;, function(url) {
+	//	
+});
+
+downloadAsync(url, function(text) {
+	console.log(&quot;contents of &quot; + url + &quot; : &quot; + text);
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;两个异步函数第二个的url读取不到，我们可以使用嵌套&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.lookupAsync(&quot;url&quot;, function(url) {
+	downloadAsync(url, function(text) {
+		console.log(&quot;contents of &quot; + url + &quot; : &quot; + text);
+	});
+});
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是回调函数越来越多会变得很笨拙。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.lookupAsync(&quot;url&quot;, function(url) {
+	downloadAsync(url, function(text) {
+		downloadAsync(&quot;a.txt&quot;, function(a) {
+			downloadAsync(&quot;b.txt&quot;, function(b) {
+				// ...
+			})	
+		})
+	});
+});
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;减少嵌套的方法之一就是将嵌套的回调函数作为命名的函数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.lookupAsync(&quot;url&quot;, downloadURL);
+
+
+// 仍然有嵌套
+function downloadURL(url) {
+	downloadAsync(url, function(text) {
+		showContents(url, text);
+	});
+}
+
+function showContents(url, text) {
+	console.log(&quot;contents of &quot; + url + &quot; : &quot; + text);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面的例子中仍然有嵌套，我们可以使用bind方法消除最深层的嵌套回调函数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;db.lookupAsync(&quot;url&quot;, downloadURL);
+
+
+// 仍然有嵌套
+function downloadURL(url) {
+	downloadAsync(url, showContents.bind(null, url));
+}
+
+function showContents(url, text) {
+	console.log(&quot;contents of &quot; + url + &quot; : &quot; + text);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是如果层级过多仍然会有问题， 比如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db.lookupAsync(&quot;url&quot;, downloadURL);
+
+
+function downloadURL(url) {
+	downloadAsync(url, downloadABC.bind(null, url));
+}
+
+function downloadABC(url, file) {
+	downloasAsync(&quot;a.txt&quot;, downloadFileBC.bind(null, url, file))
+}
+
+function downloadBC(url, file, a) {
+	downloasAsync(&quot;b.txt&quot;, downloadFileFinish.bind(null, url, file, a))
+}
+
+function downloadFileFinish(url, file, a, b) {
+	// ...
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;比如尴尬的函数命名，和参数传递。最好的方式还是将两种方式结合。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+db.lookupAsync(&quot;url&quot;, function(url) {
+	downloadURLAndFiles(url);
+});
+
+
+function downloadURLAndFiles(url) {
+	downloadAsync(url, downloadFiles.bind(null, url));
+}
+
+function downloadFiles(url, file) {
+	downloadAsync(&quot;a.txt&quot;, function(a) {
+		downloadAsync(&quot;b.txt&quot;, function(b) {
+			// ...
+		})	
+	})
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;更好的方法是抽象出一个可以下载多个文件的方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function downloadFiles(url, file) {
+	downloadAllAsync([&quot;a.txt&quot;, &quot;b.txt&quot;, &quot;c.txt&quot;], function(all) {
+		var a = all[0], b = all[1], c = all[2];
+	})
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;当心丢弃错误&quot;&gt;当心丢弃错误&lt;/h2&gt;
+
+&lt;p&gt;同步代码我们可以通过&lt;code&gt;try...catch&lt;/code&gt;来捕获所有错误，比如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;try {
+	f();
+	g();
+	h();
+} catch(e) {
+	// handle any error that occured
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是异步代码根本不可能抛出异常， 通常异步API会有一个额外的回调函数来处理网络错误。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+downloadAsync(&quot;url&quot;, function(text) {
+		
+}, function(err) {
+	console.log(&quot;Error &quot; + err)	;
+});
+
+多个回调时可以提取公共部分
+
+function onErr(err) {
+	console.log(&quot;Error &quot; + err)	;
+}
+
+downloadAsync(&quot;url&quot;, function(text) {
+		
+}, onErr);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Node.js 异步处理API的错误处理，我们通过if判断来控制每个回调函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function onErr(err) {
+	console.log(&quot;Error &quot; + err)	;
+}
+
+downloadAsync(&quot;url&quot;, function(error, text) {
+	if(error) {
+		onError(error);
+		return false;
+	}
+
+	//success
+});
+
+
+更简洁写法
+
+downloadAsync(&quot;url&quot;, function(error, text) {
+	if(error) return onError(error);
+
+	//success
+});
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;对异步循环使用递归&quot;&gt;对异步循环使用递归&lt;/h2&gt;
+
+&lt;p&gt;如果一个函数接受一个URL的数组并尝试下载买每个文件，如果API是同步的很容易实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function downloadOneSync(urls) {
+	for(var i = 0, n = urls.length; i &amp;lt; n; i++) {
+		try {
+			return downloadSync(urls[i]);
+		} catch(e) {
+
+		}
+	}
+
+	throw new Error(&quot;all downloads failed&quot;);
+}
+如果调用downloadAsync的话会所有文件一起下载没有顺序，所以我们需要这样做在每个回调结束调用自身
+
+function downloadOneAsync(urls, onsuccess, onfailur) {
+	var n = urls.length;
+
+	function tryNextURL(i) {
+		if(i &amp;gt;= n) {
+			onfailur(&quot;all downloads failed&quot;);
+			return;
+		}
+
+		downloadAsync(urls[i], onsuccess, function() {
+			tryNextURL(i + 1);
+		})
+	}
+
+	tryNextURL(0)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;局部函数tryNextURL是一个递归函数。它的实现调用了自身。 目前典型的JavaScript环境中一个递归函数调用自身多次会导致失败。
+因为当一个程序执行有太多的函数调用，它会耗尽栈空间，最终抛出异常。这种情况被称为栈溢出。&lt;/p&gt;
+
+&lt;p&gt;该例子调用100000次会产生一个运行时错误。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function countdown(n) {
+	if(n === 0) {
+		return &quot;done&quot;;
+	} else {
+		return countdown(n -1);
+	}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;异步操作不需要等待递归回调返回后才返回，调用栈不回有十万个函数在等待。每次有进有出只调用一个。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;循环不能是异步的&lt;/li&gt;
+  &lt;li&gt;使用递归函数在事件循环的单独轮次中执行迭代&lt;/li&gt;
+  &lt;li&gt;在事件循环的单独轮次中执行递归，并不会导致栈溢出&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;不要在计算时阻塞事件队列&quot;&gt;不要在计算时阻塞事件队列&lt;/h2&gt;
+
+&lt;p&gt;如果你的程序需要执行代价高昂的计算你该怎么办，最简单的方法就是使用想Web客户端平台的Worker API这样的并发机制。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+var ai = new Worker('ai.js');
+
+var userMove = /* *** */;
+
+ai.postMessage(JSON.stringify({
+	userMOve: userMove
+}));
+
+
+ai.onmessage = function(event) {
+	executeMove(JSON.parse(event.data).computerMove);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样会产生一个新的线程独立的事件队列的并发执行线程。该worker是一个完全隔离的状态–没有任何应用程序对象的直接访问。但是，应用程序于worker之间可以功过发送形式为字符串的message来交互。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;避免在主事件队列中执行代价高昂的计算&lt;/li&gt;
+  &lt;li&gt;在支持Worker APId的平台，该API可以用来在一个独立的事件队列中运行长计算程序。&lt;/li&gt;
+  &lt;li&gt;在Worker API不可用活代价高昂的环境中，考虑将计算程序分解到事件循环的多个轮次中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;使用计数器来执行并行操作&quot;&gt;使用计数器来执行并行操作&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;function downloadAllAsync(urls, onsuccess, onerror) {
+
+	var result = [], length = urls.length;
+
+	if(length === 0) {
+		setTimeout(onsuccess.bind(null, result), 0);
+		return;
+	}
+
+	urls.forEach(function(url) {
+		downloadAsync(url, function(rext) {
+			if(result) {
+				result.push(text);
+				if(result.length === urls.length) {
+					onsuccess(result);
+				}
+			}
+		}, function(error) {
+			if(result) {
+				result = null;
+				onerror(error);
+			}
+		});
+	})
+}
+
+这段代码有个错误
+
+var filenames = [
+	&quot;huge.txt&quot;,
+	&quot;tiny.txt&quot;,
+	&quot;medium.txt&quot;,
+];
+
+downloadAllAsync(filenames, function(files) {
+	console.log(&quot;Huge file: &quot; + files[0].length); // tiny
+	console.log(&quot;Tiny file: &quot; + files[0].length); // medium
+	console.log(&quot;Medium file: &quot; + files[0].length); // huge
+}, function(error) {
+	console.log(&quot;Error : &quot; + error);
+});
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这里下载文件的顺序并不可控，因为文件是并行下载的。 调用者无法找出那个结果对应哪个文件， 上面的例子假设结果合输入有相同的顺序其实是错误的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function downloadAllAsync(urls, onsuccess, onerror) {
+
+	var result = [], length = urls.length;
+
+	if(length === 0) {
+		setTimeout(onsuccess.bind(null, result), 0);
+		return;
+	}
+
+	urls.forEach(function(url, i) {
+		downloadAsync(url, function(text) {
+			if(result) {
+				
+				result[i] = text;
+				if(result.length === urls.length) {
+					onsuccess(result);
+				}
+			}
+		}, function(error) {
+			if(result) {
+				result = null;
+				onerror(error);
+			}
+		});
+	})
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个版本也有问题如果先下载完成的是第三个文件则 result[2] = text; 那么result的长度也是3， 则直接在if条件中返回，用户的success回调函数将被过早调用，其参数为一个不完整的结果数组。&lt;/p&gt;
+
+&lt;p&gt;所以正确的方式应该是这样&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function downloadAllAsync(urls, onsuccess, onerror) {
+
+	var result = [], pending = urls.length;
+
+	if(pending === 0) {
+		setTimeout(onsuccess.bind(null, result), 0);
+		return;
+	}
+
+	urls.forEach(function(url, i) {
+		downloadAsync(url, function(text) {
+			if(result) {
+			
+				result[i] = text;
+				pending--;
+				if(pending === 0) {
+					onsuccess(result);
+				}
+			}
+		}, function(error) {
+			if(result) {
+				result = null;
+				onerror(error);
+			}
+		});
+	})
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;绝不要同步的调用异步的回调函数&quot;&gt;绝不要同步的调用异步的回调函数&lt;/h2&gt;
+
+&lt;p&gt;加入下载文件的例子有一个缓存&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var cache = new Dict();
+
+function downloadCachingAsync(url, onsuccess, onerrur) {
+	if(cache.has(url)) {
+		onsuccess(cache.get(url));  // 同步调用
+	}
+
+	return downloadAsync(url, function(file) {
+		cache.set(url, file);
+		onsuccess(file);
+	}, onerror);
+}
+
+通常情况如果可以回立即提供数据，但这改变了用户预期
+
+downloadAsync(&quot;file.txt&quot;, function(file) {
+	console.log(&quot;finished&quot;);
+});
+
+console.log(&quot;starting&quot;);
+
+这里按照我们预想 可能先返回 &quot;starting&quot; 然后 &quot;finished&quot;, 但是由于同步调用了函数，
+这里如果文件有缓存的话 先返回了&quot;finished&quot; 然后才是 &quot;starting&quot;; 这与我们的预想不符。
+所以我们应该这样来使用
+
+if(cache.has(url)) {
+	var cached = cache.get(url);
+	setTimeout(onsuccess.bind(null, cached), 0);
+	return;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;使用promise模式清洁异步逻辑&quot;&gt;使用promise模式清洁异步逻辑&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;
+downloadAsync(&quot;file.txt&quot;, function(file) {
+	console.log(&quot;file : &quot; + file);
+});
+
+
+相比之下，基于promise的API不接受回调函数作为参数
+
+var p = downloadP(&quot;file.txt&quot;);
+
+p.then(function(file) {
+	console.log(&quot;file: &quot; + file);
+});
+
+promise的返回值是一个新的promise
+
+var fileP = downloadP(&quot;file.txt&quot;);
+
+var lengthP = fileP.then(function(file) {
+	return file.length;
+});
+
+lengthP.then(function(length) {
+	console.log(&quot;length: &quot; + length);
+});
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;promise通常提供给一个叫做when的工具函数，或者join&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var filesP = join(downloadP(&quot;file1.txt&quot;),
+				downloadP(&quot;file2.txt&quot;),
+				downloadP(&quot;file3.txt&quot;));
+
+filesP.then(function(files) {
+	// files[0]
+});
+
+
+var fileP1 = downloadP(&quot;file1.txt&quot;);
+var fileP2 = downloadP(&quot;file2.txt&quot;);
+var fileP3 = downloadP(&quot;file3.txt&quot;);
+
+when([fileP1, fileP2, fileP3], function(files) {
+	console.log(&quot;file1: &quot; + files[0]);
+
+})
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用select或choose工具函数可以使几个promise彼此竞争。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var filesP = select(downloadP(&quot;file1.txt&quot;),
+				downloadP(&quot;file2.txt&quot;),
+				downloadP(&quot;file3.txt&quot;));
+
+filesP.then(function(file) {
+	//file
+	// 返回值最先完成下载的文件的promise
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;select函数的另一个用途是提供超时来终止长时间的操作&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var fileP = select(downloadP(&quot;file.txt&quot;), timeoutErrorP(2000));
+
+filep.then(function(file) {
+	console.log(&quot;file: &quot; + file);
+}, function(error) {
+	console.log(&quot;I/O error or timeout: &quot; + error);
+})
+
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">并发</summary></entry><entry><title type="html">Effective JavaScript (九)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/" rel="alternate" type="text/html" title="Effective JavaScript (九)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/">&lt;h2 id=&quot;保持一致的约定&quot;&gt;保持一致的约定&lt;/h2&gt;
+
+&lt;h2 id=&quot;将undefined当作没有值&quot;&gt;将undefined当作没有值&lt;/h2&gt;
+&lt;p&gt;undefined很特殊，每当JavaScritp无法提供具体的值时，就产生undefined。为赋值的初始值即为undefiend&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var x;
+x // undefined;
+
+var obj = {};
+obj.x; //undefined
+
+
+function f() {
+	return ;
+}
+
+function g() {}
+
+
+f();  //undefined
+f();  //undefined
+
+function f(x) {
+	return x;
+}
+f(); // undefined
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;例如一个Web服务器可以接受一个可选的饿主机名称&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var s1 = new Server(80, &quot;example.com&quot;);
+
+var s2 = new Server(80); //defaults to &quot;localhost&quot;
+
+我们可以通过判断arguments.length来实现Server构造函数
+
+function Server(port, hostname) {
+	if(arguments.length &amp;lt; 2) {
+		hostname = &quot;localhost&quot;;
+	}
+
+	hostname = String(hostname);
+}
+
+这种情况如果第二个值是undefined的话可能会使用undefined，这并不是我们想要的所以我们最好判断undefined
+
+function Server(port, hostname) {
+	if(hostname === undefined) {
+		hostname = &quot;localhost&quot;;
+	}
+
+	host = String(hostname);
+}
+
+
+另一种合理的方式是测试hostname是否为真
+
+function Server(port, hostname) {
+	hostname = String(hostname || &quot;localhost&quot;);
+	// ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但是最后一种的真值检测并不总是安全的，如果一个函数允许接受0(或NaN，虽然不常见)为可接受的参数,则不应该使用真值测试&lt;/p&gt;
+
+&lt;p&gt;比如&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+
+function Element(width, height) {
+	this.width = width || 320;
+	this.height = height || 240;
+	// ...
+}
+var c1 = new Element(0, 0); 
+c1.width; // 320
+c1.height; // 240
+
+
+这种情况我们需要更详细的测试来测试undefined
+function Element(width, height) {
+	this.width = width === undefined ? 320 : width;
+	this.height = height === undefined ? 240 : height;
+
+	// ...
+}
+
+var c1 = new Element(0, 0);
+c1.width; // 0
+c1.height; // 0
+
+var c2 = new Element();
+c2.width; // 320
+c2.height; // 240
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;接受关键字参数的选项对象&quot;&gt;接受关键字参数的选项对象&lt;/h2&gt;
+&lt;p&gt;保持参数顺序的一致约定对于帮助程序员记住每个参数在函数调用中的意义是很重要的，参数较少时它是适用的。但是参数过多后根本不可扩展&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var alert = new Alert(100, 75, 300, 200,
+		&quot;Error&quot;, message,
+		&quot;blue&quot;, &quot;white&quot;, &quot;black&quot;,
+		&quot;error&quot;, true
+	);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一个函数起初很简单，但是过一段时间，随着库功能的扩展，该函数的签名便会获得越来越多的参数。&lt;/p&gt;
+
+&lt;p&gt;幸运的是，JavaScrtip提供了一个简单、轻量的惯用法： 选项对象(options object).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var alert = new Alert({
+	x: 100, y: 75,
+	width: 300, height: 200,
+	title: &quot;Error&quot;, message: message,
+	titleColor: &quot;blue&quot;, bgColor: &quot;white&quot;, textColor: &quot;black&quot;,
+	icon: &quot;error&quot;, modal: true	
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个虽然烦琐，但明显更易于阅读，每个参数都是自我描述(self-documenting)的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function Alert(parent, message, opts) {
+	opts = opts || {};
+
+	this.width = opts.width === undefined ? 320 : opts.width;
+	this.height = opts.width === undefined ? 240 : opts.height;
+	this.title = otps.title || &quot;Alert&quot;;
+
+}
+
+基于 extend 的另一种实现
+
+function extend(target, source) {
+	if(source) {
+		for(var key in source) {
+			var val = source[key];
+
+			if(typeof val !== &quot;undefined&quot;) {
+				target[key] = val;
+			}
+		}
+	}
+
+	return target;
+}
+
+
+
+function Alert(parent, message, opts) {
+	opts = extend({
+		width: 320,
+		height: 240
+	});
+
+	opts = extend({
+		title: &quot;Alert&quot;	
+	}, opts);
+
+	this.width = opts.width;
+	this.height = opts.height;
+	this.title = opts.title;
+
+}
+
+
+进一步简化
+
+
+unction Alert(parent, message, opts) {
+	opts = extend({
+		width: 320,
+		height: 240
+	});
+
+	opts = extend({
+		title: &quot;Alert&quot;	
+	}, opts);
+
+	extend(this, opts);
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;区分数组对象和类数组对象&quot;&gt;区分数组对象和类数组对象&lt;/h2&gt;
+
+&lt;p&gt;使用instanceof的不完美选择&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;StringSet.prototype.add = function(x) {
+	if(typeof x === 'String') {
+		// xxx
+	} else if(x instanceof Array) { //有局限性
+		// xxx
+	} else {
+		// xxx
+	}
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;instanceof 操作符测试一个对象是否继承自Array.prototype。 在一些允许多个全局对象的环境中可能会有标准的Array构造函数和原型对象的多份副本。在浏览器中有这种情况，每个frame会有标准库的一份单独副本，当跨frame通信时，一个frame中的数组不会继承自另一个frame的Array.prototype.出于这个原因，ES5中引入了&lt;code&gt;Array.isArray&lt;/code&gt;函数， 其用于测试一个值是否是数组，而不管原型继承。ESMAScript标准中， 该函数测试对象内部[[Class]]属性值是否是Array。它比&lt;code&gt;instanceof&lt;/code&gt;更加可靠。
+所以有这个更健壮的实现。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;StringSet.prototype.add = function(x) {
+	if(typeof x  === 'String') {
+
+	} else if(Array.isArray(x)) {
+
+	} else {
+
+	}
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于不支持ES5的环境中我们可以自己实现一个测试方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var toString = Object.prototype.toString;
+
+function isArray(x) {
+	return toString(x) === '[object Array]';
+}
+
+
+// 转为真实数组
+你不能传入arguments对象并期待它被视为数组，
+最好还是自己转化一下
+[].slice.call(arguments);
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Object.prototype.toString&lt;/code&gt;函数使用对象内部&lt;code&gt;[[Class]]&lt;/code&gt;属性创建结果字符串，所以比&lt;code&gt;instance of&lt;/code&gt;操作符更可靠。&lt;/p&gt;
+
+&lt;h2 id=&quot;避免过度的强制转换&quot;&gt;避免过度的强制转换&lt;/h2&gt;
+
+&lt;p&gt;我们创建一个BitVector的构造函数guard, 这里有一个思路可以用来做检测用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function BitVector(x) {
+	// 链式调用
+	uint32.or(arrayLike).guard(x);
+}
+
+
+var guard = {
+	guard: function(x) {
+		if(!this.test(x)) {
+			throw new TypeError(&quot;expected &quot; + this);
+		}
+	}
+}
+
+var uint32 = Object.create(guard);
+
+uint32.toString = function() {
+	return &quot;uint32&quot;;
+}
+
+
+var arrayLike = Object.create(guard);
+
+arrayLike.test = function(x) {
+	return typeof x === &quot;object&quot; &amp;amp;&amp;amp; x &amp;amp;&amp;amp; uint32.test(x.length);
+}
+
+arrayLike.toString = function() {
+	return &quot;array-like object&quot;;
+}
+
+
+guard.or = function(other) {
+	var result = Object.create(guard);
+
+	var self = this;
+	result.test = function(x) {
+		return self.test(x) || other.text(x);
+	};
+
+	var description = this + &quot; or &quot; + other;
+
+	result.toString = function() {
+		return description;
+	};
+
+	return result;
+
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;支持方法链&quot;&gt;支持方法链&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;function escapeBasicHTML(str) {
+	return str.replace(/&amp;amp;/g, &quot;&amp;amp;amp;&quot;)
+			  .replace(/&amp;lt;/g, &quot;&amp;amp;lt;&quot;)
+			  .replace(/&amp;gt;/g, &quot;&amp;amp;gt;&quot;)
+			  .replace(/&quot;/g, &quot;&amp;amp;quot;&quot;)
+			  .replace(/'/g, &quot;&amp;amp;apos;&quot;);
+}
+
+这种比下面的方法更加简洁
+
+function escapeBasicHTML(str) {
+	var str2 = str.replace(/&amp;amp;/g, &quot;&amp;amp;amp;&quot;);
+	var str3 = str2.replace(/&amp;lt;/g, &quot;&amp;amp;lt;&quot;);
+	var str4 = str3.replace(/&amp;gt;/g, &quot;&amp;amp;gt;&quot;);
+	var str5 = str4.replace(/&quot;/g, &quot;&amp;amp;quot;&quot;);
+	var str6 = str5..replace(/'/g, &quot;&amp;amp;apos;&quot;);
+
+	return str6;
+}
+
+
+var users = records.map(function(record) {
+		return record.username;
+	})
+	.filter(function(username) {
+		return !!username;
+	})
+	.map(function(username) {
+		return username.toLowerCase();
+	});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用方法链来连接无状态的操作&lt;/li&gt;
+  &lt;li&gt;通过无状态的方法中返回新对象来支持方法链&lt;/li&gt;
+  &lt;li&gt;通过在有状态的方法中返回this来支持方法链&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">保持一致的约定</summary></entry><entry><title type="html">Effective JavaScript (八)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" rel="alternate" type="text/html" title="Effective JavaScript (八)" /><published>2018-09-25T00:00:00+08:00</published><updated>2018-09-25T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">&lt;h2 id=&quot;使用object的直接实例构造轻量级的字典&quot;&gt;使用Object的直接实例构造轻量级的字典&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;var dict = { alice: 34, bob: 24, chris: 62 };
 
@@ -2062,244 +2905,40 @@ var mean = total / socres.length;
 mean; // ?   
 
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="JAVASCRIPT" /><summary type="html">使用立即调用函数IIFE创建局部作用域 ```javascript</summary></entry><entry><title type="html">HTML面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" rel="alternate" type="text/html" title="HTML面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="HTML" /><summary type="html">HTML</summary></entry><entry><title type="html">CSS面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/" rel="alternate" type="text/html" title="CSS面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/">&lt;h2 id=&quot;css&quot;&gt;CSS&lt;/h2&gt;
-
-&lt;p&gt;说出下面s1,s2, s5,s6的答案&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&quot;p1&quot;&amp;gt;
-    &amp;lt;div class=&quot;s1&quot;&amp;gt;1&amp;lt;/div&amp;gt;
-    &amp;lt;div class=&quot;s2&quot;&amp;gt;1&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;div class=&quot;p2&quot;&amp;gt;
-    &amp;lt;div class=&quot;s5&quot;&amp;gt;1&amp;lt;/div&amp;gt;
-    &amp;lt;div class=&quot;s6&quot;&amp;gt;1&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-
-.p1 {font-size: 16px; line-height: 32px;}
-.s1 {font-size: 2em;}
-.s2 {font-size: 2em; line-height: 2em;}
-
-.p2 {font-size: 16px; line-height: 2;}
-.s5 {font-size: 2em;}
-.s6 {font-size: 2em; line-height: 2em;}
-
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;先来看第一组的答案&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    p1：font-size: 16px; line-height: 32px
-    s1：font-size: 32px; line-height: 32px
-    s2：font-size: 32px; line-height: 64px
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;和你的答案一样吗？下面来解释下:&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;p1 无需解释
-s1 em作为字体单位，相对于父元素字体大小；line-height继承父元素计算值
-s2 em作为行高单位时，相对于自身字体大小
-再来看看第二组的答案&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&quot;javascript位操作符的诀窍&quot;&gt;JavaScript位操作符的诀窍&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;无符号右移自动转换成数字
+&quot;&quot; &amp;gt;&amp;gt;&amp;gt; 0.  // 0
+&quot;sdsd&quot; &amp;gt;&amp;gt;&amp;gt; 0   // 0
 
-&lt;pre&gt;&lt;code&gt;p2：font-size: 16px; line-height: 32px
-s5：font-size: 32px; line-height: 64px
-s6：font-size: 32px; line-height: 64px
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;意不意外？惊不惊喜？下面来解释下&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;p2 line-height: 2自身字体大小的两倍
-s5 数字无单位行高，继承原始值，s5的line-height继承的2，自身字体大小的两倍
-s6 无需解释&lt;/p&gt;
-&lt;/blockquote&gt;
+NaN &amp;gt;&amp;gt;&amp;gt; 0 // 0
 
-&lt;h3 id=&quot;清除浮动&quot;&gt;清除浮动&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;.clearfix:after{
-  clear: both;
-  content: &quot;.&quot;;
-  display: block;
-  height: 0;
-  visibility: hidden;
-  font-size: 0;
-}
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="CSS" /><summary type="html">CSS</summary></entry><entry><title type="html">Effective JavaScript (四)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" rel="alternate" type="text/html" title="Effective JavaScript (四)" /><published>2018-06-27T00:00:00+08:00</published><updated>2018-06-27T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">&lt;h2 id=&quot;了解分号插入的局限性&quot;&gt;了解分号插入的局限性&lt;/h2&gt;
+undefined &amp;gt;&amp;gt;&amp;gt; 0  // 0
+ 
+null &amp;gt;&amp;gt;&amp;gt; 0 // 0
 
-&lt;p&gt;JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  function Point(x, y) {
-    this.x = x || 0
-    this.y = y || 0
-  }
+[] &amp;gt;&amp;gt;&amp;gt; 0  // 0
 
-  Point.prototype.isOrigin = function() {
-    return this.x === 0 &amp;amp;&amp;amp; this.y === 0
-  }
+&quot;70&quot; &amp;gt;&amp;gt;&amp;gt; 0 // 70
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这段没有分号的代码能够工作依赖于JavaScript的&lt;code&gt;自动分号插入技术(automatic semicolon insertion)&lt;/code&gt;, 它是一种程序解析技术。它能够推断出上下文省略的分号，然后有效的将分号自动插入到程序中。&lt;/p&gt;
+{} &amp;gt;&amp;gt;&amp;gt; 0. // Uncaught SyntaxError: Unexpected token &amp;gt;&amp;gt;&amp;gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;像隐式的强制转换一样，分号插入也有其陷阱，你根本不能避免学习其规则， 即使你从来不省略分号，受分号插入的影响，JavaScript语法也有一些额外的限制。一旦学会分号插入机制，你会从删除不必要的分号的痛苦中解脱出来&lt;/p&gt;
-&lt;/blockquote&gt;
+～操作自动转换数字
+负数转正数减一， 整数转负数减一， 其他-1
 
-&lt;h2 id=&quot;规则一&quot;&gt;规则一&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;分号仅在 } 标记之前、一个或多个换行之后和程序输入的结尾被插入。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-  //合法省略分号
-  function square(x) {
-    var n = +x
-    return n * n
-  }
-
-  function area(r) { r = +r; return Math.PI * r * r }
-
-  function add1(x) { return x + 1 }
-
-  // 不合法
-  function area(r) { r = +r return Math.PI * r * r }
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;规则二&quot;&gt;规则二&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;分号进在随后的输入标记不能被解析时插入 , 换句话说分号插入是一种错误矫正机制。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-  a = b
-  (f()); // 这个例子会被解析为 a = b(f()); 所以不会插入分号，因为能够正确解析
-
-  a = b
-  f();   // 这个例子会被解析为 a = b f(); 解析有误，所以会插入分号
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;有5个明确有问题的字符需要密切注意&quot;&gt;有5个明确有问题的字符需要密切注意&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;(、[、+、-和/&lt;/strong&gt;， 每一个字符都能作为一个表达式运算符或一条语句的前缀， 这依赖于具体上下文。，如果下一行以这五个有问题的字符串之一来时，则不会自动插入分号。向上面的例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a = b
-  [&quot;r&quot;, &quot;g&quot;, &quot;b&quot;].forEach(function(key) {
-    background[key] = foreground[key] / 2;
-  });
-  // 这看起来像两条语句但是使用了&amp;lt;code&amp;gt;[&amp;lt;/code&amp;gt;，所以被解析为一条语句
-  // 这里例子看起来有点奇怪，但是，JavaScript允许逗号分隔表达式。
-  // 逗号分隔表达式从左至右依次执行，并返回最后一个表达式的值。
-  a = b[&quot;r&quot;, &quot;g&quot;, &quot;b&quot;].forEach(function(key) {
-    background[key] = foreground[key] / 2;
-  });
-
-  // /通常作为正则表达式的开始
-  /Error/i.test(str) &amp;amp;&amp;amp; fail();
-
-  //这种情况会被解析到一行不会插入分号
-  a = b
-  /Error/i.test(str) &amp;amp;&amp;amp; fail();
-
-  a = b/Error/i.test(str) &amp;amp;&amp;amp; fail();  //  / 解析为除法运算符
+~&quot;sdsd&quot; // -1
+~&quot;0&quot;    //-1
+~0     //-1
+~NaN    //-1
+~null    //-1
+~undefined    //-1
+~[]    //-1
+~{}    //-1
+~&quot;sdsd&quot;    //-1
+~&quot;45sdsd&quot;    //-1
+~&quot;-1&quot; // 0
+~&quot;1&quot; // -2
 
 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;又一个例子,这是一个完全正确的例子，因为会自动插入分号&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a = b
-  var x
-  (f())
-
-  // 但是如果重构时被意外的修改过如下，第二个分号不会插入, 会被错误的解析为 a = b(f())
-  var x
-  a = b
-  (f())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;一个不幸的结果就是，你总是需要注意省略的分号， 并且检查接下来的一行开始的标记是否会禁用自动插入分号。所以你可以采用在&lt;strong&gt;(、[、+、-和/&lt;/strong&gt;，字符的开始前置一个额外的分号语句&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a = b
-  var x
-  ;(f())
-
-
-  var x
-  a = b
-  ;(f())
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;还有一个常用的情况就是脚本连接的情况&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  // file1.js
-  (function() {
-
-  })()
-
-  // file2.js
-  (function() {
-
-  })()
-
-  // 当文件连接到一起时
-  (function() {
-
-  })()
-  (function() {
-
-  })()
-
-  // 被视为一条单一的语句，等价于：
-
-  (function() {
-
-  })()(function() {
-
-  })();
-
-  // 所以如果文件最开始的语句以这5个字符开始，你应该防御性的给每个前缀一个额外的分号
-
-  // file1.js
-  ;(function() {
-
-  })()
-
-  // file2.js
-  ;(function() {
-
-  })()
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;最安全的选择就是防御性的增加分号&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;你可能认为 “我从来不省略分号，我会没事的。” 事实并不是这样。也有一些情况，尽管不会出现解析错误，但是也会强制性的插入分号，
-这是所谓的JavaScript的语法限制式（restricted production），它不允许两个字符之间存在换行。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  return {};    // 返回一个对象
-
-  return  // 这段代码被解析为
-  {};
-
-  return;
-  {}
-  ;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;类似的JavaScript的语法限制产生式包括： return, throw, break, continue, 后置自增或自减运算符。
-在&lt;code&gt;return, throw, break, continue, ++, --&lt;/code&gt;,参数之前决不能出现换行&lt;/p&gt;
-
-&lt;p&gt;关于自增和自减运算符 是为了避免以下代码出现的歧义，&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  a
-  ++
-  b
-  // ++既可以作为前置也可以作为后置，但是后置根据语法限制式,不允许a++之间存在换行 所以上面代码解析为
-
-  a; ++b;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;第三条也是最后一条规则&quot;&gt;第三条也是最后一条规则&lt;/h2&gt;
-&lt;p&gt;分号不会作为分隔符在for循环空语句头部被自动插入，换言之，for头部里面的&lt;code&gt;;&lt;/code&gt;不能省略，必须显示的包含分号&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  // 下面代码会解析错误
-  for(var i = 0, total = 1 // parse error
-      i &amp;lt; n
-      i++) {
-    total *= i
-  }
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;同样的 &lt;code&gt;while&lt;/code&gt;，也是需要显示分号的情况&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  function infiniteLoop() { while(true) }  // parse error
-
-  function infiniteLoop() { while(true); }
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">了解分号插入的局限性</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="JAVASCRIPT" /><summary type="html">使用立即调用函数IIFE创建局部作用域 ```javascript</summary></entry><entry><title type="html">HTML面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" rel="alternate" type="text/html" title="HTML面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="HTML" /><summary type="html">HTML</summary></entry></feed>

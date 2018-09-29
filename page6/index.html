@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>搭建jekyll 博客流程记录 - Dark knight's Blog</title>
+    <title>Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/">
+    <link rel="canonical" href="http://darknights.me/page6/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,243 +177,419 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat34.jpg ')
+        background-image: url(' https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat-home.jpg')
     }
 </style>
 
 
 
-
-
-    <header class="intro-header" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                            <a class="tag" href="/tags/#博客搭建" title="博客搭建">博客搭建</a>
-                            
-                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
-                            
-                        </div>
-                        <h1>搭建jekyll 博客流程记录</h1>
-                        
-                        
-                        <h2 class="subheading">如何搭建个人博客以及注意点</h2>
-                        
-                        <span class="meta">Posted by toshiba on September 5, 2017</span>
-                    </div>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading"  >
+                    <h1>Dark Knight</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。</span>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
 
 
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
 
-            <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-1
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Container -->
+        <div class="
+                col-lg-8 col-lg-offset-2
                 col-md-8 col-md-offset-1
                 col-sm-12
                 col-xs-12
-                post-container">
-				<h2 id="第一次搭建博客">第一次搭建博客</h2>
+                 post-container col-lg-offset-1 
+            ">
+            
+<div class="post-preview">
+    <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/">
+        <h2 class="post-title">
+            搭建jekyll 博客流程记录
+        </h2>
+        
+        <h3 class="post-subtitle">
+            如何搭建个人博客以及注意点
+        </h3>
+        
+        <div class="post-content-preview">
+            第一次搭建博客
 
-<p>不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:</p>
-<blockquote>
-  <ul>
-    <li><a href="http://huangxuan.me/">黄玄</a></li>
-    <li><a href="https://mritd.me/">漠然</a></li>
-  </ul>
-</blockquote>
+不知为何最近突然想写个博客网站了，以前的话都是在一些博客园，新浪微博啥的浪一波时间长了也不想写了就慢慢荒废了，之所以想自己搞个一方面是把一些技术点记录一下，同时对自己也是一个督促，再就是我有个写小说的梦想想搞个栏目写写随笔等杂七杂八的东东。经过一番努力该博客终于可以勉强拿出手了。在此要感谢两位大神:
 
-<p>我的博客是基于黄玄的博客主题来更改的虽然遇到一些问题但是经过一番查找还是完美的解决了。
-而漠然这位仁兄是我好兄弟对于我博客的搭建提供了各种技术支持和疑难解答对此再次表示感谢。</p>
+  
+    黄玄
+    漠然
+  
 
-<h2 id="搭建博客的基本流程">搭建博客的基本流程</h2>
 
-<h3 id="安装ruby-rails">安装Ruby, Rails</h3>
-<p>建议在Linux的发行版本(Ubuntu,CentOs, Redhat, ArchLinux…) 或者 Mac Os X安装。</p>
+我的博客是基于黄玄的博客主题...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2017-09-05
+    </p>
+    <!--<p class="post-meta"></p>September 5, 2017-->
+</div>
+<hr>
 
-<ul>
-  <li><a href="https://github.com/ruby-china/homeland/wiki/Mac-OS-X-%E4%B8%8A%E5%AE%89%E8%A3%85-Ruby">Mac OS X上安装ruby</a> 来安装</li>
-  <li>如果需要不同版本的ruby可以<a href="https://ruby-china.org/wiki/install_ruby_guide">安装 RVM</a>来进行ruby版本管理</li>
-</ul>
+<div class="post-preview">
+    <a href="/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/2017/03/16/html-lesson1/">
+        <h2 class="post-title">
+            HTML学习指南（一）
+        </h2>
+        
+        <h3 class="post-subtitle">
+            将html内容进行归拢总结
+        </h3>
+        
+        <div class="post-content-preview">
+            HTML学习指南（一）
 
-<h3 id="安装jekyll">安装jekyll</h3>
-<p>该博客使用了 <a href="https://jekyllrb.com/">Jekyll</a>, 当然好多同学可能会用 <a href="https://hexo.io/themes/">Hexo</a> 这个就是萝卜青菜了。
-如果你选择使用Jekyll请安装下面步骤安装生成:</p>
+文章参考
 
-<pre><code class="language-shell">~ $ gem install jekyll bundler
-~ $ jekyll new my-awesome-site
-~ $ cd my-awesome-site
-~/my-awesome-site $ bundle exec jekyll serve
-# =&gt; Now browse to http://localhost:4000
-
-</code></pre>
-<p>生产的项目结构类似</p>
-<pre><code>.
-├── _config.yml    //项目相关配置文件
-├── _data
-|   └── members.yml   //一些需要的数据
-├── _drafts           //草稿
-|   ├── begin-with-the-crazy-ideas.md
-|   └── on-simplicity-in-technology.md
-├── _includes         //公共的部分
-|   ├── footer.html
-|   └── header.html
-├── _layouts           //布局文件
-|   ├── default.html
-|   └── post.html
-├── _posts             //发布的文章
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
-|   └── 2009-04-26-barcamp-boston-4-roundup.md
-├── _sass              //sass文件路径编译后生产css
-|   ├── _base.scss
-|   └── _layout.scss
-├── _site              //所有文件编译生产静态文件都存放到这里
-├── .jekyll-metadata
-└── index.html # can also be an 'index.md' with valid YAML Frontmatter
-</code></pre>
-<p>具体还有其他目录请参考<a href="https://jekyllrb.com/docs/structure/">jekyll目录结构</a></p>
-
-<h3 id="安装主题">安装主题</h3>
-<p>到这里你应该可以访问一个页面了,但是离我们心中的博客相差甚远。我们需要给项目增加一个 <a href="http://jekyllthemes.org/">Jekyll 主题</a> ,当然如果在套用别人主题的时候有问题可以看一下
-<a href="http://www.jianshu.com/p/4224b8ea0ec0">Liquid语法</a>,和markdown语法,因为我在套用黄玄的博客时就遇到了语法问题,可能是ruby版本更新导致。这些语法问题都可以在文档中找到答案,所以还是要仔细读文档</p>
-
-<p>到此博客已经能够访问并且有了主题,如果添加新的文章只需要按照固定格式套用即可。</p>
-
-<p>参考文章</p>
-
-<blockquote>
-  <ul>
-    <li><a href="https://crispgm.com/page/48-tips-for-jekyll-you-should-know.html">48 个你需要知道的 Jekyll 使用技巧
-</a></li>
-    <li><a href="http://www.zhanxin.info/journal/">掌心</a></li>
-    <li><a href="https://blog.ixxoo.me/">likebeta’s Blog
-</a></li>
-    <li><a href="http://blog.csdn.net/maoxunxing/article/details/40479753">jekyll翻译文章</a></li>
-    <li><a href="http://ibloodline.com/articles/2014/12/15/jekyll-syntax.html">jekyll语法简单笔记</a></li>
-    <li><a href="http://alfred-sun.github.io/blog/2014/12/05/github-pages/">GitHub Pages 静态博客 - 个人建站实录
-</a></li>
-    <li><a href="http://harttle.com/2013/10/18/github-homepage-tutorial.html">部署自己的博客</a></li>
-    <li><a href="https://mritd.me/2017/02/25/jekyll-blog-+-travis-ci-auto-deploy/">杨缘的博客参考</a></li>
-    <li><a href="http://yerl.cn/blog/use-jekyll-build-your-blog">poison</a></li>
-    <li><a href="http://jekyllcn.com/docs/plugins/">jekyll官网中文</a></li>
-    <li><a href="http://www.thomaszhao.cn/2015/01/08/how-do-i-build-this-jekyll-blog/">适合程序员的Blog – 基于github pages + jekyll + markdown打造自己的blog</a></li>
-    <li><a href="http://www.w3cboy.com/post/2016/03/travisci-hexo-deploy/">使用travis-ci自动部署hexo博客</a></li>
-    <li><a href="http://t.hengwei.me/post/%E4%B8%BAjekyll%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95%E4%B8%8Escrollspy%E6%95%88%E6%9E%9C.html">为Jekyll博客添加目录与ScrollSpy效果</a></li>
-  </ul>
-</blockquote>
+  HTML检验
 
 
 
-                <hr>
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2017-03-16
+    </p>
+    <!--<p class="post-meta"></p>March 16, 2017-->
+</div>
+<hr>
 
-                <ul class="pager">
+
+
+
+<ul class="pager">
     
     <li class="previous">
-        <a href="/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/2017/03/16/html-lesson1/" data-toggle="tooltip" data-placement="top" title="HTML学习指南（一）">&larr; Previous Post</a>
+        <a href="/page5">&larr; Newer Posts</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/blog-static-nginx/" data-toggle="tooltip" data-placement="top" title="使用travis-ci集成项目,自动部署博客站点">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
-
-
-
-<!-- disqus 评论框 start -->
-<div class="comment">
-    <div id="disqus_thread"
-         data-thread-key="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site"
-         data-title="搭建jekyll 博客流程记录"
-         data-url="http://darknights.me/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/"></div>
-    <script>
-
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-        /*
-         var disqus_config = function () {
-         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-         };
-         */
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://iori-1.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-<!-- disqus 评论框 end -->
-
-
-
-
-
-
-
-
-
-            </div>
-
-            <!-- Sidebar Container -->
+        </div>
+        <!-- Sidebar Container -->
+        
             
-
-
-
-
-
 <div class="
                 col-lg-3 col-lg-offset-0
                 col-md-3 col-md-offset-0
                 col-sm-12
                 col-xs-12
                 sidebar-container
-                hidden-xs
-                hidden-sm
             ">
     <!-- Search Container -->
     <div class="hidden-xs">
         <div class="input-group">
             <input type="text" name="q" autofocus="" class="form-control" id="autocomplete" placeholder="搜索" autocomplete="off">
-            <span class="input-group-btn">
-                <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
-            </span>
+                        <span class="input-group-btn">
+                            <button class="btn  btn-default" id="search-btn" type="submit">Go</button>
+                        </span>
         </div>
     </div>
 
-    <hr class="hidden-sm hidden-xs">
-    <!--<h5 id="catalog">-->
-        <!--<a class="catalog-toggle" href="#">目录</a>-->
-    <!--</h5>-->
-    <div id="toc"></div>
+    <!-- Featured Tags -->
+    
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5><a href="/tags/">FEATURED TAGS</a></h5>
+        <div class="tags">
+            
+            
+            <a href="/tags/#HTML" title="HTML" rel="2">
+                HTML
+            </a>
+            
+            
+            
+            <a href="/tags/#博客搭建" title="博客搭建" rel="2">
+                博客搭建
+            </a>
+            
+            
+            
+            <a href="/tags/#JavaScript" title="JavaScript" rel="2">
+                JavaScript
+            </a>
+            
+            
+            
+            <a href="/tags/#jekyll" title="jekyll" rel="1">
+                jekyll
+            </a>
+            
+            
+            
+            <a href="/tags/#interview" title="interview" rel="1">
+                interview
+            </a>
+            
+            
+            
+            <a href="/tags/#工具" title="工具" rel="3">
+                工具
+            </a>
+            
+            
+            
+            <a href="/tags/#git" title="git" rel="3">
+                git
+            </a>
+            
+            
+            
+            <a href="/tags/#娱乐" title="娱乐" rel="1">
+                娱乐
+            </a>
+            
+            
+            
+            <a href="/tags/#html" title="html" rel="1">
+                html
+            </a>
+            
+            
+            
+            <a href="/tags/#管理系统主题" title="管理系统主题" rel="1">
+                管理系统主题
+            </a>
+            
+            
+            
+            <a href="/tags/#计算机基础" title="计算机基础" rel="4">
+                计算机基础
+            </a>
+            
+            
+            
+            <a href="/tags/#javascript" title="javascript" rel="20">
+                javascript
+            </a>
+            
+            
+            
+            <a href="/tags/#生产工具" title="生产工具" rel="4">
+                生产工具
+            </a>
+            
+            
+            
+            <a href="/tags/#IDE" title="IDE" rel="4">
+                IDE
+            </a>
+            
+            
+            
+            <a href="/tags/#Lodash" title="Lodash" rel="1">
+                Lodash
+            </a>
+            
+            
+            
+            <a href="/tags/#ES6学习笔记" title="ES6学习笔记" rel="2">
+                ES6学习笔记
+            </a>
+            
+            
+            
+            <a href="/tags/#vps" title="vps" rel="1">
+                vps
+            </a>
+            
+            
+            
+            <a href="/tags/#webpack" title="webpack" rel="1">
+                webpack
+            </a>
+            
+            
+            
+            <a href="/tags/#前端构建工具" title="前端构建工具" rel="1">
+                前端构建工具
+            </a>
+            
+            
+            
+            <a href="/tags/#Node.js" title="Node.js" rel="1">
+                Node.js
+            </a>
+            
+            
+            
+            <a href="/tags/#读书总结" title="读书总结" rel="11">
+                读书总结
+            </a>
+            
+            
+            
+            <a href="/tags/#Android" title="Android" rel="1">
+                Android
+            </a>
+            
+            
+            
+            <a href="/tags/#Flex - Css布局" title="Flex - Css布局" rel="1">
+                Flex - Css布局
+            </a>
+            
+            
+            
+            <a href="/tags/#Nodejs" title="Nodejs" rel="1">
+                Nodejs
+            </a>
+            
+            
+            
+            <a href="/tags/#Vim" title="Vim" rel="1">
+                Vim
+            </a>
+            
+            
+            
+            <a href="/tags/#reactjs" title="reactjs" rel="1">
+                reactjs
+            </a>
+            
+            
+            
+            <a href="/tags/#面试" title="面试" rel="3">
+                面试
+            </a>
+            
+            
+            
+            <a href="/tags/#CSS" title="CSS" rel="1">
+                CSS
+            </a>
+            
+            
+            
+            <a href="/tags/#JAVASCRIPT" title="JAVASCRIPT" rel="1">
+                JAVASCRIPT
+            </a>
+            
+            
+            
+            <a href="/tags/#页面布局" title="页面布局" rel="1">
+                页面布局
+            </a>
+            
+            
+            
+            <a href="/tags/#css" title="css" rel="1">
+                css
+            </a>
+            
+            
+        </div>
+    </section>
+    
 
-
-    <!--<ul class="catalog-body">-->
-        <!--<li class="h2_nav"><a href="#多页应用vuepwa" rel="nofollow">多页应用、Vue、PWA？</a></li>-->
-        <!--<li class="h2_nav"><a href="#实现-prpl-模式" rel="nofollow">实现 “PRPL” 模式</a></li>-->
-        <!--<li class="h3_nav active"><a href="#1-pushpreload推送预加载初始-url-路由所需的关键资源" rel="nofollow">1. PUSH/PRELOAD，推送/预加载初始 URL 路由所需的关键资源。</a></li>-->
-    <!--</ul>-->
-
-
-
-
-
+    <!-- Short About -->
+    <section class="visible-md visible-lg">
+        <hr><h5><a href="/about/">ABOUT ME</a></h5>
+        <div class="short-about">
+            
+            <img class="avatar" src="https://darknights.b0.upaiyun.com/assets/images/avatar.jpg" />
+            
+            
+            <p>人是不能闲的，一闲就会想得太多，一闲就会感情泛滥 ，所谓矫情屁事多，空虚寂寞冷，都是因为懒散堕落闲。</p>
+            
+            <!-- SNS Link -->
+            <ul class="list-inline">
+                
+                
+                
+                <li>
+                    <a target="_blank" href="https://www.zhihu.com/people/sun-dong-zhi/activities">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                    </span>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a target="_blank" href="https://weibo.com/2407846257/profile?rightmod=1&wvr=6&mod=personinfo">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100004675021382">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a target="_blank" href="https://github.com/IORI20091101">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </section>
+    <!-- Friends Blog -->
+    
+    <hr>
+    <h5>FRIENDS</h5>
+    <ul class="list-inline">
+        
+        <li><a href=""></a></li>
+        
+        <li><a href="http://www.ruanyifeng.com/blog/">阮一峰的网络日志</a></li>
+        
+        <li><a href="http://www.zhangxinxu.com/wordpress/">张鑫旭</a></li>
+        
+        <li><a href="http://www.cnblogs.com/TomXu/tag/JavaScript/">汤姆大叔的博客</a></li>
+        
+        <li><a href="http://macshuo.com/">MacTalk By 池建强</a></li>
+        
+        <li><a href="http://www.barretlee.com/">小胡子哥</a></li>
+        
+        <li><a href="https://lifesinger.wordpress.com/">岁月如歌玉伯</a></li>
+        
+        <li><a href="https://mritd.me">漠然</a></li>
+        
+        <li><a href="http://xtoshiba.me">Hux Blog</a></li>
+        
+        <li><a href="http://blog.codingplayboy.com/">熊建刚</a></li>
+        
+        <li><a href="https://teddysun.com/">秋水逸冰</a></li>
+        
+    </ul>
+    
 </div>
 
 
@@ -422,186 +598,10 @@
 
 
 
-            <!-- 详情底部的友情链接和标签云这里不单独抽离 -->
-            <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                        
-                            <a href="/tags/#HTML" title="HTML" rel="2">
-                                HTML
-                            </a>
-        				
-                            <a href="/tags/#博客搭建" title="博客搭建" rel="2">
-                                博客搭建
-                            </a>
-        				
-                            <a href="/tags/#JavaScript" title="JavaScript" rel="2">
-                                JavaScript
-                            </a>
-        				
-                            <a href="/tags/#jekyll" title="jekyll" rel="1">
-                                jekyll
-                            </a>
-        				
-                            <a href="/tags/#interview" title="interview" rel="1">
-                                interview
-                            </a>
-        				
-                            <a href="/tags/#工具" title="工具" rel="3">
-                                工具
-                            </a>
-        				
-                            <a href="/tags/#git" title="git" rel="3">
-                                git
-                            </a>
-        				
-                            <a href="/tags/#娱乐" title="娱乐" rel="1">
-                                娱乐
-                            </a>
-        				
-                            <a href="/tags/#html" title="html" rel="1">
-                                html
-                            </a>
-        				
-                            <a href="/tags/#管理系统主题" title="管理系统主题" rel="1">
-                                管理系统主题
-                            </a>
-        				
-                            <a href="/tags/#计算机基础" title="计算机基础" rel="4">
-                                计算机基础
-                            </a>
-        				
-                            <a href="/tags/#javascript" title="javascript" rel="20">
-                                javascript
-                            </a>
-        				
-                            <a href="/tags/#生产工具" title="生产工具" rel="4">
-                                生产工具
-                            </a>
-        				
-                            <a href="/tags/#IDE" title="IDE" rel="4">
-                                IDE
-                            </a>
-        				
-                            <a href="/tags/#Lodash" title="Lodash" rel="1">
-                                Lodash
-                            </a>
-        				
-                            <a href="/tags/#ES6学习笔记" title="ES6学习笔记" rel="2">
-                                ES6学习笔记
-                            </a>
-        				
-                            <a href="/tags/#vps" title="vps" rel="1">
-                                vps
-                            </a>
-        				
-                            <a href="/tags/#webpack" title="webpack" rel="1">
-                                webpack
-                            </a>
-        				
-                            <a href="/tags/#前端构建工具" title="前端构建工具" rel="1">
-                                前端构建工具
-                            </a>
-        				
-                            <a href="/tags/#Node.js" title="Node.js" rel="1">
-                                Node.js
-                            </a>
-        				
-                            <a href="/tags/#读书总结" title="读书总结" rel="11">
-                                读书总结
-                            </a>
-        				
-                            <a href="/tags/#Android" title="Android" rel="1">
-                                Android
-                            </a>
-        				
-                            <a href="/tags/#Flex - Css布局" title="Flex - Css布局" rel="1">
-                                Flex - Css布局
-                            </a>
-        				
-                            <a href="/tags/#Nodejs" title="Nodejs" rel="1">
-                                Nodejs
-                            </a>
-        				
-                            <a href="/tags/#Vim" title="Vim" rel="1">
-                                Vim
-                            </a>
-        				
-                            <a href="/tags/#reactjs" title="reactjs" rel="1">
-                                reactjs
-                            </a>
-        				
-                            <a href="/tags/#面试" title="面试" rel="3">
-                                面试
-                            </a>
-        				
-                            <a href="/tags/#CSS" title="CSS" rel="1">
-                                CSS
-                            </a>
-        				
-                            <a href="/tags/#JAVASCRIPT" title="JAVASCRIPT" rel="1">
-                                JAVASCRIPT
-                            </a>
-        				
-                            <a href="/tags/#页面布局" title="页面布局" rel="1">
-                                页面布局
-                            </a>
-        				
-                            <a href="/tags/#css" title="css" rel="1">
-                                css
-                            </a>
-        				
-        			</div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-                    
-                        <li><a href=""></a></li>
-                    
-                        <li><a href="http://www.ruanyifeng.com/blog/">阮一峰的网络日志</a></li>
-                    
-                        <li><a href="http://www.zhangxinxu.com/wordpress/">张鑫旭</a></li>
-                    
-                        <li><a href="http://www.cnblogs.com/TomXu/tag/JavaScript/">汤姆大叔的博客</a></li>
-                    
-                        <li><a href="http://macshuo.com/">MacTalk By 池建强</a></li>
-                    
-                        <li><a href="http://www.barretlee.com/">小胡子哥</a></li>
-                    
-                        <li><a href="https://lifesinger.wordpress.com/">岁月如歌玉伯</a></li>
-                    
-                        <li><a href="https://mritd.me">漠然</a></li>
-                    
-                        <li><a href="http://xtoshiba.me">Hux Blog</a></li>
-                    
-                        <li><a href="http://blog.codingplayboy.com/">熊建刚</a></li>
-                    
-                        <li><a href="https://teddysun.com/">秋水逸冰</a></li>
-                    
-                </ul>
-                
-            </div>
-
-
-        </div>
+        
     </div>
-</article>
+</div>
+
 
 
 
