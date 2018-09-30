@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-29T18:05:26+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-30T11:48:46+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
 
 &lt;p&gt;JavaScript被设计成一种嵌入式的脚本语言。它不是以单独的应用程序运行，而是作为大型应用程序环境下的脚本运行。典型的例子当然是Web浏览器。
 JavaScript中编写响应多个并发事件的程序的方法非常人性化，而且强大，因为它使用了一个简单的执行模型(有时称为事件队列和事件循环并发)和被称为异步的API.
@@ -13,7 +13,7 @@ console.log(text);
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;这样的函数通常被称为同步函数或阻塞函数， 程序会停止工作，等待它的输入。这个例子是等的网络下载文件的结果。&lt;/p&gt;
 
-&lt;p&gt;在JavaScript中，大多数的I/O操作都提供了异步的或非阻塞的API, 程序提供一个回到函数，一旦输入完成就可以被系统调用， 而不是将程序阻塞在等待结果的线程上。&lt;/p&gt;
+&lt;p&gt;在JavaScript中，大多数的I/O操作都提供了异步的或非阻塞的API, 程序提供一个回调函数，一旦输入完成就可以被系统调用， 而不是将程序阻塞在等待结果的线程上。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;dowanloadAsync(&quot;http://example.com/file.txt&quot;, function(text) {
 	console.log(text);
 })
@@ -286,7 +286,7 @@ ai.onmessage = function(event) {
 
 &lt;ul&gt;
   &lt;li&gt;避免在主事件队列中执行代价高昂的计算&lt;/li&gt;
-  &lt;li&gt;在支持Worker APId的平台，该API可以用来在一个独立的事件队列中运行长计算程序。&lt;/li&gt;
+  &lt;li&gt;在支持Worker API的平台，该API可以用来在一个独立的事件队列中运行长计算程序。&lt;/li&gt;
   &lt;li&gt;在Worker API不可用活代价高昂的环境中，考虑将计算程序分解到事件循环的多个轮次中&lt;/li&gt;
 &lt;/ul&gt;
 
