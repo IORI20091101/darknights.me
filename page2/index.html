@@ -225,18 +225,28 @@
         </h3>
         
         <div class="post-content-preview">
-            使用立即调用函数IIFE创建局部作用域
+            变量提升
 
-function wrapElements(a) {
-	var result = [], i, n;
-	for(i = 0, n = a.length; i &lt; n; i++) {
-		result[i] = function() { return a[i] }
-	}
+a = 2;
 
-	return result;
+var a;
+
+console.log(a);  // 结果
+
+
+即使是具名的函数表达式，名称标识符在赋值之前也无法在所在的作用域中使用
+
+
+
+foo(); // TypeError
+bar(); // ReferenceErrtr
+
+var foo = function bar() {
+	//...
 }
 
-var wrapped = wrap...
+
+函数优先提升, 重复的var会被忽略掉，但是后面的函数...
         </div>
     </a>
     <p class="post-meta">

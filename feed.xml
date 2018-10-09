@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-09-30T11:48:46+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-09T18:31:13+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
 
 &lt;p&gt;JavaScript被设计成一种嵌入式的脚本语言。它不是以单独的应用程序运行，而是作为大型应用程序环境下的脚本运行。典型的例子当然是Web浏览器。
 JavaScript中编写响应多个并发事件的程序的方法非常人性化，而且强大，因为它使用了一个简单的执行模型(有时称为事件队列和事件循环并发)和被称为异步的API.
@@ -2741,7 +2741,108 @@ f(&quot;x&quot;);
     return this.x === 0 &amp;amp;&amp;amp; this.y === 0
   }
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="页面布局" /><category term="css" /><summary type="html">理解变量提升</summary></entry><entry><title type="html">JAVASCRIPT面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/" rel="alternate" type="text/html" title="JAVASCRIPT面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/">&lt;h3 id=&quot;使用立即调用函数iife创建局部作用域&quot;&gt;使用立即调用函数IIFE创建局部作用域&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="页面布局" /><category term="css" /><summary type="html">理解变量提升</summary></entry><entry><title type="html">JAVASCRIPT面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/" rel="alternate" type="text/html" title="JAVASCRIPT面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/">&lt;h3 id=&quot;变量提升&quot;&gt;变量提升&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;a = 2;
+
+var a;
+
+console.log(a);  // 结果
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即使是具名的函数表达式，名称标识符在赋值之前也无法在所在的作用域中使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+
+
+foo(); // TypeError
+bar(); // ReferenceErrtr
+
+var foo = function bar() {
+	//...
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数优先提升, 重复的var会被忽略掉，但是后面的函数声明还是会覆盖前面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foo();
+
+var foo;
+
+function foo() {
+	console.log(1);
+}
+
+foo = function() {
+	console.log(2);
+}
+// 输出结果是 1
+
+
+
+foo();
+
+var foo;
+
+function foo() {
+	console.log(1);
+}
+
+foo = function() {
+	console.log(2);
+}
+
+function foo() {
+	console.log(3);
+}
+
+// 输出结果 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;关于this&quot;&gt;关于this&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;function foo(num) {
+	console.log(&quot;foo:&quot; + num);
+
+	this.count++;
+}
+
+foo.count = 0;
+
+var i;
+
+for(i = 0; i &amp;lt; 10; i++) {
+	if(i &amp;gt; 5) {
+		foo(i);
+	}
+}
+
+console.log(foo.count);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;动态作用域&quot;&gt;动态作用域&lt;/h3&gt;
+
+&lt;p&gt;JavaScript 只有词法作用域，没有动态作用域&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function foo() {
+	console.log(a);
+}
+
+function bar() {
+	var a = 3;
+	foo();
+}
+
+var a = 2;
+
+bar();
+
+
+// 输出结果是 2
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;使用立即调用函数iife创建局部作用域&quot;&gt;使用立即调用函数IIFE创建局部作用域&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
 function wrapElements(a) {
 	var result = [], i, n;
@@ -2941,4 +3042,4 @@ null &amp;gt;&amp;gt;&amp;gt; 0 // 0
 ~&quot;1&quot; // -2
 
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="JAVASCRIPT" /><summary type="html">使用立即调用函数IIFE创建局部作用域 ```javascript</summary></entry><entry><title type="html">HTML面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" rel="alternate" type="text/html" title="HTML面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="HTML" /><summary type="html">HTML</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="JAVASCRIPT" /><summary type="html">变量提升</summary></entry><entry><title type="html">HTML面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" rel="alternate" type="text/html" title="HTML面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">&lt;h2 id=&quot;html&quot;&gt;HTML&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="HTML" /><summary type="html">HTML</summary></entry></feed>
