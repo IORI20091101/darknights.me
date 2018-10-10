@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-10T17:26:28+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript(一)" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-10T17:59:50+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript(一)" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
 
 &lt;h2 id=&quot;作用域&quot;&gt;作用域&lt;/h2&gt;
 &lt;p&gt;JavaScript没有块级作用域的相关功能。但是使用&lt;code&gt;with&lt;/code&gt;、&lt;code&gt;try...catch&lt;/code&gt;可以创建块级作用域&lt;/p&gt;
@@ -20,7 +20,7 @@ function foo() {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;输入结果是1，函数声明优先，同名的var变量会被忽略，但是后面的重新赋值仍然有效，第二次执行foo得到的记过就是2了。&lt;/p&gt;
+&lt;p&gt;输入结果是1，函数声明优先，同名的var变量会被忽略，但是后面的重新赋值仍然有效，第二次执行foo得到的结果就是2了。&lt;/p&gt;
 
 &lt;h2 id=&quot;作用域闭包&quot;&gt;作用域闭包&lt;/h2&gt;
 
@@ -1083,7 +1083,7 @@ f(); // undefined
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;例如一个Web服务器可以接受一个可选的饿主机名称&lt;/p&gt;
+&lt;p&gt;例如一个Web服务器可以接受一个可选的主机名称&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var s1 = new Server(80, &quot;example.com&quot;);
 
 var s2 = new Server(80); //defaults to &quot;localhost&quot;
@@ -3018,7 +3018,7 @@ start() === start;  // true
   &lt;p&gt;ES5的严格模式禁止使用arguments.caller 和arguments.callee ，因为它们不具备良好的可移植性， 非标准的函数对象caller属性应该避免使用，因为在包含全部栈信息方面，它是不可靠的。&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">函数调用 理解函数调用， 方法调用，构造函数调用之间的不同。</summary></entry><entry><title type="html">Effective JavaScript (五)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/" rel="alternate" type="text/html" title="Effective JavaScript (五)" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/">&lt;h2 id=&quot;理解变量提升&quot;&gt;理解变量提升&lt;/h2&gt;
 
-&lt;p&gt;try…catch 语句将补货的异常绑定到一个变量，该变量的作用域只是catch语句块。&lt;/p&gt;
+&lt;p&gt;try…catch 语句将捕获的异常绑定到一个变量，该变量的作用域只是catch语句块。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
   function test() {
     var x = &quot;var&quot;, result = [];
