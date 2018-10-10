@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "你不知道的JavaScript(一)",
+      "subtitle": "你不知道的JavaScript上卷-基础篇",
+      "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/",
+      "date": "2018-10-08"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "Effective JavaScript (十)",
       "subtitle": "并发",
       "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/",
@@ -83,8 +93,8 @@
       
     
       {
-      "value" : "JAVASCRIPT面试题",
-      "subtitle": "一些好的javascript面试题总结",
+      "value" : "JavaScript面试题",
+      "subtitle": "一些好的JavaScript面试题总结",
       "data" : "/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/",
       "date": "2018-09-11"
       }
