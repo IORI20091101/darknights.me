@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-11T16:48:21+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript(一)" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-15T17:19:46+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript(一)" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
 
 &lt;h2 id=&quot;作用域&quot;&gt;作用域&lt;/h2&gt;
 &lt;p&gt;JavaScript没有块级作用域的相关功能。但是使用&lt;code&gt;with&lt;/code&gt;、&lt;code&gt;try...catch&lt;/code&gt;可以创建块级作用域&lt;/p&gt;
@@ -797,7 +797,287 @@ for(var v of myObject) {
   console.log(v);
 }
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。</summary></entry><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;原型风格继承&quot;&gt;原型风格继承&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;
+function Foo(name) {
+  this.name = name;
+}
+
+Foo.prototype.myName = function() {
+  return this.name;
+}
+
+function Bar(name, label) {
+  Foo.call(this, name);
+
+  this.label = label;
+}
+
+Bar.prototype = Object.create(Foo.prototype);
+// 这里还可以用这种写法，ES6 的 Object.setPrototypeOf  下面的写法更好一点， 当时上面的写法更容易理解
+Object.setPrototypeOf(Bar.prototype, Foo.prototype);
+
+
+Bar.prototype.myLabel = function() {
+  return this.label;
+}
+
+var a = new Bar(&quot;a&quot;, &quot;obj a&quot;);
+
+a.myName(); // &quot;a&quot;
+
+a.myLabel(); // &quot;obj a&quot;
+
+
+该方法比较有用，Foo.prototype是否出现在a的[[prototype]]链中
+Foo.prototype.isPrototypeOf(a);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;委托&quot;&gt;委托&lt;/h2&gt;
+&lt;p&gt;基于委托实现与上面相同功能的代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+Foo = {
+  init: function(who) {
+    this.me = who;
+  },
+  identify: function() {
+    return &quot;I am &quot; + this.name;
+  }
+}
+
+Bar = Object.create(Foo);
+
+Bar.speak = function() {
+  alert(&quot;Hello, &quot; + this.identify() + &quot; . &quot;);
+}
+
+
+var b1 = Object.create(Bar);
+b1.init(&quot;b1&quot;);
+
+var b2 = Object.create(Bar);
+b2.init(&quot;b2&quot;);
+
+b1.speak();
+b2.speak();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过比较发现， 对象关联风格的代码更加简洁，因为这种风格的代码只关注一件事， 对象之间的关联关系。&lt;/p&gt;
+
+&lt;h2 id=&quot;更简洁的设计&quot;&gt;更简洁的设计&lt;/h2&gt;
+&lt;p&gt;一个关于登陆验证器的设计&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+function Controller() {
+  this.errors= [];
+}
+
+Controller.prototype.showDialog = function(title, msg) {
+  // 显示给用户的消息
+}
+
+Controller.prototype.success = function(msg) {
+  this.showDialog(&quot;success&quot;, msg);
+}
+
+Controller.prototype.failure = function(err) {
+  this.errors.push(err);
+
+  this.showDialog(&quot;Error&quot;, err);
+}
+
+
+function LoginController() {
+  Controller.call(this);
+}
+
+LoginController.prototype = Object.create(Controller.prototype);
+
+LoginController.prototype.getUser = function() {
+  return document.getElementById(&quot;login_username&quot;).value;
+}
+
+LoginController.prototype.getPassword = function() {
+  return document.getElementById(&quot;login_password&quot;).value;
+}
+
+
+LoginController.prototype.validateEntry = function(user, pw) {
+  user = user || this.getUser();
+  pw = pw || this.getPassword();
+
+  if(!(user &amp;amp;&amp;amp; pw)) {
+    return this.failure(&quot;Please enter a username &amp;amp; password&quot;);
+  }
+  else if(pw.length &amp;lt; 5) {
+    return this.failure(&quot;Password must be 5+ character!&quot;);
+  }
+
+  return true;
+}
+
+LonginController.prototype.failure = function() {
+  Controller.prototype.failure.call(this, &quot;Login invalid: &quot; + err);
+}
+
+
+
+
+function AuthController(login) {
+  Controller.call(this);
+
+  this.login = login;
+}
+
+AuthController.prototype = Object.create(Controller.prototype);
+
+AuthController.prototype.server = function(url, data) {
+  return $.ajax({
+    url: url,
+    data: data
+  });
+}
+
+AuthController.prototype.checkAuth = function() {
+  var user = this.login.getUser();
+  var pw = this.login.getPassword();
+
+  if(this.login.validateEntry(user, pw)) {
+    this.server(&quot;/check-auth&quot;, {
+      user: user,
+      pw: pw
+    })
+    .then(this.success.bind(this));
+    .fail(this.failure.bind(this));
+  }
+}
+
+
+AuthController.prototype.success = function() {
+  Controller.prototype.success.call(this, &quot;Authenticated;&quot;);
+}
+
+AuthController.prototype.failure = function(err) {
+  Controller.prototype.failure.call(this, &quot;Auth failed: &quot; + err);
+}
+
+
+var auth = new AuthController(new LoginController());
+
+auth.checkAuth();
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;反类，我们可以使用对象关联风格的行为委托来实现更简单的设计&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+var LoginController = {
+  errors: [],
+  getUser: function() {
+    return document.getElementById(&quot;login_username&quot;).value;
+  },
+
+  getPassword: function() {
+    return document.getElementById(&quot;login_password&quot;).value;
+  },
+  validateEntry: function(user, pw) {
+    user = user || this.getUser();
+    pw = pw || this.getPassword();
+
+    if(!(user &amp;amp;&amp;amp; pw)) {
+      return this.failure(&quot;Please enter a username &amp;amp; password&quot;);
+    }
+    else if(pw.length &amp;lt; 5) {
+      return this.failure(&quot;Password must be 5+ character!&quot;);
+    }
+
+    return true;
+  },
+  showDialog: function() {
+    // 给用户显示的消息
+  },
+  failure: function() {
+    this.errors.push(err);
+    this.showDialog(&quot;Error&quot;, &quot;Login invalid &quot; + err);
+  },
+  success: function(msg) {
+    this.showDialog(&quot;success&quot;, msg);
+  }
+
+}
+
+
+
+var AuthController = Object.create(LoginController);
+
+AuthController.errors = [];
+
+AuthController.checkAuth = function() {
+  var user = this.getUser();
+  var pw = this.getPassword();
+
+  if(this.validateEntry(user, pw)) {
+    this.server(&quot;/check-auth&quot;, {
+      user: user,
+      pw: pw  
+    })
+    .then(this.accepted.bind(this))
+    .fail(this.rejected.bind(this));
+  }
+}
+
+AuthController.server = function(url, data) {
+  return $.ajax({
+    url: url,
+    data: data  
+  })
+}
+
+AuthController.accepted = function() {
+  this.showDialog(&quot;Success&quot;, &quot;Authenticated!&quot;);
+}
+
+AuthController.rejected = function(err) {
+  this.failure(&quot;Auth Failed: &quot; + err);
+}
+
+
+AuthController.checkAuth();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这种模式我们只需要两个实体LoginController 和 AuthController
+总结： 我们用一种极其简单的设计实现了同样的功能， 这既是对象关联风格代码和行为委托设计模式的力量&lt;/p&gt;
+
+&lt;h2 id=&quot;反词法&quot;&gt;反词法&lt;/h2&gt;
+&lt;p&gt;ES6简洁与法有一个非常小但重要的缺点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+var Foo = {
+  bar() {/**/},
+  baz: function baz() {/**/}  
+}
+
+去掉语法糖
+
+var Foo = {
+  bar: function() {/**/}
+  baz: function baz() {/**/}
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;由于函数对象本身没有标识符， 所以bar()的缩写形式实际上会变成一个匿名函数表达式并赋值给bar属性。相比之下 具名函数表达式会额外的给.baz属性附加一个词法名称标识符baz。&lt;/p&gt;
+
+&lt;p&gt;匿名函数没有name标识符会导致&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;调用栈更难追踪&lt;/li&gt;
+  &lt;li&gt;自我引用（递归， 事件绑定和解除绑定）更难&lt;/li&gt;
+  &lt;li&gt;代码稍微难理解&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里只有第二个缺点无法避免，因此使用简洁语法一定要小心这一点。 如果你需要自我引用的话，那最好使用传统的具名函数表达式来定义对应的函数，不要使用简洁语法。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;再说一次，我们认为JavaScript种的对象关联比类风格代码更为简洁(而且功能相同)&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。</summary></entry><entry><title type="html">Effective JavaScript (十)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" rel="alternate" type="text/html" title="Effective JavaScript (十)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
 
 &lt;p&gt;JavaScript被设计成一种嵌入式的脚本语言。它不是以单独的应用程序运行，而是作为大型应用程序环境下的脚本运行。典型的例子当然是Web浏览器。
 JavaScript中编写响应多个并发事件的程序的方法非常人性化，而且强大，因为它使用了一个简单的执行模型(有时称为事件队列和事件循环并发)和被称为异步的API.
