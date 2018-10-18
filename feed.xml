@@ -1,4 +1,212 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-15T17:19:46+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript(一)" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-18T17:59:21+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript中卷(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/" rel="alternate" type="text/html" title="你不知道的JavaScript中卷(一)" /><published>2018-10-18T00:00:00+08:00</published><updated>2018-10-18T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+
+&lt;h2 id=&quot;字符串&quot;&gt;字符串&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var a = &quot;foo&quot;;
+b = [&quot;f&quot;, &quot;o&quot;, &quot;o&quot;];
+
+var c = Array.prototype.join.call(a, &quot;-&quot;);
+
+var d = Array.prototype.map.call(a, function(v) {
+	return v.toUpperCase() + &quot;.&quot;
+}).join(&quot;&quot;);
+
+
+c; // &quot;f-o-o&quot;
+
+d; // &quot;F.O.O.&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;数字&quot;&gt;数字&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var a = 5E10;
+
+a; // 50000000000
+
+a.toExponential(); // &quot;5e+10&quot;
+
+
+// toFixed 用来显示小数部分的显示位数
+var a = 42.59;
+
+a.toFixed(0);  // &quot;43&quot;
+
+a.toFixed(1);  // &quot;42.6&quot;
+
+a.toFixed(2);  // &quot;42.59&quot;
+
+
+42.toFixed(3); // SyntaxError 报错 42. 被视为一个整体 所以没有访问toFixed
+
+以下访问方式都没有问题
+
+(42).toFixed(3);  // &quot;42.000&quot;
+0.42.toFixed(3);  // &quot;0.420&quot;
+42..toFixed(3);   // &quot;42.000&quot;
+
+
+// toPrecision 方法用来制定有效数位的显示位数
+
+var a = 42.59;
+
+a.toPrecision(1); // &quot;4e+1&quot;
+a.toPrecision(2); // &quot;43&quot;
+a.toPrecision(3); // &quot;42.6&quot;
+a.toPrecision(4); // &quot;42.59&quot;
+a.toPrecision(5); // &quot;42.590&quot;
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;浮点数&quot;&gt;浮点数&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;0.1 + 0.2 === 0.3; // false
+
+由于浮点数的精读问题导致
+0.1 + 0.2; // 0.3000000000000004;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;那么如果判断0.1 + 0.2 和 0.3 是否相等呢， 最常见的做法是设置一个误差范围值， 通常称为”机器精度”， 对于JavaScript来说这个值通常是2^-52;
+ES6开始，该值定义在&lt;code&gt;Number.EPSILON&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+if(!Number.EPSILON) {
+	Number.EPSILON = Math.pow(2, -52);
+}
+
+
+function numbersCloseEnoughToEqual(n1, n2) {
+	return Math.abs(n1 - n2) &amp;lt; Number.EPSILON;
+}
+
+var a = 0.1 + 0.2;
+var b = 0.3;
+
+numbersCloseEnoughToEqual(a, b);  // true;
+
+numbersCloseEnoughToEqual(0.0000001, 0.0000002); // false;
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;整数检测&quot;&gt;整数检测&lt;/h2&gt;
+&lt;p&gt;要检测一个值是否是整数，可以使用ES6种的Number.isInteger方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Number.isInteger(42);     // true
+
+Number.isInteger(42.00);  // true
+
+Number.isInteger(45.3);   // false
+
+// ES6 之前的polyfill Number.isInteger
+
+if(!Number.isInteger) {
+	Number.isInteger = function(num) {
+		return typeof num == 'number' &amp;amp;&amp;amp; num % 1 == 0;
+	}
+}
+
+
+// 最大安全数
+
+Numbe.isSafeInteger(Number.MAX_SAFE_INTEGER); // true
+Numbe.isSafeInteger(Math.pow(2, 53)); // false
+Numbe.isSafeInteger(Math.pow(2, 53) - 1); // true
+
+// ES6 之前的polyfill Number.isSafeInteger
+
+if(!Number.isSafeInteger) {
+	Number.isSafeInteger = function(num) {
+		return Number.isInteger(num) &amp;amp;&amp;amp; Math.abs(num) &amp;lt;= Number.MAX_SAFE_INTEGER;
+	}
+}
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;零值&quot;&gt;零值&lt;/h2&gt;
+&lt;p&gt;JavaScript有一个常规的0(+0), 和一个-0
+-0， 除了可以作为常量以外，也可以是某些数学运算的返回值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+var a = 0 / -3; // -0
+
+var b = 0 * -3; // -0
+
+加法和减法运算不会得到负零
+
+
+根据规范对于负零进行字符串化操作会返回&quot;0&quot;
+var a = -0;
+
+a.toString();
+a + &quot;&quot;;
+String(a);
+JSON.stringify(a)
+
+以上都会返回 &quot;0&quot;, 但是返回来将其从字符串转换为数字，得到的结果是准确的
+
++&quot;-0&quot;;            // -0
+Number(&quot;-0&quot;);     // -0
+JSON.parse(&quot;-0&quot;); // -0
+
+
+0 === -0; // true
+
+0 == -0;  // true
+
+0 &amp;gt; -0;    // false
+
+判断是否是 -0
+
+function isNegZero(n) {
+	n = Number(n);
+
+	return (n === 0) &amp;amp;&amp;amp; (1 / n === -Infinity);
+}
+
+
+isNegZero(-0);      // true
+isNegZero(0 / -3);  // true
+isNegZero(0);       // false
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们为什么需要-0呢，有些应用程序中的数据需要以级数形式来表示(比如动画帧的移动速度), 数字的符号为sign用来代表其他信息(比如移动方向),此时如果一个值为0的变量失去了它的符号位，它的方向信息就回丢失。所以保留0值的符号为可以防止这类情况发生。&lt;/p&gt;
+
+&lt;h2 id=&quot;特殊等式&quot;&gt;特殊等式&lt;/h2&gt;
+&lt;p&gt;如前所述，NaN和0在相等比较时表现有些特别，由于NaN和自身不相等，所以必须使用ES6中的Number.isNaN或者polyfill, 而 +0 和 -0 的比较我们也需要借助于 isNegZero这样的工具函数。&lt;/p&gt;
+
+&lt;p&gt;ES6引入了一个工具方法Object.is(…)来判断两个值是否绝对相等用来处理上面特殊情况&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+var a = 2 / &quot;foo&quot;; 
+var b = -3 * 0;
+
+Object.is(a, NaN); // true
+
+Object.is(b, -0);  // true
+
+Object.is(b, 0);   // false
+
+
+ES6之前的polyfill
+
+if(!Object.is) {
+	Object.is = function(v1, v2) {
+		//判断是否是-0
+		if(v1 === 0 &amp;amp;&amp;amp; v2 === 0) {
+			return 1 / v1 === 1 / v2;
+		}
+
+		// 判断是否是NaN
+		if(v1 !== v1) {
+			return v2 !== v2;
+		}
+
+		return v1 === v2;
+	}
+}
+
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。</summary></entry><entry><title type="html">你不知道的JavaScript上卷</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript上卷" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
 
 &lt;h2 id=&quot;作用域&quot;&gt;作用域&lt;/h2&gt;
 &lt;p&gt;JavaScript没有块级作用域的相关功能。但是使用&lt;code&gt;with&lt;/code&gt;、&lt;code&gt;try...catch&lt;/code&gt;可以创建块级作用域&lt;/p&gt;
@@ -3820,320 +4028,4 @@ f(&quot;x&quot;);
     return this.x === 0 &amp;amp;&amp;amp; this.y === 0
   }
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="页面布局" /><category term="css" /><summary type="html">理解变量提升</summary></entry><entry><title type="html">JavaScript面试题</title><link href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/" rel="alternate" type="text/html" title="JavaScript面试题" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/">&lt;h3 id=&quot;变量提升&quot;&gt;变量提升&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;a = 2;
-
-var a;
-
-console.log(a);  // 结果
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即使是具名的函数表达式，名称标识符在赋值之前也无法在所在的作用域中使用&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-
-
-foo(); // TypeError
-bar(); // ReferenceErrtr
-
-var foo = function bar() {
-	//...
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;函数优先提升, 重复的var会被忽略掉，但是后面的函数声明还是会覆盖前面&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;foo();
-
-var foo;
-
-function foo() {
-	console.log(1);
-}
-
-foo = function() {
-	console.log(2);
-}
-// 输出结果是 1
-
-
-
-foo();
-
-var foo;
-
-function foo() {
-	console.log(1);
-}
-
-foo = function() {
-	console.log(2);
-}
-
-function foo() {
-	console.log(3);
-}
-
-// 输出结果 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;关于this&quot;&gt;关于this&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;function foo(num) {
-	console.log(&quot;foo:&quot; + num);
-
-	this.count++;
-}
-
-foo.count = 0;
-
-var i;
-
-for(i = 0; i &amp;lt; 10; i++) {
-	if(i &amp;gt; 5) {
-		foo(i);
-	}
-}
-
-console.log(foo.count);
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;还有一个更好的例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function foo() {
-	var a = 2; 
-	this.bar();
-}
-
-function bar() {
-	console.log(this.a);
-}
-
-foo();
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;动态作用域&quot;&gt;动态作用域&lt;/h3&gt;
-
-&lt;p&gt;JavaScript 只有词法作用域，没有动态作用域&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function foo() {
-	console.log(a);
-}
-
-function bar() {
-	var a = 3;
-	foo();
-}
-
-var a = 2;
-
-bar();
-
-
-// 输出结果是 2
-
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;使用立即调用函数iife创建局部作用域&quot;&gt;使用立即调用函数IIFE创建局部作用域&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-function wrapElements(a) {
-	var result = [], i, n;
-	for(i = 0, n = a.length; i &amp;lt; n; i++) {
-		result[i] = function() { return a[i] }
-	}
-
-	return result;
-}
-
-var wrapped = wrapElements([10, 20, 30, 40, 50]);
-
-var f = wrapped[0];
-
-f();  // ? 输出结果 undefined
-
-
-// 更具有欺骗性的例子
-function wrapElements(a) {
-	var result = [];
-	for(var i = 0, n = a.length; i &amp;lt; n; i++) {
-		result[i] = function() { return a[i] }
-	}
-
-	return result;
-}
-
-var wrapped = wrapElements([10, 20, 30, 40, 50]);
-
-var f = wrapped[0];
-
-
-f();  // ? 输出结果 undefined
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;在流行的JavaScript的引擎中的另一个缺陷是函数命名表达式的声明进行提升。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var f = g() { returen 17; }
-g(); // 17 (在非标准的环境中，标准环境会报错 g is not defined)
-
-
-我们应该怎样做
-var f = function g() { return 17; }
-var g = null;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;方法调用&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var username=&quot;test&quot;;
-
-function hello() {
-	&quot;use strict&quot;;
-	return &quot;hello, &quot; + this.username;
-}
-
-hello(); &quot;hello, undefined&quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;bind绑定方法接收者，下面例子返回什么结果， 用尽可能多的方法修复该例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var buffer = {
-	entries: [],
-	add: function(s) {
-		this.entries.push(s);
-	},
-	concat: function() {
-		return this.entries.join(&quot;&quot;);
-	}
-}
-
-var source = [&quot;867&quot;, &quot;-&quot;, &quot;5309&quot;];
-
-source.forEach(buffer.add);  // error: entries is undefined
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;什么是函数柯里化？柯里化的作用&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;延迟计算&lt;/li&gt;
-  &lt;li&gt;参数复用， 当在多次调用同一个函数，并且传递的参数绝大多数相同，那么该函数可能是一个很好的柯里化候选&lt;/li&gt;
-  &lt;li&gt;动态创建函数， 这可以是在部分计算出结果后，在此基础上动态生成新的函数处理后面的业务，这样省略了计算&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;函数柯里化 一道有难度的面试题,完成plus函数 满足通过所有的测试条件&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-'use strict';
-function plus(n){
-  
-}
-module.exports = plus
-
-
-'use strict';
-var assert = require('assert')
-
-var plus = require('../lib/assign-4')
-
-describe('闭包应用',function(){
-  it('plus(0) === 0',function(){
-    assert.equal(0,plus(0).toString())
-  })
-  it('plus(1)(1)(2)(3)(5) === 12',function(){
-    assert.equal(12,plus(1)(1)(2)(3)(5).toString())
-  })
-  it('plus(1)(4)(2)(3) === 10',function(){
-    assert.equal(10,plus(1)(4)(2)(3).toString())
-  })
-  it('方法引用',function(){
-    var plus2 = plus(1)(1)
-    assert.equal(12,plus2(1)(4)(2)(3).toString())
-  })
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;创建一个原型为null的对象用作字典&quot;&gt;创建一个原型为null的对象用作字典&lt;/h3&gt;
-
-&lt;p&gt;防止原型污染的最简单的方式之一就是一开始就不使用原型。但是ES5发布之前并没有一个标准的方式创建一个空原型的新对象。你可能会这样做
-该例子是否能创建一个原型为null的对象。不能的话要怎么做&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function C() { }
-
-C.prototype = null;
-
-var o = new C();
-
-Object.getPrototypeOf(o) === null; // false
-Object.getPrototypeOf(o) === Object.prototype // true
-
-// ES5之后应该这样做
-var x = Object.create(null);
-
-Object.getPrototypeOf(o) === null; // true
-
-在不支持Object.create的JavaScript环境中特殊对象__proto__提供了对对象内部原型链的读写访问
-
-var x = { __proto__: null };
-
-x instanceof Object;  // false;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;第二种貌似更方便，但是有了Object.create函数后，Object.create是更值得推荐的方式。&lt;/p&gt;
-
-&lt;h3 id=&quot;看下面代码mean的输出值时多少&quot;&gt;看下面代码mean的输出值时多少？&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;var scores = [98, 74, 85, 77, 93, 100, 89];
-
-var total = 0;
-
-for(score in scores) {
-	total += score;
-}
-
-var mean = total / socres.length;
-
-
-mean; // ?   
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;javascript位操作符的诀窍&quot;&gt;JavaScript位操作符的诀窍&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;无符号右移自动转换成数字
-&quot;&quot; &amp;gt;&amp;gt;&amp;gt; 0.  // 0
-&quot;sdsd&quot; &amp;gt;&amp;gt;&amp;gt; 0   // 0
-
-NaN &amp;gt;&amp;gt;&amp;gt; 0 // 0
-
-undefined &amp;gt;&amp;gt;&amp;gt; 0  // 0
- 
-null &amp;gt;&amp;gt;&amp;gt; 0 // 0
-
-[] &amp;gt;&amp;gt;&amp;gt; 0  // 0
-
-&quot;70&quot; &amp;gt;&amp;gt;&amp;gt; 0 // 70
-
-{} &amp;gt;&amp;gt;&amp;gt; 0. // Uncaught SyntaxError: Unexpected token &amp;gt;&amp;gt;&amp;gt;
-
-～操作自动转换数字
-负数转正数减一， 整数转负数减一， 其他-1
-
-~&quot;sdsd&quot; // -1
-~&quot;0&quot;    //-1
-~0     //-1
-~NaN    //-1
-~null    //-1
-~undefined    //-1
-~[]    //-1
-~{}    //-1
-~&quot;sdsd&quot;    //-1
-~&quot;45sdsd&quot;    //-1
-~&quot;-1&quot; // 0
-~&quot;1&quot; // -2
-
-
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="JavaScript" /><summary type="html">变量提升</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="页面布局" /><category term="css" /><summary type="html">理解变量提升</summary></entry></feed>

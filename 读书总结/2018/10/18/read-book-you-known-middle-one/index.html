@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>Effective JavaScript (九) - Dark knight's Blog</title>
+    <title>你不知道的JavaScript中卷(一) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/">
+    <link rel="canonical" href="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat8.jpg ')
+        background-image: url('https://darknights.b0.upaiyun.com/assets/images/bg/batman/bat9.jpg ')
     }
 </style>
 
@@ -197,12 +197,12 @@
                             <a class="tag" href="/tags/#读书总结" title="读书总结">读书总结</a>
                             
                         </div>
-                        <h1>Effective JavaScript (九)</h1>
+                        <h1>你不知道的JavaScript中卷(一)</h1>
                         
                         
-                        <h2 class="subheading">库和API设计</h2>
+                        <h2 class="subheading">你不知道的JavaScript</h2>
                         
-                        <span class="meta">Posted by toshiba on September 28, 2018</span>
+                        <span class="meta">Posted by toshiba on October 18, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,335 +224,215 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="保持一致的约定">保持一致的约定</h2>
+				<p>本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。</p>
 
-<h2 id="将undefined当作没有值">将undefined当作没有值</h2>
-<p>undefined很特殊，每当JavaScritp无法提供具体的值时，就产生undefined。为赋值的初始值即为undefiend</p>
+<h2 id="字符串">字符串</h2>
+<pre><code>var a = "foo";
+b = ["f", "o", "o"];
 
-<pre><code>var x;
-x // undefined;
+var c = Array.prototype.join.call(a, "-");
 
-var obj = {};
-obj.x; //undefined
-
-
-function f() {
-	return ;
-}
-
-function g() {}
+var d = Array.prototype.map.call(a, function(v) {
+	return v.toUpperCase() + "."
+}).join("");
 
 
-f();  //undefined
-f();  //undefined
+c; // "f-o-o"
 
-function f(x) {
-	return x;
-}
-f(); // undefined
+d; // "F.O.O."
 
 </code></pre>
 
-<p>例如一个Web服务器可以接受一个可选的主机名称</p>
-<pre><code>var s1 = new Server(80, "example.com");
+<h2 id="数字">数字</h2>
+<pre><code>var a = 5E10;
 
-var s2 = new Server(80); //defaults to "localhost"
+a; // 50000000000
 
-我们可以通过判断arguments.length来实现Server构造函数
-
-function Server(port, hostname) {
-	if(arguments.length &lt; 2) {
-		hostname = "localhost";
-	}
-
-	hostname = String(hostname);
-}
-
-这种情况如果第二个值是undefined的话可能会使用undefined，这并不是我们想要的所以我们最好判断undefined
-
-function Server(port, hostname) {
-	if(hostname === undefined) {
-		hostname = "localhost";
-	}
-
-	host = String(hostname);
-}
+a.toExponential(); // "5e+10"
 
 
-另一种合理的方式是测试hostname是否为真
+// toFixed 用来显示小数部分的显示位数
+var a = 42.59;
 
-function Server(port, hostname) {
-	hostname = String(hostname || "localhost");
-	// ...
-}
+a.toFixed(0);  // "43"
+
+a.toFixed(1);  // "42.6"
+
+a.toFixed(2);  // "42.59"
+
+
+42.toFixed(3); // SyntaxError 报错 42. 被视为一个整体 所以没有访问toFixed
+
+以下访问方式都没有问题
+
+(42).toFixed(3);  // "42.000"
+0.42.toFixed(3);  // "0.420"
+42..toFixed(3);   // "42.000"
+
+
+// toPrecision 方法用来制定有效数位的显示位数
+
+var a = 42.59;
+
+a.toPrecision(1); // "4e+1"
+a.toPrecision(2); // "43"
+a.toPrecision(3); // "42.6"
+a.toPrecision(4); // "42.59"
+a.toPrecision(5); // "42.590"
+
+
+
 </code></pre>
 
-<p>但是最后一种的真值检测并不总是安全的，如果一个函数允许接受0(或NaN，虽然不常见)为可接受的参数,则不应该使用真值测试</p>
+<h2 id="浮点数">浮点数</h2>
 
-<p>比如</p>
+<pre><code>0.1 + 0.2 === 0.3; // false
+
+由于浮点数的精读问题导致
+0.1 + 0.2; // 0.3000000000000004;
+
+</code></pre>
+
+<p>那么如果判断0.1 + 0.2 和 0.3 是否相等呢， 最常见的做法是设置一个误差范围值， 通常称为”机器精度”， 对于JavaScript来说这个值通常是2^-52;
+ES6开始，该值定义在<code>Number.EPSILON</code></p>
 <pre><code>
-
-function Element(width, height) {
-	this.width = width || 320;
-	this.height = height || 240;
-	// ...
-}
-var c1 = new Element(0, 0); 
-c1.width; // 320
-c1.height; // 240
-
-
-这种情况我们需要更详细的测试来测试undefined
-function Element(width, height) {
-	this.width = width === undefined ? 320 : width;
-	this.height = height === undefined ? 240 : height;
-
-	// ...
+if(!Number.EPSILON) {
+	Number.EPSILON = Math.pow(2, -52);
 }
 
-var c1 = new Element(0, 0);
-c1.width; // 0
-c1.height; // 0
 
-var c2 = new Element();
-c2.width; // 320
-c2.height; // 240
+function numbersCloseEnoughToEqual(n1, n2) {
+	return Math.abs(n1 - n2) &lt; Number.EPSILON;
+}
+
+var a = 0.1 + 0.2;
+var b = 0.3;
+
+numbersCloseEnoughToEqual(a, b);  // true;
+
+numbersCloseEnoughToEqual(0.0000001, 0.0000002); // false;
+
 
 </code></pre>
 
-<h2 id="接受关键字参数的选项对象">接受关键字参数的选项对象</h2>
-<p>保持参数顺序的一致约定对于帮助程序员记住每个参数在函数调用中的意义是很重要的，参数较少时它是适用的。但是参数过多后根本不可扩展</p>
-<pre><code>var alert = new Alert(100, 75, 300, 200,
-		"Error", message,
-		"blue", "white", "black",
-		"error", true
-	);
+<h2 id="整数检测">整数检测</h2>
+<p>要检测一个值是否是整数，可以使用ES6种的Number.isInteger方法</p>
+<pre><code>Number.isInteger(42);     // true
 
-</code></pre>
-<p>一个函数起初很简单，但是过一段时间，随着库功能的扩展，该函数的签名便会获得越来越多的参数。</p>
+Number.isInteger(42.00);  // true
 
-<p>幸运的是，JavaScrtip提供了一个简单、轻量的惯用法： 选项对象(options object).</p>
+Number.isInteger(45.3);   // false
 
-<pre><code>var alert = new Alert({
-	x: 100, y: 75,
-	width: 300, height: 200,
-	title: "Error", message: message,
-	titleColor: "blue", bgColor: "white", textColor: "black",
-	icon: "error", modal: true	
-});
+// ES6 之前的polyfill Number.isInteger
 
-</code></pre>
-<p>这个虽然烦琐，但明显更易于阅读，每个参数都是自我描述(self-documenting)的。</p>
-
-<pre><code>function Alert(parent, message, opts) {
-	opts = opts || {};
-
-	this.width = opts.width === undefined ? 320 : opts.width;
-	this.height = opts.width === undefined ? 240 : opts.height;
-	this.title = otps.title || "Alert";
-
+if(!Number.isInteger) {
+	Number.isInteger = function(num) {
+		return typeof num == 'number' &amp;&amp; num % 1 == 0;
+	}
 }
 
-基于 extend 的另一种实现
 
-function extend(target, source) {
-	if(source) {
-		for(var key in source) {
-			var val = source[key];
+// 最大安全数
 
-			if(typeof val !== "undefined") {
-				target[key] = val;
-			}
+Numbe.isSafeInteger(Number.MAX_SAFE_INTEGER); // true
+Numbe.isSafeInteger(Math.pow(2, 53)); // false
+Numbe.isSafeInteger(Math.pow(2, 53) - 1); // true
+
+// ES6 之前的polyfill Number.isSafeInteger
+
+if(!Number.isSafeInteger) {
+	Number.isSafeInteger = function(num) {
+		return Number.isInteger(num) &amp;&amp; Math.abs(num) &lt;= Number.MAX_SAFE_INTEGER;
+	}
+}
+
+
+
+</code></pre>
+<h2 id="零值">零值</h2>
+<p>JavaScript有一个常规的0(+0), 和一个-0
+-0， 除了可以作为常量以外，也可以是某些数学运算的返回值</p>
+
+<pre><code>
+var a = 0 / -3; // -0
+
+var b = 0 * -3; // -0
+
+加法和减法运算不会得到负零
+
+
+根据规范对于负零进行字符串化操作会返回"0"
+var a = -0;
+
+a.toString();
+a + "";
+String(a);
+JSON.stringify(a)
+
+以上都会返回 "0", 但是返回来将其从字符串转换为数字，得到的结果是准确的
+
++"-0";            // -0
+Number("-0");     // -0
+JSON.parse("-0"); // -0
+
+
+0 === -0; // true
+
+0 == -0;  // true
+
+0 &gt; -0;    // false
+
+判断是否是 -0
+
+function isNegZero(n) {
+	n = Number(n);
+
+	return (n === 0) &amp;&amp; (1 / n === -Infinity);
+}
+
+
+isNegZero(-0);      // true
+isNegZero(0 / -3);  // true
+isNegZero(0);       // false
+
+</code></pre>
+
+<p>我们为什么需要-0呢，有些应用程序中的数据需要以级数形式来表示(比如动画帧的移动速度), 数字的符号为sign用来代表其他信息(比如移动方向),此时如果一个值为0的变量失去了它的符号位，它的方向信息就回丢失。所以保留0值的符号为可以防止这类情况发生。</p>
+
+<h2 id="特殊等式">特殊等式</h2>
+<p>如前所述，NaN和0在相等比较时表现有些特别，由于NaN和自身不相等，所以必须使用ES6中的Number.isNaN或者polyfill, 而 +0 和 -0 的比较我们也需要借助于 isNegZero这样的工具函数。</p>
+
+<p>ES6引入了一个工具方法Object.is(…)来判断两个值是否绝对相等用来处理上面特殊情况</p>
+<pre><code>
+var a = 2 / "foo"; 
+var b = -3 * 0;
+
+Object.is(a, NaN); // true
+
+Object.is(b, -0);  // true
+
+Object.is(b, 0);   // false
+
+
+ES6之前的polyfill
+
+if(!Object.is) {
+	Object.is = function(v1, v2) {
+		//判断是否是-0
+		if(v1 === 0 &amp;&amp; v2 === 0) {
+			return 1 / v1 === 1 / v2;
 		}
-	}
 
-	return target;
-}
-
-
-
-function Alert(parent, message, opts) {
-	opts = extend({
-		width: 320,
-		height: 240
-	});
-
-	opts = extend({
-		title: "Alert"	
-	}, opts);
-
-	this.width = opts.width;
-	this.height = opts.height;
-	this.title = opts.title;
-
-}
-
-
-进一步简化
-
-
-unction Alert(parent, message, opts) {
-	opts = extend({
-		width: 320,
-		height: 240
-	});
-
-	opts = extend({
-		title: "Alert"	
-	}, opts);
-
-	extend(this, opts);
-}
-
-
-</code></pre>
-
-<h2 id="区分数组对象和类数组对象">区分数组对象和类数组对象</h2>
-
-<p>使用instanceof的不完美选择</p>
-<pre><code>StringSet.prototype.add = function(x) {
-	if(typeof x === 'String') {
-		// xxx
-	} else if(x instanceof Array) { //有局限性
-		// xxx
-	} else {
-		// xxx
-	}
-}
-
-
-</code></pre>
-
-<p>instanceof 操作符测试一个对象是否继承自Array.prototype。 在一些允许多个全局对象的环境中可能会有标准的Array构造函数和原型对象的多份副本。在浏览器中有这种情况，每个frame会有标准库的一份单独副本，当跨frame通信时，一个frame中的数组不会继承自另一个frame的Array.prototype.出于这个原因，ES5中引入了<code>Array.isArray</code>函数， 其用于测试一个值是否是数组，而不管原型继承。ESMAScript标准中， 该函数测试对象内部[[Class]]属性值是否是Array。它比<code>instanceof</code>更加可靠。
-所以有这个更健壮的实现。</p>
-<pre><code>StringSet.prototype.add = function(x) {
-	if(typeof x  === 'String') {
-
-	} else if(Array.isArray(x)) {
-
-	} else {
-
-	}
-}
-
-
-</code></pre>
-<p>对于不支持ES5的环境中我们可以自己实现一个测试方法</p>
-
-<pre><code>var toString = Object.prototype.toString;
-
-function isArray(x) {
-	return toString(x) === '[object Array]';
-}
-
-
-// 转为真实数组
-你不能传入arguments对象并期待它被视为数组，
-最好还是自己转化一下
-[].slice.call(arguments);
-
-
-
-</code></pre>
-
-<p><code>Object.prototype.toString</code>函数使用对象内部<code>[[Class]]</code>属性创建结果字符串，所以比<code>instance of</code>操作符更可靠。</p>
-
-<h2 id="避免过度的强制转换">避免过度的强制转换</h2>
-
-<p>我们创建一个BitVector的构造函数guard, 这里有一个思路可以用来做检测用。</p>
-<pre><code>function BitVector(x) {
-	// 链式调用
-	uint32.or(arrayLike).guard(x);
-}
-
-
-var guard = {
-	guard: function(x) {
-		if(!this.test(x)) {
-			throw new TypeError("expected " + this);
+		// 判断是否是NaN
+		if(v1 !== v1) {
+			return v2 !== v2;
 		}
+
+		return v1 === v2;
 	}
 }
 
-var uint32 = Object.create(guard);
-
-uint32.toString = function() {
-	return "uint32";
-}
-
-
-var arrayLike = Object.create(guard);
-
-arrayLike.test = function(x) {
-	return typeof x === "object" &amp;&amp; x &amp;&amp; uint32.test(x.length);
-}
-
-arrayLike.toString = function() {
-	return "array-like object";
-}
-
-
-guard.or = function(other) {
-	var result = Object.create(guard);
-
-	var self = this;
-	result.test = function(x) {
-		return self.test(x) || other.text(x);
-	};
-
-	var description = this + " or " + other;
-
-	result.toString = function() {
-		return description;
-	};
-
-	return result;
-
-}
-
-
 </code></pre>
-
-<h2 id="支持方法链">支持方法链</h2>
-
-<pre><code>function escapeBasicHTML(str) {
-	return str.replace(/&amp;/g, "&amp;amp;")
-			  .replace(/&lt;/g, "&amp;lt;")
-			  .replace(/&gt;/g, "&amp;gt;")
-			  .replace(/"/g, "&amp;quot;")
-			  .replace(/'/g, "&amp;apos;");
-}
-
-这种比下面的方法更加简洁
-
-function escapeBasicHTML(str) {
-	var str2 = str.replace(/&amp;/g, "&amp;amp;");
-	var str3 = str2.replace(/&lt;/g, "&amp;lt;");
-	var str4 = str3.replace(/&gt;/g, "&amp;gt;");
-	var str5 = str4.replace(/"/g, "&amp;quot;");
-	var str6 = str5..replace(/'/g, "&amp;apos;");
-
-	return str6;
-}
-
-
-var users = records.map(function(record) {
-		return record.username;
-	})
-	.filter(function(username) {
-		return !!username;
-	})
-	.map(function(username) {
-		return username.toLowerCase();
-	});
-
-</code></pre>
-
-<ul>
-  <li>使用方法链来连接无状态的操作</li>
-  <li>通过无状态的方法中返回新对象来支持方法链</li>
-  <li>通过在有状态的方法中返回this来支持方法链</li>
-</ul>
 
 
                 <hr>
@@ -560,13 +440,9 @@ var users = records.map(function(record) {
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (八)">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" data-toggle="tooltip" data-placement="top" title="你不知道的JavaScript上卷">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (十)">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -576,9 +452,9 @@ var users = records.map(function(record) {
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine"
-         data-title="Effective JavaScript (九)"
-         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/"></div>
+         data-thread-key="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one"
+         data-title="你不知道的JavaScript中卷(一)"
+         data-url="http://darknights.me/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/"></div>
     <script>
 
         /**
