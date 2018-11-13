@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-30T16:06:37+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript中卷(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/" rel="alternate" type="text/html" title="你不知道的JavaScript中卷(一)" /><published>2018-10-18T00:00:00+08:00</published><updated>2018-10-18T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-13T20:25:40+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript中卷(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/" rel="alternate" type="text/html" title="你不知道的JavaScript中卷(一)" /><published>2018-10-18T00:00:00+08:00</published><updated>2018-10-18T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
 
 &lt;h2 id=&quot;字符串&quot;&gt;字符串&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;var a = &quot;foo&quot;;
@@ -393,7 +393,203 @@ parseInt(&quot;0x10&quot;); // 16
 parseInt(&quot;103&quot;, 2) // 2
 
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。</summary></entry><entry><title type="html">你不知道的JavaScript上卷</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript上卷" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;隐式转换&quot;&gt;隐式转换&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;null&lt;/code&gt;和&lt;code&gt;undefined&lt;/code&gt; 之间&lt;code&gt;==&lt;/code&gt;比较&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果x为null， y是undefined 结果为true&lt;/li&gt;
+  &lt;li&gt;如果x为undefined， y是null 结果为true&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;var a = null;
+var b;
+
+a == b;    // true
+a == null; // true
+b == null; // true
+
+a == false; // false
+b == false; // false
+a == &quot;&quot;;    // false
+b == &quot;&quot;;    // false
+a == 0;     // false
+b == 0;     // false
+
+
+var a = doSomething();
+
+if(a == null) {
+	//...
+}
+条件判断 a == null 仅在 doSomething() 返回 null 和 undefined时才成立，除此之外其他值不成立包括0, false 和&quot;&quot;这样的假植
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对象和非对象之间的比较&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果Type(x)是字符串或者数字， Type(y)是对象， 则返回 x == ToPrimitive(y)的结果&lt;/li&gt;
+  &lt;li&gt;如果Type(x)是对象， Type(y)是字符串或者数字， 则返回 ToPrimitive(x) == y的结果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;var a = 42;
+var b = [42];
+
+a == b; // true
+
+
+
+var a = &quot;abc&quot;;
+var b = Object(a);  // 和 new String(a) 一样
+
+a == b;  // true
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是有一些值不这样， 原因是==算法中其他优先级更高的规则&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+var a = null;
+var b = Object(a); // 和Object()一样
+
+a == b;  // false
+
+
+var c = undefined;
+var d = Object(c); // 和Object一样
+c == d; // false
+
+
+var e = NaN;
+var f = Object(e); // 和new Number(e)一样
+
+e == f; // false
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为没有对应的封装对象所以null和undefined不能够被封装， &lt;code&gt;Object(null)&lt;/code&gt;, &lt;code&gt;Object(undefined)&lt;/code&gt;，都返回一个常规对象。NaN能被封装为数字封装对象，但是拆封之后NaN == NaN返回false， 因为NaN不等于NaN。&lt;/p&gt;
+
+&lt;p&gt;比较少见的情况
+2 == 3 不会有这种情况， new Number会调用valueOf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Number.prototype.valueOf = function(){
+	return 3;
+}
+
+new Numebr(2) == 3; // true
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;假值相等比较&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+&quot;0&quot; == null;      // false
+&quot;0&quot; == undefined; // false
+&quot;0&quot; == false;     // true
+&quot;0&quot; == NaN;       // false
+&quot;0&quot; == 0;        // true
+&quot;0&quot; == &quot;&quot;;       // false
+
+
+
+false == null;      // false
+false == undefined; // false
+false == NaN;       // false
+false == 0;        // true
+false == &quot;&quot;;       // true
+false == [];       // true
+false == {};       // false
+
+
+
+&quot;&quot; == null;      // false
+&quot;&quot; == undefined; // false
+&quot;&quot; == NaN;       // false
+&quot;&quot; == 0;        // true
+&quot;&quot; == [];       // true
+&quot;&quot; == {};       // false
+
+
+0 == null;      // false
+0 == undefined; // false
+0 == NaN;       // false
+0 == [];       // true
+0 == {};       // false
+
+
+这个最好
+
+[] == ![]  // true
+
+2 == [2] // true
+&quot;&quot; == [null] // true
+
+0 == &quot;\n&quot;   // true
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;抽象关系的比较&lt;/p&gt;
+
+&lt;p&gt;双方先调用toPrimitive，如果结果出现非字符串，就根据toNumber规则将双方强制转换为数字进行比较&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = [42];
+var b = &quot;43&quot;;
+
+a &amp;lt; b; // true
+b &amp;lt; a; // false
+
+如果双方都是字符串，则按照字母顺序比较
+
+var a = [&quot;42&quot;];
+var b = [&quot;043&quot;];
+
+a &amp;lt; b;  // false
+a和b不转为数字，因为你toPrimitive返回的字符串这里比较的是&quot;42&quot; 和 &quot;043&quot;两个字符串，比较的是&quot;4&quot; 和&quot;0&quot; 
+
+
+var a = [4, 2];
+var b = [0, 4, 3];
+
+a &amp;lt; b; // false  比较 &quot;4, 2&quot; 和 &quot;0, 4, 3&quot;的首字母
+
+var a = { b: 42 };
+var b = { b: 43 };
+
+a &amp;lt; b;  // false 转为&quot;[object Object]&quot; 和&quot;[object Object]&quot;所以按照字母顺序比较并不成立
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面的例子比较奇怪&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = { b: 42 };
+var b = { b: 43 };
+
+a &amp;lt; b; // false
+
+a == b; // false
+
+a &amp;gt; b; // false
+
+a &amp;lt;= b; // true
+a &amp;gt;= b; // true
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根据规范 a &amp;lt;=b 被处理成 !(a &amp;gt; b)&lt;/p&gt;
+
+&lt;h2 id=&quot;javascript表达式&quot;&gt;JavaScript表达式&lt;/h2&gt;
+&lt;p&gt;表达式的副作用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 42;
+var b = a++;
+
+a; // 43
+
+b; // 42
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;标签表达式 break; continue;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence&quot;&gt;运算符优先级&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。</summary></entry><entry><title type="html">你不知道的JavaScript上卷</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/" rel="alternate" type="text/html" title="你不知道的JavaScript上卷" /><published>2018-10-08T00:00:00+08:00</published><updated>2018-10-08T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/08/read-book-you-known-up-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
 
 &lt;h2 id=&quot;作用域&quot;&gt;作用域&lt;/h2&gt;
 &lt;p&gt;JavaScript没有块级作用域的相关功能。但是使用&lt;code&gt;with&lt;/code&gt;、&lt;code&gt;try...catch&lt;/code&gt;可以创建块级作用域&lt;/p&gt;

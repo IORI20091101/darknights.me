@@ -542,6 +542,22 @@ null &gt;&gt;&gt; 0 // 0
 
 </code></pre>
 
+<h3 id="隐式转换一个题目">隐式转换一个题目</h3>
+<pre><code>如果想输出success英国如何定义a
+if(a == 2 &amp;&amp; a == 3)  {
+	console.log("success")
+}
+
+
+var i = 2;
+Number.prototype.valueOf = function() {
+	return i++;
+}
+
+var a = new Number( 42 );
+
+</code></pre>
+
 
                 <hr>
 
