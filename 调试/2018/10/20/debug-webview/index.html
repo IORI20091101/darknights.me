@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://darknights.b0.upaiyun.com/assets/images/favicon.ico">
 
-    <title>HTML面试题 - Dark knight's Blog</title>
+    <title>安卓和IOS前端页面调试 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">
+    <link rel="canonical" href="http://darknights.me/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://darknights.b0.upaiyun.com/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -192,17 +192,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                            <a class="tag" href="/tags/#工具" title="工具">工具</a>
                             
-                            <a class="tag" href="/tags/#HTML" title="HTML">HTML</a>
+                            <a class="tag" href="/tags/#调试" title="调试">调试</a>
                             
                         </div>
-                        <h1>HTML面试题</h1>
+                        <h1>安卓和IOS前端页面调试</h1>
                         
                         
-                        <h2 class="subheading">一些常见HTML面试题总结</h2>
+                        <h2 class="subheading">调试客户端的webview</h2>
                         
-                        <span class="meta">Posted by toshiba on September 11, 2018</span>
+                        <span class="meta">Posted by toshiba on October 20, 2018</span>
                     </div>
                 </div>
             </div>
@@ -224,7 +224,38 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="html">HTML</h2>
+				<h2 id="场景">场景</h2>
+
+<p>我们通常会有这样的开发场景， 开发了一些前端页面，可能在手机浏览器打开，也可能在客户端的webview打开，对应不同的场景我们可能需要不通的手段来进行调试。
+对于简单的页面我们一般可以通过chrome的开发工具来调试或者通过safari来直接对手机打开的页面直接进行调试。 但是对于复杂webview我们可能需要一些特殊手段来进行debug</p>
+
+<h2 id="抓包">抓包</h2>
+<p>对于抓包有很多工具比如 mac上面有 charles，wireShark， windows上面有fiddler 等等。我常用的一个抓包工具叫 <a href="https://mitmproxy.org/">mitmproxy</a>, 在github已经一万多star了，使用起来比较简单。 一条命令 <code>mitmproxy -p 4000 --set console_mouse=false</code>, 启动后 手机手动代理到 ip+端口就可以开始抓包了，对于https可能需要<a href="http://mitm.it/">安装证书</a>.至于安装过程就不重复了，官网已有<a href="https://docs.mitmproxy.org/stable/">教程</a>。</p>
+
+<h2 id="安卓的webview页面">安卓的webview页面</h2>
+<p>现在的安卓应用内的页面进行调试是真的方便。</p>
+
+<ul>
+  <li>首先打开手机的usb调试，连接到电脑。</li>
+  <li>第二在chrome输入 <code>chrome://inspect/#devices</code> （开发环境安卓桌面版Chrome32+ 并且 Android 系统高于 4.4）</li>
+  <li>第三 选择app中的页面进行调试即可</li>
+</ul>
+
+<h2 id="ios-safari">iOS Safari</h2>
+
+<h2 id="weinre">weinre</h2>
+
+<h2 id="微信-webview-调试">微信 WebView 调试</h2>
+
+<h2 id="参考文档">参考文档</h2>
+
+<ul>
+  <li><a href="https://75team.com/post/webview-debug.html">前端 WebView 指南之调试篇</a></li>
+  <li><a href="http://elevenbeans.github.io/2017/06/06/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/">移动端浏览器调试方法汇总</a></li>
+  <li><a href="https://aotu.io/notes/2017/02/24/Mobile-debug/index.html">移动端真机调试指南</a></li>
+  <li><a href="https://github.com/riskers/blog/issues/11">打造最舒适的webview调试环境</a></li>
+  <li><a href="http://yujiangshui.com/multidevice-frontend-debug/">移动端前端开发调试</a></li>
+</ul>
 
 
                 <hr>
@@ -232,13 +263,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/" data-toggle="tooltip" data-placement="top" title="CSS面试题">&larr; Previous Post</a>
+        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/" data-toggle="tooltip" data-placement="top" title="你不知道的JavaScript中卷(一)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/" data-toggle="tooltip" data-placement="top" title="JavaScript面试题">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -248,9 +275,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html"
-         data-title="HTML面试题"
-         data-url="http://darknights.me/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/"></div>
+         data-thread-key="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview"
+         data-title="安卓和IOS前端页面调试"
+         data-url="http://darknights.me/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/"></div>
     <script>
 
         /**

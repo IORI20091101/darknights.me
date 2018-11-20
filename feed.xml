@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-16T14:43:24+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">你不知道的JavaScript中卷(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/" rel="alternate" type="text/html" title="你不知道的JavaScript中卷(一)" /><published>2018-10-18T00:00:00+08:00</published><updated>2018-10-18T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-20T19:15:27+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">安卓和IOS前端页面调试</title><link href="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/" rel="alternate" type="text/html" title="安卓和IOS前端页面调试" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview</id><content type="html" xml:base="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/">&lt;h2 id=&quot;场景&quot;&gt;场景&lt;/h2&gt;
+
+&lt;p&gt;我们通常会有这样的开发场景， 开发了一些前端页面，可能在手机浏览器打开，也可能在客户端的webview打开，对应不同的场景我们可能需要不通的手段来进行调试。
+对于简单的页面我们一般可以通过chrome的开发工具来调试或者通过safari来直接对手机打开的页面直接进行调试。 但是对于复杂webview我们可能需要一些特殊手段来进行debug&lt;/p&gt;
+
+&lt;h2 id=&quot;抓包&quot;&gt;抓包&lt;/h2&gt;
+&lt;p&gt;对于抓包有很多工具比如 mac上面有 charles，wireShark， windows上面有fiddler 等等。我常用的一个抓包工具叫 &lt;a href=&quot;https://mitmproxy.org/&quot;&gt;mitmproxy&lt;/a&gt;, 在github已经一万多star了，使用起来比较简单。 一条命令 &lt;code&gt;mitmproxy -p 4000 --set console_mouse=false&lt;/code&gt;, 启动后 手机手动代理到 ip+端口就可以开始抓包了，对于https可能需要&lt;a href=&quot;http://mitm.it/&quot;&gt;安装证书&lt;/a&gt;.至于安装过程就不重复了，官网已有&lt;a href=&quot;https://docs.mitmproxy.org/stable/&quot;&gt;教程&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;安卓的webview页面&quot;&gt;安卓的webview页面&lt;/h2&gt;
+&lt;p&gt;现在的安卓应用内的页面进行调试是真的方便。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先打开手机的usb调试，连接到电脑。&lt;/li&gt;
+  &lt;li&gt;第二在chrome输入 &lt;code&gt;chrome://inspect/#devices&lt;/code&gt; （开发环境安卓桌面版Chrome32+ 并且 Android 系统高于 4.4）&lt;/li&gt;
+  &lt;li&gt;第三 选择app中的页面进行调试即可&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ios-safari&quot;&gt;iOS Safari&lt;/h2&gt;
+
+&lt;h2 id=&quot;weinre&quot;&gt;weinre&lt;/h2&gt;
+
+&lt;h2 id=&quot;微信-webview-调试&quot;&gt;微信 WebView 调试&lt;/h2&gt;
+
+&lt;h2 id=&quot;参考文档&quot;&gt;参考文档&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://75team.com/post/webview-debug.html&quot;&gt;前端 WebView 指南之调试篇&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://elevenbeans.github.io/2017/06/06/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/&quot;&gt;移动端浏览器调试方法汇总&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://aotu.io/notes/2017/02/24/Mobile-debug/index.html&quot;&gt;移动端真机调试指南&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/riskers/blog/issues/11&quot;&gt;打造最舒适的webview调试环境&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://yujiangshui.com/multidevice-frontend-debug/&quot;&gt;移动端前端开发调试&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="调试" /><summary type="html">场景</summary></entry><entry><title type="html">你不知道的JavaScript中卷(一)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/" rel="alternate" type="text/html" title="你不知道的JavaScript中卷(一)" /><published>2018-10-18T00:00:00+08:00</published><updated>2018-10-18T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">&lt;p&gt;本书是读完 Effective JavaScript之后开的进行的阅读，整理自己需要注意的点。方便以后巩固。&lt;/p&gt;
 
 &lt;h2 id=&quot;字符串&quot;&gt;字符串&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;var a = &quot;foo&quot;;
@@ -4399,16 +4430,4 @@ f(&quot;x&quot;);
 编写间接调用的一种简洁方法是
 
 (0, eval)(src);  // 逗号表达式求值返回eval函数，然后调用。  这种表达式被视为eval的一种间接调用。
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解变量提升</summary></entry><entry><title type="html">理解rem布局</title><link href="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/" rel="alternate" type="text/html" title="理解rem布局" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem</id><content type="html" xml:base="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/">&lt;h2 id=&quot;理解变量提升&quot;&gt;理解变量提升&lt;/h2&gt;
-
-&lt;p&gt;JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  function Point(x, y) {
-    this.x = x || 0
-    this.y = y || 0
-  }
-
-  Point.prototype.isOrigin = function() {
-    return this.x === 0 &amp;amp;&amp;amp; this.y === 0
-  }
-
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="页面布局" /><category term="css" /><summary type="html">理解变量提升</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解变量提升</summary></entry></feed>
