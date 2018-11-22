@@ -1,10 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-20T19:15:27+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">安卓和IOS前端页面调试</title><link href="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/" rel="alternate" type="text/html" title="安卓和IOS前端页面调试" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview</id><content type="html" xml:base="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/">&lt;h2 id=&quot;场景&quot;&gt;场景&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-22T20:41:08+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;p&gt;从前端的角度来说，如何从零开始开发一个门户网站呢？ 
+假设后台使用springMVC那么后台模版有可能是Jsp也有可能是theamleaf&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="脚手架" /><summary type="html">从前端的角度来说，如何从零开始开发一个门户网站呢？ 假设后台使用springMVC那么后台模版有可能是Jsp也有可能是theamleaf</summary></entry><entry><title type="html">安卓和IOS前端页面调试</title><link href="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/" rel="alternate" type="text/html" title="安卓和IOS前端页面调试" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview</id><content type="html" xml:base="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/">&lt;h2 id=&quot;场景&quot;&gt;场景&lt;/h2&gt;
 
 &lt;p&gt;我们通常会有这样的开发场景， 开发了一些前端页面，可能在手机浏览器打开，也可能在客户端的webview打开，对应不同的场景我们可能需要不通的手段来进行调试。
-对于简单的页面我们一般可以通过chrome的开发工具来调试或者通过safari来直接对手机打开的页面直接进行调试。 但是对于复杂webview我们可能需要一些特殊手段来进行debug&lt;/p&gt;
+对于简单的页面我们一般可以通过chrome的开发工具来调试或者通过safari来直接对手机打开的页面直接进行调试。 但是对于复杂webview我们可能需要一些特殊手段来进行debug.&lt;/p&gt;
+
+&lt;p&gt;在本文将总结一部分调试技巧&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;方法分类&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;难度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;调试目标&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;调试效果&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;优先级&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Chrome自带模拟器&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;简单&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;所有&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;模拟效果，基本能调试 UI 及标准 JS 所有问题&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;极高&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;chrome://inspect&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;简单&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;安卓的自带浏览器+webview&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;真机调试效果显著&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spy-debugger&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;所有页面不管是否是webview&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;效果可以&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;safari开发模式&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;简单&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;手机safari的所有页面&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;真机调试效果显著&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;xcode的iPhone模拟器&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;较难&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;webview和手机浏览器&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;调试效果显著&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;中等&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;weinre&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;所有页面不管是否是webview&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;需要注入代码效果一般&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;低&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;微信开发者工具&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;模拟手机&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;低&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TBS Studio&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;模拟手机&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;未测试&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Browsersync&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;模拟手机&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;未测试&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h2 id=&quot;抓包&quot;&gt;抓包&lt;/h2&gt;
-&lt;p&gt;对于抓包有很多工具比如 mac上面有 charles，wireShark， windows上面有fiddler 等等。我常用的一个抓包工具叫 &lt;a href=&quot;https://mitmproxy.org/&quot;&gt;mitmproxy&lt;/a&gt;, 在github已经一万多star了，使用起来比较简单。 一条命令 &lt;code&gt;mitmproxy -p 4000 --set console_mouse=false&lt;/code&gt;, 启动后 手机手动代理到 ip+端口就可以开始抓包了，对于https可能需要&lt;a href=&quot;http://mitm.it/&quot;&gt;安装证书&lt;/a&gt;.至于安装过程就不重复了，官网已有&lt;a href=&quot;https://docs.mitmproxy.org/stable/&quot;&gt;教程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;对于抓包有很多工具比如 mac上面有 charles，wireShark， windows上面有fiddler 等等。
+我常用的一个抓包工具叫 &lt;a href=&quot;https://mitmproxy.org/&quot;&gt;mitmproxy&lt;/a&gt;, 在github已经一万多star了，使用起来比较简单。 一条命令 &lt;code&gt;mitmproxy -p 4000 --set console_mouse=false&lt;/code&gt;, 启动后 手机手动代理到 ip+端口就可以开始抓包了，对于https可能需要&lt;a href=&quot;http://mitm.it/&quot;&gt;安装证书&lt;/a&gt;.至于安装过程就不重复了，官网已有&lt;a href=&quot;https://docs.mitmproxy.org/stable/&quot;&gt;教程&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;charles抓包请查看&lt;a href=&quot;https://www.jianshu.com/p/fdd7c681929c&quot;&gt;这篇教程&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;安卓的webview页面&quot;&gt;安卓的webview页面&lt;/h2&gt;
 &lt;p&gt;现在的安卓应用内的页面进行调试是真的方便。&lt;/p&gt;
@@ -15,11 +98,82 @@
   &lt;li&gt;第三 选择app中的页面进行调试即可&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;ios-safari&quot;&gt;iOS Safari&lt;/h2&gt;
+&lt;h2 id=&quot;safari调试iphone页面&quot;&gt;safari调试iPhone页面&lt;/h2&gt;
+&lt;p&gt;这种方式适合手机上面的浏览器页面
+需要几步配置&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;首先打开电脑的safari
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Safari设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;然后打开iPhone进行设置
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/iPhone设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;最后通过电脑的safari打开进行调试
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/开启调试.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;调试iphone的webview&quot;&gt;调试iPhone的webview&lt;/h2&gt;
+&lt;p&gt;iPhone的webview可行的方法就是下载xcode，然后跟客户端开发借来一个xxx.app然后用模拟器打开，这样调试页面的时候可以调试各种情况下的页面，包括safari和应用内的页面。
+这是目前唯一靠谱的调试方案。 还有一些 &lt;a href=&quot;https://github.com/google/ios-webkit-debug-proxy&quot;&gt;ios-webkit-debug-proxy&lt;/a&gt; 和 &lt;a href=&quot;https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter&quot;&gt;remotedebug-ios-webkit-adapter&lt;/a&gt; 类似方案， 这些方案只能够调试手机的safari 对于app中的webview就无能为力了，而且经过本人实践效果并不理想，如果只是为了调试safari那还不如直接usb连接方便快捷，而且安装过程会有很多坑，因此不推荐使用。&lt;/p&gt;
+
+&lt;p&gt;简化方案&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//打开首页
+xcrun simctl openurl booted taobao://h5.m.taobao.com/guang/index.html
+// 打开模拟器
+open -a &quot;Simulator.app&quot; --args -CurrentDeviceUDID &quot;FCE2CFE8-64C3-4DBE-906B-B9BF4180DE49&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&quot;&gt;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;weinre&quot;&gt;weinre&lt;/h2&gt;
 
+&lt;p&gt;Weinre 是一款较老的远程调试工具，功能与 Chrome DevTools 相似，需要在页面中插入一段 JS 脚本来实时调试页面 DOM 结构、样式、JS 等，另外它使用的是代理的方式，所以兼容性很好，无论是新老设备系统通吃，但对于样式调试不友善，缺少断点调试及 Profiles 等常用功能。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装 Weinre
+    &lt;pre&gt;&lt;code&gt;$ sudo npm -g install weinre
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;启动Weinre监听服务
+    &lt;pre&gt;&lt;code&gt;$ weinre --boundHost 10.10.2.144 --httpPort 8090 
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;使用chrome访问
+&lt;a href=&quot;http://10.10.2.144:8090&quot;&gt;http://10.10.2.144:8090&lt;/a&gt;, 然后将一段 JS 脚本 &lt;script src=&quot;http://10.10.2.144:8090/target/target-script-min.js#anonymous&quot;&gt;&lt;/script&gt; 插入到需要调试的页面中，插入代码后手机访问调试页面。
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/weinre.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入
+Tools –&amp;gt; Rewrite 选中Enable Rewrite
+这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 &amp;lt;/body&amp;gt; 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。
+&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Charles_Rewrite.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;spy-debugger&quot;&gt;spy-debugger&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/wuchangming/spy-debugger&quot;&gt;spy-debugger&lt;/a&gt;跟微信开发这工具都在weinre的基础上简化了给页面添加js的步骤，它还对HTTPS的支持&lt;/p&gt;
+
+&lt;p&gt;安装spy-debugger
+spy-debugger内部集成了&lt;a href=&quot;http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html&quot;&gt;weinre&lt;/a&gt;、&lt;a href=&quot;https://github.com/wuchangming/node-mitmproxy&quot;&gt;node-mitmproxy&lt;/a&gt;、&lt;a href=&quot;https://github.com/alibaba/anyproxy&quot;&gt;AnyProxy&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$  sudo npm install spy-debugger -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装https证书包括手机和PC。
+执行启动特别酸爽&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ spy-debugger -p 8888
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&quot;微信-webview-调试&quot;&gt;微信 WebView 调试&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://x5.tencent.com/tbs/guide/debug/season1.html&quot;&gt;https://x5.tencent.com/tbs/guide/debug/season1.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;browsersync&quot;&gt;browserSync&lt;/h2&gt;
 
 &lt;h2 id=&quot;参考文档&quot;&gt;参考文档&lt;/h2&gt;
 
@@ -4176,258 +4330,4 @@ start() === start;  // true
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
   &lt;p&gt;ES5的严格模式禁止使用arguments.caller 和arguments.callee ，因为它们不具备良好的可移植性， 非标准的函数对象caller属性应该避免使用，因为在包含全部栈信息方面，它是不可靠的。&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">函数调用 理解函数调用， 方法调用，构造函数调用之间的不同。</summary></entry><entry><title type="html">Effective JavaScript (五)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/" rel="alternate" type="text/html" title="Effective JavaScript (五)" /><published>2018-09-11T00:00:00+08:00</published><updated>2018-09-11T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/11/read-book-effective-five/">&lt;h2 id=&quot;理解变量提升&quot;&gt;理解变量提升&lt;/h2&gt;
-
-&lt;p&gt;try…catch 语句将捕获的异常绑定到一个变量，该变量的作用域只是catch语句块。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-  function test() {
-    var x = &quot;var&quot;, result = [];
-    result.push(x);
-
-    try {
-      throw &quot;exception&quot;;
-    } catch(x) {
-      x = &quot;catch&quot;;
-    }
-
-    result.push(x);
-
-    return result;
-  }
-
-  test(); // [&quot;var&quot;, &quot;var&quot;]
-  
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用立即调用函数iife创建局部作用域&quot;&gt;使用立即调用函数IIFE创建局部作用域&lt;/h2&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-function wrapElements(a) {
-  var result = [], i, n;
-  for(i = 0, n = a.length; i &amp;lt; n; i++) {
-    result[i] = function() { return a[i] }
-  }
-
-  return result;
-}
-
-var wrapped = wrapElements([10, 20, 30, 40, 50]);
-
-var f = wrapped[0];
-
-f();  // ? 输出结果 undefined
-
-
-// 更具有欺骗性的例子
-function wrapElements(a) {
-  var result = [];
-  for(var i = 0, n = a.length; i &amp;lt; n; i++) {
-    result[i] = function() { return a[i] }
-  }
-
-  return result;
-}
-
-var wrapped = wrapElements([10, 20, 30, 40, 50]);
-
-var f = wrapped[0];
-
-
-f();  // ? 输出结果 undefined
-
-
-// 为了避免这种问题需要用一个立即调用的函数创建一个局部作用域
-
-(function() {
-  var j = i;
-  result[j] = function() { return a[j]; }
-})();
-
-// or
-
-(function(j) {
-  result[j] = function() { return a[j]; }
-})(i);
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;当心命名函数表达式笨拙的作用域&quot;&gt;当心命名函数表达式笨拙的作用域&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;function double(x) { return x * 2; }
-
-这里既可以是一个函数声明，也可以是一个命名函数表达式
-
-var f = function(x) { return x * 2; }
-
-var f = function double(x) { return x * 2 }
-
-根据ECMAScript规范， 此语句将该函数绑定到变量f，而不是变量double。
-
-匿名和命名函数表但是的官方区别在于后者会绑定到其函数名相同的变量上，该变量将作为该函数内的一个局部变量。（只能在函数内部调用）可以用来写递归函数表达式
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;命名函数表达式是作用域和兼容性问题臭名昭著的来源，这归结于ECMAScript规范的历史中很不幸的错误以及流行的JavaScript引擎中的Bug. 规范的错误在ES3中就已经存在，JavaScript引擎被要求将命名函数表达式的作用域表示为一个对象，这有点像with，该作用域对象也继承了Object.prototype的属性，这意味着仅仅是给函数表达式命名也会将Object.prototype中的所有属性引入到作用域中。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;var constructor = function() { return null; }
-
-var f = function f() {
-  return constructor();
-}
-
-f();  // 结果 {} (in ES3 环境中)。这里错误的使用了Object.prototype.constructor (Object的构造函数)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;幸运的ES5修正了这个问题，但是有些JavaScript仍然使用过时的对象作用域，还有些更不符合标准的对于匿名函数的表达式也使用对象的作用域。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var constructor = function() { return null; }
-
-var f = function () {
-  return constructor();
-}
-
-f();  // 结果 {} (在更不标准的环境中)。本来这里应该正确解析不使用对象的作用域但是不标准的环境导致匿名函数表达式仍然使用对象作用域
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;最好的做法就是避免任何时候在Object.prototype中添加属性，以及避免使用与标准Object.prototype属性同名的局部变量&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在流行的JavaScript的引擎中的另一个缺陷是函数命名表达式的声明进行提升。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var f = g() { returen 17; }
-g(); // 17 (在非标准的环境中会返回17，标准环境会报错 g is not defined)
-
-我们应该怎样做
-var f = function g() { return 17; }
-var g = null;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;由于命名函数表达式会导致很多问题，所以不值得使用&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;当心局部块函数声明笨拙的作用域&quot;&gt;当心局部块函数声明笨拙的作用域&lt;/h2&gt;
-
-&lt;p&gt;比较有迷惑性的一个例子&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-function f() { return &quot;global&quot;; }
-
-function test(x) {
-  function f() { return &quot;local&quot;; }
-
-  var result = [];
-  if(x) {
-    result.push(f());
-  }
-
-  result.push(f());
-  return result;
-}
-
-// 返回结果
-test(true); // [&quot;local&quot;, &quot;local&quot;]
-test(false); // [&quot;local&quot;]
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;当函数f放到局部块里将有什么不同呢，首先要记住一点
- &lt;code&gt;JavaScript没有块级作用域&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-function f() { return &quot;global&quot;; }
-
-function test(x) {
-
-  var result = [];
-  if(x) {
-    function f() { return &quot;local&quot;; }
-    result.push(f());
-  }
-console.log(f);
-  result.push(f());
-  return result;
-}
-
-// 返回结果
-test(true); // [&quot;local&quot;, &quot;local&quot;]
-test(false); // 有些平台显示[&quot;local&quot;] 有些平台返回： f is not a function
-
-你可能认为 第一个结果为[&quot;local&quot;, &quot;global&quot;], 第二个结果为 [&quot;global&quot;], 但是有一点需要记住 JavaScript没有块级作用域
-这里根据平台的实现不同结果会不一样,代码很难理解，还会导致性能降低。 
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt; 对此官方指定函数声明只能出现在其他函数或者程序的最外层。&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;编写可移植的函数最好方式是始终避免将函数声明置于局部块或者子语句中，如果想写嵌套函数声明应该将它置于父函数的最外层。如果要根据条件判断选择函数，最好的方法是使用var声明和函数表达式来实现。例子如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function f() { return &quot;global&quot;; }
-
-function test(x) {
-
-  var g = f, result = [];
-  if(x) {
-    g = function() { return &quot;local&quot;; }
-    result.push(g());
-  }
-  result.push(g());
-  return result;
-}
-
-这样消除内部变量作用域的神秘性，结果很明确，函数可移植。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;避免使用eval创建局部变量&quot;&gt;避免使用eval创建局部变量&lt;/h2&gt;
-
-&lt;p&gt;使用eval的例子&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var y = &quot;global&quot;;
-function test(x) {
-  if(x) {
-    eval(&quot;var y = 'local';&quot;);
-  }
-  return y;
-}
-
-test(true); // &quot;local&quot;;
-test(false); // &quot;global&quot;
-
-var y = &quot;global&quot;;
-function test(src) {
-  if(x) {
-    eval(src);
-  }
-  return y;
-}
-
-test(&quot;var y = 'local';&quot;); // &quot;local&quot;;
-test(&quot;var z = 'local';&quot;); // &quot;global&quot;
-这段代码很脆弱，也很不安全，它赋予了外部调用者能改变test函数内部作用域的能力。ES5严格模式将eval函数运行在一个嵌套的作用域中防止这种污染
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;保证eval函数不影响外部作用域的一个简单的方法是一个明确的嵌套作用域中运行它&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;var y = &quot;global&quot;;
-function test(src) {
-  if(x) {
-    (function() { eval(src); })();
-  }
-  return y;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;间接调用eval函数由于直接调用&quot;&gt;间接调用eval函数由于直接调用&lt;/h2&gt;
-&lt;p&gt;大部分函数只能访问他们所在的作用域，而不能访问除此之外的作用域。然而 eval函数具有访问调用它那时的整个作用域的能力。这是很强大的能力，但是导致一个问题eval很难很高效的调用一个任何函数，因为一旦被调用的是eval函数，那么每个函数调用都需要确保在运行时整个作用域对eval函数是可访问的。&lt;/p&gt;
-
-&lt;p&gt;总而言之我们使用过程中尽可能间接调用eval而不要直接调用。代码如下&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var f = eval;
-f(&quot;x&quot;);
-
-编写间接调用的一种简洁方法是
-
-(0, eval)(src);  // 逗号表达式求值返回eval函数，然后调用。  这种表达式被视为eval的一种间接调用。
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解变量提升</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">函数调用 理解函数调用， 方法调用，构造函数调用之间的不同。</summary></entry></feed>
