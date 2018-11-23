@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-22T20:41:08+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;p&gt;从前端的角度来说，如何从零开始开发一个门户网站呢？ 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-11-23T11:12:37+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;p&gt;从前端的角度来说，如何从零开始开发一个门户网站呢？ 
 假设后台使用springMVC那么后台模版有可能是Jsp也有可能是theamleaf&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="脚手架" /><summary type="html">从前端的角度来说，如何从零开始开发一个门户网站呢？ 假设后台使用springMVC那么后台模版有可能是Jsp也有可能是theamleaf</summary></entry><entry><title type="html">安卓和IOS前端页面调试</title><link href="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/" rel="alternate" type="text/html" title="安卓和IOS前端页面调试" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview</id><content type="html" xml:base="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/">&lt;h2 id=&quot;场景&quot;&gt;场景&lt;/h2&gt;
 
 &lt;p&gt;我们通常会有这样的开发场景， 开发了一些前端页面，可能在手机浏览器打开，也可能在客户端的webview打开，对应不同的场景我们可能需要不通的手段来进行调试。
@@ -128,8 +128,8 @@ xcrun simctl openurl booted taobao://h5.m.taobao.com/guang/index.html
 open -a &quot;Simulator.app&quot; --args -CurrentDeviceUDID &quot;FCE2CFE8-64C3-4DBE-906B-B9BF4180DE49&quot;
 
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&lt;/p&gt;
+&lt;p&gt;前提是安装了xcode， 本地需要一个sdk与测试网站进行交互方便获取app和执行本地shell命令
+根据&lt;a href=&quot;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&quot;&gt;此文章&lt;/a&gt;, 后期开发一个测试环境用的本地调试网站。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&quot;&gt;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&lt;/a&gt;&lt;/p&gt;
 
@@ -169,6 +169,9 @@ spy-debugger内部集成了&lt;a href=&quot;http://people.apache.org/~pmuellr/we
 执行启动特别酸爽&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ spy-debugger -p 8888
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;tbs-studio&quot;&gt;TBS Studio&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://x5.tencent.com/guide/debug.html&quot;&gt;TBS Studio&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;微信-webview-调试&quot;&gt;微信 WebView 调试&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://x5.tencent.com/tbs/guide/debug/season1.html&quot;&gt;https://x5.tencent.com/tbs/guide/debug/season1.html&lt;/a&gt;&lt;/p&gt;
