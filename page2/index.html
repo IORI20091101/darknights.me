@@ -215,6 +215,66 @@
             ">
             
 <div class="post-preview">
+    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">
+        <h2 class="post-title">
+            Effective JavaScript (八)
+        </h2>
+        
+        <h3 class="post-subtitle">
+            数组和字典
+        </h3>
+        
+        <div class="post-content-preview">
+            使用Object的直接实例构造轻量级的字典
+
+var dict = { alice: 34, bob: 24, chris: 62 };
+
+var people = [];
+
+for(var name in dict) {
+	people.push(name + ": " + dict[name]);
+}
+
+people; // ["alice: 34", "bob: 24", "chris...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2018-09-25
+    </p>
+    <!--<p class="post-meta"></p>September 25, 2018-->
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">
+        <h2 class="post-title">
+            Effective JavaScript (七)
+        </h2>
+        
+        <h3 class="post-subtitle">
+            对象和原型
+        </h3>
+        
+        <div class="post-content-preview">
+            理解prototype,getPrototypeOf 和__proto__之间的不同
+
+function User(name, passwordHash) {
+	this.name = name;
+	this.passwordHash = passwordHash;
+}
+
+User.prototype.toString = function() {
+	return "[User " + th...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2018-09-19
+    </p>
+    <!--<p class="post-meta"></p>September 19, 2018-->
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2018/09/17/js-base-currying/">
         <h2 class="post-title">
             函数柯里化
@@ -409,65 +469,6 @@ var foo = function bar() {
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/">
-        <h2 class="post-title">
-            CSS面试题
-        </h2>
-        
-        <h3 class="post-subtitle">
-            一些常见CSS面试题总结
-        </h3>
-        
-        <div class="post-content-preview">
-            CSS
-
-说出下面s1,s2, s5,s6的答案
-
-&lt;div class="p1"&gt;
-    &lt;div class="s1"&gt;1&lt;/div&gt;
-    &lt;div class="s2"&gt;1&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="p2"&gt;
-    &lt;div class="s5"&gt;1&lt;/...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-09-11
-    </p>
-    <!--<p class="post-meta"></p>September 11, 2018-->
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/">
-        <h2 class="post-title">
-            Effective JavaScript (四)
-        </h2>
-        
-        <h3 class="post-subtitle">
-            了解分号插入的局限性
-        </h3>
-        
-        <div class="post-content-preview">
-            了解分号插入的局限性
-
-JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。
-  function Point(x, y) {
-    this.x = x || 0
-    this.y = y || 0
-  }
-
-  Point.prototype.isOrigin = func...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-06-27
-    </p>
-    <!--<p class="post-meta"></p>June 27, 2018-->
-</div>
-<hr>
-
 
 
 
@@ -543,7 +544,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#工具" title="工具" rel="5">
+            <a href="/tags/#工具" title="工具" rel="6">
                 工具
             </a>
             
@@ -579,7 +580,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#javascript" title="javascript" rel="22">
+            <a href="/tags/#javascript" title="javascript" rel="23">
                 javascript
             </a>
             
@@ -615,7 +616,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#webpack" title="webpack" rel="1">
+            <a href="/tags/#webpack" title="webpack" rel="2">
                 webpack
             </a>
             
@@ -633,7 +634,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#读书总结" title="读书总结" rel="13">
+            <a href="/tags/#读书总结" title="读书总结" rel="14">
                 读书总结
             </a>
             
@@ -699,7 +700,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#脚手架" title="脚手架" rel="1">
+            <a href="/tags/#脚手架" title="脚手架" rel="2">
                 脚手架
             </a>
             
@@ -867,7 +868,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Dark Knight 2018 |
+                    Copyright &copy; Dark Knight 2019 |
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"

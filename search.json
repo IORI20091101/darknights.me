@@ -3,6 +3,26 @@
   "data" : [
     
       {
+      "value" : "webpack最佳实践",
+      "subtitle": "webpack初步配置以及优化",
+      "data" : "/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/",
+      "date": "2018-11-28"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "Babel配置详解",
+      "subtitle": "适合自己的babel配置",
+      "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/",
+      "date": "2018-11-03"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "搭建门户网站技术选型",
       "subtitle": "从零开始搭建门户网站",
       "data" : "/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/",

@@ -232,7 +232,35 @@
 <pre><code>$  git init
 </code></pre>
 
-<p>##检出新仓库</p>
+<p>Create a new repository</p>
+
+<pre><code>$  git clone git@github.com:sundongzhi/chouti-react.git
+$  cd chouti-react
+$  touch README.md
+$  git add README.md
+$  git commit -m "add README"
+$  git push -u origin master
+</code></pre>
+
+<p>Existing folder</p>
+
+<pre><code>$  cd existing_folder
+$  git init
+$  git remote add origin git@github.com:sundongzhi/chouti-react.git
+$  git add .
+$  git commit -m "Initial commit"
+$  git push -u origin master
+</code></pre>
+
+<p>Existing Git repository</p>
+
+<pre><code>$  cd existing_repo
+$  git remote rename origin old-origin
+$  git remote add origin git@github.com:sundongzhi/chouti-react.git
+$  git push -u origin --all
+$  git push -u origin --tags
+</code></pre>
+
 <h3 id="clone本地仓库">clone本地仓库</h3>
 <pre><code>$  git clone /path/to/repository
 </code></pre>
@@ -571,7 +599,7 @@ $  git add -i 							//交互式添加文件到暂存区：
                                 interview
                             </a>
         				
-                            <a href="/tags/#工具" title="工具" rel="5">
+                            <a href="/tags/#工具" title="工具" rel="6">
                                 工具
                             </a>
         				
@@ -595,7 +623,7 @@ $  git add -i 							//交互式添加文件到暂存区：
                                 计算机基础
                             </a>
         				
-                            <a href="/tags/#javascript" title="javascript" rel="22">
+                            <a href="/tags/#javascript" title="javascript" rel="23">
                                 javascript
                             </a>
         				
@@ -619,7 +647,7 @@ $  git add -i 							//交互式添加文件到暂存区：
                                 vps
                             </a>
         				
-                            <a href="/tags/#webpack" title="webpack" rel="1">
+                            <a href="/tags/#webpack" title="webpack" rel="2">
                                 webpack
                             </a>
         				
@@ -631,7 +659,7 @@ $  git add -i 							//交互式添加文件到暂存区：
                                 Node.js
                             </a>
         				
-                            <a href="/tags/#读书总结" title="读书总结" rel="13">
+                            <a href="/tags/#读书总结" title="读书总结" rel="14">
                                 读书总结
                             </a>
         				
@@ -675,7 +703,7 @@ $  git add -i 							//交互式添加文件到暂存区：
                                 调试
                             </a>
         				
-                            <a href="/tags/#脚手架" title="脚手架" rel="1">
+                            <a href="/tags/#脚手架" title="脚手架" rel="2">
                                 脚手架
                             </a>
         				
@@ -779,7 +807,7 @@ $  git add -i 							//交互式添加文件到暂存区：
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Dark Knight 2018 |
+                    Copyright &copy; Dark Knight 2019 |
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"
