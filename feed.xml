@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-01-23T18:43:00+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">webpack最佳实践</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" rel="alternate" type="text/html" title="webpack最佳实践" /><published>2018-11-28T00:00:00+08:00</published><updated>2018-11-28T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/">&lt;p&gt;本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="webpack" /><category term="脚手架" /><summary type="html">本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。</summary></entry><entry><title type="html">Babel配置详解</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/" rel="alternate" type="text/html" title="Babel配置详解" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/">&lt;h2 id=&quot;babel&quot;&gt;Babel&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">Babel</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-06-14T12:27:53+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">webpack最佳实践</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" rel="alternate" type="text/html" title="webpack最佳实践" /><published>2018-11-28T00:00:00+08:00</published><updated>2018-11-28T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/">&lt;p&gt;本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="webpack" /><category term="脚手架" /><summary type="html">本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。</summary></entry><entry><title type="html">Babel配置详解</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/" rel="alternate" type="text/html" title="Babel配置详解" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/">&lt;h2 id=&quot;babel&quot;&gt;Babel&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">Babel</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
 &lt;p&gt;工作多年，项目越来越多，总是要做一些重复性的工作开进行开发，每次东配置西配置一大堆，效率很低无法直接投入生产。
 通过这篇文章梳理一下自己的知识点，将一些常用技术做一些总结归纳和复习。并且基于此开发一套模版，用于以后网站开发直接套用，不做重复性的工作（这里的网站主要针对pc）。&lt;/p&gt;
 
@@ -148,15 +148,15 @@
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;首先打开电脑的safari
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Safari设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;然后打开iPhone进行设置
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/iPhone设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/iPhone设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;最后通过电脑的safari打开进行调试
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/开启调试.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/开启调试.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -191,15 +191,15 @@ open -a &quot;Simulator.app&quot; --args -CurrentDeviceUDID &quot;FCE2CFE8-64C3-
   &lt;/li&gt;
   &lt;li&gt;使用chrome访问
 &lt;a href=&quot;http://10.10.2.144:8090&quot;&gt;http://10.10.2.144:8090&lt;/a&gt;, 然后将一段 JS 脚本 &lt;script src=&quot;http://10.10.2.144:8090/target/target-script-min.js#anonymous&quot;&gt;&lt;/script&gt; 插入到需要调试的页面中，插入代码后手机访问调试页面。
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/weinre.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/weinre.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入
 Tools –&amp;gt; Rewrite 选中Enable Rewrite
 这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 &amp;lt;/body&amp;gt; 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。
-&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Charles_Rewrite.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://darknights.b0.upaiyun.com/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;spy-debugger&quot;&gt;spy-debugger&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/wuchangming/spy-debugger&quot;&gt;spy-debugger&lt;/a&gt;跟微信开发这工具都在weinre的基础上简化了给页面添加js的步骤，它还对HTTPS的支持&lt;/p&gt;
