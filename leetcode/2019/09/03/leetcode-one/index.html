@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>SublimeText快捷键 - Dark knight's Blog</title>
+    <title>LeetCode刷题总结(简单版一) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/">
+    <link rel="canonical" href="http://darknights.me/leetcode/2019/09/03/leetcode-one/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat1.jpg ')
+        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,17 +192,19 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#生产工具" title="生产工具">生产工具</a>
+                            <a class="tag" href="/tags/#面试" title="面试">面试</a>
                             
-                            <a class="tag" href="/tags/#IDE" title="IDE">IDE</a>
+                            <a class="tag" href="/tags/#基础" title="基础">基础</a>
+                            
+                            <a class="tag" href="/tags/#LeetCode" title="LeetCode">LeetCode</a>
                             
                         </div>
-                        <h1>SublimeText快捷键</h1>
+                        <h1>LeetCode刷题总结(简单版一)</h1>
                         
                         
-                        <h2 class="subheading">SublimeText快捷键总结工欲善其事必先利其器快捷键总结</h2>
+                        <h2 class="subheading">对LeetCode刷过的题目进行整理总结，方便后期查阅复习。</h2>
                         
-                        <span class="meta">Posted by toshiba on November 15, 2017</span>
+                        <span class="meta">Posted by toshiba on September 3, 2019</span>
                     </div>
                 </div>
             </div>
@@ -224,237 +226,230 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="sublime-text-2---实用快捷键-mac-os-x">Sublime Text 2 - 实用快捷键 (Mac OS X)</h2>
+				<p>本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</p>
 
-<h3 id="打开前往">打开/前往</h3>
+<h3 id="宝石与石头">宝石与石头</h3>
+<p><a href="https://leetcode-cn.com/problems/jewels-and-stones/">宝石与石头</a>：
+给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分大小写，因此”a”和”A”是不同类型的石头。</p>
+<pre><code>示例1:
+输入: J = "aA", S = "aAAbbbb"
+输出: 3
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘T</em></td>
-      <td>前往文件</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌃P</em></td>
-      <td>前往项目</td>
-    </tr>
-    <tr>
-      <td><em>⌘R</em></td>
-      <td>前往 method</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧P</em></td>
-      <td>命令提示</td>
-    </tr>
-    <tr>
-      <td><em>⌃G</em></td>
-      <td>前往行</td>
-    </tr>
-    <tr>
-      <td><em>⌃ `</em></td>
-      <td>python 控制台</td>
-    </tr>
-  </tbody>
-</table>
+示例1:
+输入: J = "z", S = "ZZ"
+输出: 0
+</code></pre>
+<p>注意:
+S 和 J 最多含有50个字母。
+J 中的字符不重复。</p>
 
-<h3 id="编辑">编辑</h3>
+<h4 id="答案一">答案一：</h4>
+<p>分析：最笨的方法肯定是双层遍历。</p>
+<pre><code class="language-javascript">/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    var jLen = J.length;
+    var sLen = S.length;
+    var sum = 0;
+    for(var i = 0; i &lt; jLen; i++) {
+        var j = J.charAt(i);
+        for(var k = 0; k &lt; sLen; k++) {
+            if(j === S.charAt(k)) {
+                sum++;
+            }
+        }   
+    }
+    
+    return sum;
+    
+};
+</code></pre>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘L</em></td>
-      <td>选择行 (重复按下将下一行加入选择)</td>
-    </tr>
-    <tr>
-      <td><em>⌘D</em></td>
-      <td>选择词 (重复按下时多重选择相同的词进行多重编辑)</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧M</em></td>
-      <td>选择括号内的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧↩</em></td>
-      <td>在当前行前插入新行</td>
-    </tr>
-    <tr>
-      <td><em>⌘↩</em></td>
-      <td>在当前行后插入新行</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧K</em></td>
-      <td>删除行</td>
-    </tr>
-    <tr>
-      <td><em>⌘KK</em></td>
-      <td>从光标处删除至行尾</td>
-    </tr>
-    <tr>
-      <td><em>⌘K⌫</em></td>
-      <td>从光标处删除至行首</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧D</em></td>
-      <td>复制(多)行</td>
-    </tr>
-    <tr>
-      <td><em>⌘J</em></td>
-      <td>合并(多)行</td>
-    </tr>
-    <tr>
-      <td><em>⌘KU</em></td>
-      <td>改为大写</td>
-    </tr>
-    <tr>
-      <td><em>⌘KL</em></td>
-      <td>改为小写</td>
-    </tr>
-    <tr>
-      <td><em>⌘ /</em></td>
-      <td>注释</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥ /</em></td>
-      <td>块注释</td>
-    </tr>
-    <tr>
-      <td><em>⌘Y</em></td>
-      <td>恢复或重复</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧V</em></td>
-      <td>粘贴并自动缩进</td>
-    </tr>
-    <tr>
-      <td><em>⌃ space</em></td>
-      <td>自动完成(重复按下选择下一个提示)</td>
-    </tr>
-    <tr>
-      <td><em>⌃M</em></td>
-      <td>跳转至对应的括号</td>
-    </tr>
-  </tbody>
-</table>
+<h4 id="答案二">答案二：</h4>
+<p>通过题解得到了另一种思路就是将J进行循环遍历然后将S中的匹配值全部替换为空，这样长度的差值就是宝石的数量</p>
+<pre><code>/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    var jLen = J.length,
+        sLen = S.length;
+        var news= S;
+    for(var i = 0; i &lt; jLen; i++) {
+        news = news.replace(new RegExp(J.charAt(i), 'g'), "");
+    }
+    
+    return sLen - news.length;
+    
+};
 
-<h3 id="xmlhtml">XML/HTML</h3>
+</code></pre>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘⇧A</em></td>
-      <td>选择标签内的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥ .</em></td>
-      <td>闭合当前标签</td>
-    </tr>
-  </tbody>
-</table>
+<h3 id="ip地址无效化">IP地址无效化</h3>
+<p><a href="https://leetcode-cn.com/problems/defanging-an-ip-address/">IP地址无效化</a>：
+给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。
+所谓无效化 IP 地址，其实就是用 “[.]” 代替了每个 “.”。</p>
+<pre><code>示例1:
+输入：address = "1.1.1.1"
+输出："1[.]1[.]1[.]1"
 
-<h3 id="查找替换">查找/替换</h3>
+示例2:
+输入：address = "255.100.50.0"
+输出："255[.]100[.]50[.]0"
+</code></pre>
+<h4 id="答案一-1">答案一</h4>
+<p>分析：最简单直接的方案就是正则表达式替换</p>
+<pre><code>/**
+ * @param {string} address
+ * @return {string}
+ */
+var defangIPaddr = function(address) {
+    return address.replace(/\./g, '[.]');
+};
+</code></pre>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘F</em></td>
-      <td>查找</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥F</em></td>
-      <td>替换</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥G</em></td>
-      <td>查找下一个符合当前所选的内容</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌃G</em></td>
-      <td>查找所有符合当前所选的内容进行多重编辑</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧F</em></td>
-      <td>在所有打开的文件中进行查找</td>
-    </tr>
-  </tbody>
-</table>
+<h3 id="删除链表中的节点">删除链表中的节点</h3>
+<p><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">删除链表中的节点</a>:
+请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
+现有一个链表 – head = [4,5,1,9]，它可以表示为:
+<img src="https://cdn.darknights.cn/assets/images/in-post/leetcode/237_example.png" alt="" /></p>
+<pre><code>示例1
+输入: head = [4,5,1,9], node = 5
+输出: [4,1,9]
+解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
 
-<h3 id="拆分窗口标签页">拆分窗口/标签页</h3>
+示例2
+输入: head = [4,5,1,9], node = 1
+输出: [4,5,9]
+解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘⌥1</em></td>
-      <td>单列</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥2</em></td>
-      <td>双列</td>
-    </tr>
-    <tr>
-      <td><em>⌘⌥5</em></td>
-      <td>网格 (4组)</td>
-    </tr>
-    <tr>
-      <td><em>⌃[1,2,3,4]</em></td>
-      <td>焦点移动至相应组</td>
-    </tr>
-    <tr>
-      <td><em>⌃⇧[1,2,3,4]</em></td>
-      <td>将当前文件移动至相应组</td>
-    </tr>
-    <tr>
-      <td><em>⌘[1,2,3…]</em></td>
-      <td>选择相应标签页</td>
-    </tr>
-  </tbody>
-</table>
+</code></pre>
+<p>说明:</p>
+<ul>
+  <li>链表至少包含两个节点。</li>
+  <li>链表中所有节点的值都是唯一的。</li>
+  <li>给定的节点为非末尾节点并且一定是链表中的一个有效节点。</li>
+  <li>不要从你的函数中返回任何结果。</li>
+</ul>
 
-<h3 id="书签">书签</h3>
+<h4 id="答案一-2">答案一</h4>
+<p>分析：说实话这道题目对于前端的同学来说其实很难理解。但是对于后台同学这个就太简单了，首先要理解<a href="https://blog.csdn.net/jianyuerensheng/article/details/51200274">单向链表的概念</a>。对于本题只需要将删除后的节点指向新节点</p>
+<pre><code class="language-java">public void deleteNode(ListNode node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+}
+</code></pre>
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘F2</em></td>
-      <td>添加/去除书签</td>
-    </tr>
-    <tr>
-      <td><em>F2</em></td>
-      <td>下一个书签</td>
-    </tr>
-    <tr>
-      <td><em>⇧F2</em></td>
-      <td>前一个书签</td>
-    </tr>
-    <tr>
-      <td><em>⌘⇧F2</em></td>
-      <td>清除书签</td>
-    </tr>
-  </tbody>
-</table>
+<h4 id="答案二-1">答案二</h4>
+<p>对于使用javascript的版本需要首先定义一个单向链表</p>
+<pre><code>/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+var deleteNode = function(node) {
+  node.val = node.next.val;
+  node.next = node.next.next;
+};
 
-<h3 id="标记">标记</h3>
+var deleteNode = function(node) {
+  node = Object.assign(node, node.next)
+};
 
-<table>
-  <tbody>
-    <tr>
-      <td><em>⌘K space</em></td>
-      <td>设置标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KW</em></td>
-      <td>从光标位置删除至标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KA</em></td>
-      <td>从光标位置选择至标记</td>
-    </tr>
-    <tr>
-      <td><em>⌘KG</em></td>
-      <td>清除标记</td>
-    </tr>
-  </tbody>
-</table>
+</code></pre>
 
+<h3 id="查找重复的电子邮箱">查找重复的电子邮箱</h3>
+<p><a href="https://leetcode-cn.com/problems/duplicate-emails/">查找重复的电子邮箱</a>: 编写一个 SQL 查询，查找 <code>Person</code> 表中所有重复的电子邮箱。</p>
+<pre><code>示例：
++----+---------+
+| Id | Email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+
+返回结果：
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+</code></pre>
+
+<h4 id="答案一-3">答案一</h4>
+<pre><code>select Email
+from Person
+group by Email
+having count(Email) &gt; 1
+</code></pre>
+
+<h4 id="答案二-2">答案二</h4>
+<pre><code>select Email from
+(
+    select Email, count(Email) as num
+    from Person
+    group by Email
+) as statistic
+where num &gt; 1;
+</code></pre>
+
+<h3 id="大的国家">大的国家</h3>
+<p><a href="https://leetcode-cn.com/problems/big-countries/">大的国家</a>:这里有张 World 表</p>
+<pre><code>+-----------------+------------+------------+--------------+---------------+
+| name            | continent  | area       | population   | gdp           |
++-----------------+------------+------------+--------------+---------------+
+| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |
+| Albania         | Europe     | 28748      | 2831741      | 12960000      |
+| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |
+| Andorra         | Europe     | 468        | 78115        | 3712000       |
+| Angola          | Africa     | 1246700    | 20609294     | 100990000     |
++-----------------+------------+------------+--------------+---------------+
+</code></pre>
+<p>如果一个国家的面积超过300万平方公里，或者人口超过2500万，那么这个国家就是大国家。</p>
+
+<p>编写一个SQL查询，输出表中所有大国家的名称、人口和面积。</p>
+
+<p>例如，根据上表，我们应该输出:</p>
+<pre><code>+--------------+-------------+--------------+
+| name         | population  | area         |
++--------------+-------------+--------------+
+| Afghanistan  | 25500100    | 652230       |
+| Algeria      | 37100000    | 2381741      |
++--------------+-------------+--------------+
+
+</code></pre>
+
+<h3 id="二叉搜索树的范围和">二叉搜索树的范围和</h3>
+<p><a href="https://leetcode-cn.com/problems/range-sum-of-bst/">二叉搜索树的范围和</a>: 给定二叉搜索树的根结点 root，返回 L 和 R（含）之间的所有结点的值的和。
+二叉搜索树保证具有唯一的值。</p>
+
+<pre><code>示例1:
+输入：root = [10,5,15,3,7,null,18], L = 7, R = 15
+输出：32
+
+示例2:
+输入：root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
+输出：23
+</code></pre>
+<p>提示</p>
+<ul>
+  <li>树中的结点数量最多为 10000 个。</li>
+  <li>最终的答案保证小于 2^31。</li>
+</ul>
+
+<h4 id="答案一-4">答案一</h4>
 
 
                 <hr>
@@ -462,13 +457,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/idea-quick/" data-toggle="tooltip" data-placement="top" title="IDEA快捷键">&larr; Previous Post</a>
+        <a href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" data-toggle="tooltip" data-placement="top" title="webpack最佳实践">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" data-toggle="tooltip" data-placement="top" title="Lodash.js源码阅读分析（一）">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -478,9 +469,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick"
-         data-title="SublimeText快捷键"
-         data-url="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/"></div>
+         data-thread-key="/leetcode/2019/09/03/leetcode-one"
+         data-title="LeetCode刷题总结(简单版一)"
+         data-url="http://darknights.me/leetcode/2019/09/03/leetcode-one/"></div>
     <script>
 
         /**

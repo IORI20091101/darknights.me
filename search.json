@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "LeetCode刷题总结(简单版一)",
+      "subtitle": "对LeetCode刷过的题目进行整理总结，方便后期查阅复习。",
+      "data" : "/leetcode/2019/09/03/leetcode-one/",
+      "date": "2019-09-03"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "webpack最佳实践",
       "subtitle": "webpack初步配置以及优化",
       "data" : "/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/",

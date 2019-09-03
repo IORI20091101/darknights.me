@@ -1,4 +1,227 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-03T12:37:07+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">webpack最佳实践</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" rel="alternate" type="text/html" title="webpack最佳实践" /><published>2018-11-28T00:00:00+08:00</published><updated>2018-11-28T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/">&lt;p&gt;本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="webpack" /><category term="脚手架" /><summary type="html">本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。</summary></entry><entry><title type="html">Babel配置详解</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/" rel="alternate" type="text/html" title="Babel配置详解" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/">&lt;h2 id=&quot;babel&quot;&gt;Babel&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">Babel</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-03T20:00:52+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版一)</title><link href="/leetcode/2019/09/03/leetcode-one/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版一)" /><published>2019-09-03T00:00:00+08:00</published><updated>2019-09-03T00:00:00+08:00</updated><id>/leetcode/2019/09/03/leetcode-one</id><content type="html" xml:base="/leetcode/2019/09/03/leetcode-one/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+
+&lt;h3 id=&quot;宝石与石头&quot;&gt;宝石与石头&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/jewels-and-stones/&quot;&gt;宝石与石头&lt;/a&gt;：
+给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分大小写，因此”a”和”A”是不同类型的石头。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例1:
+输入: J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;
+输出: 3
+
+示例1:
+输入: J = &quot;z&quot;, S = &quot;ZZ&quot;
+输出: 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意:
+S 和 J 最多含有50个字母。
+J 中的字符不重复。&lt;/p&gt;
+
+&lt;h4 id=&quot;答案一&quot;&gt;答案一：&lt;/h4&gt;
+&lt;p&gt;分析：最笨的方法肯定是双层遍历。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    var jLen = J.length;
+    var sLen = S.length;
+    var sum = 0;
+    for(var i = 0; i &amp;lt; jLen; i++) {
+        var j = J.charAt(i);
+        for(var k = 0; k &amp;lt; sLen; k++) {
+            if(j === S.charAt(k)) {
+                sum++;
+            }
+        }   
+    }
+    
+    return sum;
+    
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二&quot;&gt;答案二：&lt;/h4&gt;
+&lt;p&gt;通过题解得到了另一种思路就是将J进行循环遍历然后将S中的匹配值全部替换为空，这样长度的差值就是宝石的数量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    var jLen = J.length,
+        sLen = S.length;
+        var news= S;
+    for(var i = 0; i &amp;lt; jLen; i++) {
+        news = news.replace(new RegExp(J.charAt(i), 'g'), &quot;&quot;);
+    }
+    
+    return sLen - news.length;
+    
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;ip地址无效化&quot;&gt;IP地址无效化&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/defanging-an-ip-address/&quot;&gt;IP地址无效化&lt;/a&gt;：
+给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。
+所谓无效化 IP 地址，其实就是用 “[.]” 代替了每个 “.”。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例1:
+输入：address = &quot;1.1.1.1&quot;
+输出：&quot;1[.]1[.]1[.]1&quot;
+
+示例2:
+输入：address = &quot;255.100.50.0&quot;
+输出：&quot;255[.]100[.]50[.]0&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-1&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：最简单直接的方案就是正则表达式替换&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * @param {string} address
+ * @return {string}
+ */
+var defangIPaddr = function(address) {
+    return address.replace(/\./g, '[.]');
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;删除链表中的节点&quot;&gt;删除链表中的节点&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/delete-node-in-a-linked-list/&quot;&gt;删除链表中的节点&lt;/a&gt;:
+请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
+现有一个链表 – head = [4,5,1,9]，它可以表示为:
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/237_example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例1
+输入: head = [4,5,1,9], node = 5
+输出: [4,1,9]
+解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&amp;gt; 1 -&amp;gt; 9.
+
+示例2
+输入: head = [4,5,1,9], node = 1
+输出: [4,5,9]
+解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&amp;gt; 5 -&amp;gt; 9.
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;说明:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;链表至少包含两个节点。&lt;/li&gt;
+  &lt;li&gt;链表中所有节点的值都是唯一的。&lt;/li&gt;
+  &lt;li&gt;给定的节点为非末尾节点并且一定是链表中的一个有效节点。&lt;/li&gt;
+  &lt;li&gt;不要从你的函数中返回任何结果。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;答案一-2&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：说实话这道题目对于前端的同学来说其实很难理解。但是对于后台同学这个就太简单了，首先要理解&lt;a href=&quot;https://blog.csdn.net/jianyuerensheng/article/details/51200274&quot;&gt;单向链表的概念&lt;/a&gt;。对于本题只需要将删除后的节点指向新节点&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public void deleteNode(ListNode node) {
+    node.val = node.next.val;
+    node.next = node.next.next;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-1&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;对于使用javascript的版本需要首先定义一个单向链表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+var deleteNode = function(node) {
+  node.val = node.next.val;
+  node.next = node.next.next;
+};
+
+var deleteNode = function(node) {
+  node = Object.assign(node, node.next)
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;查找重复的电子邮箱&quot;&gt;查找重复的电子邮箱&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/duplicate-emails/&quot;&gt;查找重复的电子邮箱&lt;/a&gt;: 编写一个 SQL 查询，查找 &lt;code&gt;Person&lt;/code&gt; 表中所有重复的电子邮箱。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例：
++----+---------+
+| Id | Email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+
+返回结果：
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-3&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;select Email
+from Person
+group by Email
+having count(Email) &amp;gt; 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-2&quot;&gt;答案二&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;select Email from
+(
+    select Email, count(Email) as num
+    from Person
+    group by Email
+) as statistic
+where num &amp;gt; 1;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;大的国家&quot;&gt;大的国家&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/big-countries/&quot;&gt;大的国家&lt;/a&gt;:这里有张 World 表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+-----------------+------------+------------+--------------+---------------+
+| name            | continent  | area       | population   | gdp           |
++-----------------+------------+------------+--------------+---------------+
+| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |
+| Albania         | Europe     | 28748      | 2831741      | 12960000      |
+| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |
+| Andorra         | Europe     | 468        | 78115        | 3712000       |
+| Angola          | Africa     | 1246700    | 20609294     | 100990000     |
++-----------------+------------+------------+--------------+---------------+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果一个国家的面积超过300万平方公里，或者人口超过2500万，那么这个国家就是大国家。&lt;/p&gt;
+
+&lt;p&gt;编写一个SQL查询，输出表中所有大国家的名称、人口和面积。&lt;/p&gt;
+
+&lt;p&gt;例如，根据上表，我们应该输出:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+--------------+-------------+--------------+
+| name         | population  | area         |
++--------------+-------------+--------------+
+| Afghanistan  | 25500100    | 652230       |
+| Algeria      | 37100000    | 2381741      |
++--------------+-------------+--------------+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;二叉搜索树的范围和&quot;&gt;二叉搜索树的范围和&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/range-sum-of-bst/&quot;&gt;二叉搜索树的范围和&lt;/a&gt;: 给定二叉搜索树的根结点 root，返回 L 和 R（含）之间的所有结点的值的和。
+二叉搜索树保证具有唯一的值。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例1:
+输入：root = [10,5,15,3,7,null,18], L = 7, R = 15
+输出：32
+
+示例2:
+输入：root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
+输出：23
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;提示&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;树中的结点数量最多为 10000 个。&lt;/li&gt;
+  &lt;li&gt;最终的答案保证小于 2^31。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;答案一-4&quot;&gt;答案一&lt;/h4&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">webpack最佳实践</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" rel="alternate" type="text/html" title="webpack最佳实践" /><published>2018-11-28T00:00:00+08:00</published><updated>2018-11-28T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/">&lt;p&gt;本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="webpack" /><category term="脚手架" /><summary type="html">本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。</summary></entry><entry><title type="html">Babel配置详解</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/" rel="alternate" type="text/html" title="Babel配置详解" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/">&lt;h2 id=&quot;babel&quot;&gt;Babel&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">Babel</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
 &lt;p&gt;工作多年，项目越来越多，总是要做一些重复性的工作开进行开发，每次东配置西配置一大堆，效率很低无法直接投入生产。
 通过这篇文章梳理一下自己的知识点，将一些常用技术做一些总结归纳和复习。并且基于此开发一套模版，用于以后网站开发直接套用，不做重复性的工作（这里的网站主要针对pc）。&lt;/p&gt;
 
@@ -3541,232 +3764,4 @@ new Array(1, 2, 3, 4, 5); // new String(1)
 
 &lt;ul&gt;
   &lt;li&gt;使用数组字面量替代数组构造函数&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry><entry><title type="html">Effective JavaScript (七)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" rel="alternate" type="text/html" title="Effective JavaScript (七)" /><published>2018-09-19T00:00:00+08:00</published><updated>2018-09-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">&lt;h2 id=&quot;理解prototypegetprototypeof-和__proto__之间的不同&quot;&gt;理解prototype,getPrototypeOf 和__proto__之间的不同&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
-	this.name = name;
-	this.passwordHash = passwordHash;
-}
-
-User.prototype.toString = function() {
-	return &quot;[User &quot; + this.name + &quot; ]&quot;;
-};
-
-User.prototype.checkPassword = function(password) {
-	return hash(password) === this.passwordHash;
-};
-
-var u = new User(&quot;sfalken&quot;, &quot;objjowewe&quot;);
-
-// ES5 提供了Obejct.getPrototypeOf() 来获得对象的原型
-Object.getPrototypeOf(u) === User.prototype // true
-
-非标准的环境提供一个特殊的__proto__属性，在这些环境下可以这样检测
-u.__proto__ === User.prototype // true
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用objectgetprototypeof的函数而不要使用__proto__属性&quot;&gt;使用Object.getPrototypeOf的函数而不要使用__proto__属性&lt;/h2&gt;
-&lt;p&gt;并不是所有的JavaScript环境都支持通过__proto__属性来获取对象的原型，因此该属性并不是完全兼容的。由于__proto__会污染所有的对象，因此它会导致大量的Bug。&lt;/p&gt;
-
-&lt;p&gt;但是无论在什么情况下 &lt;code&gt;Object.getPrototypeOf&lt;/code&gt;函数都是有效的。&lt;/p&gt;
-
-&lt;p&gt;对于没有提供ES5 API的JavaScript环境，我们可以利用__proto__属性来实现Object.getPrototypeOf的函数&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;if(typeof Object.getPrototypeOf === 'undefined') {
-	Object.getPrototypeOf = function(obj) {
-		var t = typeof obj;
-		if(!obj || (t !== 'object' &amp;amp;&amp;amp; t !== 'function')) {
-			throw new TypeError(&quot;not an object&quot;);
-		}
-
-		return obj.__proto__;
-	};
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;始终不要修改__ptoto__属性&quot;&gt;始终不要修改__ptoto__属性&lt;/h2&gt;
-&lt;p&gt;原因：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;避免修改__proto__属性的最明显原因是可移植问题。毕竟不是所有平台都支持&lt;/li&gt;
-  &lt;li&gt;避免修改__proto__属性的另一个原因是性能问题&lt;/li&gt;
-  &lt;li&gt;避免修改__proto__属性的最大原因是为了保持行为的可预测性。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;可以使用ES5中的Object.create函数创建一个具有自定义原型链的新对象。对于不支持的ES5环境下下面有一种不依赖于__proto__可移植的实现。&lt;/p&gt;
-
-&lt;h2 id=&quot;使用构造函数与new操作符无关&quot;&gt;使用构造函数与new操作符无关&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
-	this.name = name;
-	this.passwordHash = passwordHash;
-}
-如果使用new操作符调用构造函数会是实例化一个对象，不使用new函数的接收者将是全局对象。
-
-
-var u = User(&quot;hello&quot;, &quot;pass&quot;);
-
-u; // undefined
-this.name // &quot;hello&quot;
-this.passwordHash // &quot;pass&quot;
-
-如果User定为ES5的严格代码，那么它的接收者默认为undefined
-
-function User(name, passwordHash) {
-	'use strict';
-	this.name = name;
-	this.passwordHash = passwordHash;
-}
-var u = User(&quot;hello&quot;, &quot;pass&quot;);
-
-// error this is undefined
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;所以无论是否用new都可以使用构造函数，为了保证代码的健壮性最好是提供一个不管怎样都会工作的代码。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function User(name, pass) {
-	if(!(this instanceof User)) {
-		return new User(name, pass);
-	}
-
-	this.name = name;
-	this.pass = pass;
-}
-
-var x = User(&quot;hello&quot;, &quot;pas1&quot;);
-
-var y = new User(&quot;hel&quot;, &quot;pas2&quot;);
-
-x instanceof User // true
-
-y instanceof User // true
-
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种方式不管怎样调用构造函数都会返回一个继承了User.prototype的实例对象。	
-这种模式的缺点是有一次额外的函数调用，ES5有一种更奇异的调用方式&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function User(name, pass) {
-	var self = this instanceof User
-		? this
-		: Obejct.create(User.prototype);
-
-	self.name = name;
-	self.pass = pass;
-	return self;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种方式只有在ES5中才可以使用，对于不支持的环境，我们可以制造一个兼容性的版本&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 这里只实现了单参数版本的Object.create
-if(typeof Object.creat === 'undefined') {
-	Object.create = function(prototype) {
-		function C() {}
-		C.prototype = prototype;
-		return new C();
-	}
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;在原型中存储方法&quot;&gt;在原型中存储方法&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;将方法存储到实例对象中将创建该函数的多个副本，因为每个实例对象都有一份副本&lt;/li&gt;
-  &lt;li&gt;将方法存储于原型中优于存储在实例对象中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;使用闭包存储私有变量&quot;&gt;使用闭包存储私有变量&lt;/h2&gt;
-&lt;p&gt;闭包将数据存储到封闭的变量中而不提供对这些变量的直接访问，获取闭包内容结构的唯一方式是该函数显示的提供获取它的途径。&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;对象和闭包剧哟相反的策略，对象的属性会被自动暴露出去，然而闭包中的变量会被自动隐藏起来。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我们可以利用这一特性在对象中存储真正的私有数据。不是将数据作为对象属性来存储而是在构造函数中以变量的方式来存储它，并将对象的方法转为引用这些变量的闭包&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
-	this.toString = function() {
-		return &quot;[User &quot; + name +&quot;]&quot;;
-	}
-	this.checkPassword = function(password) {
-		return hash(password) === passwordHash;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这里name和passwordHash并不是以this的属性存储的，读取不到this.name 和this.passwordHash， User不包含任何实例属性。
-该模式有一个缺点为了让构造函数的变量 在使用它们的方法的作用域中，这些方法必须置于实例对象中。 因此违背了上一条&lt;code&gt;在原型中存储方法&lt;/code&gt;
-但是为了那些看中保障信息隐藏的情形来说，这点额外代价是值得的&lt;/p&gt;
-
-&lt;h2 id=&quot;在子类的构造函数中调用父类的构造函数&quot;&gt;在子类的构造函数中调用父类的构造函数&lt;/h2&gt;
-&lt;p&gt;如果正确构建父子级关系的对象&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Actor(scene, x, y) {
-	this.scene = scene;
-	this.x = x;
-	this.y = y;
-	scene.register(this);
-}
-
-Actor.prototype.moveTo = function(x, y) {
-	this.x = x;
-	this.y = y;
-	this.scene.draw();
-}
-
-Actor.prototype.exit = function() {
-	this.scene.unregister(this);
-	this.scene.draw();
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果我们要创建一个Actor的一个子类， 名字为SpaceShip怎么办&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SpaceShip(scene, x, y) {
-	Actor.call(this, scene, x, y);  
-	// 这里SpaceShip的实例对象作为方法的接收者，会将Actor的实例属性加到SpaceShip的实例上，从而继承了Actor的实例属性
-
-	this.points = {};
-}
-
-Actor.prototype.moveTo = function(x, y) {
-	this.x = x;
-	this.y = y;
-	this.scene.draw();
-}
-
-Actor.prototype.exit = function() {
-	this.scene.unregister(this);
-	this.scene.draw();
-}
-
-如何继承Actor的prototype中的方法呢，我们可以使用之前提到过的ES5下的 
-Object.create(非ES5需要自己实现Object.create)
-
-SpaceShip.prototype = Object.create(Actor.prototype);
-
-这样就很好的实现了继承
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;避免使用轻率的猴子补丁&quot;&gt;避免使用轻率的猴子补丁&lt;/h2&gt;
-
-&lt;p&gt;由于对象共享原型，因此每一个对象都可以增加、删除、或修改原型的属性，这个有争议的实现通常被称为猴子补丁（monkey-patching）&lt;/p&gt;
-
-&lt;p&gt;猴子补丁的吸引力在于它的强大。数组缺少一个有用的方法吗？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Array.prototype.split = function(i) {
-	return [this.slice(0, i), this.slice(i)];
-}
-
-//Error Everry array instance has a split method
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;当多个库以不兼容的方式给同一个原型打猴子补丁时，问题便出现了，另外的库可能使用同一个方法给Array.prototype打猴子补丁，这样会有冲突。
-一种替代的方法是增加一个&lt;code&gt;addArrayMethods&lt;/code&gt;方法,用户可以选择调用或者忽略&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function addArrayMethods() {
-	Array.prototype.split = function(i) {
-		return [this.slice(0,i), this.slice(i)];
-	}
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;尽管猴子补丁很危险但是有一种特别可靠而且有价值的使用场景 polyfill. ES5定义一些新的Array方法（forEach, map和filter）,如果一些浏览器版本可能不支持这些版本我们可以通过猴子补丁来实现。由于这些行为是标准化的，所以不会造成库与库之间的不兼容风险。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解prototype,getPrototypeOf 和__proto__之间的不同</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry></feed>
