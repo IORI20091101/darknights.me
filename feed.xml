@@ -1,6 +1,527 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-03T20:00:52+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版一)</title><link href="/leetcode/2019/09/03/leetcode-one/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版一)" /><published>2019-09-03T00:00:00+08:00</published><updated>2019-09-03T00:00:00+08:00</updated><id>/leetcode/2019/09/03/leetcode-one</id><content type="html" xml:base="/leetcode/2019/09/03/leetcode-one/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-04T18:00:04+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
-&lt;h3 id=&quot;宝石与石头&quot;&gt;宝石与石头&lt;/h3&gt;
+&lt;h3 id=&quot;1有趣的电影&quot;&gt;1.有趣的电影&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/not-boring-movies/&quot;&gt;有趣的电影&lt;/a&gt;：
+某城市开了一家新的电影院，吸引了很多人过来看电影。该电影院特别注意用户体验，专门有个 LED显示板做电影推荐，上面公布着影评和相关电影描述。
+作为该电影院的信息部主管，您需要编写一个 SQL查询，找出所有影片描述为非 boring (不无聊) 的并且 id 为奇数 的影片，结果请按等级 rating 排列。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;例如，下表 cinema:
+
++---------+-----------+--------------+-----------+
+|   id    | movie     |  description |  rating   |
++---------+-----------+--------------+-----------+
+|   1     | War       |   great 3D   |   8.9     |
+|   2     | Science   |   fiction    |   8.5     |
+|   3     | irish     |   boring     |   6.2     |
+|   4     | Ice song  |   Fantacy    |   8.6     |
+|   5     | House card|   Interesting|   9.1     |
++---------+-----------+--------------+-----------+
+对于上面的例子，则正确的输出是为：
+
++---------+-----------+--------------+-----------+
+|   id    | movie     |  description |  rating   |
++---------+-----------+--------------+-----------+
+|   5     | House card|   Interesting|   9.1     |
+|   1     | War       |   great 3D   |   8.9     |
++---------+-----------+--------------+-----------+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一&quot;&gt;答案一：&lt;/h4&gt;
+&lt;p&gt;我们可以使用 mod(id,2)=1 来确定奇数 id，然后添加 description != ‘boring’ 来解决问题。
+官方题解：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-MySQL&quot;&gt;select * 
+from cinema
+where mod(id,2) != 0 and description != 'boring'
+order by rating desc
+;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二&quot;&gt;答案二：&lt;/h4&gt;
+&lt;p&gt;如何确定奇数除了使用mod函数还有一个比较巧妙的方法， id&amp;amp;1按位与,该操作会将数字转为32位的二进制进行比较&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;//id=1
+0001
+0001
+
+0001 结果为1
+
+//id=2
+0010
+0001 
+
+0000 结果为0
+
+//id=3
+0011
+0001
+
+0001 结果为1
+
+//id=4
+0010
+0001
+
+0000 结果为0
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为1的前31位都是0，跟0进行与操作肯定是0，主要在于最后一位如果是奇数肯定能得到1，如果是0肯定是0
+所以答案也可以写成这样&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select * 
+from cinema 
+where description&amp;lt;&amp;gt;'boring' and id&amp;amp;1 
+order by rating desc
+;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;2汉明距离&quot;&gt;2.汉明距离&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/hamming-distance/&quot;&gt;汉明距离&lt;/a&gt;:
+两个整数之间的汉明距离指的是这两个数字对应二进制位不同的位置的数目。
+给出两个整数 x 和 y，计算它们之间的汉明距离。
+注意：
+0 ≤ x, y &amp;lt; 231.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例:
+
+输入: x = 1, y = 4
+
+输出: 2
+
+解释:
+1   (0 0 0 1)
+4   (0 1 0 0)
+       ↑   ↑
+
+上面的箭头指出了对应二进制位不同的位置。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-1&quot;&gt;答案一：&lt;/h4&gt;
+&lt;p&gt;分析其实本题的意图就是将x，y转为二进制后，记录对应位置值不相同的位置数量， 所以我们就想到了按位异或。x^y后得到一个数值，需要将这个值转为二进制再去统计数量。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ */
+var hammingDistance = function(x, y) {
+  let z = x^y;
+  let num = 0;
+  let bin = z.toString(2);
+  for(let i = 0; i &amp;lt; bin.length; i++) {
+      if(bin.charAt(i) === '1') {
+          num++;
+      }
+  }
+    
+    return num;
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3翻转二叉树&quot;&gt;3.翻转二叉树&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/invert-binary-tree/&quot;&gt;翻转二叉树&lt;/a&gt;:
+翻转一棵二叉树。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例：
+
+输入：
+
+     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+输出：
+
+     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-2&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) {
+            return null;
+        }
+        
+        TreeNode right = invertTree(root.right);
+        TreeNode left = invertTree(root.left);
+        
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-1&quot;&gt;答案二&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var invertTree = function(root) {
+    if(root !== null) {
+        [root.left, root.right] = [invertTree(root.right), invertTree(root.left)]
+    }
+    return root;
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;4机器人能否返回原点&quot;&gt;4.机器人能否返回原点&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/robot-return-to-origin/&quot;&gt;机器人能否返回原点&lt;/a&gt;：
+在二维平面上，有一个机器人从原点 (0, 0) 开始。给出它的移动顺序，判断这个机器人在完成移动后是否在 (0, 0) 处结束。
+移动顺序由字符串表示。字符 move[i] 表示其第 i 次移动。机器人的有效动作有 R（右），L（左），U（上）和 D（下）。如果机器人在完成所有动作后返回原点，则返回 true。否则，返回 false。
+注意：机器人“面朝”的方向无关紧要。 “R” 将始终使机器人向右移动一次，“L” 将始终向左移动等。此外，假设每次移动机器人的移动幅度相同。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1:
+
+输入: &quot;UD&quot;
+输出: true
+解释：机器人向上移动一次，然后向下移动一次。所有动作都具有相同的幅度，因此它最终回到它开始的原点。因此，我们返回 true。
+示例 2:
+
+输入: &quot;LL&quot;
+输出: false
+解释：机器人向左移动两次。它最终位于原点的左侧，距原点有两次 “移动” 的距离。我们返回 false，因为它在移动结束时没有返回原点。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-3&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：是否回到原点，取决于上下移动的步数相等，左右移动的步数相等。
+所以最简单的方法就是去计数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {string} moves
+ * @return {boolean}
+ */
+var judgeCircle = function(moves) {
+     let u = 0;
+        let d = 0;
+        let r = 0;
+        let l = 0;
+        let movesArr = moves.split(&quot;&quot;);
+        
+        movesArr.forEach(function(val) {
+            if(val === 'U') {
+                u++;
+            }
+            if(val === 'D') {
+                d++;
+            }
+            if(val === 'L') {
+                l++;
+            }
+            if(val === 'R') {
+                r++;
+            }
+            
+        });
+        return u === d &amp;amp;&amp;amp; r === l;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-2&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;比第一个方法要巧妙一些，不去计数了但是还是要判断步数相等，通过切割关键点来得到数组，如果关键点数量一样数组的长度相同。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * @param {string} moves
+ * @return {boolean}
+ */
+var judgeCircle = function(moves) {
+  return moves.split('L').length === moves.split('R').length &amp;amp;&amp;amp; moves.split('U').length === moves.split('D').length
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;5高度检查器&quot;&gt;5.高度检查器&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/height-checker/&quot;&gt;高度检查器&lt;/a&gt;:
+学校在拍年度纪念照时，一般要求学生按照 非递减 的高度顺序排列。
+请你返回至少有多少个学生没有站在正确位置数量。该人数指的是：能让所有学生以 非递减 高度排列的必要移动人数。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;1 &amp;lt;= heights.length &amp;lt;= 100&lt;/li&gt;
+  &lt;li&gt;1 &amp;lt;= heights[i] &amp;lt;= 100&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例：
+
+输入：[1,1,4,2,1,3]
+输出：3
+解释：
+高度为 4、3 和最后一个 1 的学生，没有站在正确的位置。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-4&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：将数组重新排序后得到新的数组去判断同一个位置的值是否相等，不想等计数+1.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+var heightChecker = function(heights) {    
+    var temp = heights.concat().sort((a, b) =&amp;gt; (a - b) );
+    var count = 0;
+
+    for(var i = 0; i &amp;lt; heights.length; i++) {
+        if(heights[i] != temp[i]) {
+            count++;   
+        }
+    }
+    
+    return count;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;6二叉树的最大深度&quot;&gt;6.二叉树的最大深度&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/&quot;&gt;二叉树的最大深度&lt;/a&gt;:
+给定一个二叉树，找出其最大深度。
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+说明: 叶子节点是指没有子节点的节点。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例：
+给定二叉树 [3,9,20,null,null,15,7]，
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+
+返回它的最大深度 3 。
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-5&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+    if(root == null) {
+        return 0;
+    } else {
+        let left = maxDepth(root.left);
+        let right = maxDepth(root.right);
+        return Math.max(left, right) + 1;
+    }
+    
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;7交换工资&quot;&gt;7.交换工资&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/swap-salary/&quot;&gt;交换工资&lt;/a&gt;
+给定一个 salary 表，如下所示，有 m = 男性 和 f = 女性 的值。交换所有的 f 和 m 值（例如，将所有 f 值更改为 m，反之亦然）。要求只使用一个更新（Update）语句，并且没有中间的临时表。
+注意，您必只能写一个 Update 语句，请不要编写任何 Select 语句。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+
+例如：
+
+| id | name | sex | salary |
+|----|------|-----|--------|
+| 1  | A    | m   | 2500   |
+| 2  | B    | f   | 1500   |
+| 3  | C    | m   | 5500   |
+| 4  | D    | f   | 500    |
+运行你所编写的更新语句之后，将会得到以下表:
+
+| id | name | sex | salary |
+|----|------|-----|--------|
+| 1  | A    | f   | 2500   |
+| 2  | B    | m   | 1500   |
+| 3  | C    | f   | 5500   |
+| 4  | D    | m   | 500    |
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-6&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;UPDATE salary 
+SET sex = CASE sex
+        WHEN 'm' THEN 'f'
+        ELSE 'm'
+    END;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;8有序数组的平方&quot;&gt;8.有序数组的平方&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/squares-of-a-sorted-array/&quot;&gt;有序数组的平方&lt;/a&gt;:
+给定一个按非递减顺序排序的整数数组 A，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 &amp;lt;= A.length &amp;lt;= 10000&lt;/li&gt;
+  &lt;li&gt;-10000 &amp;lt;= A[i] &amp;lt;= 10000&lt;/li&gt;
+  &lt;li&gt;A 已按非递减顺序排序。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入：[-4,-1,0,3,10]
+输出：[0,1,9,16,100]
+示例 2：
+
+输入：[-7,-3,2,3,11]
+输出：[4,9,9,49,121]
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-7&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：因为是从小打大，其中可以包含负数，所以取平方后两头应该最大。之所以使用&lt;code&gt;unshift&lt;/code&gt;是因为双向指针来获取，拿到的一开始的值肯定是最大的后面越来越小&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortedSquares = function(A) {
+    let count = A.length;
+    let result = [];
+    let i = 0;
+    let j = count -1;
+    
+    while(i &amp;lt;= j) {
+        let left = Math.pow(A[i], 2);
+        let right = Math.pow(A[j], 2);
+        
+        if(left &amp;gt; right) {
+            result.unshift(left);
+            i++;
+        } else {
+            result.unshift(right);
+            j--;
+        }
+        
+    }
+
+    return result;
+    
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;9增减字符串匹配&quot;&gt;9.增减字符串匹配&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/di-string-match/&quot;&gt;增减字符串匹配&lt;/a&gt;:
+给定只含 ”I”（增大）或 “D”（减小）的字符串 S ，令 N = S.length。
+返回 [0, 1, …, N] 的任意排列 A 使得对于所有 i = 0, …, N-1，都有：
+如果 S[i] == “I”，那么 A[i] &amp;lt; A[i+1]
+如果 S[i] == “D”，那么 A[i] &amp;gt; A[i+1]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;示例 1：
+
+输出：&quot;IDID&quot;
+输出：[0,4,1,3,2]
+示例 2：
+
+输出：&quot;III&quot;
+输出：[0,1,2,3]
+示例 3：
+
+输出：&quot;DDI&quot;
+输出：[3,2,0,1]
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-8&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：根据结果的分析是所有的I从0开始依次递增，所有D从N开始依次递减&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * @param {string} S
+ * @return {number[]}
+ */
+var diStringMatch = function(S) {
+    let len = S.length;
+    let imin = 0, dmax = len;
+    let result = new Array(len + 1);
+    for(let i = 0; i &amp;lt;= len; i++) {
+        if(S.charAt(i) === 'I') {
+            result[i] = imin;
+            imin++;
+        } else {
+            result[i] = dmax;
+            dmax--;
+        }
+    }
+    
+    return result;
+    
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-3&quot;&gt;答案二&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;分析：乍一看这个一行的解法不是特别明白，但是分析示例答案可以看出无论给出的字符串是什么样的最后都可以补充一位，可以补I也可以补D,对于结果是没有影响的
+所以先不补位置。然后逢I加一 逢D减一。
+var diStringMatch = function(S) {
+    let a = 0,b = S.length;
+    return (S+S[S.length - 1]).split('').map((x) =&amp;gt; x=='I'?a++:b--)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;10组合两个表&quot;&gt;10.组合两个表&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/combine-two-tables/&quot;&gt;组合两个表&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;表1: Person
+
++-------------+---------+
+| 列名         | 类型     |
++-------------+---------+
+| PersonId    | int     |
+| FirstName   | varchar |
+| LastName    | varchar |
++-------------+---------+
+PersonId 是上表主键
+
+
+表2: Address
+
++-------------+---------+
+| 列名         | 类型    |
++-------------+---------+
+| AddressId   | int     |
+| PersonId    | int     |
+| City        | varchar |
+| State       | varchar |
++-------------+---------+
+AddressId 是上表主键
+
+
+编写一个 SQL 查询，满足条件：无论 person 是否有地址信息，都需要基于上述两表提供 person 的以下信息：
+FirstName, LastName, City, State
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-9&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;因为表 Address 中的 personId 是表 Person 的外关键字，所以我们可以连接这两个表来获取一个人的地址信息。
+考虑到可能不是每个人都有地址信息，我们应该使用 outer join 而不是默认的 inner join。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;select FirstName, LastName, City, State
+from Person left join Address
+on Person.PersonId = Address.PersonId
+;
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版一)</title><link href="/leetcode/2019/09/03/leetcode-one/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版一)" /><published>2019-09-03T00:00:00+08:00</published><updated>2019-09-03T00:00:00+08:00</updated><id>/leetcode/2019/09/03/leetcode-one</id><content type="html" xml:base="/leetcode/2019/09/03/leetcode-one/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+
+&lt;h3 id=&quot;1宝石与石头&quot;&gt;1.宝石与石头&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/jewels-and-stones/&quot;&gt;宝石与石头&lt;/a&gt;：
 给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
 J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分大小写，因此”a”和”A”是不同类型的石头。&lt;/p&gt;
@@ -62,7 +583,7 @@ var numJewelsInStones = function(J, S) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;ip地址无效化&quot;&gt;IP地址无效化&lt;/h3&gt;
+&lt;h3 id=&quot;2ip地址无效化&quot;&gt;2.IP地址无效化&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/defanging-an-ip-address/&quot;&gt;IP地址无效化&lt;/a&gt;：
 给你一个有效的 IPv4 地址 address，返回这个 IP 地址的无效化版本。
 所谓无效化 IP 地址，其实就是用 “[.]” 代替了每个 “.”。&lt;/p&gt;
@@ -85,7 +606,7 @@ var defangIPaddr = function(address) {
 };
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;删除链表中的节点&quot;&gt;删除链表中的节点&lt;/h3&gt;
+&lt;h3 id=&quot;3删除链表中的节点&quot;&gt;3.删除链表中的节点&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/delete-node-in-a-linked-list/&quot;&gt;删除链表中的节点&lt;/a&gt;:
 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。
 现有一个链表 – head = [4,5,1,9]，它可以表示为:
@@ -141,7 +662,7 @@ var deleteNode = function(node) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;查找重复的电子邮箱&quot;&gt;查找重复的电子邮箱&lt;/h3&gt;
+&lt;h3 id=&quot;4查找重复的电子邮箱&quot;&gt;4.查找重复的电子邮箱&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/duplicate-emails/&quot;&gt;查找重复的电子邮箱&lt;/a&gt;: 编写一个 SQL 查询，查找 &lt;code&gt;Person&lt;/code&gt; 表中所有重复的电子邮箱。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;示例：
 +----+---------+
@@ -177,7 +698,7 @@ having count(Email) &amp;gt; 1
 where num &amp;gt; 1;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;大的国家&quot;&gt;大的国家&lt;/h3&gt;
+&lt;h3 id=&quot;5大的国家&quot;&gt;5.大的国家&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/big-countries/&quot;&gt;大的国家&lt;/a&gt;:这里有张 World 表&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;+-----------------+------------+------------+--------------+---------------+
 | name            | continent  | area       | population   | gdp           |
@@ -203,7 +724,7 @@ where num &amp;gt; 1;
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;二叉搜索树的范围和&quot;&gt;二叉搜索树的范围和&lt;/h3&gt;
+&lt;h3 id=&quot;6二叉搜索树的范围和&quot;&gt;6.二叉搜索树的范围和&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/range-sum-of-bst/&quot;&gt;二叉搜索树的范围和&lt;/a&gt;: 给定二叉搜索树的根结点 root，返回 L 和 R（含）之间的所有结点的值的和。
 二叉搜索树保证具有唯一的值。&lt;/p&gt;
 
@@ -221,7 +742,386 @@ where num &amp;gt; 1;
   &lt;li&gt;最终的答案保证小于 2^31。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;答案一-4&quot;&gt;答案一&lt;/h4&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">webpack最佳实践</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" rel="alternate" type="text/html" title="webpack最佳实践" /><published>2018-11-28T00:00:00+08:00</published><updated>2018-11-28T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/">&lt;p&gt;本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="webpack" /><category term="脚手架" /><summary type="html">本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。</summary></entry><entry><title type="html">Babel配置详解</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/" rel="alternate" type="text/html" title="Babel配置详解" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/">&lt;h2 id=&quot;babel&quot;&gt;Babel&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">Babel</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
+&lt;h4 id=&quot;答案一-4&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Java官方解法&lt;/code&gt;
+要理解这道题首先要知道一个概念&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9&quot;&gt;二叉查找树&lt;/a&gt;, 也称为二叉搜索树、有序二叉树、排序二叉树，指一棵空树或具有以下性质的二叉树：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；&lt;/li&gt;
+  &lt;li&gt;若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；&lt;/li&gt;
+  &lt;li&gt;任意节点的左、右子树也分别为二叉查找树；&lt;/li&gt;
+  &lt;li&gt;没有键值相等的节点。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;深度优先搜索我们对树进行深度优先搜索，对于当前节点 node，如果 node.val 小于等于 L，那么只需要继续搜索它的右子树；如果 node.val 大于等于 R，那么只需要继续搜索它的左子树；如果 node.val 在区间 (L, R) 中，则需要搜索它的所有子树。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//深度优先搜索
+class Solution {
+    int ans;
+    public int rangeSumBST(TreeNode root, int L, int R) {
+        ans = 0;
+        dfs(root, L, R);
+        return ans;
+    }
+
+    public void dfs(TreeNode node, int L, int R) {
+        if (node != null) {
+            if (L &amp;lt;= node.val &amp;amp;&amp;amp; node.val &amp;lt;= R)
+                ans += node.val;
+            if (L &amp;lt; node.val)
+                dfs(node.left, L, R);
+            if (node.val &amp;lt; R)
+                dfs(node.right, L, R);
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//迭代实现深度优先搜索
+class Solution {
+    public int rangeSumBST(TreeNode root, int L, int R) {
+        int ans = 0;
+        Stack&amp;lt;TreeNode&amp;gt; stack = new Stack();
+        stack.push(root);
+        while(!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if(node != null) {
+                if(L &amp;lt;= node.val &amp;amp;&amp;amp; node.val &amp;lt;= R)
+                    ans += node.val;
+
+                if(L &amp;lt; node.val)
+                    stack.push(node.left);
+                
+                if(node.val &amp;lt; R)
+                    stack.push(node.right);
+            }
+        }
+
+        return ans;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-3&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt;画图解题
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/tree.jpeg&quot; alt=&quot;&quot; /&gt;
+假设L= 7，R=15&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;如果node.val &amp;gt;= 7 &amp;amp;&amp;amp; node.val &amp;lt;= 15 则直接求和&lt;/li&gt;
+  &lt;li&gt;如果node.val &amp;gt; 7,则node.right的值都大于7，右侧没有搜索必要，去查找left的值&lt;/li&gt;
+  &lt;li&gt;如果node.val &amp;lt; 15,则node.left的值都小于15，左侧没有搜索必要，去查找right的值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} L
+ * @param {number} R
+ * @return {number}
+ */
+var rangeSumBST = function(root, L, R) {
+    var sum = 0;
+        
+    const dealBinTree = node =&amp;gt; {
+        if(node !== null) {
+            if(L &amp;lt; node.val) {
+                    dealBinTree(node.left);
+            }
+            if(node.val &amp;gt;= L &amp;amp;&amp;amp; node.val &amp;lt;= R) {
+                sum += node.val;
+            }
+            if(R &amp;gt; node.val) {
+                    dealBinTree(node.right);
+            }
+            
+        }
+    
+    }
+    
+    dealBinTree(root);
+    
+    return sum;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;7转换成小写字母&quot;&gt;7.转换成小写字母&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/to-lower-case/&quot;&gt;转换成小写字母&lt;/a&gt;:实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入: &quot;Hello&quot;
+输出: &quot;hello&quot;
+示例 2：
+
+输入: &quot;here&quot;
+输出: &quot;here&quot;
+示例 3：
+
+输入: &quot;LOVELY&quot;
+输出: &quot;lovely&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-5&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析通过字符串的 &lt;code&gt;charCodeAt&lt;/code&gt;和&lt;code&gt;String.fromCharCode&lt;/code&gt;这两个方法来得到答案&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * @param {string} str
+ * @return {string}
+ */
+var toLowerCase = function(str) {
+    var s = '';
+    for(var i = 0, len = str.length; i &amp;lt; len; i++) {
+        var c = str.charCodeAt(i);
+        if(c &amp;gt;= 65 &amp;amp;&amp;amp; c &amp;lt;= 90) {
+           s += String.fromCharCode(c+32); 
+        }  else {
+           s += str.charAt(i);    
+        }
+        
+    }
+    return s;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;8唯一摩尔斯密码词&quot;&gt;8.唯一摩尔斯密码词&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/unique-morse-code-words/&quot;&gt;唯一摩尔斯密码词&lt;/a&gt;
+国际摩尔斯密码定义一种标准编码方式，将每个字母对应于一个由一系列点和短线组成的字符串， 比如: “a” 对应 “.-“, “b” 对应 “-…”, “c” 对应 “-.-.”, 等等。
+为了方便，所有26个英文字母对应摩尔斯密码表如下：&lt;/p&gt;
+
+&lt;p&gt;[”.-“,”-…”,”-.-.”,”-..”,”.”,”..-.”,”–.”,”….”,”..”,”.—”,”-.-“,”.-..”,”–”,”-.”,”—”,”.–.”,”–.-“,”.-.”,”…”,”-“,”..-“,”…-“,”.–”,”-..-“,”-.–”,”–..”]&lt;/p&gt;
+
+&lt;p&gt;给定一个单词列表，每个单词可以写成每个字母对应摩尔斯密码的组合。例如，”cab” 可以写成 “-.-..–…“，(即 “-.-.” + “-…” + “.-“字符串的结合)。我们将这样一个连接过程称作单词翻译。&lt;/p&gt;
+
+&lt;p&gt;返回我们可以获得所有词不同单词翻译的数量。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例如:
+输入: words = [&quot;gin&quot;, &quot;zen&quot;, &quot;gig&quot;, &quot;msg&quot;]
+输出: 2
+解释: 
+各单词翻译如下:
+&quot;gin&quot; -&amp;gt; &quot;--...-.&quot;
+&quot;zen&quot; -&amp;gt; &quot;--...-.&quot;
+&quot;gig&quot; -&amp;gt; &quot;--...--.&quot;
+&quot;msg&quot; -&amp;gt; &quot;--...--.&quot;
+
+共有 2 种不同翻译, &quot;--...-.&quot; 和 &quot;--...--.&quot;.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注意:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;单词列表words 的长度不会超过 100。&lt;/li&gt;
+  &lt;li&gt;每个单词 words[i]的长度范围为 [1, 12]。&lt;/li&gt;
+  &lt;li&gt;每个单词 words[i]只包含小写字母。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;答案一-6&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var uniqueMorseRepresentations = function(words) {
+    var map = [&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;];
+    
+    var obj = {};
+
+    for(var i = 0, len = words.length; i &amp;lt; len; i++) {
+        
+        let m = '';
+        for(var j = 0, jen = words[i].length; j &amp;lt; jen; j++) {
+             m += map[words[i].charCodeAt(j) - 97];
+        }
+        
+        if(obj.hasOwnProperty(m)) {
+            obj[m] = obj[m] + 1;
+        } else {
+            obj[m] = 1;
+        }
+        
+    }
+    
+
+    return Object.keys(obj).length;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案二-4&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Java&lt;/code&gt;利用Set自动去重&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        String[] s={&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;};
+
+        Set&amp;lt;String&amp;gt; set = new HashSet&amp;lt;&amp;gt;();
+        int index;
+        for(int i = 0; i &amp;lt; words.length; i++) {
+            String temp = &quot;&quot;;
+            for(int j = 0; j &amp;lt; words[i].length(); j++) {
+                index = (int)words[i].charAt(j) - 65 - 32;
+                temp = temp.concat(s[index]);
+            }
+            set.add(temp);
+        }
+        return set.size();
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;9合并二叉树&quot;&gt;9.合并二叉树&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/merge-two-binary-trees/&quot;&gt;合并二叉树&lt;/a&gt;:给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
+你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例 1:
+
+输入: 
+	Tree 1                     Tree 2                  
+          1                         2                             
+         / \                       / \                            
+        3   2                     1   3                        
+       /                           \   \                      
+      5                             4   7                  
+输出: 
+合并后的树:
+	     3
+	    / \
+	   4   5
+	  / \   \ 
+	 5   4   7
+注意: 合并必须从两个树的根节点开始。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-7&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Java&lt;/code&gt;解法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public TreeNode meregeTrees(TreeNode t1, TreeNode t2) {
+        if(t1 == null) {
+            return t2;
+        }
+        if(t2 == null) {
+            return t1;
+        }
+
+        TreeNode result = new TreeNode(t1.val + t2.val);
+        result.left = mergeTrees(t1.left, t2.left);
+        result.right = mergeTrees(t1.right, t2.right);
+        return result;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-5&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt;解法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} t1
+ * @param {TreeNode} t2
+ * @return {TreeNode}
+ */
+var mergeTrees = function(t1, t2) {
+    if(t1 === null) {
+        return t2;
+    }
+    if(t2 === null) {
+        return t1;
+    }
+    
+    t1.val = t1.val + t2.val;
+    t1.left = mergeTrees(t1.left, t2.left);
+    t1.right = mergeTrees(t1.right, t2.right);
+    
+    return t1;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;10翻转图像&quot;&gt;10.翻转图像&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/flipping-an-image/&quot;&gt;翻转图像&lt;/a&gt;给定一个二进制矩阵 A，我们想先水平翻转图像，然后反转图像并返回结果。
+水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 [1, 1, 0] 的结果是 [0, 1, 1]。
+反转图片的意思是图片中的 0 全部被 1 替换， 1 全部被 0 替换。例如，反转 [0, 1, 1] 的结果是 [1, 0, 0]。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例 1:
+
+输入: [[1,1,0],[1,0,1],[0,0,0]]
+输出: [[1,0,0],[0,1,0],[1,1,1]]
+解释: 首先翻转每一行: [[0,1,1],[1,0,1],[0,0,0]]；
+     然后反转图片: [[1,0,0],[0,1,0],[1,1,1]]
+示例 2:
+
+输入: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+输出: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+解释: 首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]；
+     然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+说明:
+
+1 &amp;lt;= A.length = A[0].length &amp;lt;= 20
+0 &amp;lt;= A[i][j] &amp;lt;= 1
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-8&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：最简单的方法就是按部就班来实现，先进行水平再进行图片反转。
+对于1和0的翻转有两种方式&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;1 - 当前值 得到的是1和0的翻转&lt;/li&gt;
+  &lt;li&gt;1 ^ 当前值 得到的也是0和1的反转。这个符号是异或，相同为0，相异为1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[][]} A
+ * @return {number[][]}
+ */
+var flipAndInvertImage = function(A) {
+    for(let i = 0, len = A.length; i &amp;lt; len; i++) {
+        let re = A[i].join('');
+        let im = '';
+        for(let j = 0; j &amp;lt; re.length; j++) {
+               im += Number(re[j]) === 0 ? '1' : '0';
+        }
+        A[i] = im.split('').reverse();
+        
+    }
+    return A;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-6&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;数组api一行解法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[][]} A
+ * @return {number[][]}
+ */
+var flipAndInvertImage = function(A) {
+    return A.map(val =&amp;gt; val.reverse().map(v =&amp;gt; (1 - v)))
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案三&quot;&gt;答案三&lt;/h4&gt;
+&lt;p&gt;双向指针&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[][]} A
+ * @return {number[][]}
+ */
+var flipAndInvertImage = function(A) {
+    let Alen = A.length;
+    let len = A[0].length;
+    for(let i = 0; i &amp;lt; Alen; i++) {
+        let left = 0;
+        let right = len - 1;
+        while(left &amp;lt;= right) {
+            let temp = A[i][left];
+            A[i][left] = A[i][right] ^ 1;
+            A[i][right] = temp ^ 1;
+            
+            left++;
+            right--;
+        }
+    }
+    return A;
+};
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">webpack最佳实践</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/" rel="alternate" type="text/html" title="webpack最佳实践" /><published>2018-11-28T00:00:00+08:00</published><updated>2018-11-28T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/">&lt;p&gt;本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="webpack" /><category term="脚手架" /><summary type="html">本文用来记录webapck使用的最佳实践，从零开始配置webpack，针对，vue，react，angular不同框架整理webpack的使用方法。以及对于大型项目进行构建速度测试。另外总结一部分webpack的使用技巧。</summary></entry><entry><title type="html">Babel配置详解</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/" rel="alternate" type="text/html" title="Babel配置详解" /><published>2018-11-03T00:00:00+08:00</published><updated>2018-11-03T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/">&lt;h2 id=&quot;babel&quot;&gt;Babel&lt;/h2&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">Babel</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
 &lt;p&gt;工作多年，项目越来越多，总是要做一些重复性的工作开进行开发，每次东配置西配置一大堆，效率很低无法直接投入生产。
 通过这篇文章梳理一下自己的知识点，将一些常用技术做一些总结归纳和复习。并且基于此开发一套模版，用于以后网站开发直接套用，不做重复性的工作（这里的网站主要针对pc）。&lt;/p&gt;
 
@@ -2963,805 +3863,4 @@ var users = records.map(function(record) {
   &lt;li&gt;使用方法链来连接无状态的操作&lt;/li&gt;
   &lt;li&gt;通过无状态的方法中返回新对象来支持方法链&lt;/li&gt;
   &lt;li&gt;通过在有状态的方法中返回this来支持方法链&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">保持一致的约定</summary></entry><entry><title type="html">Effective JavaScript (八)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/" rel="alternate" type="text/html" title="Effective JavaScript (八)" /><published>2018-09-25T00:00:00+08:00</published><updated>2018-09-25T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">&lt;h2 id=&quot;使用object的直接实例构造轻量级的字典&quot;&gt;使用Object的直接实例构造轻量级的字典&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;var dict = { alice: 34, bob: 24, chris: 62 };
-
-var people = [];
-
-for(var name in dict) {
-	people.push(name + &quot;: &quot; + dict[name]);
-}
-
-people; // [&quot;alice: 34&quot;, &quot;bob: 24&quot;, &quot;chris: 62&quot;];
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;我们创建一个自定义的字典类会怎样呢&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-function NaiveDict() {}
-
-NaiveDict.prototype.count = function() {
-	var i = 0;
-	for(var name in this) {
-		i++;
-	}
-
-	return i;
-};
-
-NaiveDict.prototype.toString = function() {
-	return &quot;[object NaiveDict]&quot;;
-};
-
-var dict = new NaiveDict();
-
-dict.alice = 34;
-dict.bob = 24;
-dict.chris = 62;
-
-dict.count(); // 5
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这样有一个问题，count会枚举出所有的属性包括了toString 和count,而不仅仅是我们需要的值。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var dict = new Array();
-
-dict.alice = 34;
-dict.bob = 24;
-dict.chris = 62;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这样也会有问题，代码对原型污染很脆弱，应用程序的其他库有可能会打猴子补丁，比如&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;原型污染是指当枚举字典的条目时，原型对象中的一些属性可能会导致出现一些不期望的属性。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;Array.prototype.first = function() {
-	return this[0];
-}
-
-Array.prototype.last = function() {
-	return this[1];
-}
-
-var names = [];
-for(var name in dict) {
-	names.push(name);
-}
-
-names; [&quot;alice&quot;, &quot;bob&quot;, &quot;chris&quot;, &quot;first&quot;, &quot;last&quot;]
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;使用使用 &lt;code&gt;new Object() &lt;/code&gt;可能会面临同样的问题，但是使用 &lt;code&gt;{}&lt;/code&gt;的方式会更好, 虽然不能保证对于原型污染时安全的，任何人仍然能增加属性到Object.prototype，但是风险可以降低到仅仅局限于Object.prototype&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;坚持使用Object的直接实例原则可以使for…in循环摆脱原型污染的影响&lt;/li&gt;
-  &lt;li&gt;使用对象字面量构建轻量级字典&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;使用null原型以防止原型污染&quot;&gt;使用null原型以防止原型污染&lt;/h2&gt;
-
-&lt;p&gt;防止原型污染的最简单的方式之一就是一开始就不使用原型。但是ES5发布之前并没有一个标准的方式创建一个空原型的新对象。你可能会这样做&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function C() { }
-
-C.prototype = null;
-
-var o = new C();
-
-Object.getPrototypeOf(o) === null; // false
-Object.getPrototypeOf(o) === Object.prototype // true
-
-
-// ES5之后应该这样做
-var x = Object.create(null);
-
-Object.getPrototypeOf(o) === null; // true
-
-在不支持Object.create的JavaScript环境中特殊对象__proto__提供了对对象内部原型链的读写访问
-
-var x = { __proto__: null };
-
-x instanceof Object;  // false;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;第二种貌似更方便，但是有了Object.create函数后，Object.create是更值得推荐的方式。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在ES5中要使用Object.create(null)创建自由原型的空对象是不太容易被污染的。&lt;/li&gt;
-  &lt;li&gt;在一些老环境中考虑使用{ &lt;strong&gt;proto&lt;/strong&gt;: null }， 但是它既不是标准的也不是可移植的还有可能在未来被删除&lt;/li&gt;
-  &lt;li&gt;绝对不要使用__proto__作为字典中的key&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;使用hasownproperty方法避免原型污染&quot;&gt;使用hasOwnProperty方法避免原型污染&lt;/h2&gt;
-&lt;p&gt;JavaScript的对象操作总是以继承的方式工作，即使一个空的对象字面量也继承了Object.prototype的大量属性&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var dict = {}
-&quot;alice&quot; in dict; //false;
-&quot;bob&quot; in dict; //false;
-&quot;chris&quot; in dict; //false;
-
-// toString 和valueOf方法继承自Object.prototype
-&quot;toString&quot; in dict; //false;  
-&quot;valueOf&quot; in dict; //false;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;幸运的是Object.hasOwnProperty方法可以用来判断属性是否继承自原型对象。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;dict.hasOwnProperty(&quot;alice&quot;);     // false
-dict.hasOwnProperty(&quot;toString&quot;);  // false
-dict.hasOwnProperty(&quot;valueOf&quot;);   // false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不幸的是我们没有完全解决问题，当调用dict.hasOwnProperty时，我们请求调查对象的hasOwnProperty方法，通常情况下，该方法会简单的继承自Object.property对象，然而如果字典中存储一个同名的条目时，那么原型中的hasOwnProperty方法不能再被捕获到。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dict.hasOwnProperty = 10;
-
-dict.hasOwnProperty(&quot;alice&quot;);
-// error dict.hasOwnProperty is not a function
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这是有可能的,最安全的方式就是&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var hasOwn = Object.prototype.hasOwnProperty;
-或者
-var hasOwn = {}.hasOwnProperty;
-
-hasOwn.call(dict, &quot;alice&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不管起接收者的hasOwnProperty方法是否被覆盖，该方法都能工作。&lt;/p&gt;
-
-&lt;p&gt;我们开始创建一个字典类 版本一&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Dict(elements) {
-	this.elements = elements || {};
-}
-
-Dict.prototype.has = function(key) {
-	return {}.hasOwnProperty.call(this.elements, key);
-}
-
-Dict.prototype.get = function(key) {
-	return this.has(key) ? this.elements[key] : undefined;
-}
-
-Dict.prototype.set = function(key, val) {
-	this.elements[key] = val;
-}
-
-Dict.prototype.remove = function(key) {
-	delete this.elements[key];
-}
-
-var dict = new Dict({
-	alice: 34,
-	bob: 24,
-	chris: 62
-});
-
-dict.has(&quot;alice&quot;);    // true
-dict.get(&quot;bob&quot;);      // 24
-dict.has(&quot;valueOf&quot;)   //false
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;在一些JavaScript的环境中，特殊的属性名__proto__可能导致自身的污染问题__proto__属性只是简单的继承Object.prototype,所以我们的例子会有一个问题&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var dict = new Dict();
-dict.has(&quot;__proto__&quot;); // ?
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这段代码在不同的环境下可能会有不同的结果，所以为了达到最大的可移植性和安全性，便有了下面更复杂但是更安全的实现
-这里检测到__proto__的可以 重新设置一个新属性作为实例对象的一个属性，随对象而在但是不会去设置对象的__proto__&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Dict(elements) {
-	this.elements = elements || {};
-	this.hasSpecialProto = false;
-	this.specialProto = undefined;
-}
-
-Dict.prototype.has = function(key) {
-	if(key === &quot;__proto__&quot;) { 
-		return this.hasSpecialProto;
-	}
-	return {}.hasOwnProperty.call(this.elements, key);
-}
-
-Dict.prototype.get = function(key) {
-	if(key === &quot;__proto__&quot;) { 
-		return this.specialProto;
-	}
-	return this.has(key) ? this.elements[key] : undefined;
-}
-
-Dict.prototype.set = function(key, val) {
-	if(key === &quot;__proto__&quot;) {
-		this.hasSpecialProto = true;
-
-		this.specialProto = val;
-	} else {
-		this.elements[key] = val;	
-	}
-	
-}
-
-Dict.prototype.remove = function(key) {
-	if(key === &quot;__proto__&quot;) {
-		this.hasSpecialProto = false;
-		this.sepcialProto = undefined;
-	} else {
-		delete this.elements[key];	
-	}
-	
-}
-
-var dict = new Dict({
-	alice: 34,
-	bob: 24,
-	chris: 62
-});
-
-dict.has(&quot;alice&quot;);    // true
-dict.get(&quot;bob&quot;);      // 24
-dict.has(&quot;valueOf&quot;)   //false
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用数组而不要使用字典来存储有序集合&quot;&gt;使用数组而不要使用字典来存储有序集合&lt;/h2&gt;
-&lt;p&gt;JavaScript对象是一个无序集合,ECMAScript标准并未规定属性存储的任何特定顺序，甚至对于枚举对象也未涉及。这将会导致一个问题，&lt;code&gt;for...in&lt;/code&gt;循环会挑选一个特定顺序来枚举对象属性.比如&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function report(highScores) {
-	var result = &quot;&quot;;
-	var i = 1;
-	for(var name in highScores) {
-		result += i + &quot; . &quot; + name + &quot; : &quot; + highScores[name] + '\n';
-
-		i++;
-	}
-
-	return result;
-}
-
-report([{
-		name: &quot;Hank&quot;,
-		points: 1110100
-	},{
-		name: &quot;Steve&quot;,
-		points: 1064500
-	},{
-		name: &quot;Billy&quot;,
-		points: 1052000
-	}]);
-
-由于不同的环境选择不同的顺序来存储和枚举对象属性，所以这个函数得到顺序混乱的“最高分”报表
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;请记住你的程序是否以来对象枚举的顺序并不总是显而易见的，如果没有在多个JavaScript环境中测试过你的程序，你甚至可能不回注意到程序的行为因为一个for…in循环的确切顺序而被改变，对于上面的例子需要使用数组,那么它完全可以工作在任何JavaScript环境中&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function report(highScores) {
-	var result = &quot;&quot;;
-	var i = 1;
-	for(var i = 0, n = highScores.length; i &amp;lt; n; i++) {
-		var score = hightScores[i];
-		result += (i + 1) + &quot; . &quot; + score.name + &quot; : &quot; + score.points + '\n';
-
-		i++;
-	}
-
-	return result;
-}
-
-report([{
-		name: &quot;Hank&quot;,
-		points: 1110100
-	},{
-		name: &quot;Steve&quot;,
-		points: 1064500
-	},{
-		name: &quot;Billy&quot;,
-		points: 1052000
-	}]);
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;一个微妙的顺序以来的典型例子是浮点运算， 假设一个对象使用&lt;code&gt;for...in&lt;/code&gt; 如下&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var ratings = {
-	&quot;Good will Hunting&quot;: 0.8,
-	&quot;Mystic River&quot;: 0.7,
-	&quot;21&quot;: 0.6,
-	&quot;Doubt&quot;: 0.9
-};
-
-var total = 0, count = 0;
-for(var key in. ratings) {
-	total += ratings[key];
-	count++;
-}
-
-total /= count;
-
-total; //?
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;事实证明，流行的JavaScrtip环境实际上使用不同的顺序执行这个循环。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;一些环境这样计算
-
-(0.8 + 0.7 + 0.6 + 0.9) / 4  // 0.75
-
-还有一些环境先枚举潜在的数组索引，21恰好是一个可行的数组索引，它首先被枚举，导致如下结果
-
-(0.6 + 0.8 + 0.7 + 0.9) / 4  // 0.7499999999999999
-
-
-更好的表示方法是使用整数值
-
-(8 + 7 + 6 + 9) / 4/ 10.  //0.75
-
-(6 + 8 + 7  + 9) / 4/ 10.  //0.75
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;通常当执行&lt;code&gt;for...in&lt;/code&gt; 循环时应当时刻小心，确保操作行为与顺序无关。&lt;/p&gt;
-
-&lt;h2 id=&quot;绝不要在objectprototype中增加可枚举属性&quot;&gt;绝不要在Object.prototype中增加可枚举属性&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;for...in&lt;/code&gt;非常便利，然而它很容易受到原型污染的影响。目前为止&lt;code&gt;for...in&lt;/code&gt;最常见的用法是枚举字典中的元素。这暗示着如果想允许对字典对象使用&lt;code&gt;for...in&lt;/code&gt;循环，那么不要在共享的Object.prototype中增加可枚举的属性。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Object.prototype.allKeys = function() {
-	var result = [];
-	for(var key in this) {
-		result.push(key);
-	}
-
-	return result;
-}
-
-({a: 1, b: 2, c: 3}).allKeys(); // [&quot;allkeys&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]  该方法污染了自身
-
-更友好的做法是将allkeys定义为一个函数而不是方法，虽然着稍微有点不方便
-
-function allKeys(obj) {
-	var result = [];
-	for(var key in obj) {
-		result.push(key);
-	}
-
-	return result;
-}
-
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果你确实想在Object.prototype中增加属性， ES5提供了一个更加友好的机制Object.defineProperty&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;Object.defineProperty&lt;/code&gt;方法可以定义一个对象的属性并制定该属性的元数据。例如，我们可以用与之前完全一样的方法定义上面的属性而通过设置其可枚举属性为false使其在&lt;code&gt;for...in&lt;/code&gt;循环中不可见。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;pre&gt;&lt;code&gt;Object.defineProperty(Object.prototype, &quot;allKeys&quot;, {
-	value: function() {
-		var result = [];
-		for(var key in this) {
-			result.push(key);
-		}
-		return result;
-	},
-	writable: true,
-	enumerable: false,
-	configurable: true
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;它不会污染其他所有&lt;code&gt;Object&lt;/code&gt;实例的所有&lt;code&gt;for...in&lt;/code&gt;循环。每当你需要增加一个不应该出现在&lt;code&gt;for...in&lt;/code&gt;循环中出现的属性时，Object.defineProperty便是你的选择&lt;/p&gt;
-
-&lt;h2 id=&quot;避免在枚举期间修改对象&quot;&gt;避免在枚举期间修改对象&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;function Member(name) {
-	this.name = name;
-	this.friends = [];
-}
-
-var a = new Member(&quot;Alice&quot;),
-	b = new Member(&quot;Bob&quot;),
-	c = new Member(&quot;Carol&quot;),
-	d = new Member(&quot;Dieter&quot;),
-	e = new Member(&quot;Eli&quot;),
-	f = new Member(&quot;Fatima&quot;);
-
-a.friends.push(b);
-b.friends.push(c);
-c.friends.push(e);
-d.friends.push(b);
-e.friends.push(d,f);
-
-如果我们写了一个方法 在for...in的时候操作对象比如，删除或添加， 在许多JavaScript环境中这段代码根本不能工作。
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;ECMAScript规定了，如果被枚举的对象在枚举期间添加了新的属性，那么在枚举期间并不能保证新添加的属性能够被访问。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;这个隐式的规范的实际后果是： 如果我们修改了被枚举的对象则不能保证&lt;code&gt;for...in&lt;/code&gt;循环行为的可预见性。&lt;/p&gt;
-
-&lt;p&gt;我们可以新建一个WorkSet类来追踪当前集合中元素的数量&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function WorkSet() {
-	this.entries = new Dict();
-	this.count = 0;
-}
-
-WorkSet.prototype.isEmpty = function() {
-	return this.count === 0;
-}
-
-WorkSet.prototype.add = function(key, val) {
-	if(this.entries.has(key)) {
-		return;
-	}
-
-	this.entries.set(key, val);
-	this.count++;
-}
-
-WorkSet.prototype.get = function(key) {
-	return this.entries.get(key);
-}
-
-WorkSet.prototype.remove = function(key) {
-	if(!this.entries.had(key)) {
-		return;
-	}
-
-	this.entries.remove(key);
-	this.count--;
-}
-
-WorkSet.prototype.pick = function() {
-	return this.entries.pick();
-}
-
-//这里同时需要给Dict类增加一个pick方法
-
-Dick.prototype.pick = function() {
-	for(var key in this.elements) {
-		if(this.has(key)) {
-			return key;
-		}
-	}
-
-	throw new Error(&quot;empty dictionary&quot;);
-}
-
-// 现在我们可以实现一个inNetwork的方法
-到最后发现这段代码没什么卵用
-Member.prototype.inNetwork = function(other) {
-	var visited = {};
-	var workset = new WorkSet();
-	workset.add(this.name, this);
-
-	while(!workset.isEmpty()) {
-		var name = = workset.pick();
-		var member = workset.get(name);
-		workset.remove(name);
-		if(name in visited) {
-			continue;
-		}
-
-		visited[name] = member;
-
-		if(member === other) {
-			return true;
-		}
-
-		member.friends.forEach(function(friend) {
-			workset.add(friend.name, friend);
-		})
-	}
-
-	return false;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;以上pick方法是一个不确定性的例子， 不确定性指的是一个操作不能保证使用语言的语意产生一个单一的可预见的结果。这个不确定性来源于这样一个事实，for…in循环可能在不同的JavaScript环境中选择不同的枚举顺序。
-基于这些原因，考虑使用一个确定的工作集算法替代方案是值得的。集工作列表算法Work-list.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;使用for…in循环枚举一个对象属性时，确保不要修改该对象&lt;/li&gt;
-  &lt;li&gt;当迭代一个对象时，如果该对象的内容可能会在循环期间被改变，应该使用while循环或经典的for循环代替for…in循环&lt;/li&gt;
-  &lt;li&gt;为了在不断变化的数据结构中能够预测枚举，考虑使用一个有序的数据结构，例如数组，而不要使用字典对象&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;数组迭代优先使用for循环而不是forin&quot;&gt;数组迭代优先使用&lt;code&gt;for&lt;/code&gt;循环而不是&lt;code&gt;for...in&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;看下面代码mean的输出值时多少？&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var scores = [98, 74, 85, 77, 93, 100, 89];
-
-var total = 0;
-
-for(score in scores) {
-	total += score;
-}
-
-var mean = total / socres.length;
-
- mean; // ?  17636.571428571428
-
-
- 请记住即使是数组的索引属性，对象属性的key始终是字符串
-
- total = 0 + &quot;0&quot; + &quot;1&quot; + &quot;2&quot; + &quot;3&quot; + &quot;4&quot; + &quot;5&quot; + &quot;6&quot;;
-
- total = &quot;00123456&quot;;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;迭代数组内容的正确方式是使用传统的for循环, 建议存储数组长度到一个局部变量中&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var scores = [98, 74, 85, 77, 93, 100, 89];
-var total = 0;
-
-for(var i = 0, n = scores.length; i &amp;lt; n; i++) {
-	total += socres[i];
-}
-
-var mean = toal / scores.length;
-
-mean; // 88
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;迭代方法由于循环&quot;&gt;迭代方法由于循环&lt;/h2&gt;
-&lt;p&gt;一些常见的for循环错误&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;for(var i = 0; i &amp;lt;= n; i++) {...}. // 获取最后一项错误
-
-for(var i = 1; i &amp;lt; n; i++) {...}. // 丢失第一项
-
-for(var i = n; i &amp;gt;= 0 ; i--) {...}. // 获取起始值错误
-
-for(var i = n - 1; i &amp;gt; 0 ; i--) {...}. // 丢失最后一项
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们面对这样一个事实，搞清楚终止条件是一个累赘。
-幸运的是ES5提供了一些便利的方法。Array.prototype.forEach是其中最简单的一个。例如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;for(var i = 0, n = players.length; i &amp;lt; n; i++) {
-	players[i].score++;
-}
-可以用下面代码替换
-players.forEach(function(p) {
-	p.socre++;
-})	
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这段代码不仅更简单可读而且消除了终止条件和任何数组索引。&lt;/p&gt;
-
-&lt;p&gt;另一个例子是对数组进行操作后建立一个新的数组我们可以这样实现&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var trimmed = [];
-for(var i = 0, n = input.lenght; i &amp;lt; n; i++) {
-	trimmed.push(input[i].trim());
-}
-
-我们同样可以使用forEach来实现
-
-var trimmed = [];
-input.forEach(function(s) {
-	trimmed.push(s.trim());
-});
-
-
-因为这是一个十分普遍的操作，所以ES5提供了一个更简单优雅的实现Array.prototype.map
-
-var trimmed = input.map(function(s) {
-	return s.trim();	
-})
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;另外一种常见的模式是计算一个新的数组，该数组只包含现有数组的一部分元素.&lt;code&gt;Array.prototype.filter&lt;/code&gt;使其变得简单&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-listings.filter(function(listing) {
-	return listing.price &amp;gt;= min &amp;amp;&amp;amp; listing.price &amp;lt;= max;
-});
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这些都是ES5的默认方法，我们当然可以实现自己的方法，比如我们需要这样一个模式，提取满足谓词的数组的前几个元素&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function takeWhile(a, pred) {
-	var result = [];
-	for(var i = 0, n = a.length; i &amp;lt; n; i++) {
-		if(!pred(a[i], i)) {
-			break;
-		}
-		result[i] = a[i];
-	}
-
-	return result;
-}
-
-var prefix = taleWhile([1, 2, 4, 8, 16, 32], function(n) {
-	return n &amp;lt; 10;
-});
-
-// [1, 2, 4, 8]
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;请注意我们将索引i赋值给了pred, 我们可以选择使用或忽略该索引。事实上标准库中的所有迭代方法包括(forEach, map, filter)都将数组索引传递给了用户自定义函数。&lt;/p&gt;
-
-&lt;p&gt;我们也可以将takeWhile加入到Array.prototype中参考猴子补丁的影响&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Array.prototype.takeWhile = function(pred) {
-	var result = [];
-	for(var i = 0, n = this.length; i &amp;lt; n; i++) {
-		if(!pred(this[i], i)) {
-			break;
-		}
-
-		result[i] = this[i];
-	}
-
-	return result;
-}
-
-var prefix = [1, 2, 4, 8, 16, 32].takeWhile(function(n) {
-	return n &amp;lt; 10;
-})
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;循环只有一点优于迭代函数，那就是前者有控制流操作，如break 和continue。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;举例来说&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function takeWhile(a, pred) {
-	var result = [];
-	a.forEach(function(x, i) {
-		if(!pred(x)) {
-			// ?
-		}
-		result[i] = x;
-	});
-
-	return result;
-}
-
-我们可以使用一个内部异常来提前终止该循环，但是这既尴尬又效率低下
-
-function takeWhile(a, pred) {
-	var result = [];
-	var earlyExit = [];
-	try {
-		a.forEach(function(x, i) {
-			if(!pred(x)) {
-				throw earlyExit;
-			}
-
-			result[i] = x;
-		});
-	} catch(e) {
-		if(e !== earlyExit) {
-			throw e;
-		}
-	}
-
-	return result;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ES5的数组方法some和every可以用于提前终止循环。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[1, 10, 100].some(function(x) {.return x &amp;gt; 5; });  // true
-[1, 10, 100].some(function(x) {.return x &amp;lt; 0; });  // false
-
-[1, 10, 100].every(function(x) {.return x &amp;gt; 0; });  // true
-[1, 10, 100].every(function(x) {.return x &amp;lt; 3; });  // true
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;利用这一点我们可以重新实现takeWhile方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-function takeWhile(a, pred) {
-	var result = [];
-
-	a.every(function(x, i) {
-		if(!pred(x)) {
-			return false; // break
-		}
-
-		result[i] = x;
-		return true;  // continue
-	});
-
-	return result;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;使用迭代方法 forEach 和map替换for循环使得代码更可读，并且避免了重复循环控制逻辑&lt;/li&gt;
-  &lt;li&gt;使用自定义的迭代函数来抽象未被标准库支持的常见循环模式&lt;/li&gt;
-  &lt;li&gt;在需要提前终止循环的情况下， 仍然推荐使用传统的循环。另外，some和every方法也可用于提前退出&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;在类数组对象上复用通用的数组方法&quot;&gt;在类数组对象上复用通用的数组方法&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Array.prototype&lt;/code&gt;中的标准方法被设计成其他对象可复用的方法，即使这些对象并没有继承Array,一个很好的例子 函数的arguments对象，它并没有继承Array.prototype，因此我们不能简单的调用arguments.forEach方法来遍历每一个参数。取而代之我们提取forEach方法对象的引用并使用其call方法&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 同样也可先转化为一个数组 var args = [].slice.call(arguments);
-
-function highlight() {
-	[].forEach.call(arguments, function(widget) {
-		widget.setBackground(&quot;yellow&quot;);
-	})
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如何使一个对象“看起来像数组”，数组对象的基本契约总共有两个简单规则&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;具有一个范围在0-2^32-1的整型length属性。&lt;/li&gt;
-  &lt;li&gt;length属性大于该对象的最大索引。索引的范围是0-2^32-2的整数，它的字符串表示就是该对象的一个key&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;例子&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var arrayLike = {0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot;, length: 3}
-var result = Array.prototype.map.call(arrayLike, function(s) {
-	return s.toUpperCase();
-});
-
-// [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;字符串也表现为不可变的数组，因为它们是可索引的， 并且其长度也可以通过length属性获取。因此，Array.prototype中的方法操作字符串不回修改原始数组。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var result = Array.prototype.map.call(&quot;abc&quot;, function(s) {
-	return s.toUpperCase();	
-});
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;对于使用Array.prototype中的方法，在增加或删除索引属性的时候它们都会强制的更新length属性。所有的Array.prototype方法在类数组中可以通用。&lt;/p&gt;
-
-&lt;p&gt;只有一个Array方法不是通用的那就是数组连接方法concat。该方法可以由任意的类数组调用但是它会检查其参数的[[Class]]属性，如果是一个真实的数组才会连接，如果不是例子如下&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function nameColum() {
-	return [&quot;Names&quot;].concat(arguments);
-}
-
-namesColumn(&quot;Alice&quot;,&quot;Bob&quot;, &quot;Chris&quot;);
-
-
-// [&quot;Names&quot;, {.0: &quot;Alice&quot;, 1: &quot;Bob&quot;, 2: &quot;Chris&quot; }]
-
-这种时候我们可以使用数组转换的方法
-function nameColum() {
-	return [&quot;Names&quot;].concat([].slice.call(arguments));
-}
-
-namesColumn(&quot;Alice&quot;,&quot;Bob&quot;, &quot;Chris&quot;);
-
-// [&quot;Names&quot;, &quot;Alice&quot;,&quot;Bob&quot;, &quot;Chris&quot;]
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;数组字面量优于数组构造函数&quot;&gt;数组字面量优于数组构造函数&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;var a = [1, 2, 3, 4, 5];
-
-也可以使用数组构造函数来替代
-
-var a = new Array(1, 2, 3, 4, 5);
-
-
-有这样几个问题
-首先要保证没有人重新包装过Array变量
-function f(Array) {
-	return new Array(1, 2, 3, 4, 5);
-}
-
-f(String);  //  new String(1)
-
-其次要确保没人修改过全局Array变量
-
-Array = String;
-new Array(1, 2, 3, 4, 5); // new String(1)
-
-
-
-还有一个问题 
-
-[&quot;hello&quot;] 和 new Array(&quot;hello&quot;) 行为虽然一致
-
-但是
-
-[17] 和 new Array(17) 行为完全不同了
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;使用数组字面量替代数组构造函数&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">保持一致的约定</summary></entry></feed>

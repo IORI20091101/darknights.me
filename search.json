@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "LeetCode刷题总结(简单版二)",
+      "subtitle": "对LeetCode刷过的题目进行整理总结，方便后期查阅复习。",
+      "data" : "/leetcode/2019/09/04/leetcode-two/",
+      "date": "2019-09-04"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "LeetCode刷题总结(简单版一)",
       "subtitle": "对LeetCode刷过的题目进行整理总结，方便后期查阅复习。",
       "data" : "/leetcode/2019/09/03/leetcode-one/",
