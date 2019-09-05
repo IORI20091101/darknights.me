@@ -23,26 +23,6 @@
       
     
       {
-      "value" : "webpack最佳实践",
-      "subtitle": "webpack初步配置以及优化",
-      "data" : "/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/11/28/webpack-lesson-one/",
-      "date": "2018-11-28"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "Babel配置详解",
-      "subtitle": "适合自己的babel配置",
-      "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/11/03/babel-set-first/",
-      "date": "2018-11-03"
-      }
-      
-        ,
-      
-    
-      {
       "value" : "搭建门户网站技术选型",
       "subtitle": "从零开始搭建门户网站",
       "data" : "/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/",
@@ -153,16 +133,6 @@
       
     
       {
-      "value" : "理解rem布局",
-      "subtitle": "关于rem布局的研究和技术选型",
-      "data" : "/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/",
-      "date": "2018-09-11"
-      }
-      
-        ,
-      
-    
-      {
       "value" : "JavaScript面试题",
       "subtitle": "一些好的JavaScript面试题总结",
       "data" : "/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/",
@@ -253,26 +223,6 @@
       
     
       {
-      "value" : "使用electron进行桌面开发笔记",
-      "subtitle": "使用electron桌面开发问题汇总",
-      "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2018/03/15/electron-develop-step1/",
-      "date": "2018-03-15"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "Css布局研究之Flex布局总结（一）",
-      "subtitle": "兼容性的Flex语法总结",
-      "data" : "/css/2017/12/25/css-layout/",
-      "date": "2017-12-25"
-      }
-      
-        ,
-      
-    
-      {
       "value" : "初涉Android",
       "subtitle": "Android环境安装",
       "data" : "/android/2017/12/20/android-start/",
@@ -287,36 +237,6 @@
       "subtitle": "读书《高性能网站建设指南》总结",
       "data" : "/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2017/12/20/read-book-web/",
       "date": "2017-12-20"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "解读V8 GC",
-      "subtitle": "Node.js 应用背景与 GC 基础知识",
-      "data" : "/node.js/2017/12/20/node-gc/",
-      "date": "2017-12-20"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "前端构建工具fit&amp;webpack",
-      "subtitle": "记录前端一些构建工具使用",
-      "data" : "/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84/2017/11/23/fit-webpack/",
-      "date": "2017-11-23"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "放弃ajax拥抱fetch",
-      "subtitle": "fetch使用的一些注意点",
-      "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/23/ajax-fetch/",
-      "date": "2017-11-23"
       }
       
         ,
@@ -487,16 +407,6 @@
       "subtitle": "如何搭建个人博客以及注意点",
       "data" : "/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/09/05/jekyll-site/",
       "date": "2017-09-05"
-      }
-      
-        ,
-      
-    
-      {
-      "value" : "HTML学习指南（一）",
-      "subtitle": "将html内容进行归拢总结",
-      "data" : "/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/2017/03/16/html-lesson1/",
-      "date": "2017-03-16"
       }
       
     

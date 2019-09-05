@@ -215,70 +215,6 @@
             ">
             
 <div class="post-preview">
-    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-ten/">
-        <h2 class="post-title">
-            Effective JavaScript (十)
-        </h2>
-        
-        <h3 class="post-subtitle">
-            并发
-        </h3>
-        
-        <div class="post-content-preview">
-            并发
-
-JavaScript被设计成一种嵌入式的脚本语言。它不是以单独的应用程序运行，而是作为大型应用程序环境下的脚本运行。典型的例子当然是Web浏览器。
-JavaScript中编写响应多个并发事件的程序的方法非常人性化，而且强大，因为它使用了一个简单的执行模型(有时称为事件队列和事件循环并发)和被称为异步的API.
-奇怪的是，到目前为止，ECMAScript标准从来没有关于并发的说明。我们...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-09-28
-    </p>
-    <!--<p class="post-meta"></p>September 28, 2018-->
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/">
-        <h2 class="post-title">
-            Effective JavaScript (九)
-        </h2>
-        
-        <h3 class="post-subtitle">
-            库和API设计
-        </h3>
-        
-        <div class="post-content-preview">
-            保持一致的约定
-
-将undefined当作没有值
-undefined很特殊，每当JavaScritp无法提供具体的值时，就产生undefined。为赋值的初始值即为undefiend
-
-var x;
-x // undefined;
-
-var obj = {};
-obj.x; //undefined
-
-
-function f() {
-	return ;
-}
-
-function g() {}
-
-...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-09-28
-    </p>
-    <!--<p class="post-meta"></p>September 28, 2018-->
-</div>
-<hr>
-
-<div class="post-preview">
     <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/25/read-book-effective-eight/">
         <h2 class="post-title">
             Effective JavaScript (八)
@@ -441,25 +377,88 @@ try…catch 语句将捕获的异常绑定到一个变量，该变量的作用�
 <hr>
 
 <div class="post-preview">
-    <a href="/%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/2018/09/11/layout-study-rem/">
+    <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-js/">
         <h2 class="post-title">
-            理解rem布局
+            JavaScript面试题
         </h2>
         
         <h3 class="post-subtitle">
-            关于rem布局的研究和技术选型
+            一些好的JavaScript面试题总结
         </h3>
         
         <div class="post-content-preview">
-            理解变量提升
+            在浏览器输入 URL 回车之后发生了什么
+在浏览器输入 URL 回车之后发生了什么
 
-JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分号后，结果变得轻量而优雅，比如下面这个例子去掉所有分号，JavaScript会自动插入分号。
-  function Point(x, y) {
-    this.x = x || 0
-    this.y = y || 0
-  }
+变量提升
 
-  Point.prototype.isOrigin = function...
+a = 2;
+
+var a;
+
+console.log(a);  // 结果
+
+
+即使是具名的函数表达式，名称标识符在赋值之前也无法在所在的作用域中使用
+
+
+
+foo(); // TypeError
+bar(); // ReferenceErrtr
+
+var foo = function bar...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2018-09-11
+    </p>
+    <!--<p class="post-meta"></p>September 11, 2018-->
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/">
+        <h2 class="post-title">
+            HTML面试题
+        </h2>
+        
+        <h3 class="post-subtitle">
+            一些常见HTML面试题总结
+        </h3>
+        
+        <div class="post-content-preview">
+            HTML
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2018-09-11
+    </p>
+    <!--<p class="post-meta"></p>September 11, 2018-->
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/">
+        <h2 class="post-title">
+            CSS面试题
+        </h2>
+        
+        <h3 class="post-subtitle">
+            一些常见CSS面试题总结
+        </h3>
+        
+        <div class="post-content-preview">
+            CSS
+
+说出下面s1,s2, s5,s6的答案
+
+&lt;div class="p1"&gt;
+    &lt;div class="s1"&gt;1&lt;/div&gt;
+    &lt;div class="s2"&gt;1&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="p2"&gt;
+    &lt;div class="s5"&gt;1&lt;/...
         </div>
     </a>
     <p class="post-meta">
@@ -514,12 +513,6 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
         <div class="tags">
             
             
-            <a href="/tags/#HTML" title="HTML" rel="2">
-                HTML
-            </a>
-            
-            
-            
             <a href="/tags/#博客搭建" title="博客搭建" rel="2">
                 博客搭建
             </a>
@@ -544,7 +537,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#工具" title="工具" rel="6">
+            <a href="/tags/#工具" title="工具" rel="5">
                 工具
             </a>
             
@@ -580,7 +573,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#javascript" title="javascript" rel="23">
+            <a href="/tags/#javascript" title="javascript" rel="19">
                 javascript
             </a>
             
@@ -604,7 +597,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#ES6学习笔记" title="ES6学习笔记" rel="2">
+            <a href="/tags/#ES6学习笔记" title="ES6学习笔记" rel="1">
                 ES6学习笔记
             </a>
             
@@ -616,25 +609,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#webpack" title="webpack" rel="2">
-                webpack
-            </a>
-            
-            
-            
-            <a href="/tags/#前端构建工具" title="前端构建工具" rel="1">
-                前端构建工具
-            </a>
-            
-            
-            
-            <a href="/tags/#Node.js" title="Node.js" rel="1">
-                Node.js
-            </a>
-            
-            
-            
-            <a href="/tags/#读书总结" title="读书总结" rel="14">
+            <a href="/tags/#读书总结" title="读书总结" rel="13">
                 读书总结
             </a>
             
@@ -642,18 +617,6 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             <a href="/tags/#Android" title="Android" rel="1">
                 Android
-            </a>
-            
-            
-            
-            <a href="/tags/#Flex - Css布局" title="Flex - Css布局" rel="1">
-                Flex - Css布局
-            </a>
-            
-            
-            
-            <a href="/tags/#Nodejs" title="Nodejs" rel="1">
-                Nodejs
             </a>
             
             
@@ -682,14 +645,8 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#页面布局" title="页面布局" rel="1">
-                页面布局
-            </a>
-            
-            
-            
-            <a href="/tags/#css" title="css" rel="1">
-                css
+            <a href="/tags/#HTML" title="HTML" rel="1">
+                HTML
             </a>
             
             
@@ -700,7 +657,7 @@ JavaScript的一个便利是能够离开 语句结束分号 工作。 删除分�
             
             
             
-            <a href="/tags/#脚手架" title="脚手架" rel="2">
+            <a href="/tags/#脚手架" title="脚手架" rel="1">
                 脚手架
             </a>
             
