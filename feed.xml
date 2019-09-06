@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-05T16:27:09+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-06T11:38:40+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+
+&lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/self-dividing-numbers/&quot;&gt;自除数&lt;/a&gt;：
+自除数 是指可以被它包含的每一位数除尽的数。
+例如，128 是一个自除数，因为 128 % 1 == 0，128 % 2 == 0，128 % 8 == 0。
+还有，自除数不允许包含 0 。
+给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。&lt;/p&gt;
+
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;每个输入参数的边界满足 1 &amp;lt;= left &amp;lt;= right &amp;lt;= 10000。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入： 
+上边界left = 1, 下边界right = 22
+输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一&quot;&gt;答案一：&lt;/h4&gt;
+&lt;p&gt;分析： 关键点就是对数字进行拆分取整数和取余数,我自己的解法代码有点复杂冗余，下面是根据题解的优化方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number[]}
+ */
+var selfDividingNumbers = function (left, right) {
+    let arr = [];
+    for(let i = left; i &amp;lt;= right; i++) {
+        let n = i;
+        let flag = true;
+        while(n) {
+            if (i % (n % 10) === 0) {
+                n = Math.floor(n / 10);
+            } else {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            arr.push(i);
+        }
+    }
+    return arr;
+};
+
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1有趣的电影&quot;&gt;1.有趣的电影&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/not-boring-movies/&quot;&gt;有趣的电影&lt;/a&gt;：
@@ -4664,232 +4713,4 @@ new Array(1, 2, 3, 4, 5); // new String(1)
 
 &lt;ul&gt;
   &lt;li&gt;使用数组字面量替代数组构造函数&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry><entry><title type="html">Effective JavaScript (七)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/" rel="alternate" type="text/html" title="Effective JavaScript (七)" /><published>2018-09-19T00:00:00+08:00</published><updated>2018-09-19T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/19/read-book-effective-seven/">&lt;h2 id=&quot;理解prototypegetprototypeof-和__proto__之间的不同&quot;&gt;理解prototype,getPrototypeOf 和__proto__之间的不同&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
-	this.name = name;
-	this.passwordHash = passwordHash;
-}
-
-User.prototype.toString = function() {
-	return &quot;[User &quot; + this.name + &quot; ]&quot;;
-};
-
-User.prototype.checkPassword = function(password) {
-	return hash(password) === this.passwordHash;
-};
-
-var u = new User(&quot;sfalken&quot;, &quot;objjowewe&quot;);
-
-// ES5 提供了Obejct.getPrototypeOf() 来获得对象的原型
-Object.getPrototypeOf(u) === User.prototype // true
-
-非标准的环境提供一个特殊的__proto__属性，在这些环境下可以这样检测
-u.__proto__ === User.prototype // true
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;使用objectgetprototypeof的函数而不要使用__proto__属性&quot;&gt;使用Object.getPrototypeOf的函数而不要使用__proto__属性&lt;/h2&gt;
-&lt;p&gt;并不是所有的JavaScript环境都支持通过__proto__属性来获取对象的原型，因此该属性并不是完全兼容的。由于__proto__会污染所有的对象，因此它会导致大量的Bug。&lt;/p&gt;
-
-&lt;p&gt;但是无论在什么情况下 &lt;code&gt;Object.getPrototypeOf&lt;/code&gt;函数都是有效的。&lt;/p&gt;
-
-&lt;p&gt;对于没有提供ES5 API的JavaScript环境，我们可以利用__proto__属性来实现Object.getPrototypeOf的函数&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;if(typeof Object.getPrototypeOf === 'undefined') {
-	Object.getPrototypeOf = function(obj) {
-		var t = typeof obj;
-		if(!obj || (t !== 'object' &amp;amp;&amp;amp; t !== 'function')) {
-			throw new TypeError(&quot;not an object&quot;);
-		}
-
-		return obj.__proto__;
-	};
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;始终不要修改__ptoto__属性&quot;&gt;始终不要修改__ptoto__属性&lt;/h2&gt;
-&lt;p&gt;原因：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;避免修改__proto__属性的最明显原因是可移植问题。毕竟不是所有平台都支持&lt;/li&gt;
-  &lt;li&gt;避免修改__proto__属性的另一个原因是性能问题&lt;/li&gt;
-  &lt;li&gt;避免修改__proto__属性的最大原因是为了保持行为的可预测性。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;可以使用ES5中的Object.create函数创建一个具有自定义原型链的新对象。对于不支持的ES5环境下下面有一种不依赖于__proto__可移植的实现。&lt;/p&gt;
-
-&lt;h2 id=&quot;使用构造函数与new操作符无关&quot;&gt;使用构造函数与new操作符无关&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
-	this.name = name;
-	this.passwordHash = passwordHash;
-}
-如果使用new操作符调用构造函数会是实例化一个对象，不使用new函数的接收者将是全局对象。
-
-
-var u = User(&quot;hello&quot;, &quot;pass&quot;);
-
-u; // undefined
-this.name // &quot;hello&quot;
-this.passwordHash // &quot;pass&quot;
-
-如果User定为ES5的严格代码，那么它的接收者默认为undefined
-
-function User(name, passwordHash) {
-	'use strict';
-	this.name = name;
-	this.passwordHash = passwordHash;
-}
-var u = User(&quot;hello&quot;, &quot;pass&quot;);
-
-// error this is undefined
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;所以无论是否用new都可以使用构造函数，为了保证代码的健壮性最好是提供一个不管怎样都会工作的代码。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function User(name, pass) {
-	if(!(this instanceof User)) {
-		return new User(name, pass);
-	}
-
-	this.name = name;
-	this.pass = pass;
-}
-
-var x = User(&quot;hello&quot;, &quot;pas1&quot;);
-
-var y = new User(&quot;hel&quot;, &quot;pas2&quot;);
-
-x instanceof User // true
-
-y instanceof User // true
-
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种方式不管怎样调用构造函数都会返回一个继承了User.prototype的实例对象。	
-这种模式的缺点是有一次额外的函数调用，ES5有一种更奇异的调用方式&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function User(name, pass) {
-	var self = this instanceof User
-		? this
-		: Obejct.create(User.prototype);
-
-	self.name = name;
-	self.pass = pass;
-	return self;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种方式只有在ES5中才可以使用，对于不支持的环境，我们可以制造一个兼容性的版本&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 这里只实现了单参数版本的Object.create
-if(typeof Object.creat === 'undefined') {
-	Object.create = function(prototype) {
-		function C() {}
-		C.prototype = prototype;
-		return new C();
-	}
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;在原型中存储方法&quot;&gt;在原型中存储方法&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;将方法存储到实例对象中将创建该函数的多个副本，因为每个实例对象都有一份副本&lt;/li&gt;
-  &lt;li&gt;将方法存储于原型中优于存储在实例对象中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;使用闭包存储私有变量&quot;&gt;使用闭包存储私有变量&lt;/h2&gt;
-&lt;p&gt;闭包将数据存储到封闭的变量中而不提供对这些变量的直接访问，获取闭包内容结构的唯一方式是该函数显示的提供获取它的途径。&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;对象和闭包剧哟相反的策略，对象的属性会被自动暴露出去，然而闭包中的变量会被自动隐藏起来。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我们可以利用这一特性在对象中存储真正的私有数据。不是将数据作为对象属性来存储而是在构造函数中以变量的方式来存储它，并将对象的方法转为引用这些变量的闭包&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function User(name, passwordHash) {
-	this.toString = function() {
-		return &quot;[User &quot; + name +&quot;]&quot;;
-	}
-	this.checkPassword = function(password) {
-		return hash(password) === passwordHash;
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这里name和passwordHash并不是以this的属性存储的，读取不到this.name 和this.passwordHash， User不包含任何实例属性。
-该模式有一个缺点为了让构造函数的变量 在使用它们的方法的作用域中，这些方法必须置于实例对象中。 因此违背了上一条&lt;code&gt;在原型中存储方法&lt;/code&gt;
-但是为了那些看中保障信息隐藏的情形来说，这点额外代价是值得的&lt;/p&gt;
-
-&lt;h2 id=&quot;在子类的构造函数中调用父类的构造函数&quot;&gt;在子类的构造函数中调用父类的构造函数&lt;/h2&gt;
-&lt;p&gt;如果正确构建父子级关系的对象&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Actor(scene, x, y) {
-	this.scene = scene;
-	this.x = x;
-	this.y = y;
-	scene.register(this);
-}
-
-Actor.prototype.moveTo = function(x, y) {
-	this.x = x;
-	this.y = y;
-	this.scene.draw();
-}
-
-Actor.prototype.exit = function() {
-	this.scene.unregister(this);
-	this.scene.draw();
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果我们要创建一个Actor的一个子类， 名字为SpaceShip怎么办&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function SpaceShip(scene, x, y) {
-	Actor.call(this, scene, x, y);  
-	// 这里SpaceShip的实例对象作为方法的接收者，会将Actor的实例属性加到SpaceShip的实例上，从而继承了Actor的实例属性
-
-	this.points = {};
-}
-
-Actor.prototype.moveTo = function(x, y) {
-	this.x = x;
-	this.y = y;
-	this.scene.draw();
-}
-
-Actor.prototype.exit = function() {
-	this.scene.unregister(this);
-	this.scene.draw();
-}
-
-如何继承Actor的prototype中的方法呢，我们可以使用之前提到过的ES5下的 
-Object.create(非ES5需要自己实现Object.create)
-
-SpaceShip.prototype = Object.create(Actor.prototype);
-
-这样就很好的实现了继承
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;避免使用轻率的猴子补丁&quot;&gt;避免使用轻率的猴子补丁&lt;/h2&gt;
-
-&lt;p&gt;由于对象共享原型，因此每一个对象都可以增加、删除、或修改原型的属性，这个有争议的实现通常被称为猴子补丁（monkey-patching）&lt;/p&gt;
-
-&lt;p&gt;猴子补丁的吸引力在于它的强大。数组缺少一个有用的方法吗？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Array.prototype.split = function(i) {
-	return [this.slice(0, i), this.slice(i)];
-}
-
-//Error Everry array instance has a split method
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;当多个库以不兼容的方式给同一个原型打猴子补丁时，问题便出现了，另外的库可能使用同一个方法给Array.prototype打猴子补丁，这样会有冲突。
-一种替代的方法是增加一个&lt;code&gt;addArrayMethods&lt;/code&gt;方法,用户可以选择调用或者忽略&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function addArrayMethods() {
-	Array.prototype.split = function(i) {
-		return [this.slice(0,i), this.slice(i)];
-	}
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;尽管猴子补丁很危险但是有一种特别可靠而且有价值的使用场景 polyfill. ES5定义一些新的Array方法（forEach, map和filter）,如果一些浏览器版本可能不支持这些版本我们可以通过猴子补丁来实现。由于这些行为是标准化的，所以不会造成库与库之间的不兼容风险。&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">理解prototype,getPrototypeOf 和__proto__之间的不同</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">使用Object的直接实例构造轻量级的字典</summary></entry></feed>

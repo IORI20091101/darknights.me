@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>Lodash.js源码阅读分析（一） - Dark knight's Blog</title>
+    <title>LeetCode刷题总结(简单版三) - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/">
+    <link rel="canonical" href="http://darknights.me/leetcode/2019/09/05/leetcode-three/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat4.jpg ')
+        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -192,17 +192,19 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#Lodash" title="Lodash">Lodash</a>
+                            <a class="tag" href="/tags/#面试" title="面试">面试</a>
                             
-                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                            <a class="tag" href="/tags/#基础" title="基础">基础</a>
+                            
+                            <a class="tag" href="/tags/#LeetCode" title="LeetCode">LeetCode</a>
                             
                         </div>
-                        <h1>Lodash.js源码阅读分析（一）</h1>
+                        <h1>LeetCode刷题总结(简单版三)</h1>
                         
                         
-                        <h2 class="subheading">对于lodash的源码进行分析解读</h2>
+                        <h2 class="subheading">对LeetCode刷过的题目进行整理总结，方便后期查阅复习。</h2>
                         
-                        <span class="meta">Posted by toshiba on November 16, 2017</span>
+                        <span class="meta">Posted by toshiba on September 5, 2019</span>
                     </div>
                 </div>
             </div>
@@ -224,20 +226,56 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="lodashjs源码阅读分析一">Lodash.js源码阅读分析（一）</h2>
-<p>通过详细阅读lodash的源码，学习代码风格同时补充基础。</p>
+				<p>本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</p>
 
-<h1 id="文章参考">文章参考</h1>
+<h3 id="1自除数">1.自除数</h3>
+<p><a href="https://leetcode-cn.com/problems/self-dividing-numbers/">自除数</a>：
+自除数 是指可以被它包含的每一位数除尽的数。
+例如，128 是一个自除数，因为 128 % 1 == 0，128 % 2 == 0，128 % 8 == 0。
+还有，自除数不允许包含 0 。
+给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。</p>
+
+<p>注意：</p>
 <ul>
-  <li><a href="http://michalbe.blogspot.sg/2013/03/javascript-less-known-parts-bitwise.html">JavaScript: The less known parts</a></li>
-  <li><a href="https://segmentfault.com/a/1190000002608050">JS 的整型你懂了吗？</a></li>
+  <li>每个输入参数的边界满足 1 &lt;= left &lt;= right &lt;= 10000。</li>
 </ul>
 
-<h1 id="延伸阅读">延伸阅读</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/">每一个JavaScript开发者应该了解的浮点知识</a></li>
-  <li><a href="http://jser.it/blog/2014/07/07/numbers-in-javascript/">Numbers in JavaScript</a></li>
-</ul>
+<pre><code>示例 1：
+
+输入： 
+上边界left = 1, 下边界right = 22
+输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+</code></pre>
+
+<h4 id="答案一">答案一：</h4>
+<p>分析： 关键点就是对数字进行拆分取整数和取余数,我自己的解法代码有点复杂冗余，下面是根据题解的优化方法：</p>
+
+<pre><code class="language-javascript">/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number[]}
+ */
+var selfDividingNumbers = function (left, right) {
+    let arr = [];
+    for(let i = left; i &lt;= right; i++) {
+        let n = i;
+        let flag = true;
+        while(n) {
+            if (i % (n % 10) === 0) {
+                n = Math.floor(n / 10);
+            } else {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            arr.push(i);
+        }
+    }
+    return arr;
+};
+
+</code></pre>
 
 
                 <hr>
@@ -245,13 +283,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2017/11/15/sublime-quick/" data-toggle="tooltip" data-placement="top" title="SublimeText快捷键">&larr; Previous Post</a>
+        <a href="/leetcode/2019/09/04/leetcode-two/" data-toggle="tooltip" data-placement="top" title="LeetCode刷题总结(简单版二)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/" data-toggle="tooltip" data-placement="top" title="Generator函数的含义和用法">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -261,9 +295,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one"
-         data-title="Lodash.js源码阅读分析（一）"
-         data-url="http://darknights.me/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/"></div>
+         data-thread-key="/leetcode/2019/09/05/leetcode-three"
+         data-title="LeetCode刷题总结(简单版三)"
+         data-url="http://darknights.me/leetcode/2019/09/05/leetcode-three/"></div>
     <script>
 
         /**
