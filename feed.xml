@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-06T11:38:40+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-09T17:38:07+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/self-dividing-numbers/&quot;&gt;自除数&lt;/a&gt;：
@@ -47,7 +47,174 @@ var selfDividingNumbers = function (left, right) {
     return arr;
 };
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;2二叉搜索树中的搜索&quot;&gt;2.二叉搜索树中的搜索&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/search-in-a-binary-search-tree/&quot;&gt;二叉搜索树中的搜索&lt;/a&gt;:
+给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。 返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
+例如，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;给定二叉搜索树:
+
+        4
+       / \
+      2   7
+     / \
+    1   3
+
+和值: 2
+你应该返回如下子树:
+
+      2     
+     / \   
+    1   3
+在上述示例中，如果要找的值是 5，但因为没有节点值为 5，我们应该返回 NULL。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-1&quot;&gt;答案一&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
+ */
+var searchBST = function(root, val) {
+    if(root === null) {
+        return null;
+    }
+    
+    if(root.val &amp;gt; val) {
+        return searchBST(root.left, val);
+    } else if(root.val === val) {
+        return root;
+    } else {
+        return searchBST(root.right, val);
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二&quot;&gt;答案二&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;// 迭代
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+        while(root != null) {
+            if(root.val == val) {
+                return root;
+            } else if(root.val &amp;gt; val) {
+                root = root.left;
+            } else {
+                root = root.right;
+            }
+        }
+        return null;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案三&quot;&gt;答案三&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//按照逻辑递归
+class Solution {
+    public TreeNode searchBST(TreeNode root, int val) {
+        if(root == null) 
+            return null;
+        
+        if(root.val == val) {
+            return root;
+        } else if(val &amp;lt; root.val) {
+            return searchBST(root.left, val);
+        } else {
+            return searchBST(root.right, val);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3n叉树的后序遍历&quot;&gt;3.N叉树的后序遍历&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/&quot;&gt;N叉树的后序遍历&lt;/a&gt;:给定一个 N 叉树，返回其节点值的后序遍历。&lt;/p&gt;
+
+&lt;p&gt;例如，给定一个 3叉树 :
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png&quot; alt=&quot;&quot; /&gt;
+返回其后序遍历: [5,6,3,2,4,1].&lt;/p&gt;
+
+&lt;p&gt;说明: 递归法很简单，你可以使用迭代法完成此题吗?&lt;/p&gt;
+
+&lt;h4 id=&quot;答案一-2&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+/**
+ * 第一种方式：递归
+ * @param {Node} root
+ * @return {number[]}
+ */
+var postorder = function(root) {
+    if(!root) return [];
+
+    var res = [];
+    recusion(root);
+    return res;
+
+    function recusion(root) {
+        if(!root) return;
+
+        for(var i = 0; i &amp;lt; root.children.length; i++) {
+            recusion(root.children[i]);
+        }
+        res.push(root.val);
+    }
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-1&quot;&gt;答案二&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * 第二种方式：迭代
+ * @param {Node} root
+ * @return {number[]}
+ */
+var postorder2 = function(root) {
+    if(!root) return [];
+    var res = [], arr = [root];
+    while(arr.length) {
+        var current = arr.pop();
+        for(var i = 0; i &amp;lt; current.children.length; i++) {
+            arr.push(current.children[i]);
+        }
+        res.unshift(current.val);
+    }
+    return res;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;答案三-1&quot;&gt;答案三&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public List&amp;lt;Integer&amp;gt; postorder(Node root) {
+        List&amp;lt;Integer&amp;gt; res = new ArrayList&amp;lt;Integer&amp;gt;();
+        if(root == null) return res;
+        for(Node cur: root.children) {
+            res.addAll(postorder(cur));
+        }
+        res.add(root.val);
+        return res;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;4n叉树的前序遍历&quot;&gt;4.N叉树的前序遍历&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/&quot;&gt;N叉树的前序遍历&lt;/a&gt;:&lt;/p&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1有趣的电影&quot;&gt;1.有趣的电影&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/not-boring-movies/&quot;&gt;有趣的电影&lt;/a&gt;：
