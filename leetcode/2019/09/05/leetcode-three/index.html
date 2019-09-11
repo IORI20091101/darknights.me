@@ -537,6 +537,128 @@ var canWinNim = function(n) {
 };
 </code></pre>
 
+<h3 id="6山脉数组的峰顶索引">6.山脉数组的峰顶索引</h3>
+<p><a href="https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/">山脉数组的峰顶索引</a>:
+我们把符合下列属性的数组 A 称作山脉：</p>
+<ul>
+  <li>A.length &gt;= 3</li>
+  <li>存在 0 &lt; i &lt; A.length - 1 使得A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1]</li>
+</ul>
+
+<p>给定一个确定为山脉的数组，返回任何满足 A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1] 的 i 的值。</p>
+
+<p>提示：</p>
+<ul>
+  <li>3 &lt;= A.length &lt;= 10000</li>
+  <li>0 &lt;= A[i] &lt;= 10^6</li>
+  <li>A 是如上定义的山脉</li>
+</ul>
+
+<pre><code>示例 1：
+
+输入：[0,1,0]
+输出：1
+示例 2：
+
+输入：[0,2,1,0]
+输出：1
+ 
+
+
+</code></pre>
+
+<h4 id="答案一-5">答案一</h4>
+<p>分析：通过读题其实是返回数组中最大值的索引</p>
+<pre><code class="language-javascript">/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var peakIndexInMountainArray = function(A) {
+    return A.findIndex(val =&gt; val == Math.max(...A));
+};
+</code></pre>
+
+<h4 id="答案二-3">答案二</h4>
+<p>后台的解题方法更多可以参考一下</p>
+<pre><code class="language-java">// 打桩法，也叫单向扫描，代码如下：时间复杂度为O(n)，效率略低，但是此方法具有普适性，也就是说这个方法可适用于在一般数组中找最大值。
+class Solution {
+    public int peakIndexInMountainArray(int[] a) {
+        if(A == null || A,length &lt; 3&gt;) {
+            return 0;
+        }
+
+        int max = Integer.MIN_VALUE;
+        int ans = 0;
+        for(int i = 0; i &lt; A.length; i++) {
+            if(A[i] &gt; max) {
+                max = A[i];
+                ans = i;
+            }
+        }
+        return ans;
+    }
+}
+
+// 双指针，也叫双向扫描，左右两边同时向中间扫描，以找出最大值，这个算法其实是在打桩法之上的一个效率优化，
+// 时间复杂度为O(n/2)---&gt;O(n)，效率较低，但比打桩法效率高，同时也具有普适性。
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+        if(A == null || A,length &lt; 3&gt;) {
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int ans = 0;
+
+        int left = 0;
+        int right = A.length - 1;
+
+        while(left &lt; right) {
+            if(left &lt;= right &amp;&amp; A[left] &gt; max) {
+                max = A[left];
+                ans = left;
+            }
+            if(left &lt;= right &amp;&amp; A[right] &gt; max) {
+                max = A[right];
+                ans = right;
+            }
+            left++;
+            right--;
+        }
+
+        return ans;
+    }
+}
+
+// 分治法，二分查找，是适用于此题的最佳解法，时间复杂度为O(logn)，优点是效率高，缺点是不具有普适性。因为此题数组特殊，所以可用这种方法提高查找效率。
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+         if (A == null || A.length &lt; 3)  {
+            return 0;
+        }
+        
+        int ans = 0;
+    
+        int left = 0;
+        int right = A.length;
+
+        while(left &lt; right) {
+            int center = (left + right) / 2;
+            if(A[center] &gt; A[center - 1] &amp;&amp; A[center] &gt; A[center + 1]) {
+                ans = center;
+                break;
+            } else if(A[center] &lt; A[center - 1]) {
+                right = center;
+            } else {
+                left = center;
+            }
+        }
+        return ans;
+
+    }
+}
+
+</code></pre>
+
 
                 <hr>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-10T12:33:11+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-11T11:55:44+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/self-dividing-numbers/&quot;&gt;自除数&lt;/a&gt;：
@@ -307,6 +307,128 @@ var preorder = function(root) {
 var canWinNim = function(n) {
     return n % 4 ? true: false;  
 };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;6山脉数组的峰顶索引&quot;&gt;6.山脉数组的峰顶索引&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/&quot;&gt;山脉数组的峰顶索引&lt;/a&gt;:
+我们把符合下列属性的数组 A 称作山脉：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A.length &amp;gt;= 3&lt;/li&gt;
+  &lt;li&gt;存在 0 &amp;lt; i &amp;lt; A.length - 1 使得A[0] &amp;lt; A[1] &amp;lt; … A[i-1] &amp;lt; A[i] &amp;gt; A[i+1] &amp;gt; … &amp;gt; A[A.length - 1]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;给定一个确定为山脉的数组，返回任何满足 A[0] &amp;lt; A[1] &amp;lt; … A[i-1] &amp;lt; A[i] &amp;gt; A[i+1] &amp;gt; … &amp;gt; A[A.length - 1] 的 i 的值。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;3 &amp;lt;= A.length &amp;lt;= 10000&lt;/li&gt;
+  &lt;li&gt;0 &amp;lt;= A[i] &amp;lt;= 10^6&lt;/li&gt;
+  &lt;li&gt;A 是如上定义的山脉&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入：[0,1,0]
+输出：1
+示例 2：
+
+输入：[0,2,1,0]
+输出：1
+ 
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-5&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：通过读题其实是返回数组中最大值的索引&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var peakIndexInMountainArray = function(A) {
+    return A.findIndex(val =&amp;gt; val == Math.max(...A));
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-3&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;后台的解题方法更多可以参考一下&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;// 打桩法，也叫单向扫描，代码如下：时间复杂度为O(n)，效率略低，但是此方法具有普适性，也就是说这个方法可适用于在一般数组中找最大值。
+class Solution {
+    public int peakIndexInMountainArray(int[] a) {
+        if(A == null || A,length &amp;lt; 3&amp;gt;) {
+            return 0;
+        }
+
+        int max = Integer.MIN_VALUE;
+        int ans = 0;
+        for(int i = 0; i &amp;lt; A.length; i++) {
+            if(A[i] &amp;gt; max) {
+                max = A[i];
+                ans = i;
+            }
+        }
+        return ans;
+    }
+}
+
+// 双指针，也叫双向扫描，左右两边同时向中间扫描，以找出最大值，这个算法其实是在打桩法之上的一个效率优化，
+// 时间复杂度为O(n/2)---&amp;gt;O(n)，效率较低，但比打桩法效率高，同时也具有普适性。
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+        if(A == null || A,length &amp;lt; 3&amp;gt;) {
+            return 0;
+        }
+        int max = Integer.MIN_VALUE;
+        int ans = 0;
+
+        int left = 0;
+        int right = A.length - 1;
+
+        while(left &amp;lt; right) {
+            if(left &amp;lt;= right &amp;amp;&amp;amp; A[left] &amp;gt; max) {
+                max = A[left];
+                ans = left;
+            }
+            if(left &amp;lt;= right &amp;amp;&amp;amp; A[right] &amp;gt; max) {
+                max = A[right];
+                ans = right;
+            }
+            left++;
+            right--;
+        }
+
+        return ans;
+    }
+}
+
+// 分治法，二分查找，是适用于此题的最佳解法，时间复杂度为O(logn)，优点是效率高，缺点是不具有普适性。因为此题数组特殊，所以可用这种方法提高查找效率。
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+         if (A == null || A.length &amp;lt; 3)  {
+            return 0;
+        }
+        
+        int ans = 0;
+    
+        int left = 0;
+        int right = A.length;
+
+        while(left &amp;lt; right) {
+            int center = (left + right) / 2;
+            if(A[center] &amp;gt; A[center - 1] &amp;amp;&amp;amp; A[center] &amp;gt; A[center + 1]) {
+                ans = center;
+                break;
+            } else if(A[center] &amp;lt; A[center - 1]) {
+                right = center;
+            } else {
+                left = center;
+            }
+        }
+        return ans;
+
+    }
+}
+
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1有趣的电影&quot;&gt;1.有趣的电影&lt;/h3&gt;
