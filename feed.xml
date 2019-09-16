@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-12T12:32:05+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-16T11:58:00+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/self-dividing-numbers/&quot;&gt;自除数&lt;/a&gt;：
@@ -521,6 +521,121 @@ var divisorGame = function(N) {
         return N % 2 == 0;
     }
 }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;8最近的请求次数代码比题目易懂&quot;&gt;8.最近的请求次数(代码比题目易懂)&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/number-of-recent-calls/&quot;&gt;最近的请求次数&lt;/a&gt;:
+写一个 &lt;code&gt;RecentCounter&lt;/code&gt; 类来计算最近的请求。
+它只有一个方法：&lt;code&gt;ping(int t)&lt;/code&gt;，其中 t 代表以毫秒为单位的某个时间。
+返回从 &lt;code&gt;3000&lt;/code&gt; 毫秒前到现在的 &lt;code&gt;ping&lt;/code&gt; 数。
+任何处于 &lt;code&gt;[t - 3000, t]&lt;/code&gt; 时间范围之内的 &lt;code&gt;ping&lt;/code&gt; 都将会被计算在内，包括当前（指 t 时刻）的 &lt;code&gt;ping&lt;/code&gt;。
+保证每次对 &lt;code&gt;ping&lt;/code&gt; 的调用都使用比之前更大的 t 值。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;每个测试用例最多调用 10000 次 ping。&lt;/li&gt;
+  &lt;li&gt;每个测试用例会使用严格递增的 t 值来调用 ping。&lt;/li&gt;
+  &lt;li&gt;每次调用 ping 都有 1 &amp;lt;= t &amp;lt;= 10^9。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例：
+
+输入：inputs = [&quot;RecentCounter&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;], inputs = [[],[1],[100],[3001],[3002]]
+输出：[null,1,2,3,3]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h4 id=&quot;答案一-7&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析：说实话这道题目不容易理解，配上示例也完全不知道在说啥，先看一下题解进行一下分析，题目其实是这样的
+示例解读：分别在1,100,3001,3002ms发出了请求（ping）&lt;/p&gt;
+
+&lt;p&gt;1ms时计算1ms以及1ms之前3000ms的请求数为‘1’(1ms时的ping)&lt;/p&gt;
+
+&lt;p&gt;100ms时计算100ms以及100ms之前3000s的请求数为‘2’（1ms时的ping和100ms时的ping）&lt;/p&gt;
+
+&lt;p&gt;3001ms时计算3001ms以及3001ms之前3000s的请求数为‘3’(1ms时的ping、100ms时的ping和3001ms时的ping)&lt;/p&gt;
+
+&lt;p&gt;3002ms时计算3002ms以及3002ms之前3000s的请求数为‘3’(100ms时的ping、3001ms时的ping和3002ms时的ping)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var RecentCounter = function() {
+    this.result = [];
+};
+
+/** 
+ * @param {number} t
+ * @return {number}
+ */
+RecentCounter.prototype.ping = function(t) {
+    this.result.push(t);
+    while(this.result[0] &amp;lt; (t - 3000)) {
+        this.result.shift();
+    }
+    return this.result.length;
+};
+
+/** 
+ * Your RecentCounter object will be instantiated and called as such:
+ * var obj = new RecentCounter()
+ * var param_1 = obj.ping(t)
+ */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-5&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;官方题解：我们只会考虑最近 3000 毫秒到现在的 ping 数，因此我们可以使用队列存储这些 ping 的记录。当收到一个时间 t 的 ping 时，我们将它加入队列，并且将所有在时间 t - 3000 之前的 ping 移出队列。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class RecentCounter {
+    Queue&amp;lt;Integer&amp;gt; q;
+
+    public RecentCounter() {
+        q = new LinkedList();
+    }
+
+    public int ping(int t) {
+        q.add(t);
+        while(q.peek() &amp;lt; t - 3000) {
+            q.poll();
+        }
+        return q.size();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;9数字的补数&quot;&gt;9.数字的补数&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/number-complement/&quot;&gt;数字的补数&lt;/a&gt;:
+给定一个正整数，输出它的补数。补数是对该数的二进制表示取反。&lt;/p&gt;
+
+&lt;p&gt;注意:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;给定的整数保证在32位带符号整数的范围内。&lt;/li&gt;
+  &lt;li&gt;你可以假定二进制数不包含前导零位。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1:
+
+输入: 5
+输出: 2
+解释: 5的二进制表示为101（没有前导零位），其补数为010。所以你需要输出2。
+示例 2:
+
+输入: 1
+输出: 0
+解释: 1的二进制表示为1（没有前导零位），其补数为0。所以你需要输出0。
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-8&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number} num
+ * @return {number}
+ */
+var findComplement = function(num) {
+  let b = num.toString(2);
+  let res = '';
+  for(let i = 0; i &amp;lt; b.length; i++) {
+      res += (Number(b.charAt(i))^1 + '');
+  }
+
+  return parseInt(res, 2);
+};
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版二)</title><link href="/leetcode/2019/09/04/leetcode-two/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版二)" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>/leetcode/2019/09/04/leetcode-two</id><content type="html" xml:base="/leetcode/2019/09/04/leetcode-two/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1有趣的电影&quot;&gt;1.有趣的电影&lt;/h3&gt;
@@ -4331,7 +4446,7 @@ guard.or = function(other) {
 
 	var self = this;
 	result.test = function(x) {
-		return self.test(x) || other.text(x);
+		return self.test(x) || other.test(x);
 	};
 
 	var description = this + &quot; or &quot; + other;
