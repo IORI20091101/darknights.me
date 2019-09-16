@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//sdongzhi.com">
+    <link rel="dns-prefetch" href="//darknights.cn">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验">
@@ -270,7 +273,16 @@
 
 <h4 id="5根域名服务器查询">5.根域名服务器查询</h4>
 <p>在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：
-<img src="https://cdn.darknights.cn/assets/images/in-post/browser-input/srach.png" alt="" /></p>
+<img src="https://cdn.darknights.cn/assets/images/in-post/browser-input/search.png" alt="" /></p>
+
+<p>需要注意的点</p>
+
+<ul>
+  <li>递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）</li>
+  <li>迭代方式，就是本地DNS服务器到根域名服务器查询的方式。</li>
+  <li>什么是 DNS 劫持</li>
+  <li>前端 dns-prefetch 优化</li>
+</ul>
 
 <p>递归查询：
     主机向本地域名服务器的查询一般都是采用递归查询。
@@ -280,9 +292,28 @@
     本地域名服务器向根域名服务器的查询通常是采用迭代查询。
     当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么返回给本地域名服务器所要查询的IP地址，要么返回给本地域名服务器下一步应当查询的域名服务器的IP地址。</p>
 
+<p>举个栗子：假设的主机想知道另一个主机（域名为 my.xxsilence.net)的IP地址。具体步骤如下：</p>
+
+<p>① 主机先向其本地域名服务器进行递归查询，如果缓存中没有，继续下一步。</p>
+
+<p>② 本地域名服务器采用迭代查询，先向一个根域名服务器查询。</p>
+
+<p>③ 根域名服务器告诉本地域名服务器，下一次查询的顶级域名服务器 dns.net。</p>
+
+<p>④ 本地域名服务器向顶级域名服务器 dns.net。</p>
+
+<p>⑤ 顶级域名服务器 dns.net，下一次应查询的权限域名服务器dns.xxsilence.net的IP地址。</p>
+
+<p>⑥ 本地域名服务器向权限域名服务器dns.xxsilence.net进行查询。</p>
+
+<p>⑦ 权限域名服务器dns.xxsilence.net告诉本地域名服务器，所查询的主机的IP地址。</p>
+
+<p>⑧ 本地域名服务器最后把查询结果告诉主机。</p>
+
 <h1 id="文章参考">文章参考</h1>
 <ul>
   <li><a href="https://4ark.me/post/b6c7c0a2.html">在浏览器输入 URL 回车之后发生了什么</a></li>
+  <li><a href="http://www.cnblogs.com/xsilence/">DNS查找域名的过程</a></li>
 </ul>
 
 

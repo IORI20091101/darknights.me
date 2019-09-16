@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-16T20:24:26+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-16T21:18:01+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;在浏览器输入 URL 回车之后发生了什么？
 这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
@@ -42,7 +42,16 @@
 
 &lt;h4 id=&quot;5根域名服务器查询&quot;&gt;5.根域名服务器查询&lt;/h4&gt;
 &lt;p&gt;在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/srach.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/search.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;需要注意的点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）&lt;/li&gt;
+  &lt;li&gt;迭代方式，就是本地DNS服务器到根域名服务器查询的方式。&lt;/li&gt;
+  &lt;li&gt;什么是 DNS 劫持&lt;/li&gt;
+  &lt;li&gt;前端 dns-prefetch 优化&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;递归查询：
     主机向本地域名服务器的查询一般都是采用递归查询。
@@ -52,9 +61,28 @@
     本地域名服务器向根域名服务器的查询通常是采用迭代查询。
     当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么返回给本地域名服务器所要查询的IP地址，要么返回给本地域名服务器下一步应当查询的域名服务器的IP地址。&lt;/p&gt;
 
+&lt;p&gt;举个栗子：假设的主机想知道另一个主机（域名为 my.xxsilence.net)的IP地址。具体步骤如下：&lt;/p&gt;
+
+&lt;p&gt;① 主机先向其本地域名服务器进行递归查询，如果缓存中没有，继续下一步。&lt;/p&gt;
+
+&lt;p&gt;② 本地域名服务器采用迭代查询，先向一个根域名服务器查询。&lt;/p&gt;
+
+&lt;p&gt;③ 根域名服务器告诉本地域名服务器，下一次查询的顶级域名服务器 dns.net。&lt;/p&gt;
+
+&lt;p&gt;④ 本地域名服务器向顶级域名服务器 dns.net。&lt;/p&gt;
+
+&lt;p&gt;⑤ 顶级域名服务器 dns.net，下一次应查询的权限域名服务器dns.xxsilence.net的IP地址。&lt;/p&gt;
+
+&lt;p&gt;⑥ 本地域名服务器向权限域名服务器dns.xxsilence.net进行查询。&lt;/p&gt;
+
+&lt;p&gt;⑦ 权限域名服务器dns.xxsilence.net告诉本地域名服务器，所查询的主机的IP地址。&lt;/p&gt;
+
+&lt;p&gt;⑧ 本地域名服务器最后把查询结果告诉主机。&lt;/p&gt;
+
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/xsilence/&quot;&gt;DNS查找域名的过程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础" /><category term="面试" /><category term="HSTS" /><summary type="html">本文内容来自在浏览器输入 URL 回车之后发生了什么, 自己在此记录一下用来复习巩固.要了解更多内容请查看原文.</summary></entry><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
