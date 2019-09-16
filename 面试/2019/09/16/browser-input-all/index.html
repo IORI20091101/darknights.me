@@ -17,9 +17,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>CSS面试题 - Dark knight's Blog</title>
+    <title>在浏览器输入 URL 回车之后发生了什么 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/">
+    <link rel="canonical" href="http://darknights.me/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -177,7 +177,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat8.jpg ')
+        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat3.jpg ')
     }
 </style>
 
@@ -192,17 +192,19 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                            <a class="tag" href="/tags/#基础" title="基础">基础</a>
+                            
                             <a class="tag" href="/tags/#面试" title="面试">面试</a>
                             
-                            <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                            <a class="tag" href="/tags/#HSTS" title="HSTS">HSTS</a>
                             
                         </div>
-                        <h1>CSS面试题</h1>
+                        <h1>在浏览器输入 URL 回车之后发生了什么</h1>
                         
                         
-                        <h2 class="subheading">一些常见CSS面试题总结</h2>
+                        <h2 class="subheading">在浏览器输入 URL 回车之后的一系列流程解析</h2>
                         
-                        <span class="meta">Posted by toshiba on September 11, 2018</span>
+                        <span class="meta">Posted by toshiba on September 16, 2019</span>
                     </div>
                 </div>
             </div>
@@ -224,63 +226,64 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="css">CSS</h2>
+				<p>本文内容来自<a href="https://4ark.me/post/b6c7c0a2.html">在浏览器输入 URL 回车之后发生了什么</a>, 自己在此记录一下用来复习巩固.要了解更多内容请<a href="https://4ark.me/post/b6c7c0a2.html">查看原文</a>.</p>
 
-<p>说出下面s1,s2, s5,s6的答案</p>
+<p>在浏览器输入 URL 回车之后发生了什么？
+这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
+大致流程如下</p>
+<ul>
+  <li>1.URL解析</li>
+  <li>2.DNS查询</li>
+  <li>3.TCP连接</li>
+  <li>4.处理请求</li>
+  <li>5.接受响应</li>
+  <li>6.渲染页面</li>
+</ul>
 
-<pre><code class="language-html">&lt;div class="p1"&gt;
-    &lt;div class="s1"&gt;1&lt;/div&gt;
-    &lt;div class="s2"&gt;1&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="p2"&gt;
-    &lt;div class="s5"&gt;1&lt;/div&gt;
-    &lt;div class="s6"&gt;1&lt;/div&gt;
-&lt;/div&gt;
+<h3 id="一url解析">一、URL解析</h3>
 
-.p1 {font-size: 16px; line-height: 32px;}
-.s1 {font-size: 2em;}
-.s2 {font-size: 2em; line-height: 2em;}
+<h4 id="地址解析">地址解析</h4>
+<p>首先判断你输入的是一个合法的URL还是一个带搜索的关键词，并且根据你输入的内容自动完成字符编码等操作。</p>
 
-.p2 {font-size: 16px; line-height: 2;}
-.s5 {font-size: 2em;}
-.s6 {font-size: 2em; line-height: 2em;}
+<h4 id="hsts">HSTS</h4>
+<p>由于安全隐患，会使用HSTS强制客户端使用HTTPS访问页面。<a href="https://www.barretlee.com/blog/2015/10/22/hsts-intro/">你不知道的HSTS</a></p>
 
-</code></pre>
+<h4 id="检查缓存">检查缓存</h4>
+<p><img src="https://cdn.darknights.cn/assets/images/in-post/browser-input/cache.png" alt="" /></p>
 
-<p>先来看第一组的答案</p>
-<pre><code>    p1：font-size: 16px; line-height: 32px
-    s1：font-size: 32px; line-height: 32px
-    s2：font-size: 32px; line-height: 64px
-</code></pre>
-<p>和你的答案一样吗？下面来解释下:</p>
-<blockquote>
-  <p>p1 无需解释
-s1 em作为字体单位，相对于父元素字体大小；line-height继承父元素计算值
-s2 em作为行高单位时，相对于自身字体大小
-再来看看第二组的答案</p>
-</blockquote>
+<h3 id="dns查询">DNS查询</h3>
+<p><img src="https://cdn.darknights.cn/assets/images/in-post/browser-input/dns.png" alt="" /></p>
 
-<pre><code>p2：font-size: 16px; line-height: 32px
-s5：font-size: 32px; line-height: 64px
-s6：font-size: 32px; line-height: 64px
-</code></pre>
-<p>意不意外？惊不惊喜？下面来解释下</p>
-<blockquote>
-  <p>p2 line-height: 2自身字体大小的两倍
-s5 数字无单位行高，继承原始值，s5的line-height继承的2，自身字体大小的两倍
-s6 无需解释</p>
-</blockquote>
+<h4 id="1浏览器缓存">1.浏览器缓存</h4>
+<p>浏览器会先检查是否在缓存中，没有则调用系统库函数进行查询。 操作系统没有设定浏览器存储DNS记录的时间长短，不同的浏览器会存储各自的一个固定时间，时长为2~30分钟不等。</p>
 
-<h3 id="清除浮动">清除浮动</h3>
-<pre><code>.clearfix:after{
-  clear: both;
-  content: ".";
-  display: block;
-  height: 0;
-  visibility: hidden;
-  font-size: 0;
-}
-</code></pre>
+<h4 id="2操作系统缓存">2.操作系统缓存</h4>
+<p>操作系统也有自己的 DNS缓存，但在这之前，会向检查域名是否存在本地的 Hosts 文件里，没有则向 DNS 服务器发送查询请求。
+ 如果浏览器缓存里没有找到需要的记录，浏览器会做一个操作系统调用（windows里是gethostname），这样子，就可以获得系统缓存里的记录啦。</p>
+
+<h4 id="3路由器缓存">3.路由器缓存</h4>
+<p>路由器也有自己的缓存。如果还是没有找到需要的缓存，将前面的查询请求发给路由器，它一般会有自己的DNS缓存。</p>
+
+<h4 id="4isp-dns缓存">4.ISP DNS缓存</h4>
+<p>ISP DNS 就是在客户端电脑上设置的首选 DNS 服务器，它们在大多数情况下都会有缓存。
+每一个ISP（网络服务提供商），或一个大学，甚至是一个大学里的系都会有一个自己的本地域名服务器，他会在url第一次访问时缓存该域名的指向。下次再访问时，他会从缓存里把这个url曾经指向的IP调出来。</p>
+
+<h4 id="5根域名服务器查询">5.根域名服务器查询</h4>
+<p>在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：
+<img src="https://cdn.darknights.cn/assets/images/in-post/browser-input/srach.png" alt="" /></p>
+
+<p>递归查询：
+    主机向本地域名服务器的查询一般都是采用递归查询。
+    如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是返回一个失败的响应，表示无法查询到所需的IP地址</p>
+
+<p>迭代查询：
+    本地域名服务器向根域名服务器的查询通常是采用迭代查询。
+    当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么返回给本地域名服务器所要查询的IP地址，要么返回给本地域名服务器下一步应当查询的域名服务器的IP地址。</p>
+
+<h1 id="文章参考">文章参考</h1>
+<ul>
+  <li><a href="https://4ark.me/post/b6c7c0a2.html">在浏览器输入 URL 回车之后发生了什么</a></li>
+</ul>
 
 
 
@@ -289,13 +292,9 @@ s6 无需解释</p>
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (四)">&larr; Previous Post</a>
+        <a href="/leetcode/2019/09/05/leetcode-three/" data-toggle="tooltip" data-placement="top" title="LeetCode刷题总结(简单版三)">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" data-toggle="tooltip" data-placement="top" title="HTML面试题">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -305,9 +304,9 @@ s6 无需解释</p>
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css"
-         data-title="CSS面试题"
-         data-url="http://darknights.me/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/"></div>
+         data-thread-key="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all"
+         data-title="在浏览器输入 URL 回车之后发生了什么"
+         data-url="http://darknights.me/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/"></div>
     <script>
 
         /**
