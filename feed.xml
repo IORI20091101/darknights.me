@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-17T18:25:42+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-18T12:45:07+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;在浏览器输入 URL 回车之后发生了什么？
 这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
@@ -110,7 +110,51 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/xsilence/&quot;&gt;DNS查找域名的过程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础" /><category term="面试" /><category term="HSTS" /><summary type="html">本文内容来自在浏览器输入 URL 回车之后发生了什么, 自己在此记录一下用来复习巩固.要了解更多内容请查看原文.</summary></entry><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础" /><category term="面试" /><category term="HSTS" /><summary type="html">本文内容来自在浏览器输入 URL 回车之后发生了什么, 自己在此记录一下用来复习巩固.要了解更多内容请查看原文.</summary></entry><entry><title type="html">LeetCode刷题总结(简单版四)</title><link href="/leetcode/2019/09/07/leetcode-four/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版四)" /><published>2019-09-07T00:00:00+08:00</published><updated>2019-09-07T00:00:00+08:00</updated><id>/leetcode/2019/09/07/leetcode-four</id><content type="html" xml:base="/leetcode/2019/09/07/leetcode-four/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+
+&lt;h3 id=&quot;1反转字符串中的单词-iii&quot;&gt;1.反转字符串中的单词 III&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/submissions/&quot;&gt;反转字符串中的单词 III&lt;/a&gt;：
+给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。&lt;/p&gt;
+
+&lt;p&gt;注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1:
+
+输入: &quot;Let's take LeetCode contest&quot;
+输出: &quot;s'teL ekat edoCteeL tsetnoc&quot; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一&quot;&gt;答案一：&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    return (s.split(' ').map(val =&amp;gt; val.split('').reverse().join(''))).join(' ');
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案二&quot;&gt;答案二:&lt;/h4&gt;
+
+&lt;p&gt;稍微有点取巧的做法，reverse函数也可以用双指针实现。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution 
+{
+    public String reverseWords(String s) 
+    {
+        String[] sp=s.split(&quot; &quot;);
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i&amp;lt;=sp.length-1;i++)
+        {
+            StringBuilder t=new StringBuilder();
+            t.append(sp[i]);
+            sb.append(t.reverse().toString()).append(&quot; &quot;);
+        }
+        return sb.substring(0,sb.length()-1);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/self-dividing-numbers/&quot;&gt;自除数&lt;/a&gt;：
@@ -4351,332 +4395,4 @@ filep.then(function(file) {
 	console.log(&quot;I/O error or timeout: &quot; + error);
 })
 
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">并发</summary></entry><entry><title type="html">Effective JavaScript (九)</title><link href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/" rel="alternate" type="text/html" title="Effective JavaScript (九)" /><published>2018-09-28T00:00:00+08:00</published><updated>2018-09-28T00:00:00+08:00</updated><id>/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine</id><content type="html" xml:base="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/09/28/read-book-effective-nine/">&lt;h2 id=&quot;保持一致的约定&quot;&gt;保持一致的约定&lt;/h2&gt;
-
-&lt;h2 id=&quot;将undefined当作没有值&quot;&gt;将undefined当作没有值&lt;/h2&gt;
-&lt;p&gt;undefined很特殊，每当JavaScritp无法提供具体的值时，就产生undefined。为赋值的初始值即为undefiend&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var x;
-x // undefined;
-
-var obj = {};
-obj.x; //undefined
-
-
-function f() {
-	return ;
-}
-
-function g() {}
-
-
-f();  //undefined
-f();  //undefined
-
-function f(x) {
-	return x;
-}
-f(); // undefined
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;例如一个Web服务器可以接受一个可选的主机名称&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var s1 = new Server(80, &quot;example.com&quot;);
-
-var s2 = new Server(80); //defaults to &quot;localhost&quot;
-
-我们可以通过判断arguments.length来实现Server构造函数
-
-function Server(port, hostname) {
-	if(arguments.length &amp;lt; 2) {
-		hostname = &quot;localhost&quot;;
-	}
-
-	hostname = String(hostname);
-}
-
-这种情况如果第二个值是undefined的话可能会使用undefined，这并不是我们想要的所以我们最好判断undefined
-
-function Server(port, hostname) {
-	if(hostname === undefined) {
-		hostname = &quot;localhost&quot;;
-	}
-
-	host = String(hostname);
-}
-
-
-另一种合理的方式是测试hostname是否为真
-
-function Server(port, hostname) {
-	hostname = String(hostname || &quot;localhost&quot;);
-	// ...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;但是最后一种的真值检测并不总是安全的，如果一个函数允许接受0(或NaN，虽然不常见)为可接受的参数,则不应该使用真值测试&lt;/p&gt;
-
-&lt;p&gt;比如&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-
-function Element(width, height) {
-	this.width = width || 320;
-	this.height = height || 240;
-	// ...
-}
-var c1 = new Element(0, 0); 
-c1.width; // 320
-c1.height; // 240
-
-
-这种情况我们需要更详细的测试来测试undefined
-function Element(width, height) {
-	this.width = width === undefined ? 320 : width;
-	this.height = height === undefined ? 240 : height;
-
-	// ...
-}
-
-var c1 = new Element(0, 0);
-c1.width; // 0
-c1.height; // 0
-
-var c2 = new Element();
-c2.width; // 320
-c2.height; // 240
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;接受关键字参数的选项对象&quot;&gt;接受关键字参数的选项对象&lt;/h2&gt;
-&lt;p&gt;保持参数顺序的一致约定对于帮助程序员记住每个参数在函数调用中的意义是很重要的，参数较少时它是适用的。但是参数过多后根本不可扩展&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var alert = new Alert(100, 75, 300, 200,
-		&quot;Error&quot;, message,
-		&quot;blue&quot;, &quot;white&quot;, &quot;black&quot;,
-		&quot;error&quot;, true
-	);
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;一个函数起初很简单，但是过一段时间，随着库功能的扩展，该函数的签名便会获得越来越多的参数。&lt;/p&gt;
-
-&lt;p&gt;幸运的是，JavaScrtip提供了一个简单、轻量的惯用法： 选项对象(options object).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var alert = new Alert({
-	x: 100, y: 75,
-	width: 300, height: 200,
-	title: &quot;Error&quot;, message: message,
-	titleColor: &quot;blue&quot;, bgColor: &quot;white&quot;, textColor: &quot;black&quot;,
-	icon: &quot;error&quot;, modal: true	
-});
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这个虽然烦琐，但明显更易于阅读，每个参数都是自我描述(self-documenting)的。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function Alert(parent, message, opts) {
-	opts = opts || {};
-
-	this.width = opts.width === undefined ? 320 : opts.width;
-	this.height = opts.width === undefined ? 240 : opts.height;
-	this.title = otps.title || &quot;Alert&quot;;
-
-}
-
-基于 extend 的另一种实现
-
-function extend(target, source) {
-	if(source) {
-		for(var key in source) {
-			var val = source[key];
-
-			if(typeof val !== &quot;undefined&quot;) {
-				target[key] = val;
-			}
-		}
-	}
-
-	return target;
-}
-
-
-
-function Alert(parent, message, opts) {
-	opts = extend({
-		width: 320,
-		height: 240
-	});
-
-	opts = extend({
-		title: &quot;Alert&quot;	
-	}, opts);
-
-	this.width = opts.width;
-	this.height = opts.height;
-	this.title = opts.title;
-
-}
-
-
-进一步简化
-
-
-function Alert(parent, message, opts) {
-	opts = extend({
-		width: 320,
-		height: 240
-	});
-
-	opts = extend({
-		title: &quot;Alert&quot;	
-	}, opts);
-
-	extend(this, opts);
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;区分数组对象和类数组对象&quot;&gt;区分数组对象和类数组对象&lt;/h2&gt;
-
-&lt;p&gt;使用instanceof的不完美选择&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;StringSet.prototype.add = function(x) {
-	if(typeof x === 'String') {
-		// xxx
-	} else if(x instanceof Array) { //有局限性
-		// xxx
-	} else {
-		// xxx
-	}
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;instanceof 操作符测试一个对象是否继承自Array.prototype。 在一些允许多个全局对象的环境中可能会有标准的Array构造函数和原型对象的多份副本。在浏览器中有这种情况，每个frame会有标准库的一份单独副本，当跨frame通信时，一个frame中的数组不会继承自另一个frame的Array.prototype.出于这个原因，ES5中引入了&lt;code&gt;Array.isArray&lt;/code&gt;函数， 其用于测试一个值是否是数组，而不管原型继承。ESMAScript标准中， 该函数测试对象内部[[Class]]属性值是否是Array。它比&lt;code&gt;instanceof&lt;/code&gt;更加可靠。
-所以有这个更健壮的实现。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;StringSet.prototype.add = function(x) {
-	if(typeof x  === 'String') {
-
-	} else if(Array.isArray(x)) {
-
-	} else {
-
-	}
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;对于不支持ES5的环境中我们可以自己实现一个测试方法&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var toString = Object.prototype.toString;
-
-function isArray(x) {
-	return toString(x) === '[object Array]';
-}
-
-
-// 转为真实数组
-你不能传入arguments对象并期待它被视为数组，
-最好还是自己转化一下
-[].slice.call(arguments);
-
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Object.prototype.toString&lt;/code&gt;函数使用对象内部&lt;code&gt;[[Class]]&lt;/code&gt;属性创建结果字符串，所以比&lt;code&gt;instance of&lt;/code&gt;操作符更可靠。&lt;/p&gt;
-
-&lt;h2 id=&quot;避免过度的强制转换&quot;&gt;避免过度的强制转换&lt;/h2&gt;
-
-&lt;p&gt;我们创建一个BitVector的构造函数guard, 这里有一个思路可以用来做检测用。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function BitVector(x) {
-	// 链式调用
-	uint32.or(arrayLike).guard(x);
-}
-
-
-var guard = {
-	guard: function(x) {
-		if(!this.test(x)) {
-			throw new TypeError(&quot;expected &quot; + this);
-		}
-	}
-}
-
-var uint32 = Object.create(guard);
-
-uint32.toString = function() {
-	return &quot;uint32&quot;;
-}
-
-
-var arrayLike = Object.create(guard);
-
-arrayLike.test = function(x) {
-	return typeof x === &quot;object&quot; &amp;amp;&amp;amp; x &amp;amp;&amp;amp; uint32.test(x.length);
-}
-
-arrayLike.toString = function() {
-	return &quot;array-like object&quot;;
-}
-
-
-guard.or = function(other) {
-	var result = Object.create(guard);
-
-	var self = this;
-	result.test = function(x) {
-		return self.test(x) || other.test(x);
-	};
-
-	var description = this + &quot; or &quot; + other;
-
-	result.toString = function() {
-		return description;
-	};
-
-	return result;
-
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;支持方法链&quot;&gt;支持方法链&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;function escapeBasicHTML(str) {
-	return str.replace(/&amp;amp;/g, &quot;&amp;amp;amp;&quot;)
-			  .replace(/&amp;lt;/g, &quot;&amp;amp;lt;&quot;)
-			  .replace(/&amp;gt;/g, &quot;&amp;amp;gt;&quot;)
-			  .replace(/&quot;/g, &quot;&amp;amp;quot;&quot;)
-			  .replace(/'/g, &quot;&amp;amp;apos;&quot;);
-}
-
-这种比下面的方法更加简洁
-
-function escapeBasicHTML(str) {
-	var str2 = str.replace(/&amp;amp;/g, &quot;&amp;amp;amp;&quot;);
-	var str3 = str2.replace(/&amp;lt;/g, &quot;&amp;amp;lt;&quot;);
-	var str4 = str3.replace(/&amp;gt;/g, &quot;&amp;amp;gt;&quot;);
-	var str5 = str4.replace(/&quot;/g, &quot;&amp;amp;quot;&quot;);
-	var str6 = str5..replace(/'/g, &quot;&amp;amp;apos;&quot;);
-
-	return str6;
-}
-
-
-var users = records.map(function(record) {
-		return record.username;
-	})
-	.filter(function(username) {
-		return !!username;
-	})
-	.map(function(username) {
-		return username.toLowerCase();
-	});
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;使用方法链来连接无状态的操作&lt;/li&gt;
-  &lt;li&gt;通过无状态的方法中返回新对象来支持方法链&lt;/li&gt;
-  &lt;li&gt;通过在有状态的方法中返回this来支持方法链&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">保持一致的约定</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="读书总结" /><summary type="html">并发</summary></entry></feed>
