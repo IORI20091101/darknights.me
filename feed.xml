@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-18T14:35:33+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-26T17:54:25+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;在浏览器输入 URL 回车之后发生了什么？
 这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
@@ -124,7 +124,7 @@
 输出: &quot;s'teL ekat edoCteeL tsetnoc&quot; 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&quot;答案一&quot;&gt;答案一：&lt;/h4&gt;
+&lt;h4 id=&quot;答案一&quot;&gt;答案一&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
  * @param {string} s
@@ -135,7 +135,7 @@ var reverseWords = function(s) {
 };
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&quot;答案二&quot;&gt;答案二:&lt;/h4&gt;
+&lt;h4 id=&quot;答案二&quot;&gt;答案二&lt;/h4&gt;
 
 &lt;p&gt;稍微有点取巧的做法，reverse函数也可以用双指针实现。&lt;/p&gt;
 
@@ -154,6 +154,112 @@ var reverseWords = function(s) {
         return sb.substring(0,sb.length()-1);
     }
 }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;2反转字符串&quot;&gt;2.反转字符串&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/reverse-string/&quot;&gt;反转字符串&lt;/a&gt;:
+编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。&lt;/p&gt;
+
+&lt;p&gt;不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。&lt;/p&gt;
+
+&lt;p&gt;你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入：[&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]
+输出：[&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]
+示例 2：
+
+输入：[&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]
+输出：[&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-1&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;reverse&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    return s.reverse();
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-1&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;其实本题并不是想考reverse, 感觉应该是想考reverse的实现&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    var len = s.length;
+    for(var i = 0, center = Math.floor(len / 2); i &amp;lt; center; i++) {
+        let edx = len - i - 1;
+        let temp = s[edx];
+        s[edx] = s[i];
+        s[i] = temp;
+    }
+    return s;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3数组拆分-i&quot;&gt;3.数组拆分 I&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/array-partition-i/&quot;&gt;数组拆分 I&lt;/a&gt;:
+给定长度为 2n 的数组, 你的任务是将这些数分成 n 对, 例如 (a1, b1), (a2, b2), …, (an, bn) ，使得从1 到 n 的 min(ai, bi) 总和最大。&lt;/p&gt;
+
+&lt;p&gt;提示:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;n 是正整数,范围在 [1, 10000].&lt;/li&gt;
+  &lt;li&gt;数组中的元素范围在 [-10000, 10000].&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;
+示例 1:
+
+输入: [1,4,3,2]
+
+输出: 4
+解释: n 等于 2, 最大总和为 4 = min(1, 2) + min(3, 4).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-2&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;首先排序 ,然后将index为奇数的进行求和.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var arrayPairSum = function(nums) {
+    let sortNums = nums.sort((a, b) =&amp;gt; a - b);
+    let sum = 0;
+    sortNums.forEach(function(val, key) {
+      if(key % 2 === 0)  {
+          sum += val;
+      }
+    });
+    
+    return sum;
+    
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;4键盘行&quot;&gt;4.键盘行&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/keyboard-row/&quot;&gt;键盘行&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/keyboard.png&quot; alt=&quot;&quot; /&gt;
+注意：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;你可以重复使用键盘上同一字符。&lt;/li&gt;
+  &lt;li&gt;你可以假设输入的字符串将只包含字母。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例：
+
+输入: [&quot;Hello&quot;, &quot;Alaska&quot;, &quot;Dad&quot;, &quot;Peace&quot;]
+输出: [&quot;Alaska&quot;, &quot;Dad&quot;]
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;

@@ -243,7 +243,7 @@
 输出: "s'teL ekat edoCteeL tsetnoc" 
 </code></pre>
 
-<h4 id="答案一">答案一：</h4>
+<h4 id="答案一">答案一</h4>
 
 <pre><code class="language-javascript">/**
  * @param {string} s
@@ -254,7 +254,7 @@ var reverseWords = function(s) {
 };
 
 </code></pre>
-<h4 id="答案二">答案二:</h4>
+<h4 id="答案二">答案二</h4>
 
 <p>稍微有点取巧的做法，reverse函数也可以用双指针实现。</p>
 
@@ -273,6 +273,112 @@ var reverseWords = function(s) {
         return sb.substring(0,sb.length()-1);
     }
 }
+</code></pre>
+
+<h3 id="2反转字符串">2.反转字符串</h3>
+<p><a href="https://leetcode-cn.com/problems/reverse-string/">反转字符串</a>:
+编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p>
+
+<p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+
+<p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p>
+
+<pre><code>示例 1：
+
+输入：["h","e","l","l","o"]
+输出：["o","l","l","e","h"]
+示例 2：
+
+输入：["H","a","n","n","a","h"]
+输出：["h","a","n","n","a","H"]
+
+</code></pre>
+
+<h4 id="答案一-1">答案一</h4>
+<p>reverse</p>
+
+<pre><code class="language-javascript">/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    return s.reverse();
+};
+</code></pre>
+
+<h4 id="答案二-1">答案二</h4>
+<p>其实本题并不是想考reverse, 感觉应该是想考reverse的实现</p>
+<pre><code class="language-javascript">/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    var len = s.length;
+    for(var i = 0, center = Math.floor(len / 2); i &lt; center; i++) {
+        let edx = len - i - 1;
+        let temp = s[edx];
+        s[edx] = s[i];
+        s[i] = temp;
+    }
+    return s;
+};
+</code></pre>
+
+<h3 id="3数组拆分-i">3.数组拆分 I</h3>
+<p><a href="https://leetcode-cn.com/problems/array-partition-i/">数组拆分 I</a>:
+给定长度为 2n 的数组, 你的任务是将这些数分成 n 对, 例如 (a1, b1), (a2, b2), …, (an, bn) ，使得从1 到 n 的 min(ai, bi) 总和最大。</p>
+
+<p>提示:</p>
+<ul>
+  <li>n 是正整数,范围在 [1, 10000].</li>
+  <li>数组中的元素范围在 [-10000, 10000].</li>
+</ul>
+
+<pre><code>
+示例 1:
+
+输入: [1,4,3,2]
+
+输出: 4
+解释: n 等于 2, 最大总和为 4 = min(1, 2) + min(3, 4).
+</code></pre>
+
+<h4 id="答案一-2">答案一</h4>
+<p>首先排序 ,然后将index为奇数的进行求和.</p>
+<pre><code class="language-javascript">/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var arrayPairSum = function(nums) {
+    let sortNums = nums.sort((a, b) =&gt; a - b);
+    let sum = 0;
+    sortNums.forEach(function(val, key) {
+      if(key % 2 === 0)  {
+          sum += val;
+      }
+    });
+    
+    return sum;
+    
+};
+</code></pre>
+
+<h3 id="4键盘行">4.键盘行</h3>
+<p><a href="https://leetcode-cn.com/problems/keyboard-row/">键盘行</a>:</p>
+
+<p>给定一个单词列表，只返回可以使用在键盘同一行的字母打印出来的单词。键盘如下图所示。
+<img src="https://cdn.darknights.cn/assets/images/in-post/leetcode/keyboard.png" alt="" />
+注意：</p>
+
+<ul>
+  <li>你可以重复使用键盘上同一字符。</li>
+  <li>你可以假设输入的字符串将只包含字母。</li>
+</ul>
+
+<pre><code>示例：
+
+输入: ["Hello", "Alaska", "Dad", "Peace"]
+输出: ["Alaska", "Dad"]
 </code></pre>
 
 
