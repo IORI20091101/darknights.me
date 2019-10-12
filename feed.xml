@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-12T11:55:56+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-12T18:15:26+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;在浏览器输入 URL 回车之后发生了什么？
 这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
@@ -260,6 +260,69 @@ var arrayPairSum = function(nums) {
 
 输入: [&quot;Hello&quot;, &quot;Alaska&quot;, &quot;Dad&quot;, &quot;Peace&quot;]
 输出: [&quot;Alaska&quot;, &quot;Dad&quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-3&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析: 定好map对应关系 两层遍历就可以,可以先取到首字母的指然后判断是否跟首字母相等&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var findWords = function(words) {
+    let alObj = {
+        q: 0,w: 0,e: 0,r: 0, t: 0,y: 0,u: 0,i: 0,q: 0,o: 0,p: 0,
+        a: 1,s: 1,d: 1,f: 1,g: 1,h: 1,j: 1,k: 1,l: 1,
+        z: 2,x: 2,c: 2,v: 2,b: 2,n: 2,m: 2
+    };
+    
+    let lWords = words.map(val =&amp;gt; val.toLowerCase());
+    let leng = lWords.length;
+    
+    let result = [];
+    
+    lWords.forEach((str, key) =&amp;gt; {
+        let flag = true;    
+        let first =  alObj[str.charAt(0)];
+        for(let i = 0; i &amp;lt; str.length; i++) {
+            let current = alObj[str.charAt(i)];
+            if(first !== current) {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            result.push(words[key]);
+        }
+    });
+    
+    return result;
+    
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-2&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;正则表达式匹配&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var findWords = function(words) {
+    let reg1 = new RegExp(&quot;[qwertyuiop]&quot;, &quot;i&quot;);
+    let reg2 = new RegExp(&quot;[asdfghjkl]&quot;, &quot;i&quot;);
+    let reg3 = new RegExp(&quot;[zxcvbnm]&quot;, &quot;i&quot;);
+    let result = [];
+    words.forEach(word =&amp;gt; {
+        let flag1 = reg1.test(word);
+        let flag2 = reg2.test(word);
+        let flag3 = reg3.test(word);
+        
+        if((flag1 &amp;amp;&amp;amp; !flag2 &amp;amp;&amp;amp; !flag3)||(!flag1 &amp;amp;&amp;amp; !flag2 &amp;amp;&amp;amp; flag3)||(!flag1 &amp;amp;&amp;amp; flag2 &amp;amp;&amp;amp; !flag3)){
+            result.push(word);
+        }
+    })
+
+    return result;
+    
+}
+
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
