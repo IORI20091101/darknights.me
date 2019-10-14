@@ -444,6 +444,118 @@ var findWords = function(words) {
 
 </code></pre>
 
+<h4 id="答案三">答案三</h4>
+<pre><code class="language-java">class Solution {
+    public String[] findWords(String[] workds) {
+        if(words == null) {
+            return null;
+        }
+
+        List&lt;String&gt; ans = new ArrayList&lt;&gt;();
+
+        String[] lines = new String[] {
+            "qwertyuiop",
+            "asdfghjkl",
+            "zxcvbnm"
+        }
+
+        for(String word: words) {
+            if(judge(word.toLowerCase(), lines)) {
+                ans.add(word);
+            }
+        }
+
+        return ans.toArray(new String[ans.size()]);
+    }
+
+
+    private boolean judge(String word, String[] lines) {
+        boolean ok = true;
+        String find = null;
+
+        for(String line: lines) {
+            if(line.indexOf(word.charAt(0)) &gt; -1) {
+                find = line;
+                break;
+            }
+        }
+
+        if(find == null) {
+            ok = false;
+            return ok;
+        }
+
+        for(ini i = 1; i &lt; word.length; i++) {
+            if(find.indexOf(word.charAt(i)) &lt; 0) {
+                ok = false;
+                break;
+            }
+        }
+        return ok;
+    }
+}
+
+</code></pre>
+
+<h3 id="5猜数字">5.猜数字</h3>
+<p><a href="https://leetcode-cn.com/problems/guess-numbers/">猜数字</a>:
+小A 和 小B 在玩猜数字。小B 每次从 1, 2, 3 中随机选择一个，小A 每次也从 1, 2, 3 中选择一个猜。他们一共进行三次这个游戏，请返回 小A 猜对了几次？
+输入的guess数组为 小A 每次的猜测，answer数组为 小B 每次的选择。guess和answer的长度都等于3。</p>
+
+<p>限制：</p>
+
+<ul>
+  <li>guess的长度 = 3</li>
+  <li>answer的长度 = 3</li>
+  <li>guess的元素取值为 {1, 2, 3} 之一。</li>
+  <li>answer的元素取值为 {1, 2, 3} 之一。</li>
+</ul>
+
+<pre><code>示例 1：
+
+输入：guess = [1,2,3], answer = [1,2,3]
+输出：3
+解释：小A 每次都猜对了。
+ 
+
+示例 2：
+
+输入：guess = [2,2,3], answer = [3,2,1]
+输出：1
+解释：小A 只猜对了第二次。
+
+</code></pre>
+
+<h4 id="答案一-4">答案一</h4>
+
+<pre><code class="language-javascript">/**
+ * @param {number[]} guess
+ * @param {number[]} answer
+ * @return {number}
+ */
+var game = function(guess, answer) {
+    return guess.filter((val, key) =&gt; {
+        return val === answer[key];
+    }).length;
+};
+
+</code></pre>
+
+<h4 id="答案二-3">答案二</h4>
+<pre><code class="language-java">class Solution {
+    public int game(int[] guess, int[] answer) {
+        int count = 0;
+        for(int i = 0; i &lt; 3; i++) {
+            if(guess[i] == answer[i]) {
+                counter++;
+            }
+        }
+        return count;
+    }
+}
+
+</code></pre>
+
 
                 <hr>
 
