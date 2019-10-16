@@ -218,6 +218,30 @@
             ">
             
 <div class="post-preview">
+    <a href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">
+        <h2 class="post-title">
+            浏览器URL编码
+        </h2>
+        
+        <h3 class="post-subtitle">
+            浏览器URL编码相关知识
+        </h3>
+        
+        <div class="post-content-preview">
+            起因
+前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是tq+3wB8PdfY=, 传到后台的错误结果是tq%203wB8PdfY%3D,但是真实需要传给后台的却是tq%2B3wB8PdfY%3D. 因此在这里将该问题总结一下.转载自关于URL编码
+
+需要...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by toshiba on 2019-10-16
+    </p>
+    <!--<p class="post-meta"></p>October 16, 2019-->
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">
         <h2 class="post-title">
             在浏览器输入 URL 回车之后发生了什么
@@ -418,40 +442,6 @@ J 中的字母不重复，J 和 S中的所有字符都是字母。字母区�
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/10/18/read-book-you-known-middle-one/">
-        <h2 class="post-title">
-            你不知道的JavaScript中卷(一)
-        </h2>
-        
-        <h3 class="post-subtitle">
-            你不知道的JavaScript
-        </h3>
-        
-        <div class="post-content-preview">
-            字符串
-var a = "foo";
-b = ["f", "o", "o"];
-
-var c = Array.prototype.join.call(a, "-");
-
-var d = Array.prototype.map.call(a, function(v) {
-	return v.toUpperCase() + "."
-}).join("");
-
-
-c; // "f-o-o"
-
-d;...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by toshiba on 2018-10-18
-    </p>
-    <!--<p class="post-meta"></p>October 18, 2018-->
-</div>
-<hr>
-
 
 
 
@@ -499,7 +489,7 @@ d;...
             
             
             
-            <a href="/tags/#JavaScript" title="JavaScript" rel="3">
+            <a href="/tags/#JavaScript" title="JavaScript" rel="4">
                 JavaScript
             </a>
             
@@ -601,7 +591,7 @@ d;...
             
             
             
-            <a href="/tags/#面试" title="面试" rel="8">
+            <a href="/tags/#面试" title="面试" rel="9">
                 面试
             </a>
             
@@ -631,7 +621,7 @@ d;...
             
             
             
-            <a href="/tags/#基础" title="基础" rel="5">
+            <a href="/tags/#基础" title="基础" rel="6">
                 基础
             </a>
             
