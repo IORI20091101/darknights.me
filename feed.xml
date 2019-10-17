@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-16T17:29:08+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">浏览器URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="浏览器URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-17T20:40:09+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">浏览器URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="浏览器URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -607,7 +607,90 @@ var game = function(guess, answer) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;6将有序数组转换为二叉搜索树&quot;&gt;6.将有序数组转换为二叉搜索树&lt;/h3&gt;
+&lt;h3 id=&quot;6删列造序&quot;&gt;6.删列造序&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/delete-columns-to-make-sorted/&quot;&gt;删列造序&lt;/a&gt;:
+给定由 N 个小写字母字符串组成的数组 A，其中每个字符串长度相等。&lt;/p&gt;
+
+&lt;p&gt;删除 操作的定义是：选出一组要删掉的列，删去 A 中对应列中的所有字符，形式上，第 n 列为 [A[0][n], A[1][n], …, A[A.length-1][n]]）。&lt;/p&gt;
+
+&lt;p&gt;比如，有 A = [“abcdef”, “uvwxyz”]，
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/944_1.png&quot; alt=&quot;&quot; /&gt;
+要删掉的列为 {0, 2, 3}，删除后 A 为[“bef”, “vyz”]， A 的列分别为[“b”,”v”], [“e”,”y”], [“f”,”z”]。
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/944_2.png&quot; alt=&quot;&quot; /&gt;
+你需要选出一组要删掉的列 D，对 A 执行删除操作，使 A 中剩余的每一列都是 非降序 排列的，然后请你返回 D.length 的最小可能值。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 &amp;lt;= A.length &amp;lt;= 100&lt;/li&gt;
+  &lt;li&gt;1 &amp;lt;= A[i].length &amp;lt;= 1000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入：[&quot;cba&quot;, &quot;daf&quot;, &quot;ghi&quot;]
+输出：1
+解释：
+当选择 D = {1}，删除后 A 的列为：[&quot;c&quot;,&quot;d&quot;,&quot;g&quot;] 和 [&quot;a&quot;,&quot;f&quot;,&quot;i&quot;]，均为非降序排列。
+若选择 D = {}，那么 A 的列 [&quot;b&quot;,&quot;a&quot;,&quot;h&quot;] 就不是非降序排列了。
+示例 2：
+
+输入：[&quot;a&quot;, &quot;b&quot;]
+输出：0
+解释：D = {}
+示例 3：
+
+输入：[&quot;zyx&quot;, &quot;wvu&quot;, &quot;tsr&quot;]
+输出：3
+解释：D = {0, 1, 2}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-5&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;分析: 按照题意来说只要满足每一列的字母 b &amp;gt; a 就需要将结果加一.这里使用&lt;code&gt;charCodeAt()&lt;/code&gt;比较&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {string[]} A
+ * @return {number}
+ */
+var minDeletionSize = function(A) {
+    let len = A.length;
+    let leng = A[0].length;
+    let result = 0;
+    
+    for(let j = 0; j &amp;lt; leng; j++) {
+        for(let i = 0; i &amp;lt; len - 1; i++) { 
+            let prev = A[i].charCodeAt(j);
+            let next = A[i+1].charCodeAt(j);
+            if(prev &amp;gt; next) {
+                result++;
+                break;
+            }
+        }
+    }
+    return result;
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-4&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;跟js解法是一样的&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public int minDeletionSize(String[] A) {
+        int ans = 0;
+        for (int c = 0; c &amp;lt; A[0].length(); ++c)
+            for (int r = 0; r &amp;lt; A.length - 1; ++r)
+                if (A[r].charAt(c) &amp;gt; A[r+1].charAt(c)) {
+                    ans++;
+                    break;
+                }
+
+        return ans;
+    }
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;10将有序数组转换为二叉搜索树未完成&quot;&gt;10.将有序数组转换为二叉搜索树&lt;code&gt;未完成&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/&quot;&gt;将有序数组转换为二叉搜索树&lt;/a&gt;:
 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。&lt;/p&gt;
 
@@ -626,10 +709,8 @@ var game = function(guess, answer) {
  -10  5
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;二叉树的题目对我来说比较难搞需要将相关的题目汇总一下&lt;/p&gt;
 
 &lt;p&gt;#### 答案一&lt;/p&gt;
-
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt; class Solution {
      public TreeNode sortedArrayToBST(int[] nums) {
          return sortedArrayToBST(nums, 0, nums.length);
