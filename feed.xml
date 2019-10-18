@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-17T20:40:09+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">浏览器URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="浏览器URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-18T17:27:34+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -690,6 +690,109 @@ var minDeletionSize = function(A) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&quot;7n叉树的最大深度&quot;&gt;7.N叉树的最大深度&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/&quot;&gt; N叉树的最大深度&lt;/a&gt;:
+最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。&lt;/p&gt;
+
+&lt;p&gt;例如,给定一个&lt;code&gt;3叉树&lt;/code&gt; :
+&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们应返回最大深度,3.&lt;/p&gt;
+
+&lt;p&gt;说明:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;树的深度不会超过 1000。&lt;/li&gt;
+  &lt;li&gt;树的节点总不会超过 5000。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;答案一-6&quot;&gt;答案一&lt;/h4&gt;
+&lt;p&gt;因为java和JavaScript的解法一样这里我就算做一种.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+/**
+ * @param {Node} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+    if(!root) {
+        return 0;
+    }
+    if(root.children &amp;amp;&amp;amp; root.children.length &amp;gt; 0) {
+        let max = 0;
+        for(let i = 0, len = root.children.length; i&amp;lt; len; i++) {
+            max = Math.max(maxDepth(root.children[i]), max)
+        }
+        return max + 1;
+    } else {
+        return 1;
+    }
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public int maxDeepth(Node node) {
+        if(root == null) return 0;
+        int max = 0;
+        for(int i = 0; i &amp;lt; root.children.size(); i++) {
+            max = Math.max(maxDeepth(root.children.get(i)), max);
+        }
+        return max + 1;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;8-超过经理收入的员工&quot;&gt;8. 超过经理收入的员工&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/&quot;&gt;超过经理收入的员工&lt;/a&gt;: 
+Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。&lt;/p&gt;
+
+&lt;p&gt;给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+----+-------+--------+-----------+
+| Id | Name  | Salary | ManagerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | NULL      |
+| 4  | Max   | 90000  | NULL      |
++----+-------+--------+-----------+
+
+
++----------+
+| Employee |
++----------+
+| Joe      |
++----------+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-7&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;
+SELECT 
+    a.Name AS Employee
+FROM Employee AS a,
+     Employee AS b
+WHERE 
+    a.ManagerId = b.Id
+    AND a.Salary &amp;gt; b.Salary
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;SELECT 
+    a.Name AS Employee
+FROM 
+    Employee AS a 
+JOIN 
+    Employee AS b
+ON a.ManagerId = b.Id
+    AND a.Salary &amp;gt; b.Salary
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&quot;10将有序数组转换为二叉搜索树未完成&quot;&gt;10.将有序数组转换为二叉搜索树&lt;code&gt;未完成&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/&quot;&gt;将有序数组转换为二叉搜索树&lt;/a&gt;:
 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。&lt;/p&gt;
@@ -710,7 +813,7 @@ var minDeletionSize = function(A) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;#### 答案一&lt;/p&gt;
+&lt;h4 id=&quot;答案一-8&quot;&gt;答案一&lt;/h4&gt;
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt; class Solution {
      public TreeNode sortedArrayToBST(int[] nums) {
          return sortedArrayToBST(nums, 0, nums.length);

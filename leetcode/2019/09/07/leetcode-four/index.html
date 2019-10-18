@@ -639,6 +639,109 @@ var minDeletionSize = function(A) {
 
 </code></pre>
 
+<h3 id="7n叉树的最大深度">7.N叉树的最大深度</h3>
+<p><a href="https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree/"> N叉树的最大深度</a>:
+最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
+
+<p>例如,给定一个<code>3叉树</code> :
+<img src="https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png" alt="" /></p>
+
+<p>我们应返回最大深度,3.</p>
+
+<p>说明:</p>
+
+<ul>
+  <li>树的深度不会超过 1000。</li>
+  <li>树的节点总不会超过 5000。</li>
+</ul>
+
+<h4 id="答案一-6">答案一</h4>
+<p>因为java和JavaScript的解法一样这里我就算做一种.</p>
+<pre><code class="language-javascript">
+/**
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
+ */
+/**
+ * @param {Node} root
+ * @return {number}
+ */
+var maxDepth = function(root) {
+    if(!root) {
+        return 0;
+    }
+    if(root.children &amp;&amp; root.children.length &gt; 0) {
+        let max = 0;
+        for(let i = 0, len = root.children.length; i&lt; len; i++) {
+            max = Math.max(maxDepth(root.children[i]), max)
+        }
+        return max + 1;
+    } else {
+        return 1;
+    }
+};
+
+</code></pre>
+
+<pre><code class="language-java">class Solution {
+    public int maxDeepth(Node node) {
+        if(root == null) return 0;
+        int max = 0;
+        for(int i = 0; i &lt; root.children.size(); i++) {
+            max = Math.max(maxDeepth(root.children.get(i)), max);
+        }
+        return max + 1;
+    }
+}
+</code></pre>
+
+<h3 id="8-超过经理收入的员工">8. 超过经理收入的员工</h3>
+<p><a href="https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/">超过经理收入的员工</a>: 
+Employee 表包含所有员工，他们的经理也属于员工。每个员工都有一个 Id，此外还有一列对应员工的经理的 Id。</p>
+
+<p>给定 Employee 表，编写一个 SQL 查询，该查询可以获取收入超过他们经理的员工的姓名。在上面的表格中，Joe 是唯一一个收入超过他的经理的员工。</p>
+<pre><code>+----+-------+--------+-----------+
+| Id | Name  | Salary | ManagerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | NULL      |
+| 4  | Max   | 90000  | NULL      |
++----+-------+--------+-----------+
+
+
++----------+
+| Employee |
++----------+
+| Joe      |
++----------+
+</code></pre>
+
+<h4 id="答案一-7">答案一</h4>
+<pre><code class="language-mysql">
+SELECT 
+    a.Name AS Employee
+FROM Employee AS a,
+     Employee AS b
+WHERE 
+    a.ManagerId = b.Id
+    AND a.Salary &gt; b.Salary
+
+</code></pre>
+
+<pre><code class="language-mysql">SELECT 
+    a.Name AS Employee
+FROM 
+    Employee AS a 
+JOIN 
+    Employee AS b
+ON a.ManagerId = b.Id
+    AND a.Salary &gt; b.Salary
+</code></pre>
+
 <h3 id="10将有序数组转换为二叉搜索树未完成">10.将有序数组转换为二叉搜索树<code>未完成</code></h3>
 <p><a href="https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/">将有序数组转换为二叉搜索树</a>:
 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。</p>
@@ -659,7 +762,7 @@ var minDeletionSize = function(A) {
 
 </code></pre>
 
-<p>#### 答案一</p>
+<h4 id="答案一-8">答案一</h4>
 <pre><code class="language-java"> class Solution {
      public TreeNode sortedArrayToBST(int[] nums) {
          return sortedArrayToBST(nums, 0, nums.length);
