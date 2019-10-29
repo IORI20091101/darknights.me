@@ -229,23 +229,27 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<p>本文内容来自<a href="https://4ark.me/post/b6c7c0a2.html">在浏览器输入 URL 回车之后发生了什么</a>, 自己在此记录一下用来复习巩固.要了解更多内容请<a href="https://4ark.me/post/b6c7c0a2.html">查看原文</a>.</p>
+				<p>不久前看了一篇文章<a href="https://4ark.me/post/b6c7c0a2.html">在浏览器输入 URL 回车之后发生了什么</a>, 感觉讲的实在很好所以在此我也想总结一下,当自己被问到这个问题的时候会如何回答呢?</p>
 
 <p>在浏览器输入 URL 回车之后发生了什么？
-这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
 大致流程如下</p>
+
 <ul>
   <li>1.URL解析</li>
-  <li>2.DNS查询</li>
-  <li>3.TCP连接</li>
-  <li>4.处理请求</li>
-  <li>5.接受响应</li>
-  <li>6.渲染页面</li>
+  <li>2.DNS查询；</li>
+  <li>3.建立TCP连接；</li>
+  <li>4.发送HTTP请求；</li>
+  <li>5.服务器处理请求；</li>
+  <li>6.返回响应结果；</li>
+  <li>7.关闭TCP连接；</li>
+  <li>8.浏览器解析HTML；</li>
+  <li>9.浏览器布局渲染；</li>
 </ul>
 
+<p>当我们在浏览器输入网址回车后,一切从这里开始</p>
 <h3 id="url解析">URL解析</h3>
+<p>首先就是要向浏览器输入网址,其实就是向服务器请求我们想要的页面内容,浏览器需要首先确认的是域名所对应的服务器在哪里,将域名解析成对应的服务器IP地址这项工作,是由DNS服务器来完成的.客户端收到你输入的域名地址后,它首先去找本地的hosts文件,检查在该文件中是否有相应的域名、IP对应关系,如果有则向其IP地址发送请求,如果没有再去找DNS服务器.一般用户很少去编辑修改hosts文件.</p>
 
-<h4 id="地址解析">地址解析</h4>
 <p>首先判断你输入的是一个合法的URL还是一个带搜索的关键词，并且根据你输入的内容自动完成字符编码等操作。</p>
 
 <h4 id="hsts">HSTS</h4>
@@ -675,6 +679,18 @@
                         <li><a href="http://blog.codingplayboy.com/">熊建刚</a></li>
                     
                         <li><a href="https://teddysun.com/">秋水逸冰</a></li>
+                    
+                        <li><a href="http://www.alloyteam.com">AlloyTeam</a></li>
+                    
+                        <li><a href="https://efe.baidu.com">百度EFE</a></li>
+                    
+                        <li><a href="http://eux.baidu.com/">百度EUX</a></li>
+                    
+                        <li><a href="https://fed.taobao.org">淘宝前端团队</a></li>
+                    
+                        <li><a href="https://isux.tencent.com/">腾讯ISUX</a></li>
+                    
+                        <li><a href="https://aotu.io/">凹凸实验室</a></li>
                     
                 </ul>
                 

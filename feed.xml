@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-29T12:51:04+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-29T18:21:12+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -96,23 +96,27 @@ unescape(&quot;\u6625\u8282&quot;)
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/u014785687/article/details/74078512&quot;&gt;不同浏览器中URL的编码方式&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="JavaScript" /><summary type="html">起因 前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是tq+3wB8PdfY=, 传到后台的错误结果是tq%203wB8PdfY%3D,但是真实需要传给后台的却是tq%2B3wB8PdfY%3D. 因此在这里将该问题总结一下.转载自关于URL编码</summary></entry><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;本文内容来自&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 自己在此记录一下用来复习巩固.要了解更多内容请&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;查看原文&lt;/a&gt;.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="JavaScript" /><summary type="html">起因 前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是tq+3wB8PdfY=, 传到后台的错误结果是tq%203wB8PdfY%3D,但是真实需要传给后台的却是tq%2B3wB8PdfY%3D. 因此在这里将该问题总结一下.转载自关于URL编码</summary></entry><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;不久前看了一篇文章&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 感觉讲的实在很好所以在此我也想总结一下,当自己被问到这个问题的时候会如何回答呢?&lt;/p&gt;
 
 &lt;p&gt;在浏览器输入 URL 回车之后发生了什么？
-这是一个老生常谈的问题，基本面试的过程中都会遇到这个问题，这里将这个问题自己描述一遍供将来复习参考。
 大致流程如下&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;1.URL解析&lt;/li&gt;
-  &lt;li&gt;2.DNS查询&lt;/li&gt;
-  &lt;li&gt;3.TCP连接&lt;/li&gt;
-  &lt;li&gt;4.处理请求&lt;/li&gt;
-  &lt;li&gt;5.接受响应&lt;/li&gt;
-  &lt;li&gt;6.渲染页面&lt;/li&gt;
+  &lt;li&gt;2.DNS查询；&lt;/li&gt;
+  &lt;li&gt;3.建立TCP连接；&lt;/li&gt;
+  &lt;li&gt;4.发送HTTP请求；&lt;/li&gt;
+  &lt;li&gt;5.服务器处理请求；&lt;/li&gt;
+  &lt;li&gt;6.返回响应结果；&lt;/li&gt;
+  &lt;li&gt;7.关闭TCP连接；&lt;/li&gt;
+  &lt;li&gt;8.浏览器解析HTML；&lt;/li&gt;
+  &lt;li&gt;9.浏览器布局渲染；&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;当我们在浏览器输入网址回车后,一切从这里开始&lt;/p&gt;
 &lt;h3 id=&quot;url解析&quot;&gt;URL解析&lt;/h3&gt;
+&lt;p&gt;首先就是要向浏览器输入网址,其实就是向服务器请求我们想要的页面内容,浏览器需要首先确认的是域名所对应的服务器在哪里,将域名解析成对应的服务器IP地址这项工作,是由DNS服务器来完成的.客户端收到你输入的域名地址后,它首先去找本地的hosts文件,检查在该文件中是否有相应的域名、IP对应关系,如果有则向其IP地址发送请求,如果没有再去找DNS服务器.一般用户很少去编辑修改hosts文件.&lt;/p&gt;
 
-&lt;h4 id=&quot;地址解析&quot;&gt;地址解析&lt;/h4&gt;
 &lt;p&gt;首先判断你输入的是一个合法的URL还是一个带搜索的关键词，并且根据你输入的内容自动完成字符编码等操作。&lt;/p&gt;
 
 &lt;h4 id=&quot;hsts&quot;&gt;HSTS&lt;/h4&gt;
@@ -280,7 +284,7 @@ unescape(&quot;\u6625\u8282&quot;)
   &lt;li&gt;&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/xsilence/&quot;&gt;DNS查找域名的过程&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://fex.baidu.com/blog/2014/05/what-happen/&quot;&gt;从输入 URL 到页面加载完成的过程中都发生了什么事情？&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础" /><category term="面试" /><category term="HSTS" /><summary type="html">本文内容来自在浏览器输入 URL 回车之后发生了什么, 自己在此记录一下用来复习巩固.要了解更多内容请查看原文.</summary></entry><entry><title type="html">LeetCode刷题总结(简单版五)</title><link href="/leetcode/2019/09/08/leetcode-five/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版五)" /><published>2019-09-08T00:00:00+08:00</published><updated>2019-09-08T00:00:00+08:00</updated><id>/leetcode/2019/09/08/leetcode-five</id><content type="html" xml:base="/leetcode/2019/09/08/leetcode-five/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础" /><category term="面试" /><category term="HSTS" /><summary type="html">不久前看了一篇文章在浏览器输入 URL 回车之后发生了什么, 感觉讲的实在很好所以在此我也想总结一下,当自己被问到这个问题的时候会如何回答呢?</summary></entry><entry><title type="html">LeetCode刷题总结(简单版五)</title><link href="/leetcode/2019/09/08/leetcode-five/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版五)" /><published>2019-09-08T00:00:00+08:00</published><updated>2019-09-08T00:00:00+08:00</updated><id>/leetcode/2019/09/08/leetcode-five</id><content type="html" xml:base="/leetcode/2019/09/08/leetcode-five/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1两个数组的交集&quot;&gt;1.两个数组的交集&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/intersection-of-two-arrays/&quot;&gt;两个数组的交集&lt;/a&gt;：
