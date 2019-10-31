@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-30T20:58:51+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-31T18:03:09+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -155,7 +155,7 @@ unescape(&quot;\u6625\u8282&quot;)
 &lt;ul&gt;
   &lt;li&gt;递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）&lt;/li&gt;
   &lt;li&gt;迭代方式，就是本地DNS服务器到根域名服务器查询的方式。&lt;/li&gt;
-  &lt;li&gt;什么是 DNS 劫持&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran&quot;&gt;什么是 DNS 劫持&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;前端 dns-prefetch 优化&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -198,7 +198,7 @@ unescape(&quot;\u6625\u8282&quot;)
 &lt;p&gt;将数据段打包，并加入源及目标的IP地址，并且负责寻找传输路线。
 判断目标地址是否与当前地址处于同一网络中，是的话直接根据 Mac 地址发送，否则使用路由表查找下一跳地址，以及使用 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP 协议&lt;/a&gt;查询它的 Mac 地址。&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;注意：在 OSI 参考模型中 ARP 协议位于链路层，但在 TCP/IP 中，它位于网络层。&lt;/p&gt;
+  &lt;p&gt;注意：在 OSI 参考模型中 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP&lt;/a&gt; 协议位于链路层，但在 TCP/IP 中，它位于网络层。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;链路层-以太网协议&quot;&gt;链路层: 以太网协议&lt;/h4&gt;
@@ -267,6 +267,7 @@ unescape(&quot;\u6625\u8282&quot;)
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran&quot;&gt;什么是DNS劫持与DNS污染&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://juejin.im/post/59ba146c6fb9a00a4636d8b6&quot;&gt;深入理解Http请求、DNS劫持与解析&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/it_rod/article/details/79939651&quot;&gt;HTTP基础与DNS分析&lt;/a&gt;&lt;/li&gt;

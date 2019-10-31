@@ -288,7 +288,7 @@
 <ul>
   <li>递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）</li>
   <li>迭代方式，就是本地DNS服务器到根域名服务器查询的方式。</li>
-  <li>什么是 DNS 劫持</li>
+  <li><a href="https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran">什么是 DNS 劫持</a></li>
   <li>前端 dns-prefetch 优化</li>
 </ul>
 
@@ -331,7 +331,7 @@
 <p>将数据段打包，并加入源及目标的IP地址，并且负责寻找传输路线。
 判断目标地址是否与当前地址处于同一网络中，是的话直接根据 Mac 地址发送，否则使用路由表查找下一跳地址，以及使用 <a href="https://zhuanlan.zhihu.com/p/28771785">ARP 协议</a>查询它的 Mac 地址。</p>
 <blockquote>
-  <p>注意：在 OSI 参考模型中 ARP 协议位于链路层，但在 TCP/IP 中，它位于网络层。</p>
+  <p>注意：在 OSI 参考模型中 <a href="https://zhuanlan.zhihu.com/p/28771785">ARP</a> 协议位于链路层，但在 TCP/IP 中，它位于网络层。</p>
 </blockquote>
 
 <h4 id="链路层-以太网协议">链路层: 以太网协议</h4>
@@ -400,6 +400,7 @@
 
 <h1 id="文章参考">文章参考</h1>
 <ul>
+  <li><a href="https://zhuanlan.zhihu.com/p/28771785">ARP</a></li>
   <li><a href="https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran">什么是DNS劫持与DNS污染</a></li>
   <li><a href="https://juejin.im/post/59ba146c6fb9a00a4636d8b6">深入理解Http请求、DNS劫持与解析</a></li>
   <li><a href="https://blog.csdn.net/it_rod/article/details/79939651">HTTP基础与DNS分析</a></li>
