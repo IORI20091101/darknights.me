@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-05T20:58:15+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-08T12:39:38+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -156,7 +156,7 @@ unescape(&quot;\u6625\u8282&quot;)
   &lt;li&gt;递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）&lt;/li&gt;
   &lt;li&gt;迭代方式，就是本地DNS服务器到根域名服务器查询的方式。&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran&quot;&gt;什么是 DNS 劫持&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;前端 dns-prefetch 优化&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/50043595&quot;&gt;前端 dns-prefetch 优化&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;递归查询：
@@ -267,6 +267,7 @@ unescape(&quot;\u6625\u8282&quot;)
 
 &lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hellogithub2014.github.io/2017/09/24/how-do-network-connect/&quot;&gt;从浏览器输入url按回车后发生了什么&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/50043595&quot;&gt;浏览器探究&amp;amp;前端优化指南&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran&quot;&gt;什么是DNS劫持与DNS污染&lt;/a&gt;&lt;/li&gt;
@@ -374,8 +375,8 @@ var intersection = function(nums1, nums2) {
  }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;### 2.独一无二的出现次数
- &lt;a href=&quot;https://leetcode-cn.com/problems/unique-number-of-occurrences/&quot;&gt;独一无二的出现次数&lt;/a&gt;: 
+&lt;h3 id=&quot;2独一无二的出现次数&quot;&gt;2.独一无二的出现次数&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/unique-number-of-occurrences/&quot;&gt;独一无二的出现次数&lt;/a&gt;: 
  给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。&lt;/p&gt;
 
 &lt;p&gt;如果每个数的出现次数都是独一无二的，就返回 true；否则返回 false。&lt;/p&gt;
@@ -445,6 +446,106 @@ var uniqueOccurrences = function(arr) {
         return true;
     }
 }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;2转置矩阵&quot;&gt;2.转置矩阵&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/transpose-matrix/submissions/&quot;&gt;转置矩阵&lt;/a&gt;: 
+给定一个矩阵 A， 返回 A 的转置矩阵。&lt;/p&gt;
+
+&lt;p&gt;矩阵的转置是指将矩阵的主对角线翻转，交换矩阵的行索引与列索引。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 &amp;lt;= A.length &amp;lt;= 1000&lt;/li&gt;
+  &lt;li&gt;1 &amp;lt;= A[0].length &amp;lt;= 1000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入：[[1,2,3],[4,5,6],[7,8,9]]
+输出：[[1,4,7],[2,5,8],[3,6,9]]
+示例 2：
+
+输入：[[1,2,3],[4,5,6]]
+输出：[[1,4],[2,5],[3,6]]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;答案一-2&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * @param {number[][]} A
+ * @return {number[][]}
+ */
+var transpose = function(A) {
+    let len = A[0].length;
+    let alen = A.length;
+    let result = [];
+    
+    for(let i = 0; i &amp;lt; len; i++) {
+        let tmpl = [];
+        A.forEach((val, idex) =&amp;gt; {
+            tmpl.push(val[i]);
+        });
+        result.push(tmpl);
+    }
+    
+   return result;
+    
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;3重复-n-次的元素&quot;&gt;3.重复 N 次的元素&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/submissions/&quot;&gt;重复 N 次的元素&lt;/a&gt;:
+在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。&lt;/p&gt;
+
+&lt;p&gt;返回重复了 N 次的那个元素。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例 1：
+
+输入：[1,2,3,3]
+输出：3
+示例 2：
+
+输入：[2,1,2,5,3,2]
+输出：2
+示例 3：
+
+输入：[5,1,5,2,5,3,5,4]
+输出：5
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4 &amp;lt;= A.length &amp;lt;= 10000&lt;/li&gt;
+  &lt;li&gt;0 &amp;lt;= A[i] &amp;lt; 10000&lt;/li&gt;
+  &lt;li&gt;A.length 为偶数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;答案一-3&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var repeatedNTimes = function(A) {
+    A.sort((a, b) =&amp;gt; a-b);
+    let len = A.length;
+    let result = 0;
+    for(let i = 0; i &amp;lt; len; i++) {
+        if(i &amp;gt; 0) {
+            let cur = A[i]
+            let prev = A[i - 1];
+            if(cur - prev === 0) {
+                result = cur;
+                break;
+            }
+        }
+    }
+    return result;
+};
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版四)</title><link href="/leetcode/2019/09/07/leetcode-four/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版四)" /><published>2019-09-07T00:00:00+08:00</published><updated>2019-09-07T00:00:00+08:00</updated><id>/leetcode/2019/09/07/leetcode-four</id><content type="html" xml:base="/leetcode/2019/09/07/leetcode-four/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1反转字符串中的单词-iii&quot;&gt;1.反转字符串中的单词 III&lt;/h3&gt;
