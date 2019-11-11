@@ -400,7 +400,7 @@ var uniqueOccurrences = function(arr) {
 }
 </code></pre>
 
-<h3 id="2转置矩阵">2.转置矩阵</h3>
+<h3 id="3转置矩阵">3.转置矩阵</h3>
 <p><a href="https://leetcode-cn.com/problems/transpose-matrix/submissions/">转置矩阵</a>: 
 给定一个矩阵 A， 返回 A 的转置矩阵。</p>
 
@@ -448,7 +448,7 @@ var transpose = function(A) {
 
 </code></pre>
 
-<h3 id="3重复-n-次的元素">3.重复 N 次的元素</h3>
+<h3 id="4重复-n-次的元素">4.重复 N 次的元素</h3>
 <p><a href="https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/submissions/">重复 N 次的元素</a>:
 在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。</p>
 
@@ -500,6 +500,107 @@ var repeatedNTimes = function(A) {
 };
 </code></pre>
 
+<h3 id="5按奇偶排序数组-ii">5.按奇偶排序数组 II</h3>
+<p><a href="https://leetcode-cn.com/problems/sort-array-by-parity-ii/">按奇偶排序数组 II</a>:
+给定一个非负整数数组 A， A 中一半整数是奇数，一半整数是偶数。</p>
+
+<p>对数组进行排序，以便当 A[i] 为奇数时，i 也是奇数；当 A[i] 为偶数时， i 也是偶数。</p>
+
+<p>你可以返回任何满足上述条件的数组作为答案。</p>
+
+<p>提示：</p>
+
+<ul>
+  <li>2 &lt;= A.length &lt;= 20000</li>
+  <li>A.length % 2 == 0</li>
+  <li>0 &lt;= A[i] &lt;= 1000</li>
+</ul>
+
+<pre><code>示例：
+
+输入：[4,2,5,7]
+输出：[4,5,2,7]
+解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。
+</code></pre>
+
+<h4 id="答案一-4">答案一</h4>
+<pre><code class="language-javascript">
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortArrayByParityII = function(A) {
+    let len = A.length;
+    let oArr = A.filter(val =&gt; (val % 2 !== 0));
+    let eArr = A.filter(val =&gt; (val % 2 === 0));
+    
+    let result = [];
+    for(let i = 0; i &lt; len; i++) {
+        if(i % 2 === 0) {
+            result.push(eArr.shift());
+        } else {
+            result.push(oArr.shift());
+        }
+    }
+    
+    return result;
+    
+    
+};
+</code></pre>
+
+<h4 id="答案二-2">答案二</h4>
+<p>java容易理解的解法</p>
+<pre><code class="language-java">class Solution {
+    public static int[] sortArrayByParityII(int[] arr) {
+        int len = arr.length;
+        if(arr.length &lt; 2) {
+            return arr;
+        }
+        int odd = 1;
+        int even = 0;
+
+        while(odd &lt; len &amp;&amp; even &lt; len) {
+            while(odd &lt; len &amp;&amp; arr[odd] % 2 != 0){
+                odd += 2;
+            }
+
+            while(even &lt; len &amp;&amp; arr[even] % 2 == 0){
+                even += 2;
+            }
+
+            if(odd &lt; len &amp;&amp; even &lt; len) {
+                swap(arr, odd, even);
+            }
+        }
+    }
+
+    private static void swap(int[] arr, int odd, int even) {
+        int tmp = arr[odd];
+        arr[odd] = arr[even];
+        arr[even] = tmp;
+    }
+}
+</code></pre>
+
+<h4 id="答案三">答案三</h4>
+<p>js双指针</p>
+<pre><code class="language-javascript">
+var sortArrayByParityII = function(A) { 
+    let len = A.length,
+        i = 0,
+        j = 1;
+
+    for(; i &lt; len; i += 2) {
+        if(A[i] % 2 === 0) continue;
+        while(A[j] % 2 === 1);j += 2;
+
+        [A[i], A[j]] = [A[j], A[i]];
+    }
+    return A;
+}
+
+</code></pre>
 
 
                 <hr>

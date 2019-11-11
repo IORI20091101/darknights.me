@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-08T12:39:38+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-11T20:52:09+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -146,7 +146,7 @@ unescape(&quot;\u6625\u8282&quot;)
   &lt;p&gt;ISP的DNS服务器还找不到的话，它就会向根服务器发出请求，进行递归查询（DNS服务器先问根域名服务器.com域名服务器的IP地址，然后再问.com域名服务器，依次类推）。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h4 id=&quot;5根域名服务器查询&quot;&gt;5.根域名服务器查询&lt;/h4&gt;
+&lt;h4 id=&quot;根域名服务器查询&quot;&gt;根域名服务器查询&lt;/h4&gt;
 &lt;p&gt;在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：
 &lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/search.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -235,9 +235,6 @@ unescape(&quot;\u6625\u8282&quot;)
   &lt;li&gt;验证虚拟主机是否接受此方法&lt;/li&gt;
   &lt;li&gt;验证该用户可以使用该方法（根据 IP 地址、身份信息等）&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h4 id=&quot;重定向&quot;&gt;重定向&lt;/h4&gt;
-&lt;p&gt;假如服务器配置了 HTTP 重定向，就会返回一个 301永久重定向响应，浏览器就会根据响应，重新发送 HTTP 请求（重新执行上面的过程）。&lt;/p&gt;
 
 &lt;h4 id=&quot;url重写&quot;&gt;URL重写&lt;/h4&gt;
 &lt;p&gt;然后会查看 URL 重写规则，如果请求的文件是真实存在的，比如图片、html、css、js文件等，则会直接把这个文件返回。&lt;/p&gt;
@@ -448,7 +445,7 @@ var uniqueOccurrences = function(arr) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;2转置矩阵&quot;&gt;2.转置矩阵&lt;/h3&gt;
+&lt;h3 id=&quot;3转置矩阵&quot;&gt;3.转置矩阵&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/transpose-matrix/submissions/&quot;&gt;转置矩阵&lt;/a&gt;: 
 给定一个矩阵 A， 返回 A 的转置矩阵。&lt;/p&gt;
 
@@ -496,7 +493,7 @@ var transpose = function(A) {
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;3重复-n-次的元素&quot;&gt;3.重复 N 次的元素&lt;/h3&gt;
+&lt;h3 id=&quot;4重复-n-次的元素&quot;&gt;4.重复 N 次的元素&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/n-repeated-element-in-size-2n-array/submissions/&quot;&gt;重复 N 次的元素&lt;/a&gt;:
 在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。&lt;/p&gt;
 
@@ -546,6 +543,108 @@ var repeatedNTimes = function(A) {
     }
     return result;
 };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;5按奇偶排序数组-ii&quot;&gt;5.按奇偶排序数组 II&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/sort-array-by-parity-ii/&quot;&gt;按奇偶排序数组 II&lt;/a&gt;:
+给定一个非负整数数组 A， A 中一半整数是奇数，一半整数是偶数。&lt;/p&gt;
+
+&lt;p&gt;对数组进行排序，以便当 A[i] 为奇数时，i 也是奇数；当 A[i] 为偶数时， i 也是偶数。&lt;/p&gt;
+
+&lt;p&gt;你可以返回任何满足上述条件的数组作为答案。&lt;/p&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2 &amp;lt;= A.length &amp;lt;= 20000&lt;/li&gt;
+  &lt;li&gt;A.length % 2 == 0&lt;/li&gt;
+  &lt;li&gt;0 &amp;lt;= A[i] &amp;lt;= 1000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;示例：
+
+输入：[4,2,5,7]
+输出：[4,5,2,7]
+解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案一-4&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+/**
+ * @param {number[]} A
+ * @return {number[]}
+ */
+var sortArrayByParityII = function(A) {
+    let len = A.length;
+    let oArr = A.filter(val =&amp;gt; (val % 2 !== 0));
+    let eArr = A.filter(val =&amp;gt; (val % 2 === 0));
+    
+    let result = [];
+    for(let i = 0; i &amp;lt; len; i++) {
+        if(i % 2 === 0) {
+            result.push(eArr.shift());
+        } else {
+            result.push(oArr.shift());
+        }
+    }
+    
+    return result;
+    
+    
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案二-2&quot;&gt;答案二&lt;/h4&gt;
+&lt;p&gt;java容易理解的解法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public static int[] sortArrayByParityII(int[] arr) {
+        int len = arr.length;
+        if(arr.length &amp;lt; 2) {
+            return arr;
+        }
+        int odd = 1;
+        int even = 0;
+
+        while(odd &amp;lt; len &amp;amp;&amp;amp; even &amp;lt; len) {
+            while(odd &amp;lt; len &amp;amp;&amp;amp; arr[odd] % 2 != 0){
+                odd += 2;
+            }
+
+            while(even &amp;lt; len &amp;amp;&amp;amp; arr[even] % 2 == 0){
+                even += 2;
+            }
+
+            if(odd &amp;lt; len &amp;amp;&amp;amp; even &amp;lt; len) {
+                swap(arr, odd, even);
+            }
+        }
+    }
+
+    private static void swap(int[] arr, int odd, int even) {
+        int tmp = arr[odd];
+        arr[odd] = arr[even];
+        arr[even] = tmp;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;答案三&quot;&gt;答案三&lt;/h4&gt;
+&lt;p&gt;js双指针&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+var sortArrayByParityII = function(A) { 
+    let len = A.length,
+        i = 0,
+        j = 1;
+
+    for(; i &amp;lt; len; i += 2) {
+        if(A[i] % 2 === 0) continue;
+        while(A[j] % 2 === 1);j += 2;
+
+        [A[i], A[j]] = [A[j], A[i]];
+    }
+    return A;
+}
+
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版四)</title><link href="/leetcode/2019/09/07/leetcode-four/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版四)" /><published>2019-09-07T00:00:00+08:00</published><updated>2019-09-07T00:00:00+08:00</updated><id>/leetcode/2019/09/07/leetcode-four</id><content type="html" xml:base="/leetcode/2019/09/07/leetcode-four/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1反转字符串中的单词-iii&quot;&gt;1.反转字符串中的单词 III&lt;/h3&gt;
