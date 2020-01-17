@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-11-15T14:19:27+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">JavaScript内置对象之数组</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array/" rel="alternate" type="text/html" title="JavaScript内置对象之数组" /><published>2019-11-12T00:00:00+08:00</published><updated>2019-11-12T00:00:00+08:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array/">&lt;p&gt;本文为了详细记录JavaScript内置对象中的一些方法&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><summary type="html">本文为了详细记录JavaScript内置对象中的一些方法</summary></entry><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-01-17T17:13:37+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">重读React系列(一)</title><link href="/react/2020/01/02/react-read-one/" rel="alternate" type="text/html" title="重读React系列(一)" /><published>2020-01-02T00:00:00+08:00</published><updated>2020-01-02T00:00:00+08:00</updated><id>/react/2020/01/02/react-read-one</id><content type="html" xml:base="/react/2020/01/02/react-read-one/">&lt;p&gt;最近做东西的时候发现一些React的新的特性其实可以用到现有的项目中,所以打算重读一些React的文档,读的时候发现其实很多之前不理解的东西在文档中已经有答案了,
+所以我认为有必要重新细读一下文档,将一些点总结下来.&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><category term="React" /><summary type="html">最近做东西的时候发现一些React的新的特性其实可以用到现有的项目中,所以打算重读一些React的文档,读的时候发现其实很多之前不理解的东西在文档中已经有答案了, 所以我认为有必要重新细读一下文档,将一些点总结下来.</summary></entry><entry><title type="html">新年随笔</title><link href="/%E9%9A%8F%E7%AC%94/2020/01/01/onte-one/" rel="alternate" type="text/html" title="新年随笔" /><published>2020-01-01T00:00:00+08:00</published><updated>2020-01-01T00:00:00+08:00</updated><id>/%E9%9A%8F%E7%AC%94/2020/01/01/onte-one</id><content type="html" xml:base="/%E9%9A%8F%E7%AC%94/2020/01/01/onte-one/">&lt;h3 id=&quot;回顾&quot;&gt;回顾&lt;/h3&gt;
+&lt;p&gt;今天是2020年元旦了,又是新的一年.回顾这一年对于我来说发生了实在太多的事情,亲人的离去,公司的变化,给看起来貌似稳定的生活带来了很多变数,我这个人不太喜欢变化,主要还是懒.因为懒导致自己没有成为心目中很优秀的人.其实家庭对于个人成长的影响真是至关重要,家庭的因为导致你缺少成为优秀人的潜质, 多少年之后你忽然意识到这个问题的时候,你可能需要更多的努力,才能改变这种状况. 既然意识到了你总是能够变得比现在更好.&lt;/p&gt;
+
+&lt;h3 id=&quot;愿望&quot;&gt;愿望&lt;/h3&gt;
+&lt;p&gt;新的一年有一些愿望希望能够努力达成:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;健身.好的身体是一切的根本&lt;/li&gt;
+  &lt;li&gt;技术提升&amp;amp;实践,努力学习将技术变现&lt;/li&gt;
+  &lt;li&gt;学习一门新的语言英语德语或日语&lt;/li&gt;
+  &lt;li&gt;坚持每天写博客总结可以是非技术类的,也可以是小说&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;今年一直在做新项目,业务缠身,感觉项目永远也做不完,在公司也没有什么提升,闭门造车无法走到最前沿.最好能够换个环境,明年看看形式,希望能够勇敢迈出这一步.&lt;/p&gt;
+
+&lt;h3 id=&quot;打气&quot;&gt;打气&lt;/h3&gt;
+&lt;p&gt;最近看了胖哥的技术文章发现,技术方面真的可以走的很远,如果有人带领的话肯定事半功倍,我会利用这段时间尝试把自己变成技术大拿. 多去看源码多去总结会成功的.
+不要否定自己,不需要妄自菲薄,踏踏实实的过每一天.2020年希望遇见更好的自己~~&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/av81092011/&quot;&gt;大胖逼逼叨-程序员快速成神三部曲-基础篇&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="随笔" /><summary type="html">回顾 今天是2020年元旦了,又是新的一年.回顾这一年对于我来说发生了实在太多的事情,亲人的离去,公司的变化,给看起来貌似稳定的生活带来了很多变数,我这个人不太喜欢变化,主要还是懒.因为懒导致自己没有成为心目中很优秀的人.其实家庭对于个人成长的影响真是至关重要,家庭的因为导致你缺少成为优秀人的潜质, 多少年之后你忽然意识到这个问题的时候,你可能需要更多的努力,才能改变这种状况. 既然意识到了你总是能够变得比现在更好.</summary></entry><entry><title type="html">JavaScript内置对象之数组</title><link href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array/" rel="alternate" type="text/html" title="JavaScript内置对象之数组" /><published>2019-11-12T00:00:00+08:00</published><updated>2019-11-12T00:00:00+08:00</updated><id>/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array</id><content type="html" xml:base="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array/">&lt;p&gt;本文为了详细记录JavaScript内置对象中的一些方法&lt;/p&gt;</content><author><name>toshiba</name></author><category term="javascript" /><summary type="html">本文为了详细记录JavaScript内置对象中的一些方法</summary></entry><entry><title type="html">URL编码</title><link href="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/" rel="alternate" type="text/html" title="URL编码" /><published>2019-10-16T00:00:00+08:00</published><updated>2019-10-16T00:00:00+08:00</updated><id>/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode</id><content type="html" xml:base="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">&lt;h3 id=&quot;起因&quot;&gt;起因&lt;/h3&gt;
 &lt;p&gt;前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是&lt;code&gt;tq+3wB8PdfY=&lt;/code&gt;, 传到后台的错误结果是&lt;code&gt;tq%203wB8PdfY%3D&lt;/code&gt;,但是真实需要传给后台的却是&lt;code&gt;tq%2B3wB8PdfY%3D&lt;/code&gt;. 因此在这里将该问题总结一下.转载自&lt;a href=&quot;http://www.ruanyifeng.com/blog/2010/02/url_encoding.html&quot;&gt;关于URL编码&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;需要知道&quot;&gt;需要知道&lt;/h3&gt;
@@ -907,6 +926,49 @@ var titleToNumber = function(s) {
     return sum;
 
 };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;9反转链表&quot;&gt;9.反转链表&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/reverse-linked-list/&quot;&gt;反转链表&lt;/a&gt;:
+反转一个单链表。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;示例:
+
+输入: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL
+输出: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NUL
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;进阶:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;你可以迭代或递归地反转链表。你能否用两种方法解决这道题？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;答案一-8&quot;&gt;答案一&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
+    public ListNode reverstList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode p = reverstList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+    }
+}
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版四)</title><link href="/leetcode/2019/09/07/leetcode-four/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版四)" /><published>2019-09-07T00:00:00+08:00</published><updated>2019-09-07T00:00:00+08:00</updated><id>/leetcode/2019/09/07/leetcode-four</id><content type="html" xml:base="/leetcode/2019/09/07/leetcode-four/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
 
 &lt;h3 id=&quot;1反转字符串中的单词-iii&quot;&gt;1.反转字符串中的单词 III&lt;/h3&gt;
@@ -3382,235 +3444,4 @@ var flipAndInvertImage = function(A) {
     }
     return A;
 };
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">搭建门户网站技术选型</title><link href="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/" rel="alternate" type="text/html" title="搭建门户网站技术选型" /><published>2018-10-21T00:00:00+08:00</published><updated>2018-10-21T00:00:00+08:00</updated><id>/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www</id><content type="html" xml:base="/%E8%84%9A%E6%89%8B%E6%9E%B6/2018/10/21/scaffold-front-www/">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
-&lt;p&gt;工作多年，项目越来越多，总是要做一些重复性的工作开进行开发，每次东配置西配置一大堆，效率很低无法直接投入生产。
-通过这篇文章梳理一下自己的知识点，将一些常用技术做一些总结归纳和复习。并且基于此开发一套模版，用于以后网站开发直接套用，不做重复性的工作（这里的网站主要针对pc）。&lt;/p&gt;
-
-&lt;h2 id=&quot;开始&quot;&gt;开始&lt;/h2&gt;
-&lt;p&gt;从前端的角度来说，如何从零开始开发一个门户网站呢？ 首先是要有一些基础知识包括&lt;code&gt;JavaScript&lt;/code&gt;, &lt;code&gt;css&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;html&quot;&gt;html&lt;/h2&gt;
-&lt;p&gt;关于&lt;code&gt;html&lt;/code&gt;需要了解的是，语义化的标签，还有html模版。一个html应该有什么呢，我们通过一个html模版来看下&lt;a href=&quot;https://github.com/h5bp/html5-boilerplate&quot;&gt;html5-boilerplate&lt;/a&gt;, 这是一个专业的前端模版html。 由于篇幅问题就不再这里展开大家可以去github仓库中的dist文件夹查看index.html。
-我们简单介绍下其中用到的东西&lt;/p&gt;
-
-&lt;p&gt;首先是通用的html5的头&lt;code&gt;&amp;lt;!doctype html&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;在HTML中，doctype是所有文档顶部所需的“ 序言“。其唯一目的是防止浏览器在呈现文档时转换成所谓的“怪异”模式; 也就是说，doctype确保浏览器尽力尝试遵循相关规范，而不是使用与某些规范不兼容的不同渲染模式。DOCTYPE用来告知 Web 浏览器页面使用了哪种 HTML 版本,只有确定了一个正确的文档类型，HTML或XHTML中的标签和层叠样式表才能生效，甚至对JavaScript脚本都会有所影响。&lt;/p&gt;
-
-&lt;p&gt;还有这个Meta标签，如果您需要支持IE9或IE8，那么建议使用该标签， 如果支持最新的IE11或Edge则考虑删除此标签&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;meta http-equiv=&quot;x-ua-compatible&quot; content=&quot;ie=edge&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这个X-UA标记允许web作者选择呈现页面的Internet Explore版本，具体解释请看&lt;a href=&quot;https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do&quot;&gt;这篇文章&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;然后这里还用到了&lt;a href=&quot;https://necolas.github.io/normalize.css/&quot;&gt;normalize.css&lt;/a&gt;,来消除不通浏览器之间的样式差异。
-还使用了&lt;a href=&quot;https://modernizr.com/&quot;&gt;modernizr&lt;/a&gt;，来进行浏览器功能检查。
-以及大家最熟悉的jQuery(如果只兼容IE9+则可以放心使用最新版本，如果需要支持IE8则需要使用2.0以下的版本)&lt;/p&gt;
-
-&lt;h2 id=&quot;css&quot;&gt;css&lt;/h2&gt;
-&lt;p&gt;css我们先前在模版中已经引入了&lt;a href=&quot;https://necolas.github.io/normalize.css/&quot;&gt;normalize.css&lt;/a&gt;, 其余css基础知识的获取就需要大家自行补充了，建议读一下《css权威指南》，算是css内功方面的书籍了，再就是了解css的布局包括栅格布局，flex布局， 还有更早期的双飞翼布局，圣杯布局等等。&lt;/p&gt;
-
-&lt;p&gt;除了这些基础实战中我们通常会用到css预处理器，&lt;a href=&quot;https://sass-lang.com/&quot;&gt;Sass&lt;/a&gt;、&lt;a href=&quot;http://lesscss.org/&quot;&gt;Less&lt;/a&gt;和&lt;a href=&quot;http://stylus-lang.com/&quot;&gt;Stylus&lt;/a&gt;. 最开始我使用的是sass，但是这个的npm包经常会被墙下载不下来，相关依赖感觉也比较重。至于选哪种看大家喜好了，我推荐使用stylus，语法自由度很高，代码非常简洁。&lt;/p&gt;
-
-&lt;h2 id=&quot;javascript&quot;&gt;JavaScript&lt;/h2&gt;
-&lt;p&gt;什么是最轻量的JavaScript框架,那就是&lt;a href=&quot;http://vanilla-js.com/&quot;&gt;vanilla-js&lt;/a&gt; 来自&lt;a href=&quot;https://segmentfault.com/a/1190000000355277&quot;&gt; Vanilla JS——世界上最轻量的JavaScript框架（没有之一）&lt;/a&gt;,这里是个玩笑，因为这里说的框架其实就是原生Js。
-大型网站的开发还是需要依赖各种js的库或者框架。这里简单列几种，&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;jQuery，虽然有些人抵触，但是为了保证代码兼容性，我还是愿意引入jQuery的&lt;/li&gt;
-  &lt;li&gt;Backbone， 一款轻量级的框架，不过需要配合underscore或者lodash使用&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/wycats/handlebars.js&quot;&gt;Handlebars&lt;/a&gt;, js模版用来处理html代码片段&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;具体代码可以考虑使用ES5如果这样的话需要引入&lt;a href=&quot;https://babeljs.io/&quot;&gt;babeljs&lt;/a&gt;,做转换这样就可以愉快的使用新语法了，除此之外我们的选择还有&lt;a href=&quot;https://coffeescript.org/&quot;&gt;CoffeeScript&lt;/a&gt;, 和&lt;a href=&quot;https://www.typescriptlang.org/&quot;&gt;TypeScript&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;代码规范可以可以参考&lt;a href=&quot;https://codeburst.io/5-javascript-style-guides-including-airbnb-github-google-88cbc6b2b7aa&quot;&gt;这篇文章&lt;/a&gt;
-我推荐使用其中更为广泛的&lt;a href=&quot;https://github.com/airbnb/javascript&quot;&gt;Airbnb Standard&lt;/a&gt; 比&lt;a href=&quot;https://github.com/standard/standard&quot;&gt;JavaScript Standard Style&lt;/a&gt; 更多的star。&lt;/p&gt;
-
-&lt;h2 id=&quot;搭建&quot;&gt;搭建&lt;/h2&gt;
-&lt;p&gt;好了前期准备工作已经完成现在我们开始正式开始&lt;/p&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="脚手架" /><summary type="html">起因 工作多年，项目越来越多，总是要做一些重复性的工作开进行开发，每次东配置西配置一大堆，效率很低无法直接投入生产。 通过这篇文章梳理一下自己的知识点，将一些常用技术做一些总结归纳和复习。并且基于此开发一套模版，用于以后网站开发直接套用，不做重复性的工作（这里的网站主要针对pc）。</summary></entry><entry><title type="html">安卓和IOS前端页面调试</title><link href="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/" rel="alternate" type="text/html" title="安卓和IOS前端页面调试" /><published>2018-10-20T00:00:00+08:00</published><updated>2018-10-20T00:00:00+08:00</updated><id>/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview</id><content type="html" xml:base="/%E8%B0%83%E8%AF%95/2018/10/20/debug-webview/">&lt;h2 id=&quot;场景&quot;&gt;场景&lt;/h2&gt;
-
-&lt;p&gt;我们通常会有这样的开发场景， 开发了一些前端页面，可能在手机浏览器打开，也可能在客户端的webview打开，对应不同的场景我们可能需要不通的手段来进行调试。
-对于简单的页面我们一般可以通过chrome的开发工具来调试或者通过safari来直接对手机打开的页面直接进行调试。 但是对于复杂webview我们可能需要一些特殊手段来进行debug.&lt;/p&gt;
-
-&lt;p&gt;在本文将总结一部分调试技巧&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;方法分类&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;难度&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;调试目标&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;调试效果&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;优先级&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Chrome自带模拟器&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;简单&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;所有&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;模拟效果，基本能调试 UI 及标准 JS 所有问题&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;极高&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;chrome://inspect&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;简单&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;安卓的自带浏览器+webview&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;真机调试效果显著&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;spy-debugger&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;所有页面不管是否是webview&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;效果可以&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;safari开发模式&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;简单&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;手机safari的所有页面&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;真机调试效果显著&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;xcode的iPhone模拟器&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;较难&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;webview和手机浏览器&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;调试效果显著&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;中等&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;weinre&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;所有页面不管是否是webview&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;需要注入代码效果一般&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;低&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;微信开发者工具&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;模拟手机&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;低&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;TBS Studio&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;模拟手机&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;未测试&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Browsersync&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;一般&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;模拟手机&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;未测试&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;抓包&quot;&gt;抓包&lt;/h2&gt;
-&lt;p&gt;对于抓包有很多工具比如 mac上面有 charles，wireShark， windows上面有fiddler 等等。
-我常用的一个抓包工具叫 &lt;a href=&quot;https://mitmproxy.org/&quot;&gt;mitmproxy&lt;/a&gt;, 在github已经一万多star了，使用起来比较简单。 一条命令 &lt;code&gt;mitmproxy -p 4000 --set console_mouse=false&lt;/code&gt;, 启动后 手机手动代理到 ip+端口就可以开始抓包了，对于https可能需要&lt;a href=&quot;http://mitm.it/&quot;&gt;安装证书&lt;/a&gt;.至于安装过程就不重复了，官网已有&lt;a href=&quot;https://docs.mitmproxy.org/stable/&quot;&gt;教程&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;charles抓包请查看&lt;a href=&quot;https://www.jianshu.com/p/fdd7c681929c&quot;&gt;这篇教程&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;安卓的webview页面&quot;&gt;安卓的webview页面&lt;/h2&gt;
-&lt;p&gt;现在的安卓应用内的页面进行调试是真的方便。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;首先打开手机的usb调试，连接到电脑。&lt;/li&gt;
-  &lt;li&gt;第二在chrome输入 &lt;code&gt;chrome://inspect/#devices&lt;/code&gt; （开发环境安卓桌面版Chrome32+ 并且 Android 系统高于 4.4）&lt;/li&gt;
-  &lt;li&gt;第三 选择app中的页面进行调试即可&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;safari调试iphone页面&quot;&gt;safari调试iPhone页面&lt;/h2&gt;
-&lt;p&gt;这种方式适合手机上面的浏览器页面
-需要几步配置&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;首先打开电脑的safari
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/Safari设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;然后打开iPhone进行设置
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/iPhone设置.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;最后通过电脑的safari打开进行调试
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/开启调试.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;调试iphone的webview&quot;&gt;调试iPhone的webview&lt;/h2&gt;
-&lt;p&gt;iPhone的webview可行的方法就是下载xcode，然后跟客户端开发借来一个xxx.app然后用模拟器打开，这样调试页面的时候可以调试各种情况下的页面，包括safari和应用内的页面。
-这是目前唯一靠谱的调试方案。 还有一些 &lt;a href=&quot;https://github.com/google/ios-webkit-debug-proxy&quot;&gt;ios-webkit-debug-proxy&lt;/a&gt; 和 &lt;a href=&quot;https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter&quot;&gt;remotedebug-ios-webkit-adapter&lt;/a&gt; 类似方案， 这些方案只能够调试手机的safari 对于app中的webview就无能为力了，而且经过本人实践效果并不理想，如果只是为了调试safari那还不如直接usb连接方便快捷，而且安装过程会有很多坑，因此不推荐使用。&lt;/p&gt;
-
-&lt;p&gt;简化方案&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;//打开首页
-xcrun simctl openurl booted taobao://h5.m.taobao.com/guang/index.html
-// 打开模拟器
-open -a &quot;Simulator.app&quot; --args -CurrentDeviceUDID &quot;FCE2CFE8-64C3-4DBE-906B-B9BF4180DE49&quot;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;前提是安装了xcode， 本地需要一个sdk与测试网站进行交互方便获取app和执行本地shell命令
-根据&lt;a href=&quot;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&quot;&gt;此文章&lt;/a&gt;, 后期开发一个测试环境用的本地调试网站。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&quot;&gt;http://taobaofed.org/blog/2015/11/13/web-debug-in-ios/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;weinre&quot;&gt;weinre&lt;/h2&gt;
-
-&lt;p&gt;Weinre 是一款较老的远程调试工具，功能与 Chrome DevTools 相似，需要在页面中插入一段 JS 脚本来实时调试页面 DOM 结构、样式、JS 等，另外它使用的是代理的方式，所以兼容性很好，无论是新老设备系统通吃，但对于样式调试不友善，缺少断点调试及 Profiles 等常用功能。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;安装 Weinre
-    &lt;pre&gt;&lt;code&gt;$ sudo npm -g install weinre
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;启动Weinre监听服务
-    &lt;pre&gt;&lt;code&gt;$ weinre --boundHost 10.10.2.144 --httpPort 8090 
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;使用chrome访问
-&lt;a href=&quot;http://10.10.2.144:8090&quot;&gt;http://10.10.2.144:8090&lt;/a&gt;, 然后将一段 JS 脚本 &lt;script src=&quot;http://10.10.2.144:8090/target/target-script-min.js#anonymous&quot;&gt;&lt;/script&gt; 插入到需要调试的页面中，插入代码后手机访问调试页面。
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/weinre.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;到这里还不算完，因为手动插入js不够优雅，所以这里采用js脚本注入
-Tools –&amp;gt; Rewrite 选中Enable Rewrite
-这里我们需要使用到的是 Body，它的作用是对请求或响应内容进行匹配替换，按照下图的配置，通过将匹配到的响应内容 &amp;lt;/body&amp;gt; 标签替换成需要插入到页面中的 JS 脚本，从而实现动态插入。
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/debug-webview/Charles_Rewrite_Rule.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;spy-debugger&quot;&gt;spy-debugger&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/wuchangming/spy-debugger&quot;&gt;spy-debugger&lt;/a&gt;跟微信开发这工具都在weinre的基础上简化了给页面添加js的步骤，它还对HTTPS的支持&lt;/p&gt;
-
-&lt;p&gt;安装spy-debugger
-spy-debugger内部集成了&lt;a href=&quot;http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html&quot;&gt;weinre&lt;/a&gt;、&lt;a href=&quot;https://github.com/wuchangming/node-mitmproxy&quot;&gt;node-mitmproxy&lt;/a&gt;、&lt;a href=&quot;https://github.com/alibaba/anyproxy&quot;&gt;AnyProxy&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$  sudo npm install spy-debugger -g
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;安装https证书包括手机和PC。
-执行启动特别酸爽&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ spy-debugger -p 8888
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;tbs-studio&quot;&gt;TBS Studio&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://x5.tencent.com/guide/debug.html&quot;&gt;TBS Studio&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;微信-webview-调试&quot;&gt;微信 WebView 调试&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://x5.tencent.com/tbs/guide/debug/season1.html&quot;&gt;https://x5.tencent.com/tbs/guide/debug/season1.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;browsersync&quot;&gt;browserSync&lt;/h2&gt;
-
-&lt;h2 id=&quot;参考文档&quot;&gt;参考文档&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://75team.com/post/webview-debug.html&quot;&gt;前端 WebView 指南之调试篇&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://elevenbeans.github.io/2017/06/06/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/&quot;&gt;移动端浏览器调试方法汇总&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://aotu.io/notes/2017/02/24/Mobile-debug/index.html&quot;&gt;移动端真机调试指南&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/riskers/blog/issues/11&quot;&gt;打造最舒适的webview调试环境&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://yujiangshui.com/multidevice-frontend-debug/&quot;&gt;移动端前端开发调试&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="工具" /><category term="调试" /><summary type="html">场景</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry></feed>

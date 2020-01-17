@@ -864,6 +864,49 @@ var titleToNumber = function(s) {
 };
 </code></pre>
 
+<h3 id="9反转链表">9.反转链表</h3>
+<p><a href="https://leetcode-cn.com/problems/reverse-linked-list/">反转链表</a>:
+反转一个单链表。</p>
+
+<pre><code>示例:
+
+输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
+输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NUL
+
+</code></pre>
+
+<p>进阶:</p>
+<ul>
+  <li>你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</li>
+</ul>
+
+<h4 id="答案一-8">答案一</h4>
+<pre><code class="language-java">class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">class Solution {
+    public ListNode reverstList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode p = reverstList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+    }
+}
+</code></pre>
+
 
                 <hr>
 
@@ -1028,7 +1071,7 @@ var titleToNumber = function(s) {
                                 计算机基础
                             </a>
         				
-                            <a href="/tags/#javascript" title="javascript" rel="20">
+                            <a href="/tags/#javascript" title="javascript" rel="21">
                                 javascript
                             </a>
         				
@@ -1090,6 +1133,14 @@ var titleToNumber = function(s) {
         				
                             <a href="/tags/#HSTS" title="HSTS" rel="1">
                                 HSTS
+                            </a>
+        				
+                            <a href="/tags/#随笔" title="随笔" rel="1">
+                                随笔
+                            </a>
+        				
+                            <a href="/tags/#React" title="React" rel="1">
+                                React
                             </a>
         				
         			</div>
@@ -1204,7 +1255,7 @@ var titleToNumber = function(s) {
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; Dark Knight 2019 |
+                    Copyright &copy; Dark Knight 2020 |
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="91px" height="20px"

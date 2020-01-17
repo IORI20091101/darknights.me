@@ -3,6 +3,26 @@
   "data" : [
     
       {
+      "value" : "重读React系列(一)",
+      "subtitle": "重新来读React文档总结一些经验和忽略的技术点",
+      "data" : "/react/2020/01/02/react-read-one/",
+      "date": "2020-01-02"
+      }
+      
+        ,
+      
+    
+      {
+      "value" : "新年随笔",
+      "subtitle": "今天是2020年元旦",
+      "data" : "/%E9%9A%8F%E7%AC%94/2020/01/01/onte-one/",
+      "date": "2020-01-01"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "JavaScript内置对象之数组",
       "subtitle": "JavaScript内置对象之数组",
       "data" : "/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array/",
