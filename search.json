@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "前端工程化思考",
+      "subtitle": "对前段工程化的一些经验总结，同时归纳出一套适合自己的最佳实践",
+      "data" : "/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/03/31/frontend-engineering/",
+      "date": "2020-03-31"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "重读React系列(一)",
       "subtitle": "重新来读React文档总结一些经验和忽略的技术点",
       "data" : "/react/2020/01/02/react-read-one/",
