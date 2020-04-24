@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "使用Eslint&amp;Prettier来统一代码风格",
+      "subtitle": "Eslint配合Prettier格式化代码",
+      "data" : "/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/",
+      "date": "2020-04-23"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "前端工程化思考",
       "subtitle": "对前段工程化的一些经验总结，同时归纳出一套适合自己的最佳实践",
       "data" : "/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/03/31/frontend-engineering/",

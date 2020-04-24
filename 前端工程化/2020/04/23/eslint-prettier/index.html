@@ -20,9 +20,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>Generator函数的含义和用法 - Dark knight's Blog</title>
+    <title>使用Eslint&Prettier来统一代码风格 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/">
+    <link rel="canonical" href="http://darknights.me/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -180,7 +180,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat6.jpg ')
+        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat1.jpg ')
     }
 </style>
 
@@ -195,17 +195,19 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#ES6学习笔记" title="ES6学习笔记">ES6学习笔记</a>
+                            <a class="tag" href="/tags/#eslint" title="eslint">eslint</a>
                             
-                            <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                            <a class="tag" href="/tags/#prettier" title="prettier">prettier</a>
+                            
+                            <a class="tag" href="/tags/#前端工程化" title="前端工程化">前端工程化</a>
                             
                         </div>
-                        <h1>Generator函数的含义和用法</h1>
+                        <h1>使用Eslint&Prettier来统一代码风格</h1>
                         
                         
-                        <h2 class="subheading">ES6重点记录</h2>
+                        <h2 class="subheading">Eslint配合Prettier格式化代码</h2>
                         
-                        <span class="meta">Posted by toshiba on November 20, 2017</span>
+                        <span class="meta">Posted by toshiba on April 23, 2020</span>
                     </div>
                 </div>
             </div>
@@ -227,96 +229,44 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="同步和异步">同步和异步</h2>
-<p>要了解generator首先需要说一下异步和同步，大家都知道，Javascript的语言执行环境是单线程（Single thread）.所谓<code>单线程</code>，就是只一次只能完成一个任务如果有多个任务就需要排队，前面一个任务完成，再执行后面一个任务，一次类推。
-这种做法</p>
-<blockquote>
-  <ul>
-    <li>好处是实现起来比较简单，执行环境相对单纯.</li>
-    <li>坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。</li>
-  </ul>
-</blockquote>
+				<h3 id="代码风格">代码风格</h3>
 
-<p>为了解决上面的问题javascript将语言执行分成了两种： 同步（Synchronous）和异步（Asynchronous）.</p>
+<p>当我们进行开发的时候，每个人写的代码风格不统一是很让人不爽的一件事情，那么如何来解决这个问题呢，首先我们需要选定一种规范；这里常用的规范有这两种</p>
+
 <ul>
-  <li>同步模式即从上往下依次执行，等待前一个任务执行完成后在执行下一个任务，执行顺序与代码顺序是一样的。</li>
-  <li>异步模式是每一个任务有一个或者多个回调函数，前一个任务结束后不执行下一个任务而是执行毁掉函数，后一个任务不等前一个任务结束就执行。执行顺序与代码顺序是不一致的，异步的。</li>
+  <li><a href="https://github.com/airbnb">Airbnb</a></li>
+  <li><a href="https://standardjs.com/">Standardjs</a></li>
 </ul>
 
-<h2 id="异步模式的四种方法">异步模式的四种方法</h2>
+<p><img src="https://cdn.darknights.cn/assets/images/in-post/eslint/airbnb.png" alt="" />
+<img src="https://cdn.darknights.cn/assets/images/in-post/eslint/standard.png" alt="" /></p>
 
-<h3 id="回调函数">回调函数</h3>
+<p>这个两种规范都可以，但是这里推荐使用第一种。在选择了一种规范后如何来遵守呢。这里就要使用我们的神器<code>Eslint</code>,Eslint 是一个 JS Linter 工具</p>
 
-<p>如果有两个函数f1和f2,后者等待前者的执行结果。但是f1是一个很耗时的任务可以将f2写成f1的回调函数</p>
-<pre><code>    function f1(callback) {
-        setTimeout(function() {
-            // f1的任务代码
-            callback();
-        },1000)
-    }
+<blockquote>
+  <p>它的灵感来源于 PHP Linter，将源代码解析成 AST，然后检测 AST 来判断代码是否符合规则。ESLint 使用 esprima 将源代码解析吃成 AST，然后你就可以使用任意规则来检测 AST 是否符合预期，这也是 ESLint 高可扩展性的原因。</p>
+</blockquote>
 
-    f1(f2);
+<p>不过我们通常不会单独来使用，一般情况都是在编辑器上安装插件，这样开发的时候才能直接看到不符合规范的地方别将其解决。另外，编辑器仍然推荐<code>vscode</code>或者<code>webstorm</code>。</p>
 
-</code></pre>
+<p>Lint 工具</p>
 
-<p>回调函数的优点是简单、容易理解和部署，缺点是不利于代码的阅读和维护，各个部分之间高度耦合（Coupling），流程会很混乱，而且每个任务只能指定一个回调函数。</p>
+<blockquote>
+  <p>代码检查是一种静态的分析，常用于寻找有问题的模式或者代码，并且不依赖于具体的编码风格。对大多数编程语言来说都会有代码检查，一般来说编译程序会内置检查工具。</p>
+</blockquote>
 
-<h3 id="事件监听">事件监听</h3>
-<p>采用事件驱动模式。任务的执行不取决于代码的顺序，而取决于某个事件是否发生，直接上代码</p>
-<pre><code>    f1.on('done', f2); //f1监听'done'如果触发该事件执行f2,使用了jQuery的事件监听
-    function f1(callback) {
-        setTimeout(function() {
-            // f1的任务代码
+<blockquote>
+  <p>JavaScript 是一个动态的弱类型语言，在开发中比较容易出错。因为没有编译程序，为了寻找 JavaScript 代码错误通常需要在执行过程中不断调试。像 ESLint 这样的可以让程序员在编码的过程中发现问题而不是在执行的过程中。</p>
+</blockquote>
 
-            f1.trigger('done');
-        },1000)
-    }
+<p>到这里我们已经有了规范标准跟代码的校验工具，我们还需要<code>Prettier</code>,有了它我们就可以随心所欲的写代码，启动一个服务来来监听文件变化这样代码会自动格式化。同字面意思 Prettier 让我们的代码更漂亮一些。</p>
 
-    f1(f2);
-</code></pre>
+<h2 id="参考文档">参考文档</h2>
 
-<h3 id="发布订阅">发布、订阅</h3>
-
-<p>我们假定，存在一个”信号中心”，某个任务执行完成，就向信号中心”发布”（publish）一个信号，其他任务可以向信号中心”订阅”（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做
-<a href="http://en.wikipedia.org/wiki/Publish-subscribe_pattern">“发布/订阅模式”（publish-subscribe pattern）</a>，又称<a href="https://en.wikipedia.org/wiki/Observer_pattern">“观察者模式”（observer pattern）</a>。
-这个模式有<a href="https://msdn.microsoft.com/en-us/magazine/hh201955.aspx?f=255&amp;MSPPError=-2147217396">多种实现</a>,本例子使用<a href="https://gist.github.com/661855">Tiny Pub/Sub</a>,这是一个jQuery插件。</p>
-<pre><code>    jQuery.subscribe("done", f2); //首先，f2向"信号中心"jQuery订阅"done"信号。
-
-    function f1(){
-　　　　setTimeout(function () {
-　　　　　　// f1的任务代码
-　　　　　　jQuery.publish("done");
-　　　　}, 1000);
-　　}
-//jQuery.publish("done")的意思是，f1执行完成后，向"信号中心"jQuery发布"done"信号，从而引发f2的执行。
-//此外，f2完成执行后，也可以取消订阅（unsubscribe）。
-　　jQuery.unsubscribe("done", f2);
-
-</code></pre>
-
-<h3 id="promises">Promises</h3>
-<p>Promises对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。
-它的思想是，每一个异步任务返回一个Promise对象，该对象有一个then方法，允许指定回调函数。比如，f1的回调函数f2,可以写成：</p>
-<pre><code>    function f1(){
-　　　　var dfd = $.Deferred();
-　　　　setTimeout(function () {
-　　　　　　// f1的任务代码
-　　　　　　dfd.resolve();
-　　　　}, 500);
-　　　　return dfd.promise;
-　　}
-
-　　f1().then(f2);
-　　f1().then(f2).then(f3);
-　　f1().then(f2).fail(f3);
-
-
-</code></pre>
-<p>它还有一个前面三种方法都没有的好处：如果一个任务已经完成，再添加回调函数，该回调函数会立即执行。所以，你不用担心是否错过了某个事件或信号。这种方法的缺点就是编写和理解，都相对比较难。</p>
-
-<h1 id="文章参考">文章参考</h1>
 <ul>
-  <li><a href="http://www.ruanyifeng.com/blog/2015/04/generator.html">Generator 函数的含义与用法</a></li>
+  <li><a href="https://mp.weixin.qq.com/s/X2gShxrCw0ukZigjE_45kA">深入理解 ESLint</a></li>
+  <li><a href="https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&amp;mid=2651230875&amp;idx=1&amp;sn=092211db96adfc85a26b457f7e9421a0&amp;chksm=bd494b1f8a3ec20902ad0df7d6a3735b536fe585086abc9035fe24d69549bb4c81cf88658515&amp;scene=21#wechat_redirect">ESLint 工作原理探讨</a></li>
+  <li><a href="https://segmentfault.com/a/1190000015315545">使用 ESLint+Prettier 来统一前端代码风格</a></li>
 </ul>
 
 
@@ -325,13 +275,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/16/lodash-one/" data-toggle="tooltip" data-placement="top" title="Lodash.js源码阅读分析（一）">&larr; Previous Post</a>
+        <a href="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/03/31/frontend-engineering/" data-toggle="tooltip" data-placement="top" title="前端工程化思考">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2017/12/20/read-book-web/" data-toggle="tooltip" data-placement="top" title="高性能网站建设指南">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -341,9 +287,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator"
-         data-title="Generator函数的含义和用法"
-         data-url="http://darknights.me/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/20/js-generator/"></div>
+         data-thread-key="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier"
+         data-title="使用Eslint&Prettier来统一代码风格"
+         data-url="http://darknights.me/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/"></div>
     <script>
 
         /**
