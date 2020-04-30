@@ -1,4 +1,214 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-24T18:26:09+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">使用Eslint&amp;amp;Prettier来统一代码风格</title><link href="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/" rel="alternate" type="text/html" title="使用Eslint&amp;Prettier来统一代码风格" /><published>2020-04-23T00:00:00+08:00</published><updated>2020-04-23T00:00:00+08:00</updated><id>/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/">&lt;h3 id=&quot;代码风格&quot;&gt;代码风格&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-04-30T17:52:14+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Babel最简单配置</title><link href="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/24/babel-config/" rel="alternate" type="text/html" title="Babel最简单配置" /><published>2020-04-24T00:00:00+08:00</published><updated>2020-04-24T00:00:00+08:00</updated><id>/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/24/babel-config</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/24/babel-config/">&lt;p&gt;本文需要重新整理&lt;/p&gt;
+
+&lt;h3 id=&quot;babel&quot;&gt;Babel&lt;/h3&gt;
+
+&lt;p&gt;关于 Babel 相信大家都不陌生，自从 ES2015 提供了一些新的语法让众多前端爱好者们爱不释手，但是现在的浏览器对于大部分的语法并不支持，那么如何才能在自己的项目中用上自己喜欢的语法呢？这里少不了这个工具&lt;a href=&quot;https://babeljs.io/&quot;&gt;&lt;code&gt;Babel&lt;/code&gt;&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;它是一个转换器，作用就是将新的语法转换成能被大部分浏览器识别的代码。换言之，只要安装了 Babel 你就可以在你的项目中随心所欲的使用最新的语法。下面我们来看一下它的配置(主要针对 babel@7)
+配置文件一般为&lt;code&gt;.babelrc&lt;/code&gt;或者 &lt;code&gt;babel.config.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;首先安装&lt;code&gt;@babel/core&lt;/code&gt;，这是 babel 的核心。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;$ npm install @babel/core
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后安装 &lt;code&gt;@@babel/cli&lt;/code&gt;以便能够在命令行使用 babel&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;$ npm install @babel/cli
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;plugins&quot;&gt;Plugins&lt;/h3&gt;
+
+&lt;p&gt;如果需要转换剪头函数我们需要在&lt;code&gt;.babelrc&lt;/code&gt;中，配置 Plugin&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+{
+  &quot;plugins&quot;: [&quot;@babel/plugin-transform-arrow-functions&quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;转换前&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* 转换前 */
+const fn = () =&amp;gt; {};
+
+/* 转换后 */
+const fn = function () {};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果再想添加结构赋值的语法怎么办呢再加插件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+{
+  &quot;plugins&quot;: [
+    &quot;@babel/plugin-transform-arrow-functions&quot;,
+    &quot;@babel/plugin-transform-destructuring&quot;
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;不可能将所有新的语法都加到插件里所以&lt;code&gt;Babel&lt;/code&gt;向我们提供了&lt;code&gt;presets&lt;/code&gt;,它是一个插件的合集这样我们就不需要一个个的引入了。官方提供了很多 presets，比如 preset-env（处理 es6+规范语法的插件集合）、preset-stage（处理尚处在提案语法的插件集合）、preset-react（处理 react 语法的插件集合）等，这里我们主要介绍下 preset-env：&lt;/p&gt;
+
+&lt;p&gt;安装&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;$ npm install @babel/preset-env
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+{
+  &quot;presets&quot;: [&quot;@babel/preset-env&quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;preset-env&quot;&gt;preset-env&lt;/h3&gt;
+
+&lt;p&gt;preset-env 可以让你使用 es6 的语法去写代码，并且只转换需要转换的代码。默认情况下 preset-env 什么都不需要配置，此时他转换所有 es6+的代码，然而我们可以提供一个 targets 配置项指定运行环境，以下配置会将 es6 的代码转换成 IE8 以上浏览器支持的代码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+{
+  &quot;presets&quot;: [
+    [&quot;@babel/preset-env&quot;, {
+      &quot;targets&quot;: &quot;ie &amp;gt;= 8&quot;
+    }]
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;babelpolyfill&quot;&gt;@babel/polyfill&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Babel&lt;/code&gt;只会去转换语法，但是新的 Api(Promise,Proxy,WeekSet, WeekMap) 并不能转换，需要通过 @babel/polyfill 来 plofill,因此我们需要安装&lt;code&gt;@babel/polyfill&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;$ npm install @babel/polyfill --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;美中不足的是这个包很大我们可能并不需要加载全部，我们希望能够按需加载 &lt;code&gt;preset-env&lt;/code&gt;可以通过配置&lt;code&gt;useBuiltIns&lt;/code&gt;来解决这个问题&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+{
+  &quot;presets&quot;: [
+    [&quot;@babel/preset-env&quot;, {
+      &quot;modules&quot;: false,
+      &quot;useBuiltIns&quot;: &quot;entry&quot;,
+      &quot;targets&quot;: &quot;ie &amp;gt;= 8&quot;
+    }]
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;useBuiltIns&lt;/code&gt;得值可以是&lt;code&gt;entry&lt;/code&gt;或者&lt;code&gt;useage&lt;/code&gt;， &lt;code&gt;entry&lt;/code&gt;会在入口处将所有 IE8 以上浏览器不支持 api 的 polyfile 引入进来，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* test.js */
+import '@babel/polyfill'
+
+const fn = () =&amp;gt; {}
+new Promise(() =&amp;gt; {})
+
+
+/* test-compiled.js */
+import &quot;core-js/modules/es6.array.copy-within&quot;;
+import &quot;core-js/modules/es6.array.every&quot;;
+import &quot;core-js/modules/es6.array.fill&quot;;
+...   //省略若干引入
+import &quot;core-js/modules/web.immediate&quot;;
+import &quot;core-js/modules/web.dom.iterable&quot;;
+import &quot;regenerator-runtime/runtime&quot;;
+
+var fn = function fn() {};
+new Promise(function () {});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样通常就满足需要了，另一个配置&lt;code&gt;useage&lt;/code&gt;更强大可以扫描代码只将所用到的 API 引入进来这样更加智能，只不过该功能还处于试验阶段。&lt;/p&gt;
+
+&lt;h3 id=&quot;babelruntime&quot;&gt;@babel/runtime&lt;/h3&gt;
+
+&lt;p&gt;当我们进行编写一些复杂的语法时比如&lt;code&gt;class&lt;/code&gt;，会有一些重复的&lt;code&gt;helper&lt;/code&gt;函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* test.js */
+class Test {}
+
+/* test-compiled.js */
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError(&quot;Cannot call a class as a function&quot;);
+  }
+}
+
+var Test = function Test() {
+  _classCallCheck(this, Test);
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果每个文件都要重复定义&lt;code&gt;\_classCallCheck&lt;/code&gt;会有重复代码，这时候可以使用&lt;code&gt;@babel/runtime&lt;/code&gt;,它里面有各种各样的辅助函数。但是引入时如果全部引入又是一种浪费， 这时又需要&lt;code&gt;@babel/plugin-transform-runtime&lt;/code&gt;这个插件了，他会帮我们自动引入 helper 函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;npm install @babel/runtime @babel/plugin-transform-runtime
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;@babel/plugin-transform-runtime&lt;/code&gt;还提供了一个 corejs 的配置，作用是将 polyfill 代码中使用的变量隔离到局部作用域中，防止在 polyfill 的时候污染全局变量。&lt;/p&gt;
+
+&lt;p&gt;安装插件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;npm install @babel/runtime-corejs2 --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+{
+  &quot;presets&quot;: [
+    [&quot;@babel/preset-env&quot;, {
+      &quot;modules&quot;: false,
+      &quot;useBuiltIns&quot;: &quot;usage&quot;,
+      &quot;targets&quot;: &quot;ie &amp;gt;= 8&quot;
+    }]
+  ],
+  &quot;plugins&quot;: [
+    [&quot;@babel/plugin-transform-runtime&quot;, {
+      &quot;corejs&quot;: 2
+    }]
+  ]
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：这里一定要配置 corejs，同时安装@babel/runtime-corejs2，不配置的情况下@babel/plugin-transform-runtime 默认是不引入这些 polyfill 的 helper 的。corejs 的值现阶段一般指定为 2，可以近似理解为是@babel/runtime 的版本&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;配置文件&quot;&gt;配置文件&lt;/h3&gt;
+
+&lt;p&gt;到目前为止配置文件已经够用了配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/* .babelrc */
+
+{
+  &quot;presets&quot;: [
+    [&quot;@babel/preset-env&quot;, {
+      &quot;useBuiltIns&quot;: &quot;entry&quot;, // useage
+      &quot;modules&quot;: false,
+      &quot;targets&quot;: &quot;ie &amp;gt;= 8&quot;
+    }]
+  ],
+  &quot;plugins&quot;: [
+    [&quot;@babel/plugin-transform-runtime&quot;, {
+      &quot;corejs&quot;: 2
+    }]
+  ]
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;参考文档&quot;&gt;参考文档&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000018721165&quot;&gt;史上最清晰易懂的 babel 配置解析&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.windstone.cc/es6/babel/babel-v7.html#preset&quot;&gt;Babel 7&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/qetiJo47IyssYWAr455xHQ&quot;&gt;一口(很长的)气了解 Babel&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000019577505&quot;&gt;babel-polyfill 的相关知识&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://juejin.im/post/5ddff3abe51d4502d56bd143&quot;&gt;不容错过的 Babel7 知识&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vince.xin/2019/06/29/%E5%82%BB%E5%82%BB%E5%88%86%E4%B8%8D%E6%B8%85%E4%B9%8B-%E2%80%94%E2%80%94-babel-%E5%85%A8%E5%AE%B6%E6%A1%B6/#babel-%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B&quot;&gt;傻傻分不清之 —— babel 全家桶&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ShowJoy-com/showjoy-blog/issues/39&quot;&gt;import、require、export、module.exports 混合使用详解&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/22782487&quot;&gt;在 2016 年学 JavaScript 是一种什么样的体验？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://printempw.github.io/how-could-i-use-es6-modules-in-production/&quot;&gt;我 TMD 到底要怎样才能在生产环境中用上 ES6 模块化？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="Babel" /><category term="前端工程化" /><summary type="html">本文需要重新整理</summary></entry><entry><title type="html">使用Eslint&amp;amp;Prettier来统一代码风格</title><link href="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/" rel="alternate" type="text/html" title="使用Eslint&amp;Prettier来统一代码风格" /><published>2020-04-23T00:00:00+08:00</published><updated>2020-04-23T00:00:00+08:00</updated><id>/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/23/eslint-prettier/">&lt;h3 id=&quot;代码风格&quot;&gt;代码风格&lt;/h3&gt;
 
 &lt;p&gt;当我们进行开发的时候，每个人写的代码风格不统一是很让人不爽的一件事情，那么如何来解决这个问题呢，首先我们需要选定一种规范；这里常用的规范有这两种&lt;/p&gt;
 
@@ -16,8 +226,6 @@
   &lt;p&gt;它的灵感来源于 PHP Linter，将源代码解析成 AST，然后检测 AST 来判断代码是否符合规则。ESLint 使用 esprima 将源代码解析吃成 AST，然后你就可以使用任意规则来检测 AST 是否符合预期，这也是 ESLint 高可扩展性的原因。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;不过我们通常不会单独来使用，一般情况都是在编辑器上安装插件，这样开发的时候才能直接看到不符合规范的地方别将其解决。另外，编辑器仍然推荐&lt;code&gt;vscode&lt;/code&gt;或者&lt;code&gt;webstorm&lt;/code&gt;。&lt;/p&gt;
-
 &lt;p&gt;Lint 工具&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -28,7 +236,130 @@
   &lt;p&gt;JavaScript 是一个动态的弱类型语言，在开发中比较容易出错。因为没有编译程序，为了寻找 JavaScript 代码错误通常需要在执行过程中不断调试。像 ESLint 这样的可以让程序员在编码的过程中发现问题而不是在执行的过程中。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;到这里我们已经有了规范标准跟代码的校验工具，我们还需要&lt;code&gt;Prettier&lt;/code&gt;,有了它我们就可以随心所欲的写代码，启动一个服务来来监听文件变化这样代码会自动格式化。同字面意思 Prettier 让我们的代码更漂亮一些。&lt;/p&gt;
+&lt;p&gt;不过我们通常不会单独来使用，一般情况都是在编辑器上安装插件，这样开发的时候才能直接看到不符合规范的地方别将其解决。另外，编辑器仍然推荐&lt;code&gt;vscode&lt;/code&gt;或者&lt;code&gt;webstorm&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;到这里我们已经有了规范标准跟代码的校验工具，我们还需要&lt;code&gt;Prettier&lt;/code&gt;,有了它我们就可以随心所欲的写代码，同字面意思 Prettier 让我们的代码更漂亮一些。可以选择启动一个 nodejs 服务来监听文件变化也可以使用编辑器自带的 watch 功能，通常我们希望格式化的过程是自动的因此我们选择设置编辑器自动保存，自动保存的时候执行代码检查跟格式化的操作,这样也不需要单独起服务。&lt;/p&gt;
+
+&lt;h3 id=&quot;vscode&quot;&gt;vsCode&lt;/h3&gt;
+
+&lt;p&gt;以&lt;code&gt;vscode&lt;/code&gt;为例，首先安装这两款插件&lt;code&gt;Prettier&lt;/code&gt;，&lt;code&gt;Eslint&lt;/code&gt;。
+然后全局安装 &lt;code&gt;Prettier&lt;/code&gt;跟&lt;code&gt;Eslint&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yarn add prettier --dev --exact
+# or globally
+yarn global add prettier
+
+
+$ npm install -g eslint
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后开始配置 Prettier,这个一般按照官方给出的&lt;a href=&quot;https://prettier.io/docs/en/options.html&quot;&gt;基本配置&lt;/a&gt;,一般需要调节就这几项或者使用默认配置即可，另外还可以通过 override 来对不同类型的文件执行一些规则。prettier 本身的可配置项确实比较少，他本身就是为了让用户少思考这些风格，把代码风格全部交给他.&lt;/p&gt;
+
+&lt;p&gt;废话说完直接开干&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ mkdir awesome-project
+$ cd awesome-project
+$ npm init -y
+$ eslint --init
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;配置-prettier&quot;&gt;配置 Prettier&lt;/h3&gt;
+
+&lt;p&gt;一共有三种方式支持对 Prettier 进行配置：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根目录创建.prettierrc 文件，能够写入 YML、JSON 的配置格式，并且支持.yaml/.yml/.json/.js 后缀；&lt;/li&gt;
+  &lt;li&gt;根目录创建.prettier.config.js 文件，并对外 export 一个对象；&lt;/li&gt;
+  &lt;li&gt;在 package.json 中新建 prettier 属性。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们选择&lt;code&gt;.prettierrc.js&lt;/code&gt;来配置,一下配置可以根据自己的喜好来配置或者使用 Prettier 的默认配置也没毛病&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;module.exports = {
+  printWidth: 100,
+  // tab缩进大小,默认为2
+  tabWidth: 2,
+  // 使用tab缩进，默认false
+  useTabs: true,
+  // 使用分号, 默认true
+  semi: true,
+  // 使用单引号, 默认false(在jsx中配置无效, 默认都是双引号)
+  singleQuote: true,
+  // use double quotes instead of single quotes in jsx
+  jsxSingleQuote: false,
+  // 行尾逗号,默认none,可选 none|es5|all
+  // es5 包括es5中的数组、对象
+  // all 包括函数对象等所有可选
+  trailingComma: &quot;none&quot;,
+  // JSX标签闭合位置 默认false
+  // false: &amp;lt;div
+  //          className=&quot;&quot;
+  //          style=
+  //       &amp;gt;
+  // true: &amp;lt;div
+  //          className=&quot;&quot;
+  //          style= &amp;gt;
+  jsxBracketSameLine: true,
+  bracketSpacing: true, //对象大括号直接是否有空格，默认为true，效果：{ foo: bar }
+  // 箭头函数参数括号 默认avoid 可选 avoid| always
+  // avoid 能省略括号的时候就省略 例如x =&amp;gt; x
+  // always 总是有括号
+  arrowParens: &quot;avoid&quot;,
+  // decide whether to break the html according to the display style
+  htmlWhitespaceSensitivity: &quot;css&quot;,
+  //parser: &quot;babylon&quot; //代码的解析引擎，默认为babylon，与babel相同。
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;配置-eslint&quot;&gt;配置 Eslint&lt;/h3&gt;
+
+&lt;p&gt;接下来开始配置 Eslint&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;module.export = {
+  root: true,
+  parserOptions: {
+    parser: &quot;babel-eslint&quot;,
+  },
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true,
+    jest: true,
+    node: true,
+  },
+  extends: [&quot;airbnb&quot;, &quot;plugin:vue/essential&quot;, &quot;plugin:prettier/recommended&quot;],
+  rules: {
+    &quot;prettier/prettier&quot;: &quot;error&quot;,
+    // allow async-await
+    &quot;generator-star-spacing&quot;: &quot;off&quot;,
+    // allow debugger during development
+    &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
+    &quot;jsx-a11y/href-no-hash&quot;: [&quot;off&quot;],
+    &quot;react/jsx-filename-extension&quot;: [
+      &quot;warn&quot;,
+      {
+        extensions: [&quot;.js&quot;, &quot;.jsx&quot;],
+      },
+    ],
+    &quot;max-len&quot;: [
+      &quot;warn&quot;,
+      {
+        tabWidth: 2,
+        ignoreComments: false,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreRegExpLiterals: true,
+      },
+    ],
+  },
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同时这里也推荐 AlloyTeam 的 &lt;a href=&quot;https://github.com/AlloyTeam/eslint-config-alloy&quot;&gt;eslint-config-alloy&lt;/a&gt;。&lt;/p&gt;
 
 &lt;h2 id=&quot;参考文档&quot;&gt;参考文档&lt;/h2&gt;
 
@@ -36,6 +367,7 @@
   &lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/X2gShxrCw0ukZigjE_45kA&quot;&gt;深入理解 ESLint&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MjM5MTA1MjAxMQ==&amp;amp;mid=2651230875&amp;amp;idx=1&amp;amp;sn=092211db96adfc85a26b457f7e9421a0&amp;amp;chksm=bd494b1f8a3ec20902ad0df7d6a3735b536fe585086abc9035fe24d69549bb4c81cf88658515&amp;amp;scene=21#wechat_redirect&quot;&gt;ESLint 工作原理探讨&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000015315545&quot;&gt;使用 ESLint+Prettier 来统一前端代码风格&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.meteorlxy.cn/posts/2019/08/05/understand-and-use-prettier.html&quot;&gt;理解 Prettier 并用它统一你的代码风格&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>toshiba</name></author><category term="eslint" /><category term="prettier" /><category term="前端工程化" /><summary type="html">代码风格</summary></entry><entry><title type="html">前端工程化思考</title><link href="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/03/31/frontend-engineering/" rel="alternate" type="text/html" title="前端工程化思考" /><published>2020-03-31T00:00:00+08:00</published><updated>2020-03-31T00:00:00+08:00</updated><id>/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/03/31/frontend-engineering</id><content type="html" xml:base="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/03/31/frontend-engineering/">&lt;h3 id=&quot;前端工程化思考&quot;&gt;前端工程化思考&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.google.com.hk/search?safe=strict&amp;amp;es_sm=91&amp;amp;q=%E5%89%8D%E7%AB%AF%E9%9B%86%E6%88%90%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88&amp;amp;revid=1986939511&amp;amp;sa=X&amp;amp;ei=uqT7VKjBAaelmQXeyIGIBg&amp;amp;ved=0CFsQ1QIoAA&amp;amp;biw=1415&amp;amp;bih=805&quot;&gt;前端集成解决方案&lt;/a&gt;&lt;/p&gt;
@@ -1700,693 +2032,4 @@ var smallestRangeI = function(A, K) {
         return root;
      }
  }
-&lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry><entry><title type="html">LeetCode刷题总结(简单版三)</title><link href="/leetcode/2019/09/05/leetcode-three/" rel="alternate" type="text/html" title="LeetCode刷题总结(简单版三)" /><published>2019-09-05T00:00:00+08:00</published><updated>2019-09-05T00:00:00+08:00</updated><id>/leetcode/2019/09/05/leetcode-three</id><content type="html" xml:base="/leetcode/2019/09/05/leetcode-three/">&lt;p&gt;本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。&lt;/p&gt;
-
-&lt;h3 id=&quot;1自除数&quot;&gt;1.自除数&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/self-dividing-numbers/&quot;&gt;自除数&lt;/a&gt;：
-自除数 是指可以被它包含的每一位数除尽的数。
-例如，128 是一个自除数，因为 128 % 1 == 0，128 % 2 == 0，128 % 8 == 0。
-还有，自除数不允许包含 0 。
-给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。&lt;/p&gt;
-
-&lt;p&gt;注意：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;每个输入参数的边界满足 1 &amp;lt;= left &amp;lt;= right &amp;lt;= 10000。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 1：
-
-输入： 
-上边界left = 1, 下边界right = 22
-输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一&quot;&gt;答案一：&lt;/h4&gt;
-&lt;p&gt;分析： 关键点就是对数字进行拆分取整数和取余数,我自己的解法代码有点复杂冗余，下面是根据题解的优化方法：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @param {number} left
- * @param {number} right
- * @return {number[]}
- */
-var selfDividingNumbers = function (left, right) {
-    let arr = [];
-    for(let i = left; i &amp;lt;= right; i++) {
-        let n = i;
-        let flag = true;
-        while(n) {
-            if (i % (n % 10) === 0) {
-                n = Math.floor(n / 10);
-            } else {
-                flag = false;
-                break;
-            }
-        }
-        if(flag) {
-            arr.push(i);
-        }
-    }
-    return arr;
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;2二叉搜索树中的搜索&quot;&gt;2.二叉搜索树中的搜索&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/search-in-a-binary-search-tree/&quot;&gt;二叉搜索树中的搜索&lt;/a&gt;:
-给定二叉搜索树（BST）的根节点和一个值。 你需要在BST中找到节点值等于给定值的节点。 返回以该节点为根的子树。 如果节点不存在，则返回 NULL。
-例如，&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定二叉搜索树:
-
-        4
-       / \
-      2   7
-     / \
-    1   3
-
-和值: 2
-你应该返回如下子树:
-
-      2     
-     / \   
-    1   3
-在上述示例中，如果要找的值是 5，但因为没有节点值为 5，我们应该返回 NULL。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一-1&quot;&gt;答案一&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
-/**
- * @param {TreeNode} root
- * @param {number} val
- * @return {TreeNode}
- */
-var searchBST = function(root, val) {
-    if(root === null) {
-        return null;
-    }
-    
-    if(root.val &amp;gt; val) {
-        return searchBST(root.left, val);
-    } else if(root.val === val) {
-        return root;
-    } else {
-        return searchBST(root.right, val);
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二&quot;&gt;答案二&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;// 迭代
-class Solution {
-    public TreeNode searchBST(TreeNode root, int val) {
-        while(root != null) {
-            if(root.val == val) {
-                return root;
-            } else if(root.val &amp;gt; val) {
-                root = root.left;
-            } else {
-                root = root.right;
-            }
-        }
-        return null;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案三&quot;&gt;答案三&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;//按照逻辑递归
-class Solution {
-    public TreeNode searchBST(TreeNode root, int val) {
-        if(root == null) 
-            return null;
-        
-        if(root.val == val) {
-            return root;
-        } else if(val &amp;lt; root.val) {
-            return searchBST(root.left, val);
-        } else {
-            return searchBST(root.right, val);
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;3n叉树的后序遍历&quot;&gt;3.N叉树的后序遍历&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/&quot;&gt;N叉树的后序遍历&lt;/a&gt;:给定一个 N 叉树，返回其节点值的后序遍历。&lt;/p&gt;
-
-&lt;p&gt;例如，给定一个 3叉树 :
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png&quot; alt=&quot;&quot; /&gt;
-返回其后序遍历: [5,6,3,2,4,1].&lt;/p&gt;
-
-&lt;p&gt;说明: 递归法很简单，你可以使用迭代法完成此题吗?&lt;/p&gt;
-
-&lt;h4 id=&quot;答案一-2&quot;&gt;答案一&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;
-/**
- * // Definition for a Node.
- * function Node(val,children) {
- *    this.val = val;
- *    this.children = children;
- * };
- */
-/**
- * 第一种方式：递归
- * @param {Node} root
- * @return {number[]}
- */
-var postorder = function(root) {
-    if(!root) return [];
-
-    var res = [];
-    recusion(root);
-    return res;
-
-    function recusion(root) {
-        if(!root) return;
-
-        for(var i = 0; i &amp;lt; root.children.length; i++) {
-            recusion(root.children[i]);
-        }
-        res.push(root.val);
-    }
-};
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二-1&quot;&gt;答案二&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * 第二种方式：迭代
- * @param {Node} root
- * @return {number[]}
- */
-var postorder2 = function(root) {
-    if(!root) return [];
-    var res = [], arr = [root];
-    while(arr.length) {
-        var current = arr.pop();
-        for(var i = 0; i &amp;lt; current.children.length; i++) {
-            arr.push(current.children[i]);
-        }
-        res.unshift(current.val);
-    }
-    return res;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;答案三-1&quot;&gt;答案三&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
-    public List&amp;lt;Integer&amp;gt; postorder(Node root) {
-        List&amp;lt;Integer&amp;gt; res = new ArrayList&amp;lt;Integer&amp;gt;();
-        if(root == null) return res;
-        for(Node cur: root.children) {
-            res.addAll(postorder(cur));
-        }
-        res.add(root.val);
-        return res;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;4n叉树的前序遍历&quot;&gt;4.N叉树的前序遍历&lt;/h3&gt;
-&lt;p&gt;例如，给定一个 3叉树 :
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/leetcode/narytree.png&quot; alt=&quot;&quot; /&gt;
-返回其前序遍历: [1,3,5,6,2,4]。
-说明: 递归法很简单，你可以使用迭代法完成此题吗?&lt;/p&gt;
-
-&lt;h4 id=&quot;答案一-3&quot;&gt;答案一&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * // Definition for a Node.
- * function Node(val,children) {
- *    this.val = val;
- *    this.children = children;
- * };
- */
-/**
- * @param {Node} root
- * @return {number[]}
- */
-var preorder = function(root) {
-    if(!root) return [];
-    var res = [];
-    recusion(root);
-    return res;
-    
-    function recusion(root) {
-        if(!root) return;
-        res.push(root.val);
-        for(var i = 0; i &amp;lt; root.children.length; i++) {
-            recusion(root.children[i]);
-        }
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二-2&quot;&gt;答案二&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
-    public List&amp;lt;Integer&amp;gt; preorder(Node root) {
-        List&amp;lt;Integer&amp;gt; res = new ArrayList&amp;lt;Integer&amp;gt;();
-        if(root == null) return res;
-        res.add(root.val);
-        for(Node cur: root.children) {
-            res.addAll(preorder(cur));
-        }
-        return res;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案三-2&quot;&gt;答案三&lt;/h4&gt;
-&lt;p&gt;迭代&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
-    public List&amp;lt;Integer&amp;gt; preorder(Node root) {
-        List&amp;lt;Integer&amp;gt; res = new ArrayList&amp;lt;Integer&amp;gt;();
-        if(root == null) return res;
-    
-        Stack&amp;lt;Node&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
-        stack.push(root);
-        while(!stack.isEmpty()) {
-            Node cur = stack.pop();
-            res.add(cur.val);
-
-            List&amp;lt;Node&amp;gt; nodeList = cur.children;
-            for(int i = nodeList.size() - 1; i &amp;gt;= 0; i--) {
-                stack.push(nodeList.get(i));
-            }
-        }
-
-        return res;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;5nim-游戏&quot;&gt;5.Nim 游戏&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/nim-game/submissions/&quot;&gt;Nim 游戏&lt;/a&gt;:
-你和你的朋友，两个人一起玩 Nim 游戏：桌子上有一堆石头，每次你们轮流拿掉 1 - 3 块石头。 拿掉最后一块石头的人就是获胜者。你作为先手。
-你们是聪明人，每一步都是最优解。 编写一个函数，来判断你是否可以在给定石头数量的情况下赢得游戏。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;示例:
-
-输入: 4
-输出: false 
-解释: 如果堆中有 4 块石头，那么你永远不会赢得比赛；
-     因为无论你拿走 1 块、2 块 还是 3 块石头，最后一块石头总是会被你的朋友拿走。
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一-4&quot;&gt;答案一&lt;/h4&gt;
-&lt;p&gt;分析:随机拿1-3块石头，这里的4是一个临界点，依次以，5，6，7，8举例计算，发现每次能被4整除时一定会返回false,其他返回true&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @param {number} n
- * @return {boolean}
- */
-var canWinNim = function(n) {
-    return n % 4 ? true: false;  
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;6山脉数组的峰顶索引&quot;&gt;6.山脉数组的峰顶索引&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/peak-index-in-a-mountain-array/&quot;&gt;山脉数组的峰顶索引&lt;/a&gt;:
-我们把符合下列属性的数组 A 称作山脉：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;A.length &amp;gt;= 3&lt;/li&gt;
-  &lt;li&gt;存在 0 &amp;lt; i &amp;lt; A.length - 1 使得A[0] &amp;lt; A[1] &amp;lt; … A[i-1] &amp;lt; A[i] &amp;gt; A[i+1] &amp;gt; … &amp;gt; A[A.length - 1]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;给定一个确定为山脉的数组，返回任何满足 A[0] &amp;lt; A[1] &amp;lt; … A[i-1] &amp;lt; A[i] &amp;gt; A[i+1] &amp;gt; … &amp;gt; A[A.length - 1] 的 i 的值。&lt;/p&gt;
-
-&lt;p&gt;提示：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;3 &amp;lt;= A.length &amp;lt;= 10000&lt;/li&gt;
-  &lt;li&gt;0 &amp;lt;= A[i] &amp;lt;= 10^6&lt;/li&gt;
-  &lt;li&gt;A 是如上定义的山脉&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 1：
-
-输入：[0,1,0]
-输出：1
-示例 2：
-
-输入：[0,2,1,0]
-输出：1
- 
-
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一-5&quot;&gt;答案一&lt;/h4&gt;
-&lt;p&gt;分析：通过读题其实是返回数组中最大值的索引&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @param {number[]} A
- * @return {number}
- */
-var peakIndexInMountainArray = function(A) {
-    return A.findIndex(val =&amp;gt; val == Math.max(...A));
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二-3&quot;&gt;答案二&lt;/h4&gt;
-&lt;p&gt;后台的解题方法更多可以参考一下&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;// 打桩法，也叫单向扫描，代码如下：时间复杂度为O(n)，效率略低，但是此方法具有普适性，也就是说这个方法可适用于在一般数组中找最大值。
-class Solution {
-    public int peakIndexInMountainArray(int[] a) {
-        if(A == null || A,length &amp;lt; 3) {
-            return 0;
-        }
-
-        int max = Integer.MIN_VALUE;
-        int ans = 0;
-        for(int i = 0; i &amp;lt; A.length; i++) {
-            if(A[i] &amp;gt; max) {
-                max = A[i];
-                ans = i;
-            }
-        }
-        return ans;
-    }
-}
-
-// 双指针，也叫双向扫描，左右两边同时向中间扫描，以找出最大值，这个算法其实是在打桩法之上的一个效率优化，
-// 时间复杂度为O(n/2)---&amp;gt;O(n)，效率较低，但比打桩法效率高，同时也具有普适性。
-class Solution {
-    public int peakIndexInMountainArray(int[] A) {
-        if(A == null || A,length &amp;lt; 3) {
-            return 0;
-        }
-        int max = Integer.MIN_VALUE;
-        int ans = 0;
-
-        int left = 0;
-        int right = A.length - 1;
-
-        while(left &amp;lt; right) {
-            if(left &amp;lt;= right &amp;amp;&amp;amp; A[left] &amp;gt; max) {
-                max = A[left];
-                ans = left;
-            }
-            if(left &amp;lt;= right &amp;amp;&amp;amp; A[right] &amp;gt; max) {
-                max = A[right];
-                ans = right;
-            }
-            left++;
-            right--;
-        }
-
-        return ans;
-    }
-}
-
-// 分治法，二分查找，是适用于此题的最佳解法，时间复杂度为O(logn)，优点是效率高，缺点是不具有普适性。因为此题数组特殊，所以可用这种方法提高查找效率。
-class Solution {
-    public int peakIndexInMountainArray(int[] A) {
-         if (A == null || A.length &amp;lt; 3)  {
-            return 0;
-        }
-        
-        int ans = 0;
-    
-        int left = 0;
-        int right = A.length;
-
-        while(left &amp;lt; right) {
-            int center = (left + right) / 2;
-            if(A[center] &amp;gt; A[center - 1] &amp;amp;&amp;amp; A[center] &amp;gt; A[center + 1]) {
-                ans = center;
-                break;
-            } else if(A[center] &amp;lt; A[center - 1]) {
-                right = center;
-            } else {
-                left = center;
-            }
-        }
-        return ans;
-
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;7除数博弈&quot;&gt;7.除数博弈&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/divisor-game/&quot;&gt;除数博弈&lt;/a&gt;:
-爱丽丝和鲍勃一起玩游戏，他们轮流行动。爱丽丝先手开局。
-最初，黑板上有一个数字 N 。在每个玩家的回合，玩家需要执行以下操作：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;选出任一 x，满足 0 &amp;lt; x &amp;lt; N 且 N % x == 0 。&lt;/li&gt;
-  &lt;li&gt;用 N - x 替换黑板上的数字 N 。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;如果玩家无法执行这些操作，就会输掉游戏。
-只有在爱丽丝在游戏中取得胜利时才返回 True，否则返回 false。假设两个玩家都以最佳状态参与游戏。&lt;/p&gt;
-
-&lt;p&gt;提示： 1 &amp;lt;= N &amp;lt;= 1000&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 1：
-
-输入：2
-输出：true
-解释：爱丽丝选择 1，鲍勃无法进行操作。
-
-
-示例 2：
-
-输入：3
-输出：false
-解释：爱丽丝选择 1，鲍勃也选择 1，然后爱丽丝无法进行操作。
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一-6&quot;&gt;答案一&lt;/h4&gt;
-&lt;p&gt;分析：自己按照题解给出的答案。但是有更简单的解法&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @param {number} N
- * @return {boolean}
- */
-var divisorGame = function(N) {    
-    let x = finx(N);
-    let oN = N;
-    let count = 0;
-    while(x) {
-        oN = oN - x;
-        x = finx(oN);
-        count++;
-    }
-    if(count&amp;amp;1) {
-        return true;
-    }
-    return false;
-    
-    function finx(num){
-        let x = false;
-        for(let i = 1; i &amp;lt; num; i++) {
-            if(num % i === 0) {
-                x = i;
-                break;
-            }
-        }
-        return x;
-    }
-        
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二-4&quot;&gt;答案二&lt;/h4&gt;
-&lt;p&gt;对于这种博弈类的题目，如果没有思路的话我们不妨多举几个例子，尝试着从中找寻规律。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;假设 N = 1，爱丽丝没得选择，直接失败，即 鲍勃获胜；&lt;/li&gt;
-  &lt;li&gt;假设 N = 2，爱丽丝有选择，她可以选择 x = 1，鲍勃面对的就是 N = 2 - 1 = 1，无法操作，爱丽丝获胜；&lt;/li&gt;
-  &lt;li&gt;假设 N = 3，爱丽丝只能选择 x = 1，因为选 x = 2 不满足 3 % 2 = 0，鲍勃面对的就是 N = 3 - 1 = 2，参考上面 N = 2 的情形，此时鲍勃为 N = 2 的先手，鲍勃获胜；&lt;/li&gt;
-  &lt;li&gt;假设 N = 4，爱丽丝可以选择 x = 1 来使鲍勃遇到 N = 3 的情况，爱丽丝获胜；
-貌似有个规律：N 为奇数时， 鲍勃获胜；N 为偶数时， 爱丽丝获胜。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;是这样吗？是的。&lt;/p&gt;
-
-&lt;p&gt;事实上，无论 N 为多大，最终都是在 N = 2 这个临界点结束的。谁最后面对的是 N = 2 的情形，谁就能获胜（这句话不太理解的话，仔细看看 N = 2、N = 3 这两种情形）。
-接下来，我们得知道一个数学小知识：奇数的因子（约数）只能是奇数，偶数的因子（约数）可以是奇数或偶数。
-千万不要忽略 1 也是因子！&lt;/p&gt;
-
-&lt;p&gt;爱丽丝是游戏开始时的先手。&lt;/p&gt;
-
-&lt;p&gt;当她面对的 N 为偶数时，她 一定可以 选到一个 N 的奇数因子 x（比如 1 ），将 N - x 这个奇数传给鲍勃；用 N - x 替换黑板上的数字 N ，鲍勃面对的就是奇数 N，只能选择 N 的奇数因子 x，奇数 - 奇数 = 偶数，此时传给爱丽丝的又是偶数。这样轮换下去爱丽丝会遇到 N = 2 的情形，然后获胜；
-当爱丽丝遇到的 N 是奇数时，只能传给鲍勃偶数或无法操作 (N = 1) ，无法获胜。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
-    public boolean divisorGame(int N) {
-        return N % 2 == 0;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;8最近的请求次数代码比题目易懂&quot;&gt;8.最近的请求次数(代码比题目易懂)&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/number-of-recent-calls/&quot;&gt;最近的请求次数&lt;/a&gt;:
-写一个 &lt;code&gt;RecentCounter&lt;/code&gt; 类来计算最近的请求。
-它只有一个方法：&lt;code&gt;ping(int t)&lt;/code&gt;，其中 t 代表以毫秒为单位的某个时间。
-返回从 &lt;code&gt;3000&lt;/code&gt; 毫秒前到现在的 &lt;code&gt;ping&lt;/code&gt; 数。
-任何处于 &lt;code&gt;[t - 3000, t]&lt;/code&gt; 时间范围之内的 &lt;code&gt;ping&lt;/code&gt; 都将会被计算在内，包括当前（指 t 时刻）的 &lt;code&gt;ping&lt;/code&gt;。
-保证每次对 &lt;code&gt;ping&lt;/code&gt; 的调用都使用比之前更大的 t 值。&lt;/p&gt;
-
-&lt;p&gt;提示：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;每个测试用例最多调用 10000 次 ping。&lt;/li&gt;
-  &lt;li&gt;每个测试用例会使用严格递增的 t 值来调用 ping。&lt;/li&gt;
-  &lt;li&gt;每次调用 ping 都有 1 &amp;lt;= t &amp;lt;= 10^9。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;示例：
-
-输入：inputs = [&quot;RecentCounter&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;], inputs = [[],[1],[100],[3001],[3002]]
-输出：[null,1,2,3,3]
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;h4 id=&quot;答案一-7&quot;&gt;答案一&lt;/h4&gt;
-&lt;p&gt;分析：说实话这道题目不容易理解，配上示例也完全不知道在说啥，先看一下题解进行一下分析，题目其实是这样的
-示例解读：分别在1,100,3001,3002ms发出了请求（ping）&lt;/p&gt;
-
-&lt;p&gt;1ms时计算1ms以及1ms之前3000ms的请求数为‘1’(1ms时的ping)&lt;/p&gt;
-
-&lt;p&gt;100ms时计算100ms以及100ms之前3000s的请求数为‘2’（1ms时的ping和100ms时的ping）&lt;/p&gt;
-
-&lt;p&gt;3001ms时计算3001ms以及3001ms之前3000s的请求数为‘3’(1ms时的ping、100ms时的ping和3001ms时的ping)&lt;/p&gt;
-
-&lt;p&gt;3002ms时计算3002ms以及3002ms之前3000s的请求数为‘3’(100ms时的ping、3001ms时的ping和3002ms时的ping)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var RecentCounter = function() {
-    this.result = [];
-};
-
-/** 
- * @param {number} t
- * @return {number}
- */
-RecentCounter.prototype.ping = function(t) {
-    this.result.push(t);
-    while(this.result[0] &amp;lt; (t - 3000)) {
-        this.result.shift();
-    }
-    return this.result.length;
-};
-
-/** 
- * Your RecentCounter object will be instantiated and called as such:
- * var obj = new RecentCounter()
- * var param_1 = obj.ping(t)
- */
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二-5&quot;&gt;答案二&lt;/h4&gt;
-&lt;p&gt;官方题解：我们只会考虑最近 3000 毫秒到现在的 ping 数，因此我们可以使用队列存储这些 ping 的记录。当收到一个时间 t 的 ping 时，我们将它加入队列，并且将所有在时间 t - 3000 之前的 ping 移出队列。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class RecentCounter {
-    Queue&amp;lt;Integer&amp;gt; q;
-
-    public RecentCounter() {
-        q = new LinkedList();
-    }
-
-    public int ping(int t) {
-        q.add(t);
-        while(q.peek() &amp;lt; t - 3000) {
-            q.poll();
-        }
-        return q.size();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;9数字的补数&quot;&gt;9.数字的补数&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/number-complement/&quot;&gt;数字的补数&lt;/a&gt;:
-给定一个正整数，输出它的补数。补数是对该数的二进制表示取反。&lt;/p&gt;
-
-&lt;p&gt;注意:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;给定的整数保证在32位带符号整数的范围内。&lt;/li&gt;
-  &lt;li&gt;你可以假定二进制数不包含前导零位。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;示例 1:
-
-输入: 5
-输出: 2
-解释: 5的二进制表示为101（没有前导零位），其补数为010。所以你需要输出2。
-示例 2:
-
-输入: 1
-输出: 0
-解释: 1的二进制表示为1（没有前导零位），其补数为0。所以你需要输出0。
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一-8&quot;&gt;答案一&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @param {number} num
- * @return {number}
- */
-var findComplement = function(num) {
-  let b = num.toString(2);
-  let res = '';
-  for(let i = 0; i &amp;lt; b.length; i++) {
-      res += (Number(b.charAt(i))^1 + '');
-  }
-
-  return parseInt(res, 2);
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;10按奇偶排序数组&quot;&gt;10.按奇偶排序数组&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/sort-array-by-parity/submissions/&quot;&gt;按奇偶排序数组&lt;/a&gt;:
-给定一个非负整数数组 A，返回一个数组，在该数组中， A 的所有偶数元素之后跟着所有奇数元素。
-你可以返回满足此条件的任何数组作为答案。&lt;/p&gt;
-
-&lt;p&gt;提示：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;1 &amp;lt;= A.length &amp;lt;= 5000&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;0 &amp;lt;= A[i] &amp;lt;= 5000&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;示例：
-
-输入：[3,1,2,4]
-输出：[2,4,3,1]
-输出 [4,2,3,1]，[2,4,1,3] 和 [4,2,1,3] 也会被接受。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案一-9&quot;&gt;答案一&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;/**
- * @param {number[]} A
- * @return {number[]}
- */
-var sortArrayByParity = function(A) {
-  
-  return A.filter(val =&amp;gt; val % 2 == 0).concat(A.filter(val =&amp;gt; val % 2 !== 0))
-    
-};
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&quot;答案二-6&quot;&gt;答案二&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Solution {
-    public int[] sortArrayByParity(int[] A) {
-        int[] res = new int[A.length];
-        int min = 0, max = A.length - 1;
-
-        for(int i : A) {
-            if(i % 2 == 0) {
-                res[min++] = i;
-            } else {
-                res[max--] = i;
-            }
-        }
-
-        return res;
-    }
-}
-
 &lt;/code&gt;&lt;/pre&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="LeetCode" /><summary type="html">本文将LeetCode刷过的题目进行简单的总结和记录，便于自己进行复习，同时将看到的解题思路进行汇总让其他的小伙伴能够理解。</summary></entry></feed>
