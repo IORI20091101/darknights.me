@@ -20,9 +20,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>URL编码 - Dark knight's Blog</title>
+    <title>小程序开发填坑 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/">
+    <link rel="canonical" href="http://darknights.me/%E5%B0%8F%E7%A8%8B%E5%BA%8F/2020/05/21/miniprogram-pit/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -195,19 +195,15 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#面试" title="面试">面试</a>
-                            
-                            <a class="tag" href="/tags/#基础" title="基础">基础</a>
-                            
-                            <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                            <a class="tag" href="/tags/#小程序" title="小程序">小程序</a>
                             
                         </div>
-                        <h1>URL编码</h1>
+                        <h1>小程序开发填坑</h1>
                         
                         
-                        <h2 class="subheading">URL编码相关知识</h2>
+                        <h2 class="subheading">整理最近小程序开发遇到的一些问题</h2>
                         
-                        <span class="meta">Posted by toshiba on October 16, 2019</span>
+                        <span class="meta">Posted by toshiba on May 21, 2020</span>
                     </div>
                 </div>
             </div>
@@ -229,104 +225,369 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h3 id="起因">起因</h3>
-<p>前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是<code>tq+3wB8PdfY=</code>, 传到后台的错误结果是<code>tq%203wB8PdfY%3D</code>,但是真实需要传给后台的却是<code>tq%2B3wB8PdfY%3D</code>. 因此在这里将该问题总结一下.转载自<a href="http://www.ruanyifeng.com/blog/2010/02/url_encoding.html">关于URL编码</a></p>
+				<p>最近连续开发了几个小程序，总是有一些需要重复解决的问题，因此在此记录一下</p>
 
-<h3 id="需要知道">需要知道</h3>
-<p>首先需要知道的是一般来说，URL只能使用英文字母、阿拉伯数字和某些标点符号，不能使用其他文字和符号。比如，世界上有英文字母的网址”http://www.abc.com”，但是没有希腊字母的网址”http://www.aβγ.com”（读作阿尔法-贝塔-伽玛.com）。这是因为网络标准RFC 1738做了硬性规定：</p>
-<blockquote>
-  <p>“…Only alphanumerics [0-9a-zA-Z], the special characters “$-_.+!<em>’(),” [not including the quotes - ed], and reserved characters used for their reserved purposes may be used unencoded within a URL.”
-“只有字母和数字[0-9a-zA-Z]、一些特殊符号”$-_.+!</em>’(),”[不包括双引号]、以及某些保留字，才可以不经过编码直接用于URL。”</p>
-</blockquote>
+<h3 id="自定义头部组件">自定义头部组件</h3>
 
-<p>这意味着，如果URL中有汉字，就必须编码后使用。但是麻烦的是，RFC 1738没有规定具体的编码方法，而是交给应用程序（浏览器）自己决定。这导致”URL编码”成为了一个混乱的领域。</p>
+<p>我们开发小程序的时候通常是用的统一的头部，一般是白底黑字或者简单定义一下背景色和文字颜色，比如这样
+在 <code>page/example.json</code> 中定义</p>
 
-<h3 id="不同情况下url编码">不同情况下URL编码</h3>
-
-<h4 id="1当汉字出现在url中">1.当汉字出现在URL中</h4>
-<p>IE现在的使用率的确低,这里出现只为了做对比.
-在IE8浏览器中输入网址<code>http://zh.wikipedia.org/wiki/春节</code>,会怎么样呢?</p>
-<ul>
-  <li>我们刚刚说过汉字不可以不编码直接用于url,这里直接用的后果就是不同的浏览器会按照各种的方式进行编码</li>
-</ul>
-
-<p>我们查看请求头发现IE实际查询的网址是<code>http://zh.wikipedia.org/wiki/%E6%98%A5%E8%8A%82</code>, 也就是说IE自动将<code>春节</code>编码成<code>%E6%98%A5%E8%8A%82</code></p>
-
-<p>“春”和”节”的utf-8编码分别是”E6 98 A5”和”E8 8A 82”，因此，”%E6%98%A5%E8%8A%82”就是按照顺序，在每个字节前加上%而得到的, 网址路径的编码，用的是utf-8编码(FireFox中结果也一样)。</p>
-
-<p><code>所以当汉字出现在url中的时,网址路径的编码用的时utf-8编码.</code></p>
-
-<h4 id="2汉字出现在查询字符串中">2.汉字出现在查询字符串中</h4>
-<p>在IE8浏览器中输入网址<code>http://www.baidu.com/s?wd=春节</code>, <code>春节</code>这两个字此时属于查询字符串，不属于网址路径.
-查看http请求头信息,IE将<code>春节</code>转化成了一个乱码.切换成16进制才能清楚看到这两个字被转成了<code>B4 BA BD DA</code>
-“春”和”节”的GB2312编码（”Windows xp”中文版的默认编码）分别是”B4 BA”和”BD DA”。因此，IE实际上就是将查询字符串，以GB2312编码的格式发送出去。</p>
-
-<p>Firefox跟Chrome发送的请求头如下, 同样采用GB2312编码，但是在每个字节前加上了%;</p>
-
-<p><code>所以查询字符串的编码，用的是操作系统的默认编码。</code></p>
-
-<h4 id="3get方法生成的url包含汉字">3.Get方法生成的URL包含汉字</h4>
-<p>上面的情况都是直接在浏览器中输入url的情况, 更常见的情况是，在已打开的网页上，直接用Get或Post方法发出HTTP请求。
-根据<a href="http://xml-nchu.blogspot.com/p/url.html">台湾中兴大学吕瑞麟老师的试验</a>, 这时的编码方法由网页的编码决定，也就是由HTML源码中字符集的设定决定.</p>
-<pre><code>&lt;meta http-equiv="Content-Type" content="text/html;charset=xxxx"&gt;
-</code></pre>
-
-<p>如果上面这一行最后的charset是UTF-8，则URL就以UTF-8编码；如果是GB2312，URL就以GB2312编码。</p>
-
-<p>举例来说，百度是GB2312编码，Google是UTF-8编码。因此，从它们的搜索框中搜索同一个词”春节”，生成的查询字符串是不一样的。</p>
-
-<ul>
-  <li>百度生成的是%B4%BA%BD%DA，这是GB2312编码。</li>
-  <li>Google生成的是%E6%98%A5%E8%8A%82，这是UTF-8编码。</li>
-</ul>
-
-<p><code>GET和POST方法的编码，用的是网页的编码</code></p>
-
-<h4 id="4ajax调用url包含汉字">4.Ajax调用URL包含汉字</h4>
-<p>前几种情况都是浏览器发送HTTP请求,Ajax是JavaScript来生成HTTP请求,也就是Ajax调用. 这种情况传送给服务器的参数,IE总是采用操作系统默认编码, Chrome则是Utf-8编码.</p>
-
-<h3 id="编码解码的方法">编码解码的方法</h3>
-<p><code>escape</code>跟<code>unescape</code>,已经不推荐使用. 它的具体规则是，除了ASCII字母、数字、标点符号”@ * _ + - . /”以外，对其他所有字符进行编码。在\u0000到\u00ff之间的符号被转成%xx的形式，其余符号被转成%uxxxx的形式。对应的解码函数是unescape()。</p>
-<pre><code>escape("春节");
-// %u6625%u8282
-
-escape("Hello World");
-// Hello%20World
-
-unescape("%u6625%u8282")
-// 春节
-
-unescape("\u6625\u8282")
-// 春节
+<pre><code>{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#557dde",
+  "navigationBarTitleText": "二维码收款",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#557dde"
+}
 
 </code></pre>
-<p>这两个方法不推荐使用.</p>
 
-<p><code>encodeURI</code>是Javascript中真正用来对URL编码的函数。但是对于以下网址中有特殊含义的符号不进行编码.</p>
-<pre><code>; / ? : @ &amp; = + $ , #
+<p>同时在<code>page/example.wxss</code> 中定义背景色</p>
+
+<pre><code>page {
+  background-color: #557dde;
+}
 </code></pre>
 
-<p>相反的<code>encodeURIComponent</code>方法会将上面的符号也进行编码.
-<code>decodeURI</code>和<code>decodeURIComponent</code>是相应的解码方法</p>
+<p>结果如下
+<img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/code.png" alt="" /></p>
 
-<h3 id="解决">解决</h3>
-<p>再回到一开始的问题</p>
-<ul>
-  <li>第一步浏览器url拿到的查询参数是正确的<code>tq%2B3wB8PdfY%3D</code></li>
-  <li>第二步代码中获取到的参数变量也是正确的<code>tq+3wB8PdfY=</code></li>
-  <li>第三部利用该参数向url中拼接跳转下一步页面例如 /xxx/xxx?orderId=tq+3wB8PdfY 到这里其实是有问题的浏览器会自动将<code>+</code>号转为空格</li>
-</ul>
+<p>同时定义了顶部状态栏的颜色和背景栏的颜色，通常也能够满足需求了。</p>
+
+<p>但是仅仅这样是不够的比如我想像这样
+<img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/example1.png" alt="" />
+头部图片可以做滑动效果而且展开到整个头部。这时候就需要自定义组件出马了,比如在首页 index.json 中要引入自定义组建</p>
+
+<pre><code>{
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "nav-bar": "/component/navbar/navbar",
+  }
+}
+
+</code></pre>
+
+<p>其中最关键的点就是要计算状态栏的各种高度，首先头部导航包括两部分工具栏和 title 栏
+<img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/navigator.png" alt="" />
+其中上部分是工具栏通过小程序提供的<code>wx.getSystemInfoSync()</code>方法能够拿到系统的一些信息</p>
+
+<pre><code>{
+  SDKVersion: "2.11.3",
+  batteryLevel: 100,
+  benchmarkLevel: 1,
+  brand: "devtools",
+  deviceOrientation: "portrait",
+  devicePixelRatio: 2,
+  fontSizeSetting: 16,
+  language: "zh_CN",
+  model: "iPhone 6/7/8",
+  pixelRatio: 2,
+  platform: "devtools",
+  safeArea: {
+    bottom: 667,
+    height: 647,
+    left: 0,
+    right: 375,
+    top: 20,
+    width: 375
+  },
+  screenHeight: 667,
+  screenWidth: 375,
+  statusBarHeight: 20,
+  system: "iOS 10.0.1",
+  version: "7.0.4",
+  windowHeight: 603,
+  windowWidth: 375,
+}
+
+</code></pre>
+
+<p>一般情况下 <code>screenHeight - windowHeight</code> 所得到的就是顶部工具栏+title 栏的高度， 但是在自定义了头部组件后即设置了<code>"navigationStyle": "custom"</code>，这两个值是相等的,还有一个比较重要的字段 statusBarHeight 通常这个就是代表工具栏的高度而且这个值是值得信赖的。 有个点需要注意就是单位一定要设置为<code>px</code>。</p>
 
 <blockquote>
-  <p>escape()不对”+”编码。但是我们知道，网页在提交表单的时候，如果有空格，则会被转化为+字符。服务器处理数据的时候，会把+号处理成空格。所以，使用的时候要小心。</p>
+  <p>注：由于胶囊按钮是原生组件，为表现一致，其单位在各种手机中都为 px，所以我们自定义导航栏的单位都必需是 px（切记不能用 rpx），才能完美适配。</p>
 </blockquote>
 
-<p>从这里开始再向后台传参数就不会拿到正确的地址了,其实要解决很简单使用<code>encodeURIComponent</code>编码一下就可以,其实vue和react的框架其实自己可以转换,但是要正确使用跳转URL的方法.</p>
+<p>解决了工具栏部分，主要需要搞定的就是 title 栏的高度了，主要是为了适配胶囊的位置。
+<a href="https://developers.weixin.qq.com/miniprogram/design/#%E5%9B%BE%E6%A0%87">官方文档</a>，有一张图片
+<img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/bar.png" alt="" />
+这里安卓跟 ios 的表现是不一样的,胶囊距离工具栏的高度是不一样的，差了 6 个 pt，更闹心的是开发工具跟真机的表现也是不一样的， 不过好在一点就是胶囊的宽和高是一样的都是<code>87</code>*<code>32</code>，我们所做的一切努力都是想让胶囊的上下间距跟跟不自定义组件的显示效果是一样的</p>
 
-<h3 id="参考文章">参考文章</h3>
+<blockquote>
+  <p>真机和开发者工具模拟器上的胶囊按钮不一样</p>
+</blockquote>
+
+<pre><code># iOS
+	top 4px
+	right 7px
+	width 87px
+	height 32px
+
+# Android
+	top 8px
+	right 10px
+	width 95px
+	height 32px
+
+# 开发者工具模拟器（iOS）
+	top 6px
+	right 10px
+	width 87px
+	height 32px
+
+# 开发者工具模拟器（Android）
+	top 8px
+	right 10px
+	width 87px
+	height 32px
+
+可以看出，iOS胶囊按钮与状态栏之间距离为：4px， Android为8px，是不是所有手机都是这种情况呢？
+答案是:苹果手机确实都是4px,安卓大部分都是7和8 也会有其他的情况
+(可以自己打印getSystemInfo验证)如何快速便捷算出这个高度,请接着往下看
+
+</code></pre>
+
+<h4 id="粗暴计算方法一">粗暴计算方法一</h4>
+
+<p><a href="https://developers.weixin.qq.com/community/develop/article/doc/000aa842274d58cb15f74f81f56013">自定义导航栏所有机型的适配方案</a>,简单粗暴根据上面规律来计算胶囊的位置</p>
+
+<p><a href="https://developers.weixin.qq.com/s/Q79g6kmo7w5J">代码片段</a></p>
+
+<pre><code>/**
+   * 获取胶囊按钮位置
+   */
+  getMenuPosition () {
+    let top = 4
+    let right = 7
+    let width = 87
+    let height = 32
+    if (systemInfo.platform === 'devtools' &amp;&amp; systemInfo.system.indexOf('Android') === -1) {
+      top = 6
+      right = 10
+    }
+    else if (systemInfo.platform === 'devtools' &amp;&amp; systemInfo.system.indexOf('Android') != -1) {
+      top = 8
+      right = 10
+    }
+    else if (systemInfo.system.indexOf('Android') != -1) {
+      top = 8
+      right = 10
+      width = 95
+    }
+    return {
+      top: systemInfo.statusBarHeight + top,
+      left: systemInfo.windowWidth - width - right,
+      width: width,
+      height: height
+    }
+  }
+
+/**
+   * 获取工具栏样式
+   */
+  getStatusBarStyle () {
+    let statusBarPosition = {
+      top: 0,
+      left: 0,
+      width: systemInfo.windowWidth,
+      height: systemInfo.statusBarHeight
+    }
+    return this.formatStyle(statusBarPosition)
+  },
+
+   /**
+   * 获取导航栏样式
+   */
+  getNavigationBarStyle () {
+    let menuPosition = this.getMenuPosition()
+    let navigationBarPosition = {
+      top: systemInfo.statusBarHeight,
+      left: 0,
+      width: systemInfo.windowWidth,
+      height: (menuPosition.top - systemInfo.statusBarHeight) * 2 + menuPosition.height
+    }
+    return this.formatStyle(navigationBarPosition)
+  },
+  /**
+   * 获取导航样式
+   */
+  getNavigationStyle () {
+    let menuPosition = this.getMenuPosition()
+    let padding = systemInfo.windowWidth - menuPosition.left - menuPosition.width
+    let navigationPosition = {
+      top: menuPosition.top,
+      left: padding,
+      width: systemInfo.windowWidth - padding * 3 - menuPosition.width,
+      height: menuPosition.height
+    }
+    return this.formatStyle(navigationPosition)
+  },
+  /**
+   * 获取胶囊按钮样式
+   */
+  getMenuStyle() {
+    return this.formatStyle(this.getMenuPosition())
+  },
+  /**
+   * 格式化Style
+   */
+  formatStyle (position) {
+    let styles = []
+    for (let key in position) {
+      styles.push(`${key}: ${position[key]}px;`)
+    }
+    return styles.join(' ')
+  }
+
+
+wxml 文件如下
+
+&lt;view&gt;
+  &lt;!-- status-bar --&gt;
+  &lt;view class="status-bar" style=""/&gt;
+  &lt;!-- navigation-bar --&gt;
+  &lt;view class="navigation-bar" style=""&gt;
+    &lt;!-- title --&gt;
+    &lt;view class="navigation" style=""&gt;
+      这是最佳可操作区域
+    &lt;/view&gt;
+  &lt;/view&gt;
+  &lt;!-- menu --&gt;
+  &lt;view class="menu" style=""/&gt;
+&lt;/view&gt;
+
+</code></pre>
+
+<p>总结一下这种计算只是区分了最常规的几种显示方案，包括开发工具的安卓，开发工具的 IOS， 真机的安卓，真机的 IOS,只是囊括了最通用的显示方案，但是如果真机范围足够广的话应该会有问题，需要对出现问题的机型逐一兼容。</p>
+
+<h4 id="拼多多官方不稳的方案二">拼多多+官方不稳的方案二</h4>
+
+<p>其实官方提供了一个方法来获取胶囊的位置
+<a href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/menu/wx.getMenuButtonBoundingClientRect.html">wx.getMenuButtonBoundingClientRect</a>
+,但是这个方法可能获取不到或者根本不准确
+问题列表如下：
+<img src="https://cdn.darknights.cn/assets/images/in-post/miniprogram/error.png" alt="" />
+到目前为止还是没有完美解决这个问题，所以该方法还是要慎重使用。</p>
+
+<pre><code>
+try {
+  const systemInfo = wx.getSystemInfoSync();
+  rect = wx.getMenuButtonBoundingClientRect ? wx.getMenuButtonBoundingClientRect() : null;
+  if (rect === null) {
+    throw 'getMenuButtonBoundingClientRect error';
+  }
+  //取值为0的情况
+  if (!rect.width) {
+    throw 'getMenuButtonBoundingClientRect error';
+  }
+} catch (error) {
+  let gap = ''; //胶囊按钮上下间距 使导航内容居中
+  let width = 96; //胶囊的宽度，android大部分96或者95，ios为88或者87
+  if (systemInfo.platform === 'android') {
+    gap = 8;
+    width = 96;
+  } else if (systemInfo.platform === 'devtools') {
+    if (ios) {
+      gap = 6; //开发工具中ios手机 5.5
+    } else {
+      gap = 8; //开发工具中android和其他手机 7.5
+    }
+  } else {
+    gap = 4;
+    width = 88;
+  }
+  if (!systemInfo.statusBarHeight) {
+    //开启wifi的情况下修复statusBarHeight值获取不到
+    systemInfo.statusBarHeight = systemInfo.screenHeight - systemInfo.windowHeight - 20;
+  }
+  rect = {
+    //获取不到胶囊信息就自定义重置一个
+    bottom: systemInfo.statusBarHeight + gap + 32,
+    height: 32,
+    left: systemInfo.windowWidth - width - 10,
+    right: systemInfo.windowWidth - 10,
+    top: systemInfo.statusBarHeight + gap,
+    width: width
+  };
+  console.log('error', error);
+  console.log('rect', rect);
+}
+
+
+</code></pre>
+
+<p>通过兼容官方的<code>wx.getMenuButtonBoundingClientRect</code>方法，再加上方法一中的设定默认值的方案基本就能满足所有场景了。</p>
+
+<h3 id="swiper-高度问题">swiper 高度问题</h3>
+
+<p>我们开发时还有这样一个问题比如我们需要使用<code>swiper</code>组件，但是问题就是， swiper 中的内容高度是 100%的，这样如果在 swiper 中同时有上滑加载更多
+就会有内容显示不全的问题，为了解决这个问题我用的方法一是动态调整 swiper 内容的高度，代码如下</p>
+
+<h4 id="方法一">方法一</h4>
+
+<pre><code>
+&lt;swiper  style="width:100%; height: {\{swiperHeight px;}\}" &gt;
+    &lt;block wx:for="" wx:key="*this" wx:for-item="currentType"&gt;
+      &lt;swiper-item&gt;
+        &lt;view id="start_view" class="start-view" wx:if=""&gt;&lt;/view&gt;
+        &lt;view class="tips-con" wx:if=""&gt;
+          &lt;view class="tips-item"&gt;若小程序定位已开启&lt;/view&gt;
+          &lt;view class="tips-item"&gt;请进入系统“设置”-“隐私”-“定位服务”中打开开关&lt;/view&gt;
+          &lt;view class="tips-item"&gt;允许使用定位系统&lt;/view&gt;
+          &lt;view class="btn open-setting-btn" bindtap="openSetting" wx:if=""&gt;
+            开启定位
+          &lt;/view&gt;
+        &lt;/view&gt;
+        &lt;view id="end_view" class="start-view" wx:if=""&gt;&lt;/view&gt;
+      &lt;/swiper-item&gt;
+    &lt;/block&gt;
+  &lt;/swiper&gt;
+
+</code></pre>
+
+<p>其中<code>swiperHeight</code>是动态参数， 我们在请求拿到数据后，通过 <code>setData({ list,}) </code>之后，获取 <code>start_view</code> 和 <code>end_view</code> 之间内容的高度来重新计算高度</p>
+
+<pre><code>autoHeight() {
+    wx.createSelectorQuery()
+
+      .select("#end_view")
+      .boundingClientRect()
+
+      .select("#start_view")
+      .boundingClientRect()
+      .exec((rect) =&gt; {
+        let _space = rect[0].top - rect[1].top;
+
+        this.setData({
+          swiperHeight: _space,
+        });
+      });
+  }
+
+</code></pre>
+
+<h4 id="方法二">方法二</h4>
+
+<p>方法一我们只是用了<code>swiper</code>组件，另一种实现方式是同时使用 <code>swiper</code> 和 <code>scroll</code>，
+计算可视内容高度然后将 scroll 设置成固定高度，向上拖动自动追加新内容，只需要计算一次</p>
+
+<h3 id="统一请求拦截">统一请求拦截</h3>
+
+<p>小程序发送请求我们会使用<code>wx.request</code>，如果需要设置统一的<code>Content-Type</code>或者在<code>headers</code>带上<code>token</code>， 就需要将请求封装</p>
+
+<h2 id="参考文档">参考文档</h2>
 
 <ul>
-  <li><a href="https://blog.csdn.net/u014785687/article/details/74078512">不同浏览器中URL的编码方式</a></li>
+  <li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/">官方文档</a></li>
+  <li><a href="https://juejin.im/post/5d2748486fb9a07ed2249914">小程序之自定义头部导航栏</a></li>
+  <li><a href="https://juejin.im/post/5d557e2e5188255af1619716">微信小程序自定义导航栏组件(完美适配所有手机),可自定义实现任何你想要的功能</a></li>
+  <li><a href="https://developers.weixin.qq.com/community/develop/article/doc/000aa842274d58cb15f74f81f56013">自定义导航栏所有机型的适配方案</a></li>
+  <li><a href="https://developers.weixin.qq.com/community/develop/article/doc/00048e5ed784b037b959757385b413">小程序顶部自定义导航组件实现原理及坑分享</a></li>
+  <li><a href="https://juejin.im/post/5ca0c4fc51882567ba6a6422#heading-3">小程序自定义导航栏适配（完美版）</a></li>
+  <li><a href="https://juejin.im/post/5b496d5d5188251a90187635#heading-8">【微信小程序】性能优化</a></li>
+  <li><a href="https://juejin.im/post/5e56762fe51d45271a03a2e6">小程序订阅消息用户拒绝/关闭后，如何引导用户再次开启？并获得用户的操作状态？</a></li>
 </ul>
 
 
@@ -335,13 +596,9 @@ unescape("\u6625\u8282")
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" data-toggle="tooltip" data-placement="top" title="在浏览器输入 URL 回车之后发生了什么">&larr; Previous Post</a>
+        <a href="/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/2020/04/24/babel-config/" data-toggle="tooltip" data-placement="top" title="Babel最简单配置">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2019/11/12/js-array/" data-toggle="tooltip" data-placement="top" title="JavaScript内置对象之数组">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -351,9 +608,9 @@ unescape("\u6625\u8282")
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode"
-         data-title="URL编码"
-         data-url="http://darknights.me/%E5%9F%BA%E7%A1%80/2019/10/16/url-encode/"></div>
+         data-thread-key="/%E5%B0%8F%E7%A8%8B%E5%BA%8F/2020/05/21/miniprogram-pit"
+         data-title="小程序开发填坑"
+         data-url="http://darknights.me/%E5%B0%8F%E7%A8%8B%E5%BA%8F/2020/05/21/miniprogram-pit/"></div>
     <script>
 
         /**
