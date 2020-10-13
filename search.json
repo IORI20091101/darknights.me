@@ -3,6 +3,16 @@
   "data" : [
     
       {
+      "value" : "VSCode使用指南",
+      "subtitle": "熟悉VSCode各种设置快捷键以及插件",
+      "data" : "/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/",
+      "date": "2020-10-12"
+      }
+      
+        ,
+      
+    
+      {
       "value" : "小程序开发填坑",
       "subtitle": "整理最近小程序开发遇到的一些问题",
       "data" : "/%E5%B0%8F%E7%A8%8B%E5%BA%8F/2020/05/21/miniprogram-pit/",

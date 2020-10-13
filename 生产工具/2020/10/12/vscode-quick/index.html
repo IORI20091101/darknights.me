@@ -20,9 +20,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>CSS面试题 - Dark knight's Blog</title>
+    <title>VSCode使用指南 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/">
+    <link rel="canonical" href="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -180,7 +180,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat8.jpg ')
+        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat1.jpg ')
     }
 </style>
 
@@ -195,17 +195,19 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                            <a class="tag" href="/tags/#生产工具" title="生产工具">生产工具</a>
                             
-                            <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                            <a class="tag" href="/tags/#IDE" title="IDE">IDE</a>
+                            
+                            <a class="tag" href="/tags/#VSCode" title="VSCode">VSCode</a>
                             
                         </div>
-                        <h1>CSS面试题</h1>
+                        <h1>VSCode使用指南</h1>
                         
                         
-                        <h2 class="subheading">一些常见CSS面试题总结</h2>
+                        <h2 class="subheading">熟悉VSCode各种设置快捷键以及插件</h2>
                         
-                        <span class="meta">Posted by toshiba on September 11, 2018</span>
+                        <span class="meta">Posted by toshiba on October 12, 2020</span>
                     </div>
                 </div>
             </div>
@@ -227,64 +229,227 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h2 id="css">CSS</h2>
+				<h3 id="常规操作">常规操作</h3>
 
-<p>说出下面s1,s2, s5,s6的答案</p>
+<h4 id="设置中文">设置中文</h4>
+<p>首先我们可能需要为<code>VSCode</code>设置语言，这个并不是必要操作但是可以为英语不好的同学提供一个过渡选择</p>
+<ul>
+  <li><code>Command + Shift + P</code></li>
+  <li><code>搜索框中输入 configure display language 然后安装其他语言选择简体中文</code></li>
+  <li><code>重启VSCode</code></li>
+</ul>
 
-<pre><code class="language-html">&lt;div class="p1"&gt;
-    &lt;div class="s1"&gt;1&lt;/div&gt;
-    &lt;div class="s2"&gt;1&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="p2"&gt;
-    &lt;div class="s5"&gt;1&lt;/div&gt;
-    &lt;div class="s6"&gt;1&lt;/div&gt;
-&lt;/div&gt;
+<h4 id="命令行的使用">命令行的使用</h4>
+<p>我们可以通过命令行直接启动<code>VSCode</code>，windows用户可以通过添加安装目录到系统环境变量PATH中,如果是mac用户</p>
 
-.p1 {font-size: 16px; line-height: 32px;}
-.s1 {font-size: 2em;}
-.s2 {font-size: 2em; line-height: 2em;}
+<ul>
+  <li><code>Command + Shift + P</code></li>
+  <li><code>搜索框中输入 Shell 命令：在 PATH 中安装 “Code” 命令</code></li>
+  <li><code>重启VSCode</code></li>
+</ul>
 
-.p2 {font-size: 16px; line-height: 2;}
-.s5 {font-size: 2em;}
-.s6 {font-size: 2em; line-height: 2em;}
+<p>然后就可以在终端中通过code命令直接打开<code>VSCode</code>了，
+常用的命令行使用命令</p>
 
-</code></pre>
+<ul>
+  <li><code>code -r .</code> 打开当前目录 -r 代表窗口复用</li>
+  <li><code>code -r -g package.json:10:15</code> 打开当前目录 -g 跳转到某个文件</li>
+  <li><code>code -r -d a.txt b.txt</code> 打开当前目录 -d 比较两个文件差异</li>
+</ul>
 
-<p>先来看第一组的答案</p>
-<pre><code>    p1：font-size: 16px; line-height: 32px
-    s1：font-size: 32px; line-height: 32px
-    s2：font-size: 32px; line-height: 64px
-</code></pre>
-<p>和你的答案一样吗？下面来解释下:</p>
-<blockquote>
-  <p>p1 无需解释
-s1 em作为字体单位，相对于父元素字体大小；line-height继承父元素计算值
-s2 em作为行高单位时，相对于自身字体大小
-再来看看第二组的答案</p>
-</blockquote>
+<p>还有一个比较好的就是接受管道数据</p>
 
-<pre><code>p2：font-size: 16px; line-height: 32px
-s5：font-size: 32px; line-height: 64px
-s6：font-size: 32px; line-height: 64px
-</code></pre>
-<p>意不意外？惊不惊喜？下面来解释下</p>
-<blockquote>
-  <p>p2 line-height: 2自身字体大小的两倍
-s5 数字无单位行高，继承原始值，s5的line-height继承的2，自身字体大小的两倍
-s6 无需解释</p>
-</blockquote>
+<ul>
+  <li><code>ls | code -</code> 改命令可以将目录下的所有文件名展示到<code>VSCode</code>中</li>
+</ul>
 
-<h3 id="清除浮动">清除浮动</h3>
-<pre><code>.clearfix:after{
-  clear: both;
-  content: ".";
-  display: block;
-  height: 0;
-  visibility: hidden;
-  font-size: 0;
-}
-</code></pre>
+<h3 id="光标移动">光标移动</h3>
 
+<ul>
+  <li><code>Opts + 左右箭头</code>  光标在单词间跳转</li>
+  <li><code>Command + 左右箭头</code>  光标在行首行末之际跳转</li>
+  <li><code>Command + 上下箭头</code>  光标在文件开始和末尾之际跳转</li>
+  <li><code>Command + Shift + \</code>  光标在文件开始和末尾之际跳转</li>
+</ul>
+
+<h3 id="文本选择">文本选择</h3>
+
+<p>你单击鼠标左键就可以把光标移动到相应的位置。而双击鼠标左键，则会将当前光标下的单词选中。连续三次按下鼠标左键，则会选中当前这一行代码。最后是连续四次按下鼠标左键，则会选中整个文档</p>
+
+<ul>
+  <li><code>Opts + Shift + 左右箭头</code> 选中单词</li>
+  <li><code>Command + Shift + P 输入选择括号所有内容</code> 将光标所在打括号的内容选中</li>
+  <li><code>在编辑器的最左边拖动行号的位置选中拖动可以选中多行</code></li>
+</ul>
+
+<h3 id="删除操作">删除操作</h3>
+
+<ul>
+  <li><code>Command + Backspace</code> 删除该行左边</li>
+  <li><code>Command + Delete</code> 删除该行右边</li>
+</ul>
+
+<h3 id="自定义快捷键">自定义快捷键</h3>
+
+<ul>
+  <li><code>Command + Shift + P 输入 打开键盘快捷方式</code> 或者 <code>Command k + Command r</code> 打开快捷键pdf链接</li>
+</ul>
+
+<h3 id="代码行编辑">代码行编辑</h3>
+
+<ul>
+  <li><code>Command + Shift + K</code> 删除一行代码或多行</li>
+  <li><code>Command + X</code> 剪切代码</li>
+  <li><code>Command + Enter</code> 无论在一行的什么位置会在下面新建一行不会将一行分成两端</li>
+  <li><code>Command + Shift + Enter</code> 无论在一行的什么位置会在上面新建一行不会将一行分成两端</li>
+  <li><code>Option + up/down</code> 移动行</li>
+  <li><code>Option + Shift + up/down</code> 复制所在行到上面或者下面</li>
+</ul>
+
+<h3 id="撤销光标移动">撤销光标移动</h3>
+
+<ul>
+  <li><code>Command + u</code> 移动光标到上次的位置</li>
+</ul>
+
+<h3 id="行排序">行排序</h3>
+
+<p>你都可以把代码行按照字母序进行重新排序。不过这个命令比较小众，VS Code 并没有给这个命令指定快捷键，你可以调出命令面板，然后搜索 “按升序排列行” 或者 “按降序排列行” 命令执行。</p>
+
+<ul>
+  <li><code>Command + u</code> 移动光标到上次的位置</li>
+</ul>
+
+<h3 id="合并代码行">合并代码行</h3>
+
+<ul>
+  <li><code>Ctrl + j</code> 将选中的代码行合并</li>
+</ul>
+
+<h3 id="调整字符大小写">调整字符大小写</h3>
+
+<ul>
+  <li><code>你可以选中一串字符，然后在命令面板里运行“转换为大写”或 “转换为小写”, 来变换字符的大小写。</code></li>
+</ul>
+
+<h3 id="调整字符的位置">调整字符的位置</h3>
+
+<ul>
+  <li><code>Ctrl + t</code> 交互字符位置</li>
+</ul>
+
+<h3 id="代码格式化">代码格式化</h3>
+
+<ul>
+  <li><code>Option + Shift + F</code> 对整个文档进行格式化</li>
+  <li><code>Command + K  Command + F</code> 对选中代码进行格式化</li>
+</ul>
+
+<h3 id="添加代码注释">添加代码注释</h3>
+
+<ul>
+  <li><code>Option + Shift + A</code> 对整个文档进行格式化</li>
+  <li><code>Command + /</code> 对选中代码进行格式化</li>
+</ul>
+
+<h3 id="代码补全">代码补全</h3>
+
+<ul>
+  <li><code>Ctrl + 空格</code> 调出建议列表或者tab键调出</li>
+  <li><code>Command + Shift + 空格</code> 调出建议参数预览</li>
+</ul>
+
+<h3 id="快速修复">快速修复</h3>
+
+<ul>
+  <li><code>Ctrl + .</code> 对于拼错的css或者js进行修复</li>
+</ul>
+
+<h3 id="重构">重构</h3>
+
+<ul>
+  <li>
+    <p><code>F2</code> 修改一个函数或者变量的名字时候，我们只需把光标放到函数或者变量名上，然后按下 F2，这样这个函数或者变量出现的地方就都会被修改。</p>
+  </li>
+  <li>
+    <p>另一个常用的重构的操作就是把一段长代码抽取出来转成一个单独的函数。在VS Code中，我们只需选中那段代码，点击黄色的灯泡图标，然后选择对应的重构操作即可。</p>
+  </li>
+</ul>
+
+<h3 id="多行操作多光标">多行操作多光标</h3>
+
+<ul>
+  <li>
+    <p><code>Option + 鼠标点击</code> 对于点中的地方会有一个光标，对于点击到的位置可以操作</p>
+  </li>
+  <li>
+    <p><code>Command + Option + up/down</code> 可以移动时可以产生光标，可以再通过 <code>Command + 左右方向键</code> 可以移动到每一行末尾</p>
+  </li>
+  <li>
+    <p><code>Command + D</code> ，第一次按下时，它会选中光标附近的单词；第二次按下时，它会找到这个单词第二次出现的位置，创建一个新的光标，并且选中它。这样只需要按下三次，你就选中了所有的“5”。这个时候你再按下 “右方向键”，输入“px”，即可完成任务。</p>
+  </li>
+  <li>
+    <p><code>Option + Shift + i</code> 首先你选择多行代码，然后按下 “Option + Shift + i” （Windows 上是 Alt + Shift + i），这样操作的结果是：每一行的最后都会创建一个新的光标。</p>
+  </li>
+  <li>
+    <p>VS Code 中还有一个更加便捷的鼠标创建多光标的方式。当然，这首先要求你的鼠标拥有中键。你只需按下鼠标中键，然后对着一段文档拖出一个框，在这个框中的代码就都被选中了，而且每一行被选中的代码，都拥有一个独立的光标。</p>
+  </li>
+</ul>
+
+<h3 id="文件跳转">文件跳转</h3>
+
+<ul>
+  <li><code>Ctrl + tab</code> 罗列现在已经打开到文件列表</li>
+  <li><code>Command + P</code> 跳出一个最近打开文件的列表，同时在列表的顶部还有一个搜索框</li>
+  <li><code>Cmd + Enter</code> （Windows 上是 Ctrl + Enter）组合键。这个文件在一个新的编辑器窗口中打开了。</li>
+</ul>
+
+<h3 id="行跳转">行跳转</h3>
+
+<ul>
+  <li><code>Ctrl + G</code> 输入 10:3 跳到第10行第三列</li>
+</ul>
+
+<h3 id="符号跳转">符号跳转</h3>
+
+<ul>
+  <li><code>Command + Shift + O</code> 可以看到当前文件的所有符号，如方法名</li>
+</ul>
+
+<h3 id="定义与实现之间的跳转">定义与实现之间的跳转</h3>
+
+<ul>
+  <li><code>F12 or  Command + F12</code> 按下 F12，就可以跳转到函数的定义处。</li>
+</ul>
+
+<h3 id="跳到引用的地方">跳到引用的地方</h3>
+
+<ul>
+  <li><code>Shift + F12</code> 打开函数引用预览</li>
+</ul>
+
+<h3 id="其他操作">其他操作</h3>
+<ul>
+  <li><code>Command + E</code>： 显示最近操作过的文件</li>
+</ul>
+
+<p>Alt+Insert：可以生成构造器/Getter/Setter等(建议使用lombok插件及@Data注解) 未验证
+Alt+ Up/Down(上下箭头)：在方法间快速移动定位</p>
+
+<h4 id="参考文章">参考文章</h4>
+<ul>
+  <li><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html">IntelliJ IDEA For Mac 快捷键</a>
+    <h4 id="intellij-idea-for-mac-快捷键">IntelliJ IDEA For Mac 快捷键</h4>
+  </li>
+  <li>根据官方pdf翻译：<a href="https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf">https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf</a></li>
+  <li>在 IntelliJ IDEA 中有两个 Mac 版本的快捷键，一个叫做：Mac OS X，一个叫做：Mac OS X 10.5+</li>
+  <li>目前都是用：Mac OS X 10.5+</li>
+  <li>有两套的原因：<a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed">https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed</a>
+    <blockquote>
+      <p>建议将 Mac 系统中与 IntelliJ IDEA 冲突的快捷键取消或更改，不建议改 IntelliJ IDEA 的默认快捷键。</p>
+    </blockquote>
+  </li>
+</ul>
 
 
                 <hr>
@@ -292,13 +457,9 @@ s6 无需解释</p>
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/2018/06/27/read-book-effective-four/" data-toggle="tooltip" data-placement="top" title="Effective JavaScript (四)">&larr; Previous Post</a>
+        <a href="/%E5%B0%8F%E7%A8%8B%E5%BA%8F/2020/05/21/miniprogram-pit/" data-toggle="tooltip" data-placement="top" title="小程序开发填坑">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-html/" data-toggle="tooltip" data-placement="top" title="HTML面试题">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -308,9 +469,9 @@ s6 无需解释</p>
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css"
-         data-title="CSS面试题"
-         data-url="http://darknights.me/%E9%9D%A2%E8%AF%95/2018/09/11/inverview-css/"></div>
+         data-thread-key="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick"
+         data-title="VSCode使用指南"
+         data-url="http://darknights.me/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/"></div>
     <script>
 
         /**
