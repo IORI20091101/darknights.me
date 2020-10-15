@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-13T17:06:47+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;常规操作&quot;&gt;常规操作&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-15T19:17:21+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;常规操作&quot;&gt;常规操作&lt;/h3&gt;
 
 &lt;h4 id=&quot;设置中文&quot;&gt;设置中文&lt;/h4&gt;
 &lt;p&gt;首先我们可能需要为&lt;code&gt;VSCode&lt;/code&gt;设置语言，这个并不是必要操作但是可以为英语不好的同学提供一个过渡选择&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt; or &lt;code&gt;F1&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;搜索框中输入 configure display language 然后安装其他语言选择简体中文&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;重启VSCode&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -85,10 +85,6 @@
 
 &lt;p&gt;你都可以把代码行按照字母序进行重新排序。不过这个命令比较小众，VS Code 并没有给这个命令指定快捷键，你可以调出命令面板，然后搜索 “按升序排列行” 或者 “按降序排列行” 命令执行。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + u&lt;/code&gt; 移动光标到上次的位置&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;h3 id=&quot;合并代码行&quot;&gt;合并代码行&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -117,8 +113,8 @@
 &lt;h3 id=&quot;添加代码注释&quot;&gt;添加代码注释&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Option + Shift + A&lt;/code&gt; 对整个文档进行格式化&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + /&lt;/code&gt; 对选中代码进行格式化&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Option + Shift + A&lt;/code&gt; 对选中内容进行注释&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + /&lt;/code&gt; 对选中内容进行注释&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;代码补全&quot;&gt;代码补全&lt;/h3&gt;
@@ -131,7 +127,7 @@
 &lt;h3 id=&quot;快速修复&quot;&gt;快速修复&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Ctrl + .&lt;/code&gt; 对于拼错的css或者js进行修复&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + .&lt;/code&gt; 对于拼错的css或者js进行修复&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;重构&quot;&gt;重构&lt;/h3&gt;
@@ -197,13 +193,64 @@
   &lt;li&gt;&lt;code&gt;Shift + F12&lt;/code&gt; 打开函数引用预览&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;其他操作&quot;&gt;其他操作&lt;/h3&gt;
+&lt;h3 id=&quot;代码片段&quot;&gt;代码片段&lt;/h3&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + E&lt;/code&gt;： 显示最近操作过的文件&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt;：  配置用户代码片段 configure user snippets&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Alt+Insert：可以生成构造器/Getter/Setter等(建议使用lombok插件及@Data注解) 未验证
-Alt+ Up/Down(上下箭头)：在方法间快速移动定位&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;Print to console&quot;: {
+    &quot;prefix&quot;: &quot;log&quot;,
+    &quot;body&quot;: [
+        &quot;console.log(${1:i});&quot;,
+        &quot;$2&quot;
+    ],
+&quot;description&quot;: &quot;Log output to console&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;折叠代码&quot;&gt;折叠代码&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + [&lt;/code&gt; 光标所在位置代码片段折叠一层&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + ]&lt;/code&gt; 光标所在位置代码片段展开一层&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K   Command + [&lt;/code&gt; 将一直到最外层所有折叠&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K   Command + ]&lt;/code&gt; 将一直到最外层所有展开&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K   Command + 0&lt;/code&gt; 代码全部合并&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K   Command + j&lt;/code&gt; 代码全部展开&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;单文件搜索&quot;&gt;单文件搜索&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + F&lt;/code&gt; 在文件内搜索&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Enter 或者 Shift + Enter&lt;/code&gt; 在搜索内容中跳转&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + G&lt;/code&gt; 首先我们将光标移动到我们想要搜索的单词处，然后不断按下快捷键就可以从上往下查找搜索内容并移动光标&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + G&lt;/code&gt; 从下往上查找搜索内容并移动光标&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Option + F&lt;/code&gt; 在文件内替换&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;多文件搜索&quot;&gt;多文件搜索&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + F&lt;/code&gt; 在文件夹内搜索跟替换&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;工作区&quot;&gt;工作区&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先打开一个文件夹 然后 打开命令面板 F1 或者 &lt;code&gt;Command + Shift + P&lt;/code&gt; 输入 将文件夹添加到工作去（add folder to workspace）&lt;/li&gt;
+  &lt;li&gt;再一次打开命令面板 输入 “将工作区另存为” （save workspace as） 这样下次可以一次打开一个工作区&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Ctrl + W&lt;/code&gt; 可以切换工作区&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Ctrl + R&lt;/code&gt; 显示最近打开的文件夹列表&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Ctrl + R &lt;/code&gt; 选中后 &lt;code&gt;Command + Enter&lt;/code&gt; 可以在新窗口打开&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;显示终端&quot;&gt;显示终端&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Ctrl + ` 可以打开或者隐藏终端&lt;/li&gt;
+  &lt;li&gt;新建一个文件在其中输入内容&lt;code&gt;ls -al&lt;/code&gt; 打开命令面板在其中输入 “在活动终端中运行活动文件” 这个脚本会在继承终端中运行&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;参考文章&quot;&gt;参考文章&lt;/h4&gt;
 &lt;ul&gt;
