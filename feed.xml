@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-15T19:17:21+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;常规操作&quot;&gt;常规操作&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-16T14:04:26+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;常规操作&quot;&gt;常规操作&lt;/h3&gt;
 
 &lt;h4 id=&quot;设置中文&quot;&gt;设置中文&lt;/h4&gt;
+
 &lt;p&gt;首先我们可能需要为&lt;code&gt;VSCode&lt;/code&gt;设置语言，这个并不是必要操作但是可以为英语不好的同学提供一个过渡选择&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt; or &lt;code&gt;F1&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;搜索框中输入 configure display language 然后安装其他语言选择简体中文&lt;/code&gt;&lt;/li&gt;
@@ -9,7 +11,8 @@
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;命令行的使用&quot;&gt;命令行的使用&lt;/h4&gt;
-&lt;p&gt;我们可以通过命令行直接启动&lt;code&gt;VSCode&lt;/code&gt;，windows用户可以通过添加安装目录到系统环境变量PATH中,如果是mac用户&lt;/p&gt;
+
+&lt;p&gt;我们可以通过命令行直接启动&lt;code&gt;VSCode&lt;/code&gt;，windows 用户可以通过添加安装目录到系统环境变量 PATH 中,如果是 mac 用户&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt;&lt;/li&gt;
@@ -17,7 +20,7 @@
   &lt;li&gt;&lt;code&gt;重启VSCode&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;然后就可以在终端中通过code命令直接打开&lt;code&gt;VSCode&lt;/code&gt;了，
+&lt;p&gt;然后就可以在终端中通过 code 命令直接打开&lt;code&gt;VSCode&lt;/code&gt;了，
 常用的命令行使用命令&lt;/p&gt;
 
 &lt;ul&gt;
@@ -35,10 +38,10 @@
 &lt;h3 id=&quot;光标移动&quot;&gt;光标移动&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Opts + 左右箭头&lt;/code&gt;  光标在单词间跳转&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + 左右箭头&lt;/code&gt;  光标在行首行末之际跳转&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + 上下箭头&lt;/code&gt;  光标在文件开始和末尾之际跳转&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + Shift + \&lt;/code&gt;  光标在文件开始和末尾之际跳转&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Opts + 左右箭头&lt;/code&gt; 光标在单词间跳转&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + 左右箭头&lt;/code&gt; 光标在行首行末之际跳转&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + 上下箭头&lt;/code&gt; 光标在文件开始和末尾之际跳转&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + \&lt;/code&gt; 光标在文件开始和末尾之际跳转&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;文本选择&quot;&gt;文本选择&lt;/h3&gt;
@@ -61,7 +64,7 @@
 &lt;h3 id=&quot;自定义快捷键&quot;&gt;自定义快捷键&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + Shift + P 输入 打开键盘快捷方式&lt;/code&gt; 或者 &lt;code&gt;Command k + Command r&lt;/code&gt; 打开快捷键pdf链接&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + P 输入 打开键盘快捷方式&lt;/code&gt; 或者 &lt;code&gt;Command k + Command r&lt;/code&gt; 打开快捷键 pdf 链接&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;代码行编辑&quot;&gt;代码行编辑&lt;/h3&gt;
@@ -107,7 +110,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;Option + Shift + F&lt;/code&gt; 对整个文档进行格式化&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + K  Command + F&lt;/code&gt; 对选中代码进行格式化&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K Command + F&lt;/code&gt; 对选中代码进行格式化&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;添加代码注释&quot;&gt;添加代码注释&lt;/h3&gt;
@@ -120,14 +123,14 @@
 &lt;h3 id=&quot;代码补全&quot;&gt;代码补全&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Ctrl + 空格&lt;/code&gt; 调出建议列表或者tab键调出&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Ctrl + 空格&lt;/code&gt; 调出建议列表或者 tab 键调出&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;Command + Shift + 空格&lt;/code&gt; 调出建议参数预览&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;快速修复&quot;&gt;快速修复&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + .&lt;/code&gt; 对于拼错的css或者js进行修复&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + .&lt;/code&gt; 对于拼错的 css 或者 js 进行修复&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;重构&quot;&gt;重构&lt;/h3&gt;
@@ -137,7 +140,7 @@
     &lt;p&gt;&lt;code&gt;F2&lt;/code&gt; 修改一个函数或者变量的名字时候，我们只需把光标放到函数或者变量名上，然后按下 F2，这样这个函数或者变量出现的地方就都会被修改。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;另一个常用的重构的操作就是把一段长代码抽取出来转成一个单独的函数。在VS Code中，我们只需选中那段代码，点击黄色的灯泡图标，然后选择对应的重构操作即可。&lt;/p&gt;
+    &lt;p&gt;另一个常用的重构的操作就是把一段长代码抽取出来转成一个单独的函数。在 VS Code 中，我们只需选中那段代码，点击黄色的灯泡图标，然后选择对应的重构操作即可。&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -172,7 +175,7 @@
 &lt;h3 id=&quot;行跳转&quot;&gt;行跳转&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Ctrl + G&lt;/code&gt; 输入 10:3 跳到第10行第三列&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Ctrl + G&lt;/code&gt; 输入 10:3 跳到第 10 行第三列&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;符号跳转&quot;&gt;符号跳转&lt;/h3&gt;
@@ -184,7 +187,7 @@
 &lt;h3 id=&quot;定义与实现之间的跳转&quot;&gt;定义与实现之间的跳转&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;F12 or  Command + F12&lt;/code&gt; 按下 F12，就可以跳转到函数的定义处。&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;F12 or Command + F12&lt;/code&gt; 按下 F12，就可以跳转到函数的定义处。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;跳到引用的地方&quot;&gt;跳到引用的地方&lt;/h3&gt;
@@ -196,7 +199,7 @@
 &lt;h3 id=&quot;代码片段&quot;&gt;代码片段&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt;：  配置用户代码片段 configure user snippets&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + P&lt;/code&gt;： 配置用户代码片段 configure user snippets&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&quot;Print to console&quot;: {
@@ -214,10 +217,10 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;Command + Option + [&lt;/code&gt; 光标所在位置代码片段折叠一层&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;Command + Option + ]&lt;/code&gt; 光标所在位置代码片段展开一层&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + K   Command + [&lt;/code&gt; 将一直到最外层所有折叠&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + K   Command + ]&lt;/code&gt; 将一直到最外层所有展开&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + K   Command + 0&lt;/code&gt; 代码全部合并&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Command + K   Command + j&lt;/code&gt; 代码全部展开&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K Command + [&lt;/code&gt; 将一直到最外层所有折叠&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K Command + ]&lt;/code&gt; 将一直到最外层所有展开&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K Command + 0&lt;/code&gt; 代码全部合并&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Command + K Command + j&lt;/code&gt; 代码全部展开&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;单文件搜索&quot;&gt;单文件搜索&lt;/h3&gt;
@@ -247,17 +250,48 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;显示终端&quot;&gt;显示终端&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Ctrl + ` 可以打开或者隐藏终端&lt;/li&gt;
   &lt;li&gt;新建一个文件在其中输入内容&lt;code&gt;ls -al&lt;/code&gt; 打开命令面板在其中输入 “在活动终端中运行活动文件” 这个脚本会在继承终端中运行&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;参考文章&quot;&gt;参考文章&lt;/h4&gt;
+&lt;h3 id=&quot;拆分编辑器&quot;&gt;拆分编辑器&lt;/h3&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/a&gt;
-    &lt;h4 id=&quot;intellij-idea-for-mac-快捷键&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/h4&gt;
+  &lt;li&gt;&lt;code&gt;命令面板中搜索 拆分编辑器&lt;/code&gt; 可以将编辑器拆分多个&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Cmd + 1、Cmd + 2 和 Cmd + 3&lt;/code&gt; 在三个编辑器中跳转&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Cmd + Option + 0&lt;/code&gt; 可以在纵向拆分跟横向拆分之间切换&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Cmd + Option + up/down&lt;/code&gt; 可以在窗口之间切换&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;命令面板中搜索 2 x 2 网格编辑器布局&lt;/code&gt; 可以将编辑器拆分 2 x 2&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;根据官方pdf翻译：&lt;a href=&quot;https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf&quot;&gt;https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Cmd + B&lt;/code&gt; 打开或者关闭整个视图；&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Cmd + J&lt;/code&gt; 来打开或者关闭面板； 跟 Ctrl + ` 作用一样&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;缩放&quot;&gt;缩放&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Cmd + +/-&lt;/code&gt; 缩放整个工作区；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;markdown&quot;&gt;Markdown&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;命令面板中搜索 打开侧边预览&lt;/code&gt; 可以一边编辑 markdown 文档一边预览&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;参考文章&quot;&gt;参考文章&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/keymap-mac-introduce.html&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;intellij-idea-for-mac-快捷键&quot;&gt;IntelliJ IDEA For Mac 快捷键&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据官方 pdf 翻译：&lt;a href=&quot;https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf&quot;&gt;https://www.jetbrains.com/idea/docs/IntelliJIDEA_ReferenceCard_Mac.pdf&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;在 IntelliJ IDEA 中有两个 Mac 版本的快捷键，一个叫做：Mac OS X，一个叫做：Mac OS X 10.5+&lt;/li&gt;
   &lt;li&gt;目前都是用：Mac OS X 10.5+&lt;/li&gt;
   &lt;li&gt;有两套的原因：&lt;a href=&quot;https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed&quot;&gt;https://intellij-support.jetbrains.com/hc/en-us/community/posts/206159109-Updated-Mac-OS-X-keymap-Feedback-needed&lt;/a&gt;
