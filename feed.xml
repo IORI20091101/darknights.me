@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-16T15:00:41+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;高频操作&quot;&gt;高频操作&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-16T15:03:18+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;高频操作&quot;&gt;高频操作&lt;/h3&gt;
+
+&lt;h4 id=&quot;自定义快捷键&quot;&gt;自定义快捷键&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Command + Shift + P 输入 打开键盘快捷方式&lt;/code&gt; 或者 &lt;code&gt;Command k + Command r&lt;/code&gt; 打开快捷键 pdf 链接&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&quot;光标移动&quot;&gt;光标移动&lt;/h4&gt;
 
@@ -189,12 +195,6 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;Command + Backspace&lt;/code&gt; 删除该行左边&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;Command + Delete&lt;/code&gt; 删除该行右边&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;自定义快捷键&quot;&gt;自定义快捷键&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;Command + Shift + P 输入 打开键盘快捷方式&lt;/code&gt; 或者 &lt;code&gt;Command k + Command r&lt;/code&gt; 打开快捷键 pdf 链接&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;撤销光标移动&quot;&gt;撤销光标移动&lt;/h4&gt;
