@@ -20,9 +20,9 @@
 
     <link rel="shortcut icon" href="https://cdn.darknights.cn/assets/images/favicon.ico">
 
-    <title>原码, 反码, 补码 详解 - Dark knight's Blog</title>
+    <title>Gatsby入门 - Dark knight's Blog</title>
 
-    <link rel="canonical" href="http://darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/">
+    <link rel="canonical" href="http://darknights.me/gatsby/2021/01/22/gatsby/">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdn.darknights.cn/assets/styles/bootstrap.min.css" rel="stylesheet">
@@ -180,7 +180,7 @@
     <!-- Page Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat2.jpg ')
+        background-image: url('https://cdn.darknights.cn/assets/images/bg/batman/bat8.jpg ')
     }
 </style>
 
@@ -195,15 +195,17 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#计算机基础" title="计算机基础">计算机基础</a>
+                            <a class="tag" href="/tags/#blog" title="blog">blog</a>
+                            
+                            <a class="tag" href="/tags/#Gatsby" title="Gatsby">Gatsby</a>
                             
                         </div>
-                        <h1>原码, 反码, 补码 详解</h1>
+                        <h1>Gatsby入门</h1>
                         
                         
-                        <h2 class="subheading">原码, 反码, 补码的基础概念和计算方法.</h2>
+                        <h2 class="subheading">Gatsby入门以及简单的博客搭建</h2>
                         
-                        <span class="meta">Posted by toshiba on October 31, 2017</span>
+                        <span class="meta">Posted by toshiba on January 22, 2021</span>
                     </div>
                 </div>
             </div>
@@ -225,151 +227,979 @@
                 col-sm-12
                 col-xs-12
                 post-container">
-				<h1 id="机器数和真值">机器数和真值</h1>
-<p>在学习原码, 反码和补码之前, 需要先了解机器数和真值的概念.</p>
+				<h1 id="gatsby">Gatsby</h1>
 
-<h2 id="机器数">机器数</h2>
-<p>一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，在计算机用一个数的最高位存放符号, 正数为0, 负数为1.</p>
+<p><a href="https://www.gatsbyjs.com/">Gatsby</a>是React的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。</p>
 
-<p>比如，十进制中的数 +3 ，计算机字长为8位，转换成二进制就是00000011。如果是 -3 ，就是 10000011 。</p>
+<h2 id="环境准备">环境准备</h2>
 
-<p>那么，这里的 00000011 和 10000011 就是机器数。</p>
+<p>首先，以Mac为例 首先安装 <a href="https://brew.sh/"><code>brew</code></a></p>
 
-<h2 id="真值">真值</h2>
+<pre><code class="language-bash"># 安装Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew -v
+
+# 安装命令行工具
+xcode-select --install
+
+# 安装Nodejs
+brew install node
+
+# 安装git
+brew install git
+</code></pre>
+
+<p>安装<strong><code>gatsby-cli</code></strong></p>
+
+<pre><code class="language-bash">npm install -g gatsby-cli
+
+# 安装成功可以看到可用命令
+gatsby --help
+
+# 我们可以快速生成一个站点
+
+gatsby new [SITE_DIRECTORY_NAME] [URL_OF_STARTER_GITHUB_REPO]
+
+gatsby new hello-world https://github.com/gatsbyjs/gatsby-starter-hello-world
+
+cd hello-world
+
+gatsby develop
+
+# 访问 http://localhost:8000/ 就可以看到
+</code></pre>
+
+<p>目录如下</p>
+
+<p><img src="%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png" alt="%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png" /></p>
+
+<p><code>src/pages/index.js</code> 即是首页地址，按照约定 <code>src/pages</code> 下面所有的文件都是一个页面</p>
+
+<pre><code class="language-jsx">import React from "react"
+
+export default function Home() {
+  return (
+    &lt;div style=&gt;
+      &lt;h1&gt;Hello Gatsby!&lt;/h1&gt;
+      &lt;p&gt;What a world.&lt;/p&gt;
+      &lt;img src="https://source.unsplash.com/random/400x200" alt="" /&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>我们新加一个页面 <code>src/pages/about.js</code></p>
+
+<pre><code class="language-jsx">import React from "react"
+
+export default function About() {
+  return (
+    &lt;div style=&gt;
+      &lt;h1&gt;About Gatsby&lt;/h1&gt;
+      &lt;p&gt;Such wow. Very React.&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>这样我们就有了两个页面分别是通过访问 <a href="http://localhost:8000">http://localhost:8000</a> 和 <a href="https://localhost:8000/about">https://localhost:8000/about</a> 访问。 到这里就可以愉快的添加页面了。</p>
+
+<h3 id="使用组件">使用组件</h3>
+
+<p>在上面的页面中假设我们页面有公共的<code>header</code> 或 <code>footer</code>，我们不需要在每个页面中定义，这时候就需要用到组件，同样的Gatsby约定 <code>src/components</code> 文件夹下的都是放的组件，我们新建一个<code>src/components/header.js</code>的组件</p>
+
+<pre><code class="language-jsx">import React from "react"
+export default function Header(props) {
+  return &lt;h1&gt;{props.headerText}&lt;/h1&gt;
+}
+</code></pre>
+
+<p>在about页面中使用</p>
+
+<pre><code class="language-jsx">import React from "react"
+import Header from "../components/header"
+export default function About() {
+  return (
+    &lt;div style=&gt;
+      &lt;Header headerText="About Gatsby" /&gt;
+      &lt;p&gt;Such wow. Very React.&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+
+<p>到了这里页面已经大概出来了，我也通过 <code>[surge.sh](https://surge.sh/)</code> 部署了一下</p>
+
+<pre><code class="language-bash">npm install --global surge
+
+# Then create a (free) account with them
+surge login
+# 提示输入邮箱密码
+
+gatsby build
+
+ls public
+
+surge public/
+</code></pre>
+
+<p>通过访问</p>
+
+<p><a href="https://arrogant-station.surge.sh/">https://arrogant-station.surge.sh/</a></p>
+
+<p><a href="https://arrogant-station.surge.sh/about/">https://arrogant-station.surge.sh/about/</a></p>
+
+<p>就可以看到刚刚的效果</p>
+
+<h3 id="自定义样式表">自定义样式表</h3>
+
+<p>当我们想自定义样式时，我们可以在src下的styles下建立global.css，如下：</p>
+
+<pre><code>├── package.json
+├── src
+│   └── pages
+│       └── index.js
+│   └── styles
+│       └── global.css
+</code></pre>
+
+<pre><code class="language-css">/ * src/styles/global.css */
+html {
+  background-color: lavenderblush;
+}
+</code></pre>
+
+<p>如果想让该文件生效，需要在项目根目录下新建一个 <code>gatsby-browser.js</code></p>
+
+<pre><code class="language-jsx">import "./src/styles/global.css"
+
+// or:
+// require('./src/styles/global.css')
+</code></pre>
+
+<h3 id="创建组件级作用域的样式">创建组件级作用域的样式</h3>
+
+<p>我们创建一个 <code>Container</code> 组件</p>
+
+<pre><code class="language-jsx">├── package.json
+├── src
+│   └── components
+│       └── container.js
+│       └── container.module.css
+
+</code></pre>
+
+<p>我们以  <code>.module.css</code> 作为后缀即可创建一个组件级别作用域样式</p>
+
+<pre><code class="language-jsx">import React from "react"
+import containerStyles from "./container.module.css"
+
+export default function Container({ children }) {
+  return &lt;div className={containerStyles.container}&gt;{children}&lt;/div&gt;
+}
+</code></pre>
+
+<pre><code class="language-css">.container {
+  margin: 3rem auto;
+  max-width: 600px;
+}
+</code></pre>
+
+<p>新建一个页面用来使用这个组件 <code>src/pages/about-css-modules.js</code></p>
+
+<pre><code class="language-jsx">import React from "react"
+
+import Container from "../components/container"
+
+export default function About() {
+  return (
+    &lt;Container&gt;
+      &lt;h1&gt;About Css Modules&lt;/h1&gt;
+      &lt;p&gt;CSS Module are cool&lt;/p&gt;
+    &lt;/Container&gt;
+  )
+}
+</code></pre>
+
+<h3 id="使用插件和布局组件">使用插件和布局组件</h3>
+
+<p>Gatsby 有着丰富的组件库 <code>[Plugin Library](https://www.gatsbyjs.com/plugins)</code> ,我们使用组件的一个初衷就是让构建站点或博客变得简单。我们将通过使用 <code>[gatsby-plugin-typography](https://www.gatsbyjs.com/plugins/gatsby-plugin-typography/)</code> 来了解如何使用插件</p>
 
 <blockquote>
-  <p>因为第一位是符号位，所以机器数的形式值就不等于真正的数值。例如上面的有符号数 10000011，其最高位1代表负，其真正数值是 -3 而不是形式值131?&gt;（10000011转换成十进制等于131）。所以，为区别起见，将带符号位的机器数对应的真正数值称为机器数的真值。
-例：0000 0001的真值 = +000 0001 = +1，1000 0001的真值 = –000 0001 = –1</p>
+  <p><code>[Typography.js](https://kyleamathews.github.io/typography.js/)</code> is a JavaScript library which generates global base styles for your site’s typography. The library has a corresponding Gatsby plugin to streamline using it in a Gatsby site.</p>
 </blockquote>
 
-<h1 id="原码-反码-补码的基础概念和计算方法">原码, 反码, 补码的基础概念和计算方法</h1>
+<p>首先我们安装这个插件以及相关依赖</p>
 
-<p>在探求为何机器要使用补码之前, 让我们先了解原码, 反码和补码的概念.对于一个数, 计算机要使用一定的编码方式进行存储. 原码, 反码, 补码是机器存储一个具体数字的编码方式.</p>
+<pre><code class="language-bash">npm install gatsby-plugin-typography react-typography typography typography-theme-fairy-gates
+</code></pre>
 
-<h2 id="原码">原码</h2>
+<p>修改 <code>gatsby-config.js</code> 如下 ，关于该文件的详细配置在<strong><code>[这里](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/)</code> 。</strong></p>
 
-<p>原码就是符号位加上真值的绝对值, 即用第一位表示符号, 其余位表示值. 比如如果是8位二进制:</p>
+<pre><code class="language-jsx">module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+</code></pre>
 
-<blockquote>
-  <p>[+1]原 = 0000 0001</p>
-</blockquote>
+<p>Typography.js 需要一个配置文件放到 <code>src/utils/typography.js</code></p>
 
-<blockquote>
-  <p>[-1]原 = 1000 0001</p>
-</blockquote>
+<pre><code class="language-jsx">import Typography from "typography"
+import fairyGateTheme from "typography-theme-fairy-gates"
 
-<p>第一位是符号位. 因为第一位是符号位, 所以8位二进制数的取值范围就是:</p>
+const typography = new Typography(fairyGateTheme)
 
-<blockquote>
-  <p>[1111 1111 , 0111 1111] 即 [-127 , 127]</p>
-</blockquote>
+export const { scale, rhythm, options } = typography
+export default typography
+</code></pre>
 
-<p>原码是人脑最容易理解和计算的表示方式.</p>
+<p>这样就可以愉快的使用选中的主题来作为网站的基本样式了。接下来自定义<code>Layout</code> 组件，<code>src/components/layout.js</code></p>
 
-<h2 id="反码">反码</h2>
+<pre><code class="language-jsx">// src/components/layout.js
+import React from "react"
 
-<p>反码的表示方法是:</p>
+export default function Layout({ children }) {
+  return (
+    &lt;div style=&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}
 
-<p>正数的反码是其本身</p>
+//改进版本
 
-<p>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</p>
+import React from "react"
+import { Link } from "gatsby"
+const ListLink = props =&gt; (
+  &lt;li style=&gt;
+    &lt;Link to={props.to}&gt;{props.children}&lt;/Link&gt;
+  &lt;/li&gt;
+)
 
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反</p>
-</blockquote>
+export default function Layout({ children }) {
+  return (
+    &lt;div style=&gt;
+      &lt;header style=&gt;
+        &lt;Link to="/" style=&gt;
+          &lt;h3 style=&gt;MySweetSite&lt;/h3&gt;
+        &lt;/Link&gt;
+        &lt;ul style=&gt;
+          &lt;ListLink to="/"&gt;Home&lt;/ListLink&gt;
+          &lt;ListLink to="/about/"&gt;About&lt;/ListLink&gt;
+          &lt;ListLink to="/contact/"&gt;Contact&lt;/ListLink&gt;
+        &lt;/ul&gt;
+      &lt;/header&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
 
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反</p>
-</blockquote>
+<pre><code class="language-jsx">// src/pages/index.js
+import React from "react"
+import Layout from "../components/layout"
 
-<p>可见如果一个反码表示的是负数, 人脑无法直观的看出来它的数值. 通常要将其转换成原码再计算.</p>
+export default function Home() {
+  return (
+    &lt;Layout&gt;
+      &lt;h1&gt;Hi! I'm building a fake Gatsby site as part of a tutorial!&lt;/h1&gt;
+      &lt;p&gt;
+        What do I like to do? Lots of course but definitely enjoy building
+        websites.
+      &lt;/p&gt;
+      &lt;img src="https://source.unsplash.com/random/400x200" alt="" /&gt;
+    &lt;/Layout&gt;
+  )
+}
+</code></pre>
 
-<h2 id="补码">补码</h2>
+<p>到了这里我们已经有了一个大概的博客模型，效果可以在这里看到 <a href="https://wretched-weight.surge.sh/">https://wretched-weight.surge.sh</a></p>
 
-<p>补码的表示方法是:</p>
+<p>不过在这个过程中碰到一个<code>css</code> 被  强制转成 <code>cssFloat</code> 的问题issue地址在这里 <a href="https://github.com/stylelint/stylelint/issues/4490">https://github.com/stylelint/stylelint/issues/4490</a></p>
 
-<p>正数的补码就是其本身</p>
+<h3 id="使用数据graphql">使用数据Graphql</h3>
 
-<p>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</p>
+<p>我们新建一个项目</p>
 
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
+<pre><code class="language-bash">gatsby new gatsby-lesson-two https://github.com/gatsbyjs/gatsby-starter-hello-world
+</code></pre>
 
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
+<p>然后安装插件以及新的主题</p>
 
-<p>对于负数, 补码表示方式也是人脑无法直观看出其数值的. 通常也需要转换成原码在计算其数值.</p>
+<pre><code class="language-bash">npm install gatsby-plugin-typography typography react-typography typography-theme-kirkham gatsby-plugin-emotion @emotion/react
+</code></pre>
 
-<h1 id="为何要使用原码-反码和补码">为何要使用原码, 反码和补码</h1>
+<p>大部分代码跟之前类似，直接上代码，我会在最后把代码地址贴上来</p>
 
-<p>在开始深入学习前, 我的学习建议是先”死记硬背”上面的原码, 反码和补码的表示方式以及计算方法.</p>
+<pre><code class="language-jsx">// src/components/layout.js
 
-<p>现在我们知道了计算机可以有三种编码方式表示一个数. 对于正数因为三种编码方式的结果都相同:</p>
+import React from "react"
+import { css } from "@emotion/react"
+import { Link } from "gatsby"
 
-<blockquote>
-  <p>[+1] = [00000001]原 = [00000001]反 = [00000001]补</p>
-</blockquote>
+import { rhythm } from "../utils/typography"
 
-<p>所以不需要过多解释. 但是对于负数:</p>
+export default function Layout({ children }) {
+  return (
+    &lt;div
+      css={css`
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    &gt;
+      &lt;Link to={`/`}&gt;
+        &lt;h3
+          css={css`
+            margin-bottom: ${rhythm(2)};
+            display: inline-block;
+            font-style: normal;
+          `}
+        &gt;
+          Pandas Eating Lots
+        &lt;/h3&gt;
+      &lt;/Link&gt;
+      &lt;Link
+        to={`/about/`}
+        css={css`
+          float: right;
+        `}
+      &gt;
+        About
+      &lt;/Link&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
 
-<blockquote>
-  <p>[-1] = [10000001]原 = [11111110]反 = [11111111]补</p>
-</blockquote>
+<pre><code class="language-jsx">// src/pages/index.js
+import React from "react"
+import Layout from "../components/layout"
 
-<p>可见原码, 反码和补码是完全不同的. 既然原码才是被人脑直接识别并用于计算表示方式, 为何还会有反码和补码呢?</p>
+export default function Home() {
+  return (
+    &lt;Layout&gt;
+      &lt;h1&gt;Amazing Pandas Eating Things&lt;/h1&gt;
+      &lt;div&gt;
+        &lt;img
+          src="https://2.bp.blogspot.com/-BMP2l6Hwvp4/TiAxeGx4CTI/AAAAAAAAD_M/XlC_mY3SoEw/s1600/panda-group-eating-bamboo.jpg"
+          alt="Group of pandas eating bamboo"
+        /&gt;
+      &lt;/div&gt;
+    &lt;/Layout&gt;
+  )
+}
+</code></pre>
 
-<p>首先, 因为人脑可以知道第一位是符号位, 在计算的时候我们会根据符号位, 选择对真值区域的加减. (真值的概念在本文最开头). 但是对于计算机, 加减乘数已经是最基础的运算, 要设计的尽量简单. 计算机辨别”符号位”显然会让计算机的基础电路设计变得十分复杂! 于是人们想出了将符号位也参与运算的方法. 我们知道, 根据运算法则减去一个正数等于加上一个负数, 即: 1-1 = 1 + (-1) = 0 , 所以机器可以只有加法而没有减法, 这样计算机运算的设计就更简单了.</p>
+<pre><code class="language-jsx">// about.js
 
-<p>于是人们开始探索 将符号位参与运算, 并且只保留加法的方法. 首先来看原码:</p>
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
-<p>计算十进制的表达式: 1-1=0</p>
+export default function About({ data }) {
+  return (
+    &lt;Layout&gt;
+      &lt;h1&gt;About {data.site.siteMetadata.title}&lt;/h1&gt;
+      &lt;p&gt;
+        We're the only site running on your computer dedicated to showing the
+        best photos and videos of pandas eating lots of food.
+      &lt;/p&gt;
+    &lt;/Layout&gt;
+  )
+}
 
-<blockquote>
-  <p>1 - 1 = 1 + (-1) = [00000001]原 + [10000001]原 = [10000010]原 = -2</p>
-</blockquote>
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+</code></pre>
 
-<p>如果用原码表示, 让符号位也参与计算, 显然对于减法来说, 结果是不正确的.这也就是为何计算机内部不使用原码表示一个数.</p>
+<pre><code class="language-jsx">// src/utils/typography.js
 
-<p>为了解决原码做减法的问题, 出现了反码:</p>
+import Typography from "typography"
+import kirkhamTheme from "typography-theme-kirkham"
 
-<p>计算十进制的表达式: 1-1=0</p>
+const typography = new Typography(kirkhamTheme)
 
-<blockquote>
-  <p>1 - 1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原= [0000 0001]反 + [1111 1110]反 = [1111 1111]反 = [1000 0000]原 = -0</p>
-</blockquote>
+export default typography
+export const rhythm = typography.rhythm
+</code></pre>
 
-<p>发现用反码计算减法, 结果的真值部分是正确的. 而唯一的问题其实就出现在”0”这个特殊的数值上. 虽然人们理解上+0和-0是一样的, 但是0带符号是没有任何意义的. 而且会有[0000 0000]原和[1000 0000]原两个编码表示0.</p>
+<pre><code class="language-jsx">// gatsby-config.js
 
-<p>于是补码的出现, 解决了0的符号以及两个编码的问题:</p>
+module.exports = {
+	siteMetadata: {
+    title: `Title from siteMetadata`,
+  },
+  plugins: [
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+</code></pre>
 
-<blockquote>
-  <p>1-1 = 1 + (-1) = [0000 0001]原 + [1000 0001]原 = [0000 0001]补 + [1111 1111]补 = [0000 0000]补=[0000 0000]原</p>
-</blockquote>
+<p>最终结果如下  <a href="https://clumsy-texture.surge.sh/">https://clumsy-texture.surge.sh/</a></p>
 
-<p>这样0用[0000 0000]表示, 而以前出现问题的-0则不存在了.而且可以用[1000 0000]表示-128:</p>
+<p><img src="https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png" alt="https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png" /></p>
 
-<blockquote>
-  <p>(-1) + (-127) = [1000 0001]原 + [1111 1111]原 = [1111 1111]补 + [1000 0001]补 = [1000 0000]补</p>
-</blockquote>
+<p>在 <code>about</code> 页面中我们通过 graphql 来查询到了 siteMetadata中的数据并进行了渲染，接下来我们将继续学习使用 <code>StaticQuery</code> ，它允许我们在非页面组件中（比如 <code>layout.js</code>）来查询数据,我们修改layout.js</p>
 
-<p>-1-127的结果应该是-128, 在用补码运算的结果中, [1000 0000]补 就是-128. 但是注意因为实际上是使用以前的-0的补码来表示-128, 所以-128并没有原码和反码表示.(对-128的补码表示[1000 0000]补算出来的原码是[0000 0000]原, 这是不正确的)</p>
+<pre><code class="language-jsx">// src/components/layout.js
 
-<p>使用补码, 不仅仅修复了0的符号以及存在两个编码的问题, 而且还能够多表示一个最低数. 这就是为什么8位二进制, 使用原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
+import React from "react"
+import { css } from "@emotion/react"
+import { useStaticQuery, Link, graphql } from "gatsby"
 
-<p>因为机器使用补码, 所以对于编程中常用到的32位int类型, 可以表示范围是: [-231, 231-1] 因为第一位表示的是符号位.而使用补码表示时又可以多保存一个最小值.</p>
+import { rhythm } from "../utils/typography"
+export default function Layout({ children }) {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  return (
+    &lt;div
+      css={css`
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    &gt;
+      &lt;Link to={`/`}&gt;
+        &lt;h3
+          css={css`
+            margin-bottom: ${rhythm(2)};
+            display: inline-block;
+            font-style: normal;
+          `}
+        &gt;
+          {data.site.siteMetadata.title}
+        &lt;/h3&gt;
+      &lt;/Link&gt;
+      &lt;Link
+        to={`/about/`}
+        css={css`
+          float: right;
+        `}
+      &gt;
+        About
+      &lt;/Link&gt;
+      {children}
+    &lt;/div&gt;
+  )
+}
+</code></pre>
 
-<h1 id="文章参考">文章参考</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2016/07/20/binary-in-js/">聊聊JavaScript中的二进制数</a></li>
-  <li><a href="https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html">原码, 反码, 补码 详解</a></li>
-</ul>
+<p>到目前为止已经可以通过graphql来获取数据无论是页面还是组件中都可以愉快的工作了。</p>
 
-<h1 id="延伸阅读">延伸阅读</h1>
-<ul>
-  <li><a href="http://yanhaijing.com/javascript/2014/03/14/what-every-javascript-developer-should-know-about-floating-points/">每一个JavaScript开发者应该了解的浮点知识</a></li>
-</ul>
+<h3 id="插件">插件</h3>
+
+<p>安装 <a href="https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/">gatsby-source-filesystem</a></p>
+
+<pre><code class="language-bash">npm install gatsby-source-filesystem
+</code></pre>
+
+<p>然后在<code>gatsby-config.js</code>中增加一段新的配置</p>
+
+<pre><code class="language-bash">module.exports = {
+  siteMetadata: {
+    title: `Pandas Eating Lots`,
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+</code></pre>
+
+<p>我们可以在调试请求的页面中 [http://localhost:8000/__<em>graphql](http://localhost:8000/</em>__graphql) 看到结果</p>
+
+<pre><code class="language-bash">query MyQuery {
+  allFile(sort: {fields: sourceInstanceName, order: ASC}) {
+    edges {
+      node {
+        id
+        base
+        accessTime
+      }
+    }
+  }
+}
+</code></pre>
+
+<pre><code class="language-json">{
+  "data": {
+    "allFile": {
+      "edges": [
+        {
+          "node": {
+            "id": "4adb1b72-3a75-57ee-87d7-a61196fe33a9",
+            "base": "typography.js",
+            "accessTime": "2021-01-21T09:40:46.525Z"
+          }
+        },
+        {
+          "node": {
+            "id": "2ac5932a-8346-5197-9dd4-cd96775203f8",
+            "base": "about.js",
+            "accessTime": "2021-01-21T09:40:46.525Z"
+          }
+        },
+        {
+          "node": {
+            "id": "e4f28a9d-ce43-59ea-9e93-607960b0f563",
+            "base": "index.js",
+            "accessTime": "2021-01-21T09:40:46.526Z"
+          }
+        },
+        {
+          "node": {
+            "id": "ecdff8d0-0225-5f40-966d-84b66a4c3a56",
+            "base": "layout.js",
+            "accessTime": "2021-01-21T09:40:46.527Z"
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {}
+}
+</code></pre>
+
+<p>接下来我们新建一个页面</p>
+
+<pre><code class="language-jsx">// /src/pages/my-files.js
+
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
+
+export default function MyFiles({ data }) {
+  console.log(data)
+  return (
+    &lt;Layout&gt;
+      &lt;div&gt;Hello world&lt;/div&gt;
+    &lt;/Layout&gt;
+  )
+}
+
+export const query = graphql`
+  query {
+    allFile {
+      edges {
+        node {
+          relativePath
+          prettySize
+          extension
+          birthTime(fromNow: true)
+        }
+      }
+    }
+  }
+`
+</code></pre>
+
+<p>通过访问 <a href="http://localhost:8000/my-files">http://localhost:8000/my-files</a> 即可看到我们请求到的数据详情</p>
+
+<h3 id="转换插件">转换插件</h3>
+
+<p>通常来说我们的博客数据都存储在一个Markdown文件中 <code>src/pages/sweet-pandas-eating-sweets.md</code></p>
+
+<pre><code class="language-markdown">---
+title: "Sweet Pandas Eating Sweets"
+date: "2017-08-10"
+---
+
+Pandas are really sweet.
+
+Here's a video of a panda eating sweets.
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/4n0xNbfJLR8" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+</code></pre>
+
+<p>我们如果我们想让该文件正常显示需要将其转换成我们需要的样子</p>
+
+<pre><code class="language-bash">npm install gatsby-transformer-remark
+</code></pre>
+
+<p>gatsby-config.js中增加一个新的配置</p>
+
+<pre><code class="language-bash">module.exports = {
+  siteMetadata: {
+    title: `Pandas Eating Lots`,
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+</code></pre>
+
+<p>这样我们查询接口的位置会显示两个新的选项 <code>allMarkdownRemark</code> 和 <code>markdownRemark</code> 通过查询我们可以看到结果如下</p>
+
+<pre><code class="language-graphql">query MyQuery {
+  allMarkdownRemark {
+    edges {
+      node {
+        id
+        frontmatter {
+          date
+          title
+        }
+        excerpt
+        html
+        timeToRead
+      }
+    }
+  }
+}
+</code></pre>
+
+<pre><code class="language-json">{
+  "data": {
+    "allMarkdownRemark": {
+      "edges": [
+        {
+          "node": {
+            "id": "7cbc5c7a-e49e-5c45-a47e-3dd49a55d64f",
+            "frontmatter": {
+              "date": "2017-08-10",
+              "title": "Sweet Pandas Eating Sweets"
+            },
+            "excerpt": "Pandas are really sweet. Here's a video of a panda eating sweets.",
+            "html": "&lt;p&gt;Pandas are really sweet.&lt;/p&gt;\n&lt;p&gt;Here's a video of a panda eating sweets.&lt;/p&gt;\n&lt;iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4n0xNbfJLR8\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;",
+            "timeToRead": 1
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {}
+}
+</code></pre>
+
+<p>现在我们利用动态数据来渲染首页 <code>src/pages/index.js</code></p>
+
+<pre><code class="language-json">import React from "react"
+import { graphql } from "gatsby"
+import { css } from "@emotion/react"
+import { rhythm } from "../utils/typography"
+import Layout from "../components/layout"
+
+export default function Home({ data }) {
+  console.log(data)
+  return (
+    &lt;Layout&gt;
+      &lt;div&gt;
+        &lt;h1
+          css={css`
+            display: inline-block;
+            border-bottom: 1px solid;
+          `}
+        &gt;
+          Amazing Pandas Eating Things
+        &lt;/h1&gt;
+        &lt;h4&gt;{data.allMarkdownRemark.totalCount} Posts&lt;/h4&gt;
+        {data.allMarkdownRemark.edges.map(({ node }) =&gt; (
+          &lt;div key={node.id}&gt;
+            &lt;h3
+              css={css`
+                margin-bottom: ${rhythm(1 / 4)};
+              `}
+            &gt;
+              {node.frontmatter.title}{" "}
+              &lt;span
+                css={css`
+                  color: #bbb;
+                `}
+              &gt;
+                — {node.frontmatter.date}
+              &lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;p&gt;{node.excerpt}&lt;/p&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/Layout&gt;
+  )
+}
+
+export const query = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`
+</code></pre>
+
+<p>现在的顺序是最新的在底下我们可以通过调整参数来改变文章排列顺序将<code>allMarkdownRemark</code> 改成<code>allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC })</code></p>
+
+<p>文章列表已经就绪，接下来显示文章详情，我们来自动创建页面以及其路径，通常如果使用了<code>CMS</code> 比如<code>notion</code>  , <code>Contentful</code> , <code>Netlify CMS</code> ,会自动提供页面路径或者 <code>slug</code> , 但如果我们使用markdown 文件来生成页面需要使用这两个 <code>API</code> ：<code>onCreateNode</code> 和 <code>createPages</code> ,我们需要在<code>gatsby-node.js</code>这个文件中使用</p>
+
+<pre><code class="language-jsx">
+const { createFilePath } = require(`gatsby-source-filesystem`)
+exports.onCreateNode = ({ node, getNode, actions }) =&gt; {
+	/**
+	if (node.internal.type === `MarkdownRemark`) {
+    const fileNode = getNode(node.parent)
+    console.log(`\n`, fileNode.relativePath)
+  }
+
+	if (node.internal.type === `MarkdownRemark`) {
+		console.log(createFilePath({ node, getNode, basePath: `pages` }))
+  }
+	*/
+
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+</code></pre>
+
+<p>现在有了一个新的字段</p>
+
+<pre><code class="language-graphql">{
+  allMarkdownRemark {
+    edges {
+      node {
+        fields {
+          slug
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
+<pre><code class="language-json">{
+  "data": {
+    "allMarkdownRemark": {
+      "edges": [
+        {
+          "node": {
+            "fields": {
+              "slug": "/pandas-and-bananas/"
+            }
+          }
+        },
+        {
+          "node": {
+            "fields": {
+              "slug": "/sweet-pandas-eating-sweets/"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {}
+}
+</code></pre>
+
+<p>这样我们就可以根据这个字段来找到对应的文章路径了。</p>
+
+<p>仅仅是这样并不够，因为页面还不存在我们需要将页面生成出来，<code>src/pages/xxx.js</code> 下的文件会自动生成页面，但是其他的需要我们调用 <code>createPages</code>来生成</p>
+
+<pre><code class="language-jsx">const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) =&gt; {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+
+// 这一段的是意思是先走接口将所有的数据拉过来
+// 将所有的markdown的文件生成对应的页面
+exports.createPages = async ({ graphql, actions }) =&gt; {
+  // **Note:** The graphql function call returns a Promise
+  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
+  const result = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  console.log(JSON.stringify(result, null, 4))
+}
+</code></pre>
+
+<p>要生成页面还需要一个额外的操作，我们需要建立一个模版文件 <code>src/templates/blog-post.js</code> 根据这个文件模版以及数据来生成对应的页面</p>
+
+<pre><code class="language-jsx">import React from "react"
+import Layout from "../components/layout"
+
+export default function BlogPost() {
+  return (
+    &lt;Layout&gt;
+      &lt;div&gt;Hello blog post&lt;/div&gt;
+    &lt;/Layout&gt;
+  )
+}
+</code></pre>
+
+<p>接下来继续更新 <code>gatsby-node.js</code></p>
+
+<pre><code class="language-jsx">const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) =&gt; {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+
+exports.createPages = async ({ graphql, actions }) =&gt; {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) =&gt; {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/blog-post.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+      },
+    })
+  })
+}
+</code></pre>
+
+<p>随便访问一个不存在的链接 <a href="http://localhost:8000/sdf">http://localhost:8000/sdf</a> 即可看到能够访问的文章列表，点进去即可看到模版文件的内容，接下来我们更新模版数据让他显示该显示的数据即可</p>
+
+<pre><code class="language-jsx">// src/templates/blog-post.js
+import React from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
+
+export default function BlogPost({ data }) {
+  const post = data.markdownRemark
+  return (
+    &lt;Layout&gt;
+      &lt;div&gt;
+        &lt;h1&gt;{post.frontmatter.title}&lt;/h1&gt;
+        &lt;div dangerouslySetInnerHTML= /&gt;
+      &lt;/div&gt;
+    &lt;/Layout&gt;
+  )
+}
+
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+      }
+    }
+  }
+`
+</code></pre>
+
+<p>最后一步更新首页中链接</p>
+
+<p><a href="https://special-shape.surge.sh/">https://special-shape.surge.sh/</a></p>
 
 
                 <hr>
@@ -377,13 +1207,9 @@
                 <ul class="pager">
     
     <li class="previous">
-        <a href="/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/2017/10/31/admin-theme/" data-toggle="tooltip" data-placement="top" title="常用的后台管理主题模板">&larr; Previous Post</a>
+        <a href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" data-toggle="tooltip" data-placement="top" title="VSCode使用指南">&larr; Previous Post</a>
     </li>
     
-    
-    <li class="next">
-        <a href="/js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2017/11/01/bin-operate/" data-toggle="tooltip" data-placement="top" title="javascript的位操作">Next Post &rarr;</a>
-    </li>
     
 </ul>
 
@@ -393,9 +1219,9 @@
 <!-- disqus 评论框 start -->
 <div class="comment">
     <div id="disqus_thread"
-         data-thread-key="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate"
-         data-title="原码, 反码, 补码 详解"
-         data-url="http://darknights.me/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/2017/10/31/bin-calculate/"></div>
+         data-thread-key="/gatsby/2021/01/22/gatsby"
+         data-title="Gatsby入门"
+         data-url="http://darknights.me/gatsby/2021/01/22/gatsby/"></div>
     <script>
 
         /**

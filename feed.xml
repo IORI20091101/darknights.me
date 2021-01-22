@@ -1,4 +1,976 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2020-10-16T15:03:18+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;高频操作&quot;&gt;高频操作&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-22T12:14:12+08:00</updated><id>/</id><subtitle>Dark knight's的个人技术博客,专注于web开发,追求前端最完美体验</subtitle><entry><title type="html">Gatsby入门</title><link href="/gatsby/2021/01/22/gatsby/" rel="alternate" type="text/html" title="Gatsby入门" /><published>2021-01-22T00:00:00+08:00</published><updated>2021-01-22T00:00:00+08:00</updated><id>/gatsby/2021/01/22/gatsby</id><content type="html" xml:base="/gatsby/2021/01/22/gatsby/">&lt;h1 id=&quot;gatsby&quot;&gt;Gatsby&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/&quot;&gt;Gatsby&lt;/a&gt;是React的开源框架用于创建网站和应用程序。 无论用来构建个人博客或者公司主页都是一个不错的选择，本文做一个简单的功能介绍和入门。&lt;/p&gt;
+
+&lt;h2 id=&quot;环境准备&quot;&gt;环境准备&lt;/h2&gt;
+
+&lt;p&gt;首先，以Mac为例 首先安装 &lt;a href=&quot;https://brew.sh/&quot;&gt;&lt;code&gt;brew&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;# 安装Homebrew
+/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+
+brew -v
+
+# 安装命令行工具
+xcode-select --install
+
+# 安装Nodejs
+brew install node
+
+# 安装git
+brew install git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装&lt;strong&gt;&lt;code&gt;gatsby-cli&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install -g gatsby-cli
+
+# 安装成功可以看到可用命令
+gatsby --help
+
+# 我们可以快速生成一个站点
+
+gatsby new [SITE_DIRECTORY_NAME] [URL_OF_STARTER_GITHUB_REPO]
+
+gatsby new hello-world https://github.com/gatsbyjs/gatsby-starter-hello-world
+
+cd hello-world
+
+gatsby develop
+
+# 访问 http://localhost:8000/ 就可以看到
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;目录如下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png&quot; alt=&quot;%E5%B0%86%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%2033f5f91bda404798bda15f55e9f1bf96/directory.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;src/pages/index.js&lt;/code&gt; 即是首页地址，按照约定 &lt;code&gt;src/pages&lt;/code&gt; 下面所有的文件都是一个页面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+
+export default function Home() {
+  return (
+    &amp;lt;div style=&amp;gt;
+      &amp;lt;h1&amp;gt;Hello Gatsby!&amp;lt;/h1&amp;gt;
+      &amp;lt;p&amp;gt;What a world.&amp;lt;/p&amp;gt;
+      &amp;lt;img src=&quot;https://source.unsplash.com/random/400x200&quot; alt=&quot;&quot; /&amp;gt;
+    &amp;lt;/div&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们新加一个页面 &lt;code&gt;src/pages/about.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+
+export default function About() {
+  return (
+    &amp;lt;div style=&amp;gt;
+      &amp;lt;h1&amp;gt;About Gatsby&amp;lt;/h1&amp;gt;
+      &amp;lt;p&amp;gt;Such wow. Very React.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样我们就有了两个页面分别是通过访问 &lt;a href=&quot;http://localhost:8000&quot;&gt;http://localhost:8000&lt;/a&gt; 和 &lt;a href=&quot;https://localhost:8000/about&quot;&gt;https://localhost:8000/about&lt;/a&gt; 访问。 到这里就可以愉快的添加页面了。&lt;/p&gt;
+
+&lt;h3 id=&quot;使用组件&quot;&gt;使用组件&lt;/h3&gt;
+
+&lt;p&gt;在上面的页面中假设我们页面有公共的&lt;code&gt;header&lt;/code&gt; 或 &lt;code&gt;footer&lt;/code&gt;，我们不需要在每个页面中定义，这时候就需要用到组件，同样的Gatsby约定 &lt;code&gt;src/components&lt;/code&gt; 文件夹下的都是放的组件，我们新建一个&lt;code&gt;src/components/header.js&lt;/code&gt;的组件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+export default function Header(props) {
+  return &amp;lt;h1&amp;gt;{props.headerText}&amp;lt;/h1&amp;gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在about页面中使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+import Header from &quot;../components/header&quot;
+export default function About() {
+  return (
+    &amp;lt;div style=&amp;gt;
+      &amp;lt;Header headerText=&quot;About Gatsby&quot; /&amp;gt;
+      &amp;lt;p&amp;gt;Such wow. Very React.&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到了这里页面已经大概出来了，我也通过 &lt;code&gt;[surge.sh](https://surge.sh/)&lt;/code&gt; 部署了一下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install --global surge
+
+# Then create a (free) account with them
+surge login
+# 提示输入邮箱密码
+
+gatsby build
+
+ls public
+
+surge public/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过访问&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://arrogant-station.surge.sh/&quot;&gt;https://arrogant-station.surge.sh/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://arrogant-station.surge.sh/about/&quot;&gt;https://arrogant-station.surge.sh/about/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;就可以看到刚刚的效果&lt;/p&gt;
+
+&lt;h3 id=&quot;自定义样式表&quot;&gt;自定义样式表&lt;/h3&gt;
+
+&lt;p&gt;当我们想自定义样式时，我们可以在src下的styles下建立global.css，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;├── package.json
+├── src
+│   └── pages
+│       └── index.js
+│   └── styles
+│       └── global.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;/ * src/styles/global.css */
+html {
+  background-color: lavenderblush;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果想让该文件生效，需要在项目根目录下新建一个 &lt;code&gt;gatsby-browser.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import &quot;./src/styles/global.css&quot;
+
+// or:
+// require('./src/styles/global.css')
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;创建组件级作用域的样式&quot;&gt;创建组件级作用域的样式&lt;/h3&gt;
+
+&lt;p&gt;我们创建一个 &lt;code&gt;Container&lt;/code&gt; 组件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;├── package.json
+├── src
+│   └── components
+│       └── container.js
+│       └── container.module.css
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们以  &lt;code&gt;.module.css&lt;/code&gt; 作为后缀即可创建一个组件级别作用域样式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+import containerStyles from &quot;./container.module.css&quot;
+
+export default function Container({ children }) {
+  return &amp;lt;div className={containerStyles.container}&amp;gt;{children}&amp;lt;/div&amp;gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;.container {
+  margin: 3rem auto;
+  max-width: 600px;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新建一个页面用来使用这个组件 &lt;code&gt;src/pages/about-css-modules.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+
+import Container from &quot;../components/container&quot;
+
+export default function About() {
+  return (
+    &amp;lt;Container&amp;gt;
+      &amp;lt;h1&amp;gt;About Css Modules&amp;lt;/h1&amp;gt;
+      &amp;lt;p&amp;gt;CSS Module are cool&amp;lt;/p&amp;gt;
+    &amp;lt;/Container&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;使用插件和布局组件&quot;&gt;使用插件和布局组件&lt;/h3&gt;
+
+&lt;p&gt;Gatsby 有着丰富的组件库 &lt;code&gt;[Plugin Library](https://www.gatsbyjs.com/plugins)&lt;/code&gt; ,我们使用组件的一个初衷就是让构建站点或博客变得简单。我们将通过使用 &lt;code&gt;[gatsby-plugin-typography](https://www.gatsbyjs.com/plugins/gatsby-plugin-typography/)&lt;/code&gt; 来了解如何使用插件&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code&gt;[Typography.js](https://kyleamathews.github.io/typography.js/)&lt;/code&gt; is a JavaScript library which generates global base styles for your site’s typography. The library has a corresponding Gatsby plugin to streamline using it in a Gatsby site.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;首先我们安装这个插件以及相关依赖&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install gatsby-plugin-typography react-typography typography typography-theme-fairy-gates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;修改 &lt;code&gt;gatsby-config.js&lt;/code&gt; 如下 ，关于该文件的详细配置在&lt;strong&gt;&lt;code&gt;[这里](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/)&lt;/code&gt; 。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Typography.js 需要一个配置文件放到 &lt;code&gt;src/utils/typography.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import Typography from &quot;typography&quot;
+import fairyGateTheme from &quot;typography-theme-fairy-gates&quot;
+
+const typography = new Typography(fairyGateTheme)
+
+export const { scale, rhythm, options } = typography
+export default typography
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样就可以愉快的使用选中的主题来作为网站的基本样式了。接下来自定义&lt;code&gt;Layout&lt;/code&gt; 组件，&lt;code&gt;src/components/layout.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/components/layout.js
+import React from &quot;react&quot;
+
+export default function Layout({ children }) {
+  return (
+    &amp;lt;div style=&amp;gt;
+      {children}
+    &amp;lt;/div&amp;gt;
+  )
+}
+
+//改进版本
+
+import React from &quot;react&quot;
+import { Link } from &quot;gatsby&quot;
+const ListLink = props =&amp;gt; (
+  &amp;lt;li style=&amp;gt;
+    &amp;lt;Link to={props.to}&amp;gt;{props.children}&amp;lt;/Link&amp;gt;
+  &amp;lt;/li&amp;gt;
+)
+
+export default function Layout({ children }) {
+  return (
+    &amp;lt;div style=&amp;gt;
+      &amp;lt;header style=&amp;gt;
+        &amp;lt;Link to=&quot;/&quot; style=&amp;gt;
+          &amp;lt;h3 style=&amp;gt;MySweetSite&amp;lt;/h3&amp;gt;
+        &amp;lt;/Link&amp;gt;
+        &amp;lt;ul style=&amp;gt;
+          &amp;lt;ListLink to=&quot;/&quot;&amp;gt;Home&amp;lt;/ListLink&amp;gt;
+          &amp;lt;ListLink to=&quot;/about/&quot;&amp;gt;About&amp;lt;/ListLink&amp;gt;
+          &amp;lt;ListLink to=&quot;/contact/&quot;&amp;gt;Contact&amp;lt;/ListLink&amp;gt;
+        &amp;lt;/ul&amp;gt;
+      &amp;lt;/header&amp;gt;
+      {children}
+    &amp;lt;/div&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/pages/index.js
+import React from &quot;react&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function Home() {
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;h1&amp;gt;Hi! I'm building a fake Gatsby site as part of a tutorial!&amp;lt;/h1&amp;gt;
+      &amp;lt;p&amp;gt;
+        What do I like to do? Lots of course but definitely enjoy building
+        websites.
+      &amp;lt;/p&amp;gt;
+      &amp;lt;img src=&quot;https://source.unsplash.com/random/400x200&quot; alt=&quot;&quot; /&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到了这里我们已经有了一个大概的博客模型，效果可以在这里看到 &lt;a href=&quot;https://wretched-weight.surge.sh/&quot;&gt;https://wretched-weight.surge.sh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;不过在这个过程中碰到一个&lt;code&gt;css&lt;/code&gt; 被  强制转成 &lt;code&gt;cssFloat&lt;/code&gt; 的问题issue地址在这里 &lt;a href=&quot;https://github.com/stylelint/stylelint/issues/4490&quot;&gt;https://github.com/stylelint/stylelint/issues/4490&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;使用数据graphql&quot;&gt;使用数据Graphql&lt;/h3&gt;
+
+&lt;p&gt;我们新建一个项目&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;gatsby new gatsby-lesson-two https://github.com/gatsbyjs/gatsby-starter-hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后安装插件以及新的主题&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install gatsby-plugin-typography typography react-typography typography-theme-kirkham gatsby-plugin-emotion @emotion/react
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;大部分代码跟之前类似，直接上代码，我会在最后把代码地址贴上来&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/components/layout.js
+
+import React from &quot;react&quot;
+import { css } from &quot;@emotion/react&quot;
+import { Link } from &quot;gatsby&quot;
+
+import { rhythm } from &quot;../utils/typography&quot;
+
+export default function Layout({ children }) {
+  return (
+    &amp;lt;div
+      css={css`
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    &amp;gt;
+      &amp;lt;Link to={`/`}&amp;gt;
+        &amp;lt;h3
+          css={css`
+            margin-bottom: ${rhythm(2)};
+            display: inline-block;
+            font-style: normal;
+          `}
+        &amp;gt;
+          Pandas Eating Lots
+        &amp;lt;/h3&amp;gt;
+      &amp;lt;/Link&amp;gt;
+      &amp;lt;Link
+        to={`/about/`}
+        css={css`
+          float: right;
+        `}
+      &amp;gt;
+        About
+      &amp;lt;/Link&amp;gt;
+      {children}
+    &amp;lt;/div&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/pages/index.js
+import React from &quot;react&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function Home() {
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;h1&amp;gt;Amazing Pandas Eating Things&amp;lt;/h1&amp;gt;
+      &amp;lt;div&amp;gt;
+        &amp;lt;img
+          src=&quot;https://2.bp.blogspot.com/-BMP2l6Hwvp4/TiAxeGx4CTI/AAAAAAAAD_M/XlC_mY3SoEw/s1600/panda-group-eating-bamboo.jpg&quot;
+          alt=&quot;Group of pandas eating bamboo&quot;
+        /&amp;gt;
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// about.js
+
+import React from &quot;react&quot;
+import { graphql } from &quot;gatsby&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function About({ data }) {
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;h1&amp;gt;About {data.site.siteMetadata.title}&amp;lt;/h1&amp;gt;
+      &amp;lt;p&amp;gt;
+        We're the only site running on your computer dedicated to showing the
+        best photos and videos of pandas eating lots of food.
+      &amp;lt;/p&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/utils/typography.js
+
+import Typography from &quot;typography&quot;
+import kirkhamTheme from &quot;typography-theme-kirkham&quot;
+
+const typography = new Typography(kirkhamTheme)
+
+export default typography
+export const rhythm = typography.rhythm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// gatsby-config.js
+
+module.exports = {
+	siteMetadata: {
+    title: `Title from siteMetadata`,
+  },
+  plugins: [
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最终结果如下  &lt;a href=&quot;https://clumsy-texture.surge.sh/&quot;&gt;https://clumsy-texture.surge.sh/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png&quot; alt=&quot;https://www.gatsbyjs.com/static/9a136a7536d2f4b315d446f6a1a83725/321ea/start.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在 &lt;code&gt;about&lt;/code&gt; 页面中我们通过 graphql 来查询到了 siteMetadata中的数据并进行了渲染，接下来我们将继续学习使用 &lt;code&gt;StaticQuery&lt;/code&gt; ，它允许我们在非页面组件中（比如 &lt;code&gt;layout.js&lt;/code&gt;）来查询数据,我们修改layout.js&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/components/layout.js
+
+import React from &quot;react&quot;
+import { css } from &quot;@emotion/react&quot;
+import { useStaticQuery, Link, graphql } from &quot;gatsby&quot;
+
+import { rhythm } from &quot;../utils/typography&quot;
+export default function Layout({ children }) {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  return (
+    &amp;lt;div
+      css={css`
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    &amp;gt;
+      &amp;lt;Link to={`/`}&amp;gt;
+        &amp;lt;h3
+          css={css`
+            margin-bottom: ${rhythm(2)};
+            display: inline-block;
+            font-style: normal;
+          `}
+        &amp;gt;
+          {data.site.siteMetadata.title}
+        &amp;lt;/h3&amp;gt;
+      &amp;lt;/Link&amp;gt;
+      &amp;lt;Link
+        to={`/about/`}
+        css={css`
+          float: right;
+        `}
+      &amp;gt;
+        About
+      &amp;lt;/Link&amp;gt;
+      {children}
+    &amp;lt;/div&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到目前为止已经可以通过graphql来获取数据无论是页面还是组件中都可以愉快的工作了。&lt;/p&gt;
+
+&lt;h3 id=&quot;插件&quot;&gt;插件&lt;/h3&gt;
+
+&lt;p&gt;安装 &lt;a href=&quot;https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/&quot;&gt;gatsby-source-filesystem&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install gatsby-source-filesystem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在&lt;code&gt;gatsby-config.js&lt;/code&gt;中增加一段新的配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;module.exports = {
+  siteMetadata: {
+    title: `Pandas Eating Lots`,
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们可以在调试请求的页面中 [http://localhost:8000/__&lt;em&gt;graphql](http://localhost:8000/&lt;/em&gt;__graphql) 看到结果&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;query MyQuery {
+  allFile(sort: {fields: sourceInstanceName, order: ASC}) {
+    edges {
+      node {
+        id
+        base
+        accessTime
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;data&quot;: {
+    &quot;allFile&quot;: {
+      &quot;edges&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;4adb1b72-3a75-57ee-87d7-a61196fe33a9&quot;,
+            &quot;base&quot;: &quot;typography.js&quot;,
+            &quot;accessTime&quot;: &quot;2021-01-21T09:40:46.525Z&quot;
+          }
+        },
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;2ac5932a-8346-5197-9dd4-cd96775203f8&quot;,
+            &quot;base&quot;: &quot;about.js&quot;,
+            &quot;accessTime&quot;: &quot;2021-01-21T09:40:46.525Z&quot;
+          }
+        },
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;e4f28a9d-ce43-59ea-9e93-607960b0f563&quot;,
+            &quot;base&quot;: &quot;index.js&quot;,
+            &quot;accessTime&quot;: &quot;2021-01-21T09:40:46.526Z&quot;
+          }
+        },
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;ecdff8d0-0225-5f40-966d-84b66a4c3a56&quot;,
+            &quot;base&quot;: &quot;layout.js&quot;,
+            &quot;accessTime&quot;: &quot;2021-01-21T09:40:46.527Z&quot;
+          }
+        }
+      ]
+    }
+  },
+  &quot;extensions&quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来我们新建一个页面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// /src/pages/my-files.js
+
+import React from &quot;react&quot;
+import { graphql } from &quot;gatsby&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function MyFiles({ data }) {
+  console.log(data)
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;div&amp;gt;Hello world&amp;lt;/div&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+
+export const query = graphql`
+  query {
+    allFile {
+      edges {
+        node {
+          relativePath
+          prettySize
+          extension
+          birthTime(fromNow: true)
+        }
+      }
+    }
+  }
+`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过访问 &lt;a href=&quot;http://localhost:8000/my-files&quot;&gt;http://localhost:8000/my-files&lt;/a&gt; 即可看到我们请求到的数据详情&lt;/p&gt;
+
+&lt;h3 id=&quot;转换插件&quot;&gt;转换插件&lt;/h3&gt;
+
+&lt;p&gt;通常来说我们的博客数据都存储在一个Markdown文件中 &lt;code&gt;src/pages/sweet-pandas-eating-sweets.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;---
+title: &quot;Sweet Pandas Eating Sweets&quot;
+date: &quot;2017-08-10&quot;
+---
+
+Pandas are really sweet.
+
+Here's a video of a panda eating sweets.
+
+&amp;lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/4n0xNbfJLR8&quot; frameborder=&quot;0&quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们如果我们想让该文件正常显示需要将其转换成我们需要的样子&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;npm install gatsby-transformer-remark
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;gatsby-config.js中增加一个新的配置&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;module.exports = {
+  siteMetadata: {
+    title: `Pandas Eating Lots`,
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样我们查询接口的位置会显示两个新的选项 &lt;code&gt;allMarkdownRemark&lt;/code&gt; 和 &lt;code&gt;markdownRemark&lt;/code&gt; 通过查询我们可以看到结果如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-graphql&quot;&gt;query MyQuery {
+  allMarkdownRemark {
+    edges {
+      node {
+        id
+        frontmatter {
+          date
+          title
+        }
+        excerpt
+        html
+        timeToRead
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;data&quot;: {
+    &quot;allMarkdownRemark&quot;: {
+      &quot;edges&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;id&quot;: &quot;7cbc5c7a-e49e-5c45-a47e-3dd49a55d64f&quot;,
+            &quot;frontmatter&quot;: {
+              &quot;date&quot;: &quot;2017-08-10&quot;,
+              &quot;title&quot;: &quot;Sweet Pandas Eating Sweets&quot;
+            },
+            &quot;excerpt&quot;: &quot;Pandas are really sweet. Here's a video of a panda eating sweets.&quot;,
+            &quot;html&quot;: &quot;&amp;lt;p&amp;gt;Pandas are really sweet.&amp;lt;/p&amp;gt;\n&amp;lt;p&amp;gt;Here's a video of a panda eating sweets.&amp;lt;/p&amp;gt;\n&amp;lt;iframe width=\&quot;560\&quot; height=\&quot;315\&quot; src=\&quot;https://www.youtube.com/embed/4n0xNbfJLR8\&quot; frameborder=\&quot;0\&quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;&quot;,
+            &quot;timeToRead&quot;: 1
+          }
+        }
+      ]
+    }
+  },
+  &quot;extensions&quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在我们利用动态数据来渲染首页 &lt;code&gt;src/pages/index.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;import React from &quot;react&quot;
+import { graphql } from &quot;gatsby&quot;
+import { css } from &quot;@emotion/react&quot;
+import { rhythm } from &quot;../utils/typography&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function Home({ data }) {
+  console.log(data)
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;div&amp;gt;
+        &amp;lt;h1
+          css={css`
+            display: inline-block;
+            border-bottom: 1px solid;
+          `}
+        &amp;gt;
+          Amazing Pandas Eating Things
+        &amp;lt;/h1&amp;gt;
+        &amp;lt;h4&amp;gt;{data.allMarkdownRemark.totalCount} Posts&amp;lt;/h4&amp;gt;
+        {data.allMarkdownRemark.edges.map(({ node }) =&amp;gt; (
+          &amp;lt;div key={node.id}&amp;gt;
+            &amp;lt;h3
+              css={css`
+                margin-bottom: ${rhythm(1 / 4)};
+              `}
+            &amp;gt;
+              {node.frontmatter.title}{&quot; &quot;}
+              &amp;lt;span
+                css={css`
+                  color: #bbb;
+                `}
+              &amp;gt;
+                — {node.frontmatter.date}
+              &amp;lt;/span&amp;gt;
+            &amp;lt;/h3&amp;gt;
+            &amp;lt;p&amp;gt;{node.excerpt}&amp;lt;/p&amp;gt;
+          &amp;lt;/div&amp;gt;
+        ))}
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+
+export const query = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: &quot;DD MMMM, YYYY&quot;)
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在的顺序是最新的在底下我们可以通过调整参数来改变文章排列顺序将&lt;code&gt;allMarkdownRemark&lt;/code&gt; 改成&lt;code&gt;allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC })&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;文章列表已经就绪，接下来显示文章详情，我们来自动创建页面以及其路径，通常如果使用了&lt;code&gt;CMS&lt;/code&gt; 比如&lt;code&gt;notion&lt;/code&gt;  , &lt;code&gt;Contentful&lt;/code&gt; , &lt;code&gt;Netlify CMS&lt;/code&gt; ,会自动提供页面路径或者 &lt;code&gt;slug&lt;/code&gt; , 但如果我们使用markdown 文件来生成页面需要使用这两个 &lt;code&gt;API&lt;/code&gt; ：&lt;code&gt;onCreateNode&lt;/code&gt; 和 &lt;code&gt;createPages&lt;/code&gt; ,我们需要在&lt;code&gt;gatsby-node.js&lt;/code&gt;这个文件中使用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;
+const { createFilePath } = require(`gatsby-source-filesystem`)
+exports.onCreateNode = ({ node, getNode, actions }) =&amp;gt; {
+	/**
+	if (node.internal.type === `MarkdownRemark`) {
+    const fileNode = getNode(node.parent)
+    console.log(`\n`, fileNode.relativePath)
+  }
+
+	if (node.internal.type === `MarkdownRemark`) {
+		console.log(createFilePath({ node, getNode, basePath: `pages` }))
+  }
+	*/
+
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在有了一个新的字段&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-graphql&quot;&gt;{
+  allMarkdownRemark {
+    edges {
+      node {
+        fields {
+          slug
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &quot;data&quot;: {
+    &quot;allMarkdownRemark&quot;: {
+      &quot;edges&quot;: [
+        {
+          &quot;node&quot;: {
+            &quot;fields&quot;: {
+              &quot;slug&quot;: &quot;/pandas-and-bananas/&quot;
+            }
+          }
+        },
+        {
+          &quot;node&quot;: {
+            &quot;fields&quot;: {
+              &quot;slug&quot;: &quot;/sweet-pandas-eating-sweets/&quot;
+            }
+          }
+        }
+      ]
+    }
+  },
+  &quot;extensions&quot;: {}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样我们就可以根据这个字段来找到对应的文章路径了。&lt;/p&gt;
+
+&lt;p&gt;仅仅是这样并不够，因为页面还不存在我们需要将页面生成出来，&lt;code&gt;src/pages/xxx.js&lt;/code&gt; 下的文件会自动生成页面，但是其他的需要我们调用 &lt;code&gt;createPages&lt;/code&gt;来生成&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) =&amp;gt; {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+
+// 这一段的是意思是先走接口将所有的数据拉过来
+// 将所有的markdown的文件生成对应的页面
+exports.createPages = async ({ graphql, actions }) =&amp;gt; {
+  // **Note:** The graphql function call returns a Promise
+  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
+  const result = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  console.log(JSON.stringify(result, null, 4))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;要生成页面还需要一个额外的操作，我们需要建立一个模版文件 &lt;code&gt;src/templates/blog-post.js&lt;/code&gt; 根据这个文件模版以及数据来生成对应的页面&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;import React from &quot;react&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function BlogPost() {
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;div&amp;gt;Hello blog post&amp;lt;/div&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来继续更新 &lt;code&gt;gatsby-node.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) =&amp;gt; {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
+
+exports.createPages = async ({ graphql, actions }) =&amp;gt; {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) =&amp;gt; {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/blog-post.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+      },
+    })
+  })
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;随便访问一个不存在的链接 &lt;a href=&quot;http://localhost:8000/sdf&quot;&gt;http://localhost:8000/sdf&lt;/a&gt; 即可看到能够访问的文章列表，点进去即可看到模版文件的内容，接下来我们更新模版数据让他显示该显示的数据即可&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;// src/templates/blog-post.js
+import React from &quot;react&quot;
+import { graphql } from &quot;gatsby&quot;
+import Layout from &quot;../components/layout&quot;
+
+export default function BlogPost({ data }) {
+  const post = data.markdownRemark
+  return (
+    &amp;lt;Layout&amp;gt;
+      &amp;lt;div&amp;gt;
+        &amp;lt;h1&amp;gt;{post.frontmatter.title}&amp;lt;/h1&amp;gt;
+        &amp;lt;div dangerouslySetInnerHTML= /&amp;gt;
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/Layout&amp;gt;
+  )
+}
+
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
+      frontmatter {
+        title
+      }
+    }
+  }
+`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后一步更新首页中链接&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://special-shape.surge.sh/&quot;&gt;https://special-shape.surge.sh/&lt;/a&gt;&lt;/p&gt;</content><author><name>toshiba</name></author><category term="blog" /><category term="Gatsby" /><summary type="html">Gatsby</summary></entry><entry><title type="html">VSCode使用指南</title><link href="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/" rel="alternate" type="text/html" title="VSCode使用指南" /><published>2020-10-12T00:00:00+08:00</published><updated>2020-10-12T00:00:00+08:00</updated><id>/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick</id><content type="html" xml:base="/%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7/2020/10/12/vscode-quick/">&lt;h3 id=&quot;高频操作&quot;&gt;高频操作&lt;/h3&gt;
 
 &lt;h4 id=&quot;自定义快捷键&quot;&gt;自定义快捷键&lt;/h4&gt;
 
@@ -1196,182 +2168,4 @@ unescape(&quot;\u6625\u8282&quot;)
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/u014785687/article/details/74078512&quot;&gt;不同浏览器中URL的编码方式&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="JavaScript" /><summary type="html">起因 前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是tq+3wB8PdfY=, 传到后台的错误结果是tq%203wB8PdfY%3D,但是真实需要传给后台的却是tq%2B3wB8PdfY%3D. 因此在这里将该问题总结一下.转载自关于URL编码</summary></entry><entry><title type="html">在浏览器输入 URL 回车之后发生了什么</title><link href="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/" rel="alternate" type="text/html" title="在浏览器输入 URL 回车之后发生了什么" /><published>2019-09-16T00:00:00+08:00</published><updated>2019-09-16T00:00:00+08:00</updated><id>/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all</id><content type="html" xml:base="/%E9%9D%A2%E8%AF%95/2019/09/16/browser-input-all/">&lt;p&gt;不久前看了一篇文章&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;, 感觉讲的实在很好所以在此我也想总结一下,当自己被问到这个问题的时候会如何回答呢?&lt;/p&gt;
-
-&lt;p&gt;在浏览器输入 URL 回车之后发生了什么？
-大致流程如下&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1.URL解析&lt;/li&gt;
-  &lt;li&gt;2.DNS查询；&lt;/li&gt;
-  &lt;li&gt;3.建立TCP连接；&lt;/li&gt;
-  &lt;li&gt;4.发送HTTP请求；&lt;/li&gt;
-  &lt;li&gt;5.服务器处理请求；&lt;/li&gt;
-  &lt;li&gt;6.返回响应结果；&lt;/li&gt;
-  &lt;li&gt;7.关闭TCP连接；&lt;/li&gt;
-  &lt;li&gt;8.浏览器解析HTML；&lt;/li&gt;
-  &lt;li&gt;9.浏览器布局渲染；&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;当我们在浏览器输入网址回车后,一切从这里开始&lt;/p&gt;
-&lt;h3 id=&quot;url解析&quot;&gt;URL解析&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;HSTS(HTTP Strict Transport Security), 强制客户端使用 HTTPS 访问页面&lt;/code&gt;,&lt;a href=&quot;https://www.barretlee.com/blog/2015/10/22/hsts-intro/&quot;&gt;你不知道的HSTS&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;首先判断你输入的是一个合法的URL还是一个带搜索的关键词&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;如果输入的是内容则将输入内容自动编码。&lt;/li&gt;
-  &lt;li&gt;输入的是网址向服务器请求我们想要的页面内容则开始进行DNS域名查询&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;浏览器需要首先确认的是域名所对应的服务器在哪里,将域名解析成对应的服务器IP地址这项工作,是由DNS服务器来完成的.
-客户端收到你输入的域名地址后,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1.首先会从浏览器缓存中查找是否有对应域名&lt;/li&gt;
-  &lt;li&gt;2.操作系统缓存&lt;/li&gt;
-  &lt;li&gt;3.路由器DNS缓存&lt;/li&gt;
-  &lt;li&gt;4.查找本地的hosts文件&lt;/li&gt;
-  &lt;li&gt;5.ISP的DNS服务器&lt;/li&gt;
-  &lt;li&gt;6.根域名服务器 &lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%A0%B9%E7%B6%B2%E5%9F%9F%E5%90%8D%E7%A8%B1%E4%BC%BA%E6%9C%8D%E5%99%A8&quot;&gt;维基百科&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code&gt;ISP&lt;/code&gt;是&lt;code&gt;Internet Service Provider(因特网服务提供商)&lt;/code&gt;的简称,ISP有专门的DNS服务器应对DNS查询请求.每一个ISP（网络服务提供商），或一个大学，甚至是一个大学里的系都会有一个自己的本地域名服务器，他会在url第一次访问时缓存该域名的指向。下次再访问时，他会从缓存里把这个url曾经指向的IP调出来。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ISP的DNS服务器还找不到的话，它就会向根服务器发出请求，进行递归查询（DNS服务器先问根域名服务器.com域名服务器的IP地址，然后再问.com域名服务器，依次类推）。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;根域名服务器查询&quot;&gt;根域名服务器查询&lt;/h4&gt;
-&lt;p&gt;在前面所有步骤没有缓存的情况下，本地 DNS 服务器会将请求转发到互联网上的根域，下面这个图很好的诠释了整个流程：
-&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/search.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;需要注意的点&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;递归方式：一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）&lt;/li&gt;
-  &lt;li&gt;迭代方式，就是本地DNS服务器到根域名服务器查询的方式。&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran&quot;&gt;什么是 DNS 劫持&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/50043595&quot;&gt;前端 dns-prefetch 优化&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;递归查询：
-    主机向本地域名服务器的查询一般都是采用递归查询。
-    如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是返回一个失败的响应，表示无法查询到所需的IP地址&lt;/p&gt;
-
-&lt;p&gt;迭代查询：
-    本地域名服务器向根域名服务器的查询通常是采用迭代查询。
-    当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么返回给本地域名服务器所要查询的IP地址，要么返回给本地域名服务器下一步应当查询的域名服务器的IP地址。&lt;/p&gt;
-
-&lt;h3 id=&quot;tcp连接&quot;&gt;TCP连接&lt;/h3&gt;
-&lt;p&gt;TCP/IP 分四层,在发送数据时,每层都要对数据进行封装&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/tcp.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;应用层发送http请求&quot;&gt;应用层:发送HTTP请求&lt;/h4&gt;
-
-&lt;p&gt;在前面的步骤我们已经得到服务器的 IP 地址，浏览器会开始构造一个 HTTP 报文，其中包括：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;请求报头（Request Header）：请求方法、目标地址、遵循的协议等等&lt;/li&gt;
-  &lt;li&gt;请求主体（其他参数）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;其中需要注意的点：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;浏览器只能发送 GET、POST 方法，而打开网页使用的是 GET 方法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;传输层-tcp传输报文&quot;&gt;传输层: TCP传输报文&lt;/h4&gt;
-&lt;p&gt;传输层会发起一条到达服务器的 TCP 连接，为了方便传输，会对数据进行分割（以报文段为单位），并标记编号，方便服务器接受时能够准确地还原报文信息。&lt;/p&gt;
-
-&lt;p&gt;在建立连接前，会先进行 TCP 三次握手。&lt;a href=&quot;https://github.com/jawil/blog/issues/14&quot;&gt;通俗解释TCP协议三次握手&lt;/a&gt;、&lt;a href=&quot;https://hit-alibaba.github.io/interview/basic/network/HTTP.html&quot;&gt;计算机网络&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/cpcpcp123/article/details/52739407&quot;&gt;SYN 泛洪攻击&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;网络层-ip协议查询mac地址&quot;&gt;网络层: IP协议查询Mac地址&lt;/h4&gt;
-&lt;p&gt;将数据段打包，并加入源及目标的IP地址，并且负责寻找传输路线。
-判断目标地址是否与当前地址处于同一网络中，是的话直接根据 Mac 地址发送，否则使用路由表查找下一跳地址，以及使用 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP 协议&lt;/a&gt;查询它的 Mac 地址。&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;注意：在 OSI 参考模型中 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP&lt;/a&gt; 协议位于链路层，但在 TCP/IP 中，它位于网络层。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;链路层-以太网协议&quot;&gt;链路层: 以太网协议&lt;/h4&gt;
-
-&lt;p&gt;根据以太网协议将数据分为以”帧”为单位的数据包, 每一帧分为两个部分:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;标头: 数据包的发送者、接受者、数据类型&lt;/li&gt;
-  &lt;li&gt;数据: 数据包具体内容&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Mac地址
-以太网规定了连入网络的所有设备都必须具备“网卡”接口, 数据包都是从一块网卡传递到另一块网卡,网卡地址就是Mac地址.每一个Mac地址都是独一无二的,具备了一对一的能力.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;广播
-发送数据的方法很原始，直接把数据通过 ARP 协议，向本网络的所有机器发送，接收方根据标头信息与自身 Mac 地址比较，一致就接受，否则丢弃。 但是接受方回应是单播.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;服务器接受请求&quot;&gt;服务器接受请求&lt;/h4&gt;
-
-&lt;h3 id=&quot;服务器处理请求&quot;&gt;服务器处理请求&lt;/h3&gt;
-
-&lt;h4 id=&quot;httpd&quot;&gt;HTTPD&lt;/h4&gt;
-&lt;p&gt;最常见的 HTTPD 有 Linux 上常用的 Apache 和 Nginx，以及 Windows 上的 IIS。
-它会监听得到的请求，然后开启一个子进程去处理这个请求。&lt;/p&gt;
-
-&lt;h4 id=&quot;处理请求&quot;&gt;处理请求&lt;/h4&gt;
-&lt;p&gt;接受 TCP 报文后，会对连接进行处理，对HTTP协议进行解析（请求方法、域名、路径等），并且进行一些验证：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;验证是否配置虚拟主机&lt;/li&gt;
-  &lt;li&gt;验证虚拟主机是否接受此方法&lt;/li&gt;
-  &lt;li&gt;验证该用户可以使用该方法（根据 IP 地址、身份信息等）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;url重写&quot;&gt;URL重写&lt;/h4&gt;
-&lt;p&gt;然后会查看 URL 重写规则，如果请求的文件是真实存在的，比如图片、html、css、js文件等，则会直接把这个文件返回。&lt;/p&gt;
-
-&lt;p&gt;否则服务器会按照规则把请求重写到 一个 REST 风格的 URL 上。&lt;/p&gt;
-
-&lt;p&gt;然后根据动态语言的脚本，来决定调用什么类型的动态文件解释器来处理这个请求。&lt;/p&gt;
-
-&lt;p&gt;以 PHP 语言的 MVC 框架举例，它首先会初始化一些环境的参数，根据 URL 由上到下地去匹配路由，然后让路由所定义的方法去处理请求。&lt;/p&gt;
-
-&lt;h3 id=&quot;浏览器接受响应&quot;&gt;浏览器接受响应&lt;/h3&gt;
-&lt;p&gt;浏览器接收到来自服务器的响应资源后，会对资源进行分析。&lt;/p&gt;
-
-&lt;p&gt;首先查看 Response header，根据不同状态码做不同的事（比如上面提到的重定向）。&lt;/p&gt;
-
-&lt;p&gt;如果响应资源进行了压缩（比如 gzip），还需要进行解压。&lt;/p&gt;
-
-&lt;p&gt;然后，对响应资源做缓存。&lt;/p&gt;
-
-&lt;p&gt;接下来，根据响应资源里的 MIME 类型去解析响应内容（比如 HTML、Image各有不同的解析方式）。&lt;/p&gt;
-
-&lt;h3 id=&quot;渲染页面&quot;&gt;渲染页面&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/core.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://cdn.darknights.cn/assets/images/in-post/browser-input/process.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;文章参考&quot;&gt;文章参考&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hellogithub2014.github.io/2017/09/24/how-do-network-connect/&quot;&gt;从浏览器输入url按回车后发生了什么&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/50043595&quot;&gt;浏览器探究&amp;amp;前端优化指南&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/28771785&quot;&gt;ARP&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bisend.cn/blog/dns-ji-chi-yu-wu-ran&quot;&gt;什么是DNS劫持与DNS污染&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://juejin.im/post/59ba146c6fb9a00a4636d8b6&quot;&gt;深入理解Http请求、DNS劫持与解析&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/it_rod/article/details/79939651&quot;&gt;HTTP基础与DNS分析&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/gopark/p/8430916.html&quot;&gt;DNS原理及其解析过程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://4ark.me/post/b6c7c0a2.html&quot;&gt;在浏览器输入 URL 回车之后发生了什么&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/xsilence/&quot;&gt;DNS查找域名的过程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://fex.baidu.com/blog/2014/05/what-happen/&quot;&gt;从输入 URL 到页面加载完成的过程中都发生了什么事情？&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="基础" /><category term="面试" /><category term="HSTS" /><summary type="html">不久前看了一篇文章在浏览器输入 URL 回车之后发生了什么, 感觉讲的实在很好所以在此我也想总结一下,当自己被问到这个问题的时候会如何回答呢?</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>toshiba</name></author><category term="面试" /><category term="基础" /><category term="JavaScript" /><summary type="html">起因 前几天的时候做了一个领奖的公众号,回调的时候url中会自动带过来一个使用des3加密的orderId, 本来在测试环境的时候是没有问题的,但是到了线上却出现了问题,经过排查发现加密串本来是tq+3wB8PdfY=, 传到后台的错误结果是tq%203wB8PdfY%3D,但是真实需要传给后台的却是tq%2B3wB8PdfY%3D. 因此在这里将该问题总结一下.转载自关于URL编码</summary></entry></feed>
